@@ -17,13 +17,28 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [
+        ElementPlusResolver({
+          //1. 配置elementPlus採用sass樣式配色系統
+          importStyle: 'sass'
+        })
+      ]
     }),
     VueDevTools()
   ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 2. 自動導入定制化樣式文件進行樣式覆蓋
+        additionalData: `
+          @use "@/styles/element/index.scss" as *;
+        `
+      }
     }
   }
 })
