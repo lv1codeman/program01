@@ -1,4 +1,4 @@
-import './assets/main.css'
+import '@/styles/common.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -7,11 +7,13 @@ import App from './App.vue'
 import router from './router'
 
 // 測試接口函數
-import { getCategory } from '@/apis/testAPI'
+// import { getCategory } from '@/apis/testAPI'
 
-getCategory().then((res) => {
-  console.log(res)
-})
+// getCategory().then((res) => {
+//   console.log(res)
+// })
+
+let foo
 
 const app = createApp(App)
 

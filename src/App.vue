@@ -1,9 +1,15 @@
 <script setup>
-import deptForm from '@/components/deptForm.vue'
+// 測試接口函數
+import { getCategory } from '@/apis/testAPI'
+
+getCategory().then((res) => {
+  console.log(res)
+})
 </script>
 
 <template>
-  <deptForm></deptForm>
+  <!-- 一級路由出口組件 -->
+  <RouterView />
 </template>
 
 <style scoped>
