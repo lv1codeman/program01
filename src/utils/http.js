@@ -1,9 +1,13 @@
 // axios基礎的封裝
-import { def } from '@vue/shared'
 import axios from 'axios'
 
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
+  timeout: 5000
+})
+
+const myInstance = axios.create({
+  baseURL: 'http://localhost:8000/',
   timeout: 5000
 })
 
@@ -24,4 +28,4 @@ httpInstance.interceptors.response.use(
   }
 )
 
-export default httpInstance
+export { httpInstance, myInstance }

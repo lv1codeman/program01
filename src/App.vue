@@ -1,8 +1,8 @@
 <script setup>
 // 測試接口函數
-import { getCategory } from '@/apis/testAPI'
+import { getServerData } from '@/apis/testAPI'
 
-getCategory().then((res) => {
+getServerData().then((res) => {
   console.log('from @/apis/testAPI: ', res)
 })
 </script>
