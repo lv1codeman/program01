@@ -3,7 +3,7 @@
 import { getCategory } from '@/apis/testAPI'
 
 getCategory().then((res) => {
-  console.log(res)
+  console.log('from @/apis/testAPI: ', res)
 })
 </script>
 
