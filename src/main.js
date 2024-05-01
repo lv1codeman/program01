@@ -13,8 +13,6 @@ import router from './router'
 //   console.log(res)
 // })
 
-let foo
-
 const app = createApp(App)
 
 app.use(createPinia())

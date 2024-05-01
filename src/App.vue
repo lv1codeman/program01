@@ -8,11 +8,18 @@ getCategory().then((res) => {
 </script>
 
 <template>
+  <img src="" alt="" height="300" width="300" />
   <!-- 一級路由出口組件 -->
   <RouterView />
+  <div class="test">test scss</div>
+  <el-button type="primary">Primary</el-button>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.test {
+  color: $priceColor;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
