@@ -54,7 +54,6 @@
           color: $xtxColor;
         }
       }
-
       ~ li {
         a {
           border-left: 2px solid #666;
