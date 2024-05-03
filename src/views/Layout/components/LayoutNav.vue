@@ -2,21 +2,22 @@
 
 <template>
   <nav class="app-topnav">
-    <div class="container">
+    <div class="page-container">
       <ul>
         <template v-if="true">
+          <li><a href="javascript:;">首頁</a></li>
+          <li><a href="javascript:;">開課查詢</a></li>
+          <li><a href="javascript:;">學程檢查</a></li>
           <li>
             <a href="javascript:;"><i class="iconfont icon-user"></i>周杰倫</a>
           </li>
           <li>
             <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
               <template #reference>
-                <a href="javascript:;">退出登录</a>
+                <el-button type="success">登出</el-button>
               </template>
             </el-popconfirm>
           </li>
-          <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
           <li><a href="javascript:;">请先登录</a></li>
@@ -42,7 +43,6 @@
       a {
         padding: 0 15px;
         color: #cdcdcd;
-        line-height: 1;
         display: inline-block;
 
         i {
@@ -51,7 +51,7 @@
         }
 
         &:hover {
-          color: $xtxColor;
+          color: $baseColor;
         }
       }
       ~ li {

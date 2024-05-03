@@ -2,35 +2,38 @@
   <footer class="app_footer">
     <!-- 联系我们 -->
     <div class="contact">
-      <div class="container">
-        <dl>
-          <dt>客户服务</dt>
-          <dd><i class="iconfont icon-kefu"></i> 在线客服</dd>
-          <dd><i class="iconfont icon-question"></i> 问题反馈</dd>
-        </dl>
-        <dl>
-          <dt>关注我们</dt>
-          <dd><i class="iconfont icon-weixin"></i> 公众号</dd>
-          <dd><i class="iconfont icon-weibo"></i> 微博</dd>
-        </dl>
-        <dl>
-          <dt>下载APP</dt>
-          <dd class="qrcode"><img src="@/assets/images/qrcode.jpg" /></dd>
-          <dd class="download">
-            <span>扫描二维码</span>
-            <span>立马下载APP</span>
-            <a href="javascript:;">下载页面</a>
-          </dd>
-        </dl>
-        <dl>
-          <dt>服务热线</dt>
-          <dd class="hotline">400-0000-000 <small>周一至周日 8:00-18:00</small></dd>
-        </dl>
+      <div class="page-container">
+        <el-row class="footer-row" :gutter="20">
+          <el-col :span="6" :xs="12">
+            <div class="item">
+              <div class="item-title">客户服务</div>
+              <div class="item-content">
+                <div class="item-content-box">
+                  <i class="iconfont icon-kefu"></i>
+                  在线客服
+                </div>
+                <div class="item-content-box">
+                  <i class="iconfont icon-question"></i>
+                  问题反馈
+                </div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="6" :xs="12"
+            ><div class="item"><div class="item-title">关注我们</div></div>
+          </el-col>
+          <el-col :span="6" :xs="12"
+            ><div class="item"><div class="item-title">下载APP</div></div>
+          </el-col>
+          <el-col :span="6" :xs="12"
+            ><div class="item"><div class="item-title">服务热线</div></div>
+          </el-col>
+        </el-row>
       </div>
     </div>
     <!-- 其它 -->
     <div class="extra">
-      <div class="container">
+      <div class="page-container">
         <div class="slogan">
           <a href="javascript:;">
             <i class="iconfont icon-footer01"></i>
@@ -64,6 +67,70 @@
 </template>
 
 <style scoped lang="scss">
+@media screen and (max-width: 767px) {
+  .item {
+    margin-top: 20px;
+  }
+}
+.footer-row {
+  flex: 1;
+}
+
+.el-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+// .el-row:first-child {
+//   margin-top: 20px;
+// }
+// .el-row:last-child {
+//   margin-bottom: 20px;
+// }
+
+.el-col {
+  border-radius: 4px;
+}
+
+.item {
+  background-color: #ccc;
+  border-radius: 4px;
+  min-height: 36px;
+  height: 150px;
+  text-align: center;
+  border-right: 1px solid #f2f2f2;
+  color: #999;
+}
+.item-title {
+  padding: 20px;
+  text-align: center;
+}
+.item-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+  .iconfont {
+    font-size: 36px;
+    display: block;
+    color: #666;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.item-content-box {
+  flex: 1;
+  max-width: 100px;
+  &:hover {
+    .iconfont {
+      color: $baseColor;
+    }
+  }
+}
+
 .app_footer {
   overflow: hidden;
   background-color: #f5f5f5;
@@ -72,8 +139,8 @@
   .contact {
     background: #fff;
 
-    .container {
-      padding: 60px 0 40px 25px;
+    .page-container {
+      // padding: 60px 0 40px 25px;
       display: flex;
     }
 
@@ -115,7 +182,7 @@
 
       &:hover {
         .iconfont {
-          color: $xtxColor;
+          color: $baseColor;
         }
       }
 
@@ -149,7 +216,7 @@
         margin-top: 5px;
         color: #fff;
         border-radius: 2px;
-        background-color: $xtxColor;
+        background-color: $baseColor;
       }
     }
 

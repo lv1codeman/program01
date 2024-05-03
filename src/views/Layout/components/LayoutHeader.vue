@@ -1,5 +1,5 @@
 <script setup>
-import { getCategoryAPI } from '@/apis/layout'
+// import { getCategoryAPI } from '@/apis/layout'
 import { getServerData } from '@/apis/testAPI'
 import { ref, onMounted } from 'vue'
 
@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
   <header class="app-header">
-    <div class="container">
+    <div class="page-container">
       <h1 class="logo">
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
@@ -133,14 +133,14 @@ onMounted(() => {
       display: inline-block;
 
       &:hover {
-        color: $xtxColor;
-        border-bottom: 1px solid $xtxColor;
+        color: $baseColor;
+        border-bottom: 1px solid $baseColor;
       }
     }
 
     .active {
-      color: $xtxColor;
-      border-bottom: 1px solid $xtxColor;
+      color: $baseColor;
+      border-bottom: 1px solid $baseColor;
     }
   }
 }
