@@ -27,37 +27,44 @@ const setItemText = (percentage) => {
 <template>
   <div class="page-container">
     <h2>學分學程檢查</h2>
-    <div class="outer-box" v-for="item in programList" :key="item.id">
-      <div class="box">
-        <h4>{{ item.name }}</h4>
-        <el-progress
-          :text-inside="true"
-          :show-text="true"
-          :stroke-width="26"
-          :percentage="item.percent"
-          :format="setItemText"
-          :stroke-linecap="square"
-        />
+    <div class="outouter-box">
+      <div class="outer-box" v-for="item in programList" :key="item.id">
+        <div class="box">
+          <h4>{{ item.name }}</h4>
+          <el-progress
+            :text-inside="true"
+            :show-text="true"
+            :stroke-width="26"
+            :percentage="item.percent"
+            :format="setItemText"
+            :stroke-linecap="square"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.outer-box {
-  padding: 0 20px;
-  display: flex;
-  .box {
-    display: relative;
-    width: 500px;
-    margin-top: 20px;
+.outouter-box {
+  // height: 500px;
+  .outer-box {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    // width: 400px;
 
-    .item {
-      flex: 1;
+    .box {
+      display: relative;
+      // width: 400px;
+      margin-top: 20px;
+
+      .item {
+        flex: 1;
+      }
     }
   }
 }
-
 :deep(.el-progress-bar__innerText) {
   color: rgb(201, 106, 29);
   font-weight: bold;
