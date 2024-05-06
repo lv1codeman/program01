@@ -157,7 +157,9 @@ const setStatus = (item) => {
 }
 
 .outouter-box {
-  height: 550px;
+  // height: 550px;
+  height: calc($baseNum * 5.6);
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -200,12 +202,12 @@ const setStatus = (item) => {
 }
 @media screen and (max-width: 1200px) {
   .outouter-box {
-    height: 900px;
+    height: calc($baseNum * 9);
   }
 }
 @media screen and (max-width: 818px) {
   .outouter-box {
-    height: 1700px;
+    height: calc($baseNum * 17);
     justify-content: center;
   }
 }
