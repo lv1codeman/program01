@@ -198,9 +198,15 @@ const setStatus = (item) => {
 :deep(.el-progress__text) {
   color: rgba(223, 135, 20, 0.945);
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1200px) {
   .outouter-box {
-    height: 1500px;
+    height: 900px;
+  }
+}
+@media screen and (max-width: 818px) {
+  .outouter-box {
+    height: 1700px;
+    justify-content: center;
   }
 }
 </style>
