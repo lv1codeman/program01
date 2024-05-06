@@ -5,6 +5,8 @@ import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
+import Programs from '@/views/Programs/index.vue'
+import MiniPrograms from '@/views/MiniPrograms/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +24,14 @@ const router = createRouter({
         {
           path: 'category',
           component: Category
+        },
+        {
+          path: 'programs',
+          component: Programs
+        },
+        {
+          path: 'miniprograms',
+          component: MiniPrograms
         }
       ]
     },

@@ -6,7 +6,7 @@
         <el-row class="footer-row" :gutter="20">
           <el-col :span="6" :xs="12">
             <div class="item">
-              <div class="item-title">客户服务</div>
+              <div class="item-title">學程介紹</div>
               <div class="item-content">
                 <div class="item-content-box">
                   <i class="iconfont icon-kefu"></i>
@@ -20,13 +20,48 @@
             </div>
           </el-col>
           <el-col :span="6" :xs="12"
-            ><div class="item"><div class="item-title">关注我们</div></div>
+            ><div class="item">
+              <div class="item-title">外部連結</div>
+              <div class="item-content">
+                <div class="item-content-box">
+                  <i class="iconfont icon-kefu"></i>
+                  彰師大教務處
+                </div>
+                <div class="item-content-box">
+                  <i class="iconfont icon-question"></i>
+                  課務組網頁
+                </div>
+              </div>
+            </div>
           </el-col>
           <el-col :span="6" :xs="12"
-            ><div class="item"><div class="item-title">下载APP</div></div>
+            ><div class="item">
+              <div class="item-title">選課須知</div>
+              <div class="item-content">
+                <div class="item-content-box">
+                  <div class="myqrcode">
+                    <img src="@/assets/images/選課須知QRcode100x100.png" alt="" />
+                  </div>
+                </div>
+                <div class="item-content-box">
+                  <div class="myqrcode-description">
+                    <span>掃描QRcode</span>
+                    <span>立即前往</span>
+                    <a
+                      href="https://acadaff.ncue.edu.tw/var/file/2/1002/img/958/course.html"
+                      target="_blank"
+                      >選課專區</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
           </el-col>
-          <el-col :span="6" :xs="12"
-            ><div class="item"><div class="item-title">服务热线</div></div>
+          <el-col :span="6" :xs="12">
+            <div class="item">
+              <div class="item-title">聯絡我們</div>
+              <div class="hotline">04-7232105#5622-5626</div>
+            </div>
           </el-col>
         </el-row>
       </div>
@@ -67,11 +102,6 @@
 </template>
 
 <style scoped lang="scss">
-@media screen and (max-width: 767px) {
-  .item {
-    margin-top: 20px;
-  }
-}
 .footer-row {
   flex: 1;
 }
@@ -92,7 +122,7 @@
 }
 
 .item {
-  background-color: #ccc;
+  // background-color: #ccc;
   border-radius: 4px;
   min-height: 36px;
   height: 150px;
@@ -101,6 +131,7 @@
   color: #999;
 }
 .item-title {
+  font-size: medium;
   padding: 20px;
   text-align: center;
 }
@@ -109,6 +140,7 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  align-items: center;
 
   .iconfont {
     font-size: 36px;
@@ -124,10 +156,33 @@
 .item-content-box {
   flex: 1;
   max-width: 100px;
+
   &:hover {
     .iconfont {
+      cursor: pointer;
       color: $baseColor;
     }
+  }
+}
+
+.myqrcode {
+  width: 88px;
+  height: 88px;
+  padding: 2px;
+  border: 1px solid #ededed;
+}
+.myqrcode-description {
+  span {
+    display: block;
+  }
+  a {
+    display: block;
+    line-height: 1;
+    padding: 10px 10px;
+    margin-top: 5px;
+    color: #fff;
+    border-radius: 5px;
+    background-color: $baseColor;
   }
 }
 
@@ -142,53 +197,6 @@
     .page-container {
       // padding: 60px 0 40px 25px;
       display: flex;
-    }
-
-    dl {
-      height: 190px;
-      text-align: center;
-      padding: 0 72px;
-      border-right: 1px solid #f2f2f2;
-      color: #999;
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        border-right: none;
-        padding-right: 0;
-      }
-    }
-
-    dt {
-      line-height: 1;
-      font-size: 18px;
-    }
-
-    dd {
-      margin: 36px 12px 0 0;
-      float: left;
-      width: 92px;
-      height: 92px;
-      padding-top: 10px;
-      border: 1px solid #ededed;
-
-      .iconfont {
-        font-size: 36px;
-        display: block;
-        color: #666;
-      }
-
-      &:hover {
-        .iconfont {
-          color: $baseColor;
-        }
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
     }
 
     .qrcode {
@@ -290,6 +298,12 @@
         border-right: none;
       }
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .item {
+    margin-top: 20px;
   }
 }
 </style>

@@ -25,18 +25,21 @@ onMounted(() => {
   <header class="app-header">
     <div class="page-container">
       <h1 class="logo">
-        <RouterLink to="/">小兔鲜</RouterLink>
+        <RouterLink to="/">學程平台首頁</RouterLink>
       </h1>
-      <ul class="app-header-nav">
+      <!-- <ul class="app-header-nav">
         <li class="home" v-for="item in categorylist" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
-      </ul>
-
-      <div class="search">
+      </ul>-->
+      <div class="app-header-nav2">
+        <div class="nav-list"><RouterLink to="/programs">學分學程檢查</RouterLink></div>
+        <div class="nav-list"><RouterLink to="/miniprograms">微學程檢查</RouterLink></div>
+      </div>
+      <!-- <div class="search">
         <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜" />
-      </div>
+      </div> -->
       <!-- 头部购物车 -->
       <!-- <HeaderCart /> -->
     </div>
@@ -47,7 +50,7 @@ onMounted(() => {
 .app-header {
   background: #fff;
 
-  .container {
+  .page-container {
     display: flex;
     align-items: center;
   }
@@ -57,73 +60,38 @@ onMounted(() => {
 
     a {
       display: block;
-      height: 132px;
+      height: 80px;
       width: 100%;
       text-indent: -9999px;
-      background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
-    }
-  }
-
-  .search {
-    width: 170px;
-    height: 32px;
-    position: relative;
-    border-bottom: 1px solid #e7e7e7;
-    line-height: 32px;
-
-    .icon-search {
-      font-size: 18px;
-      margin-left: 5px;
-    }
-
-    input {
-      width: 140px;
-      padding-left: 5px;
-      color: #666;
-    }
-  }
-
-  .cart {
-    width: 50px;
-
-    .curr {
-      height: 32px;
-      line-height: 32px;
-      text-align: center;
-      position: relative;
-      display: block;
-
-      .icon-cart {
-        font-size: 22px;
-      }
-
-      em {
-        font-style: normal;
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 1px 6px;
-        line-height: 1;
-        background: $helpColor;
-        color: #fff;
-        font-size: 12px;
-        border-radius: 10px;
-        font-family: Arial;
-      }
+      background: url('@/assets/images/ncue-logo.png') no-repeat center 14px / contain;
     }
   }
 }
 
+.app-header-nav2 {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 10px 20px 10px 40px;
+  .nav-list {
+    // flex: 1;
+  }
+}
+
 .app-header-nav {
-  width: 820px;
+  // width: 820px;
   display: flex;
   padding-left: 40px;
   position: relative;
   z-index: 998;
 
+  ul {
+    display: flex;
+    gap: 40px;
+  }
   li {
-    margin-right: 40px;
-    width: 38px;
+    // margin-right: 40px;
+    // width: 38px;
     text-align: center;
 
     a {
@@ -142,6 +110,12 @@ onMounted(() => {
       color: $baseColor;
       border-bottom: 1px solid $baseColor;
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app-header-nav2 {
+    gap: 20px;
   }
 }
 </style>
