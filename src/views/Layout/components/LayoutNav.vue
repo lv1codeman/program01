@@ -6,8 +6,12 @@
       <ul>
         <template v-if="true">
           <li><a href="javascript:;">首頁</a></li>
-          <li><a href="javascript:;">開課查詢</a></li>
-          <li><a href="javascript:;">學程檢查</a></li>
+          <li>
+            <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
+          </li>
+          <li>
+            <RouterLink to="/setprogram">學程設置(系辦)</RouterLink>
+          </li>
           <li>
             <a href="javascript:;"><i class="iconfont icon-user"></i>周杰倫</a>
           </li>

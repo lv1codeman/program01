@@ -7,6 +7,7 @@ import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import Programs from '@/views/Programs/index.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
+import SetProgram from '@/views/Agent/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,10 @@ const router = createRouter({
         {
           path: 'miniprograms',
           component: MiniPrograms
+        },
+        {
+          path: 'setprogram',
+          component: SetProgram
         }
       ]
     },

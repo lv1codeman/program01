@@ -70,6 +70,7 @@ const categorylist = ref([])
   padding: 10px 20px 10px 40px;
   .nav-list {
     // flex: 1;
+    font-size: 16px;
   }
 }
 
