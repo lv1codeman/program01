@@ -1,11 +1,13 @@
 <script setup>
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
+// import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
 
 const formRef = ref()
 const dynamicValidateForm = reactive({
   name: '',
+  url: '',
   type: '',
   unit: '',
   minCredit: 0,
@@ -56,6 +58,13 @@ const resetForm = (formEl) => {
 const programOptions = ref(['學分學程', '微學程'])
 // console.log(unitList)
 const unitListAll = unitList
+
+const rules = ref({
+  name: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  url: { required: true, /*pattern: regex.reg_url,*/ message: '網址格式錯誤', trigger: 'blur' },
+  type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  unit: { required: true, message: '請輸入學程名稱', trigger: 'blur' }
+})
 </script>
 
 <template>
@@ -68,10 +77,14 @@ const unitListAll = unitList
       :model="dynamicValidateForm"
       label-width="auto"
       class="demo-dynamic"
+      :rules="rules"
     >
       <div class="formarea">
-        <el-form-item prop="name" label="學程名稱">
+        <el-form-item prop="name" label="學程名稱" clearable>
           <el-input v-model="dynamicValidateForm.name" />
+        </el-form-item>
+        <el-form-item prop="url" label="學程網址" clearable>
+          <el-input v-model="dynamicValidateForm.url" />
         </el-form-item>
         <el-form-item prop="type" label="學程類型">
           <el-segmented v-model="dynamicValidateForm.type" :options="programOptions" />
@@ -87,7 +100,7 @@ const unitListAll = unitList
           </el-select>
         </el-form-item>
         <el-form-item prop="minCredit" label="最低應修學分數">
-          <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="10" />
+          <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="30" />
         </el-form-item>
         <el-form-item prop="nonSelfCredit" label="非本系學分數">
           <el-input-number v-model="dynamicValidateForm.nonSelfCredit" :min="1" :max="10" />
