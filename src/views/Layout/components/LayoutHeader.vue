@@ -10,15 +10,16 @@ const categorylist = ref([])
 //   categorylist.value = res.result
 // }
 
-const getCategory = async () => {
-  const res = await getServerData()
-  console.log(res)
-  categorylist.value = res.data
-}
+// 復原以下程式碼：執行從自己的DB讀取Header列表
+// const getCategory = async () => {
+//   const res = await getServerData()
+//   console.log(res)
+//   categorylist.value = res.data
+// }
 
-onMounted(() => {
-  getCategory()
-})
+// onMounted(() => {
+//   getCategory()
+// })
 </script>
 
 <template>
@@ -36,12 +37,6 @@ onMounted(() => {
         <div class="nav-list"><RouterLink to="/programs">學分學程檢查</RouterLink></div>
         <div class="nav-list"><RouterLink to="/miniprograms">微學程檢查</RouterLink></div>
       </div>
-      <!-- <div class="search">
-        <i class="iconfont icon-search"></i>
-        <input type="text" placeholder="搜一搜" />
-      </div> -->
-      <!-- 头部购物车 -->
-      <!-- <HeaderCart /> -->
     </div>
   </header>
 </template>
@@ -90,8 +85,6 @@ onMounted(() => {
     gap: 40px;
   }
   li {
-    // margin-right: 40px;
-    // width: 38px;
     text-align: center;
 
     a {

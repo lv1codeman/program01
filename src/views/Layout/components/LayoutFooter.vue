@@ -3,7 +3,7 @@
     <!-- 联系我们 -->
     <div class="contact">
       <div class="page-container">
-        <el-row class="footer-row" :gutter="20">
+        <el-row class="footer-row">
           <el-col :span="6" :xs="12">
             <div class="item">
               <div class="item-title">學程介紹</div>
@@ -60,7 +60,10 @@
           <el-col :span="6" :xs="12">
             <div class="item">
               <div class="item-title">聯絡我們</div>
-              <div class="hotline">04-7232105#5622-5626</div>
+              <div class="hotline">
+                04-7232105
+                <div class="small">#5622-5626</div>
+              </div>
             </div>
           </el-col>
         </el-row>
@@ -117,18 +120,17 @@
 //   margin-bottom: 20px;
 // }
 
-.el-col {
-  border-radius: 4px;
-}
-
 .item {
   // background-color: #ccc;
-  border-radius: 4px;
+  // border-radius: 4px;
   min-height: 36px;
   height: 150px;
   text-align: center;
   border-right: 1px solid #f2f2f2;
   color: #999;
+  &:first-child {
+    border-left: 1px solid #f2f2f2;
+  }
 }
 .item-title {
   font-size: medium;
@@ -229,14 +231,14 @@
     }
 
     .hotline {
-      padding-top: 20px;
+      // padding-top: 20px;
       font-size: 22px;
       color: #666;
       width: auto;
       height: auto;
       border: none;
 
-      small {
+      .small {
         display: block;
         font-size: 15px;
         color: #999;

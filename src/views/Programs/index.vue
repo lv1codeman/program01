@@ -1,114 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
+import { programData } from '@/assets/data/programData.js'
 const programList = ref([])
-// const state = ref()
-programList.value = [
-  {
-    id: 1,
-    name: '復健諮商學分學程',
-    percent: 100,
-    url: 'https://www.google.com.tw',
-    state: 'success'
-  },
-  {
-    id: 2,
-    name: '員工協助方案學分學程',
-    percent: 80,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 3,
-    name: '金融證照與實務學分學程',
-    percent: 20,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 4,
-    name: '空間資訊學分學程',
-    percent: 40,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 5,
-    name: '環境教育暨觀光遊憩學分學程',
-    percent: 50,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 6,
-    name: '歷史與文化產業學分學程',
-    percent: 60,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 7,
-    name: '文化創意設計學分學程',
-    percent: 20,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 8,
-    name: '性別平權學分學程',
-    percent: 10,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 9,
-    name: '全英語物理博碩士班學分學程',
-    percent: 0,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 10,
-    name: '全英語光電博碩士班學分學程',
-    percent: 0,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 11,
-    name: '半導體產業學分學程',
-    percent: 100,
-    url: 'https://www.google.com.tw',
-    state: 'success'
-  },
-  {
-    id: 12,
-    name: '管理學院全英語商管學分學程',
-    percent: 0,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 13,
-    name: '公職人員培育學分學程',
-    percent: 20,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 14,
-    name: '國際工程學分學程',
-    percent: 10,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  },
-  {
-    id: 15,
-    name: '表創性藝術治療碩士學分學程',
-    percent: 50,
-    url: 'https://www.google.com.tw',
-    state: 'normal'
-  }
-]
+
+programList.value = programData
 
 const setItemText = (percentage) => {
   if (percentage == 100) {
@@ -126,15 +22,15 @@ const setStatus = (item) => {
 </script>
 <template>
   <div class="page-container">
-    <div class="pageTitle">學分學程檢查</div>
-
+    <!-- <div class="pageTitle">學分學程檢查</div> -->
+    <pagetitle>學分學程檢查</pagetitle>
     <div class="outouter-box">
       <div class="outer-box" v-for="item in programList" :key="item.id">
         <div class="box">
           <div class="subjectName">
             <a :href="item.url" target="_blank">{{ item.name }}</a>
           </div>
-          <div class="subjectUnit">{{ item.url }}</div>
+          <div class="subjectUnit">{{ item.unit }}</div>
           <el-progress
             :show-text="true"
             :text-inside="true"
@@ -150,12 +46,6 @@ const setStatus = (item) => {
 </template>
 
 <style scoped lang="scss">
-.pageTitle {
-  font-size: 26px;
-  font-weight: bolder;
-  margin: 30px 0 20px 0;
-}
-
 .outouter-box {
   // height: 550px;
   height: calc($baseNum * 5.6);
@@ -177,10 +67,10 @@ const setStatus = (item) => {
       // width: 400px;
       margin-top: 10px;
       .subjectName {
-        font-size: larger;
+        font-size: 18px;
       }
       .subjectUnit {
-        font-size: medium;
+        font-size: 14px;
       }
     }
   }

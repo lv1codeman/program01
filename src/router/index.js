@@ -14,7 +14,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Layout,
+      component: Layout, //children都會套用Layout index(@/views/Layout/index.vue)
       children: [
         {
           // 這邊path留空會默認當訪問parent時也會顯示這個children
