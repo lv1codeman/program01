@@ -1,17 +1,23 @@
 <script setup>
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
+import { unitList } from '@/assets/data/unitList.js'
 import { reactive, ref } from 'vue'
 
 const formRef = ref()
 const dynamicValidateForm = reactive({
+  name: '',
+  type: '',
+  unit: '',
+  minCredit: 0,
+  nonSelfCredit: 1,
   domains: [
     {
       key: 1,
       value: '',
-      name: ''
+      name: '',
+      criteria: ''
     }
-  ],
-  email: ''
+  ]
 })
 
 const removeDomain = (item) => {
@@ -46,6 +52,10 @@ const resetForm = (formEl) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
+const programOptions = ref(['學分學程', '微學程'])
+// console.log(unitList)
+const unitListAll = unitList
 </script>
 
 <template>
@@ -60,24 +70,34 @@ const resetForm = (formEl) => {
       class="demo-dynamic"
     >
       <div class="formarea">
-        <el-form-item
-          prop="email"
-          label="Email"
-          :rules="[
-            {
-              required: true,
-              message: 'Please input email address',
-              trigger: 'blur'
-            }
-          ]"
-        >
-          <el-input v-model="dynamicValidateForm.email" />
+        <el-form-item prop="name" label="學程名稱">
+          <el-input v-model="dynamicValidateForm.name" />
+        </el-form-item>
+        <el-form-item prop="type" label="學程類型">
+          <el-segmented v-model="dynamicValidateForm.type" :options="programOptions" />
+        </el-form-item>
+        <el-form-item prop="unit" label="設置單位">
+          <el-select
+            v-model="dynamicValidateForm.unit"
+            filterable
+            placeholder="Select"
+            style="width: 240px"
+          >
+            <el-option v-for="item in unitListAll" :key="item" :label="item" :value="item" />
+          </el-select>
+        </el-form-item>
+        <el-form-item prop="minCredit" label="最低應修學分數">
+          <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="10" />
+        </el-form-item>
+        <el-form-item prop="nonSelfCredit" label="非本系學分數">
+          <el-input-number v-model="dynamicValidateForm.nonSelfCredit" :min="1" :max="10" />
         </el-form-item>
       </div>
+      <div class="formTitle">基礎課程</div>
       <template v-for="(domain, index) in dynamicValidateForm.domains" :key="domain.key">
         <div class="dynamicFormArea">
           <el-form-item
-            :label="'Domain' + index"
+            :label="'類別' + (index + 1) + '名稱'"
             :prop="'domains.' + index + '.value'"
             :rules="{
               required: true,
@@ -88,7 +108,7 @@ const resetForm = (formEl) => {
             <el-input v-model="domain.value" />
           </el-form-item>
           <el-form-item
-            :label="'Name' + index"
+            :label="'層級' + (index + 1) + '最低學分數'"
             :prop="'domains.' + index + '.name'"
             :rules="{
               required: true,
@@ -101,6 +121,7 @@ const resetForm = (formEl) => {
           <el-button class="mt-2" @click.prevent="removeDomain(domain)"> Delete </el-button>
         </div>
       </template>
+
       <el-form-item style="margin-top: 10px">
         <el-button type="primary" @click="submitForm(formRef)">Submit</el-button>
         <el-button @click="addDomain">New domain</el-button>
@@ -113,13 +134,19 @@ const resetForm = (formEl) => {
 .formarea {
   padding: 0 10px;
 }
+.formTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
 .dynamicFormArea {
   border: 2px dotted rgba(73, 73, 73, 0.404);
   border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
 }
-
+:deep(.el-segmented) {
+  background-color: rgb(255, 255, 255);
+}
 @media screen and (max-width: 767px) {
 }
 </style>
