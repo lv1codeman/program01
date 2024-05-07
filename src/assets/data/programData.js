@@ -121,4 +121,101 @@ export const programData = [
   }
 ]
 
-export const miniProgramData = [{ some: 'some' }, { thing: 'thing' }]
+export const miniProgramData = [
+  {
+    id: 1,
+    name: '人工智慧技術與應用微學程',
+    url: 'http://ee.ncue.edu.tw/EE03/ee03_4.html',
+    percent: 100,
+    unit: '電機工程學系',
+    state: 'success'
+  },
+  {
+    id: 2,
+    name: '科學大數據探索微學程',
+    url: 'http://science.ncue.edu.tw/',
+    percent: 20,
+    unit: '理學院',
+    state: 'normal'
+  },
+  {
+    id: 3,
+    name: '佳凌科技光電產業碩士人才培育微學程',
+    url: 'http://photonics.ncue.edu.tw/zh_tw/News/Announcement/%E5%BE%AE%E5%AD%B8%E7%A8%8B%E5%B0%88%E5%8D%80-17933781',
+    percent: 10,
+    unit: '光電所',
+    state: 'normal'
+  },
+  {
+    id: 4,
+    name: '怡利電子光電產業碩士人才培育微學程',
+    url: 'http://photonics.ncue.edu.tw/zh_tw/News/Announcement/%E5%BE%AE%E5%AD%B8%E7%A8%8B%E5%B0%88%E5%8D%80-17933781',
+    percent: 50,
+    unit: '光電所',
+    state: 'normal'
+  },
+  {
+    id: 5,
+    name: '電商金融微學程',
+    url: 'http://management.im.ncue.edu.tw/uploads/about6upload/87e054c60d832590b32c955ff0871a61.pdf',
+    percent: 50,
+    unit: '管理學院',
+    state: 'normal'
+  },
+  {
+    id: 6,
+    name: '智慧感知與互動體驗微學程',
+    url: 'http://webadmin.ncue.edu.tw/tech/ploy/ploy_detail.asp?ClassID=609&id=2167',
+    percent: 60,
+    unit: '科技學院',
+    state: 'normal'
+  },
+  {
+    id: 7,
+    name: '綠色能源科技微學程',
+    url: 'http://ie.ncue.edu.tw/app/news.php?Sn=446',
+    percent: 20,
+    unit: '科技學院',
+    state: 'normal'
+  },
+  {
+    id: 8,
+    name: '文化創意與多媒體微學程',
+    url: 'https://ncuearts.ncue.edu.tw/p/412-1026-1610.php?Lang=zh-tw',
+    percent: 10,
+    unit: '文學院',
+    state: 'normal'
+  },
+  {
+    id: 9,
+    name: '教學資訊力微學程',
+    url: 'https://practiceweb.ncue.edu.tw/p/406-1007-7622,r53.php?Lang=zh-tw',
+    percent: 100,
+    unit: '師資培育中心',
+    state: 'success'
+  },
+  {
+    id: 10,
+    name: '新世代軟實力通識教育微學程',
+    url: 'https://ccourceweb.ncue.edu.tw/p/426-1009-10.php',
+    percent: 0,
+    unit: '通識教育中心',
+    state: 'normal'
+  },
+  {
+    id: 11,
+    name: '大學社會責任微學程',
+    url: 'https://ccourceweb.ncue.edu.tw/p/426-1009-10.php',
+    percent: 80,
+    unit: '通識教育中心',
+    state: 'normal'
+  },
+  {
+    id: 12,
+    name: '教育大數據微學程',
+    url: 'https://coe.ncue.edu.tw/p/412-1033-3534.php?Lang=zh-tw',
+    percent: 100,
+    unit: '教育學院',
+    state: 'success'
+  }
+]
