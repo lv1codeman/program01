@@ -12,12 +12,12 @@ const dynamicValidateForm = reactive({
   unit: '',
   minCredit: 0,
   nonSelfCredit: 1,
+  criteria: '',
   domains: [
     {
       key: 1,
-      value: '',
-      name: '',
-      criteria: ''
+      domainName: '',
+      domainMinCredit: ''
     }
   ]
 })
@@ -56,6 +56,8 @@ const resetForm = (formEl) => {
 }
 
 const programOptions = ref(['學分學程', '微學程'])
+const criteriaOptions = ref(['以課程數', '以學分數'])
+
 // console.log(unitList)
 const unitListAll = unitList
 
@@ -65,6 +67,7 @@ const rules = ref({
   type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
   unit: { required: true, message: '請輸入學程名稱', trigger: 'blur' }
 })
+const labelPosition = ref('right')
 </script>
 
 <template>
@@ -75,7 +78,8 @@ const rules = ref({
       ref="formRef"
       style="max-width: 600px"
       :model="dynamicValidateForm"
-      label-width="auto"
+      :label-position="labelPosition"
+      label-width="100"
       class="demo-dynamic"
       :rules="rules"
     >
@@ -99,6 +103,9 @@ const rules = ref({
             <el-option v-for="item in unitListAll" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
+        <el-form-item prop="criteria" label="修畢條件">
+          <el-segmented v-model="dynamicValidateForm.criteria" :options="criteriaOptions" />
+        </el-form-item>
         <el-form-item prop="minCredit" label="最低應修學分數">
           <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="30" />
         </el-form-item>
@@ -110,26 +117,27 @@ const rules = ref({
       <template v-for="(domain, index) in dynamicValidateForm.domains" :key="domain.key">
         <div class="dynamicFormArea">
           <el-form-item
-            :label="'類別' + (index + 1) + '名稱'"
-            :prop="'domains.' + index + '.value'"
+            :label="'類別名稱'"
+            :prop="'domains.' + index + '.domainName'"
             :rules="{
               required: true,
-              message: 'domain can not be null',
+              message: '類別名稱不可為空111',
               trigger: 'blur'
             }"
           >
-            <el-input v-model="domain.value" />
+            <el-input v-model="domain.domainName" />
           </el-form-item>
           <el-form-item
-            :label="'層級' + (index + 1) + '最低學分數'"
-            :prop="'domains.' + index + '.name'"
+            :label="'類別最低學分數/課程數'"
+            :prop="'domains.' + index + '.domainMinCredit'"
             :rules="{
               required: true,
-              message: 'domain can not be null',
+              message: '類別最低學分數不可為空',
               trigger: 'blur'
             }"
           >
-            <el-input v-model="domain.name" />
+            <!-- <el-input v-model="domain.name" /> -->
+            <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
           </el-form-item>
           <el-button class="mt-2" @click.prevent="removeDomain(domain)"> Delete </el-button>
         </div>
@@ -159,6 +167,10 @@ const rules = ref({
 }
 :deep(.el-segmented) {
   background-color: rgb(255, 255, 255);
+}
+// 處理label沒有垂直居中的問題
+:deep(.el-form-item__label) {
+  height: auto;
 }
 @media screen and (max-width: 767px) {
 }
