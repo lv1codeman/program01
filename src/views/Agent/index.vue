@@ -122,7 +122,7 @@ const checkDynamicValidateForm = () => {
       ref="formRef"
       :model="dynamicValidateForm"
       :label-position="labelPosition"
-      label-width="auto"
+      label-width="100"
       class="demo-dynamic"
       :hide-required-asterisk="true"
     >
@@ -282,7 +282,7 @@ const checkDynamicValidateForm = () => {
 
 .program-setting {
   display: grid;
-  grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
+  grid-template-columns: 0.3fr minmax(50px, 1fr) minmax(50px, 1fr) 0.3fr;
   column-gap: 10px;
   .grid-item {
     grid-column-start: 2;
@@ -366,7 +366,7 @@ $left-domain-size: 6%;
   margin-left: 10vw;
 }
 @media screen and (max-width: 767px) {
-  program-setting {
+  .program-setting {
     display: grid;
     grid-template-columns: 1fr;
   }
