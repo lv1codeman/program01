@@ -164,96 +164,107 @@ const checkDynamicValidateForm = () => {
 
       <!-- 學程類別 -->
       <div class="outer-box">
-        <div class="formTitle-1">學程類別</div>
-        <template v-for="(category, index) in dynamicValidateForm.category" :key="category.key">
+        <template
+          v-for="(category, categoryIndex) in dynamicValidateForm.category"
+          :key="category.key"
+        >
           <div class="dynamicFormArea">
-            <el-form-item
-              :label="'類別名稱'"
-              :prop="'category.' + index + '.categoryName'"
-              :rules="{
-                required: true,
-                message: '類別名稱不可為空',
-                trigger: 'blur'
-              }"
-            >
-              <el-input v-model="category.categoryName" />
-            </el-form-item>
-            <el-form-item
-              :label="'類別最低學分數/課程數'"
-              :prop="'category.' + index + '.categoryMinCredit'"
-              :rules="{
-                required: true,
-                message: '類別最低學分數不可為空',
-                trigger: 'blur'
-              }"
-            >
-              <el-input-number v-model="category.categoryMinCredit" :min="1" :max="30" />
-            </el-form-item>
-            <el-form-item
-              :label="'類別需求數'"
-              :prop="'category.' + index + '.categoryRequireNum'"
-              :rules="{
-                required: true,
-                message: '類別最低學分數不可為空',
-                trigger: 'blur'
-              }"
-            >
-              <el-input-number v-model="category.categoryRequireNum" :min="1" :max="10" />
-            </el-form-item>
-            <el-button class="mt-2" @click.prevent="removeCategory(category)"> 刪除 </el-button>
+            <div class="formTitle-1">學程類別{{ categoryIndex + 1 }}</div>
+            <div class="domainpanel">
+              <div class="leftDomain" @click.prevent="removeCategory(category)">
+                <span>刪除</span>
+              </div>
+              <div class="rightDomain">
+                <el-form-item
+                  :label="'類別名稱'"
+                  :prop="'category.' + categoryIndex + '.categoryName'"
+                  :rules="{
+                    required: true,
+                    message: '類別名稱不可為空',
+                    trigger: 'blur'
+                  }"
+                >
+                  <el-input v-model="category.categoryName" />
+                </el-form-item>
+                <el-form-item
+                  :label="'類別最低學分數/課程數'"
+                  :prop="'category.' + categoryIndex + '.categoryMinCredit'"
+                  :rules="{
+                    required: true,
+                    message: '類別最低學分數不可為空',
+                    trigger: 'blur'
+                  }"
+                >
+                  <el-input-number v-model="category.categoryMinCredit" :min="1" :max="30" />
+                </el-form-item>
+                <el-form-item
+                  :label="'類別需求數'"
+                  :prop="'category.' + categoryIndex + '.categoryRequireNum'"
+                  :rules="{
+                    required: true,
+                    message: '類別最低學分數不可為空',
+                    trigger: 'blur'
+                  }"
+                >
+                  <el-input-number v-model="category.categoryRequireNum" :min="1" :max="10" />
+                </el-form-item>
+              </div>
+            </div>
+            <hr style="border: 1px solid black" />
+            <!-- 學程領域 -->
+            <div class="indent">
+              <template v-for="(domain, index) in category.domain" :key="domain.key">
+                <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
+                <div class="domainpanel">
+                  <div class="leftDomain" @click.prevent="removeDomain(categoryIndex, domain)">
+                    <span>刪除</span>
+                  </div>
+                  <div class="rightDomain">
+                    <el-form-item
+                      :label="'領域名稱'"
+                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
+                      :rules="{
+                        required: true,
+                        message: '領域名稱不可為空',
+                        trigger: 'blur'
+                      }"
+                    >
+                      <el-input v-model="domain.domainName" />
+                    </el-form-item>
+                    <el-form-item
+                      :label="'領域最低學分數/課程數'"
+                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
+                      :rules="{
+                        required: true,
+                        message: '領域最低學分數不可為空',
+                        trigger: 'blur'
+                      }"
+                    >
+                      <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
+                    </el-form-item>
+                    <el-form-item
+                      :label="'領域需求數'"
+                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
+                      :rules="{
+                        required: true,
+                        message: '領域最低學分數不可為空',
+                        trigger: 'blur'
+                      }"
+                    >
+                      <el-input-number v-model="domain.domainRequireNum" :min="1" :max="10" />
+                    </el-form-item>
+                  </div>
+                </div>
+              </template>
+              <el-form-item style="margin-top: 10px">
+                <el-button type="success" @click="addDomain(categoryIndex)">新增領域</el-button>
+              </el-form-item>
+            </div>
           </div>
         </template>
         <el-form-item style="margin-top: 10px">
           <el-button type="success" @click="addCategory" style="">新增類別</el-button>
         </el-form-item>
-        <!-- 學程領域 -->
-        <div class="formTitle-1">學程領域</div>
-        <template v-for="(item, categoryIndex) in dynamicValidateForm.category" :key="item.id">
-          <div class="formTitle_area">{{ item.categoryName }}</div>
-          <template v-for="(domain, index) in item.domain" :key="domain.key">
-            <div class="dynamicFormArea">
-              <el-form-item
-                :label="'領域名稱'"
-                :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
-                :rules="{
-                  required: true,
-                  message: '領域名稱不可為空',
-                  trigger: 'blur'
-                }"
-              >
-                <el-input v-model="domain.domainName" />
-              </el-form-item>
-              <el-form-item
-                :label="'領域最低學分數/課程數'"
-                :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
-                :rules="{
-                  required: true,
-                  message: '領域最低學分數不可為空',
-                  trigger: 'blur'
-                }"
-              >
-                <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
-              </el-form-item>
-              <el-form-item
-                :label="'領域需求數'"
-                :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
-                :rules="{
-                  required: true,
-                  message: '領域最低學分數不可為空',
-                  trigger: 'blur'
-                }"
-              >
-                <el-input-number v-model="domain.domainRequireNum" :min="1" :max="10" />
-              </el-form-item>
-              <el-button class="mt-2" @click.prevent="removeDomain(categoryIndex, domain)">
-                刪除
-              </el-button>
-            </div>
-          </template>
-          <el-form-item style="margin-top: 10px">
-            <el-button type="success" @click="addDomain(categoryIndex)">新增領域</el-button>
-          </el-form-item>
-        </template>
       </div>
     </el-form>
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
@@ -285,8 +296,41 @@ const checkDynamicValidateForm = () => {
     }
   }
 }
+$domain-border-color: rgb(133, 133, 133);
+$domain-border-radius: 20px;
+$left-domain-size: 6%;
+.domainpanel {
+  display: flex;
+  margin-bottom: 5px;
+  .leftDomain {
+    flex: $left-domain-size;
+    border: 2px solid $domain-border-color;
+    border-radius: $domain-border-radius 0 0 $domain-border-radius;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f63d53c9;
+    color: white;
+    span {
+      font-size: 18px;
+    }
+    &:hover {
+      background-color: #f63d53b7;
+      cursor: pointer;
+    }
+  }
+  .rightDomain {
+    flex: calc(100% - $left-domain-size);
+    border: 2px solid $domain-border-color;
+    border-left: none;
+    border-radius: 0 $domain-border-radius $domain-border-radius 0;
+    padding: 10px;
+  }
+}
 
 .outer-box {
+  // width: 70%;
   // display: grid;
   // grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
 }
@@ -309,12 +353,17 @@ const checkDynamicValidateForm = () => {
 :deep(.el-segmented) {
   background-color: rgb(255, 255, 255);
 }
+:deep(.el-form-item__label) {
+  font-size: 16px;
+}
 // 處理label沒有垂直居中的問題
 .lineHeight1 {
   height: auto;
   line-height: 1;
 }
-
+.indent {
+  margin-left: 10vw;
+}
 @media screen and (max-width: 767px) {
   program-setting {
     display: grid;
