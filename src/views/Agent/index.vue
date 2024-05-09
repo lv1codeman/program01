@@ -8,11 +8,11 @@ const formRef = ref()
 const dynamicValidateForm = reactive({
   name: '',
   url: '',
-  type: '',
+  type: '學分學程',
   unit: '',
   minCredit: 0,
   nonSelfCredit: 0,
-  criteria: '',
+  criteria: '以學分數',
   category: [
     {
       key: 1,
@@ -271,6 +271,7 @@ const checkDynamicValidateForm = () => {
     <el-button @click="resetForm(formRef)">重設表單</el-button>
     <el-button @click="checkDynamicValidateForm">check result</el-button>
   </div>
+  <el-backtop :right="30" :bottom="70" />
 </template>
 <style lang="scss" scoped>
 .blankspace:empty {
@@ -310,7 +311,7 @@ $left-domain-size: 6%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f63d53c9;
+    background-color: #f63d537a;
     color: white;
     span {
       font-size: 18px;
