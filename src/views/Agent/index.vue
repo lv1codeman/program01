@@ -1,6 +1,6 @@
 <script setup>
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+// import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
 // import regex from '@/assets/regex/regex.js'
