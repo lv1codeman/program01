@@ -122,35 +122,39 @@ const checkDynamicValidateForm = () => {
       ref="formRef"
       :model="dynamicValidateForm"
       :label-position="labelPosition"
-      label-width="100"
+      label-width="120px"
       class="demo-dynamic"
       :hide-required-asterisk="true"
+      :rules="rules"
     >
       <!-- :rules="rules" -->
       <div class="program-setting">
-        <el-form-item class="grid-item" prop="name" label="學程名稱" clearable>
+        <el-form-item class="my-grid-item" prop="name" label="學程名稱" clearable>
           <el-input v-model="dynamicValidateForm.name" />
         </el-form-item>
-        <el-form-item class="grid-item" prop="url" label="學程網址" clearable>
+        <el-form-item class="my-grid-item" prop="url" label="學程網址" clearable>
           <el-input v-model="dynamicValidateForm.url" />
         </el-form-item>
-        <el-form-item class="grid-item" prop="type" label="學程類型">
+        <el-form-item class="my-grid-item" prop="type" label="學程類型">
           <el-segmented v-model="dynamicValidateForm.type" :options="programOptions" />
         </el-form-item>
 
-        <el-form-item class="grid-item" prop="criteria" label="修畢條件">
+        <el-form-item class="my-grid-item" prop="criteria" label="修畢條件">
           <el-segmented v-model="dynamicValidateForm.criteria" :options="criteriaOptions" />
         </el-form-item>
-        <el-form-item class="grid-item" prop="minCredit" label="">
+        <el-form-item class="my-grid-item" prop="minCredit" label="">
           <template #label
             ><span class="lineHeight1">最低應修<br />學分數</span></template
           >
           <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="30" />
         </el-form-item>
-        <el-form-item class="grid-item" prop="nonSelfCredit" label="非本系學分數">
+        <el-form-item class="my-grid-item" prop="nonSelfCredit" label="非本系學分數">
+          <template #label
+            ><span class="lineHeight1">非本系學<br />分數</span></template
+          >
           <el-input-number v-model="dynamicValidateForm.nonSelfCredit" :min="1" :max="10" />
         </el-form-item>
-        <el-form-item class="grid-item" prop="unit" label="設置單位">
+        <el-form-item class="my-grid-item" prop="unit" label="設置單位">
           <el-select
             v-model="dynamicValidateForm.unit"
             filterable
@@ -187,7 +191,7 @@ const checkDynamicValidateForm = () => {
                   <el-input v-model="category.categoryName" />
                 </el-form-item>
                 <el-form-item
-                  :label="'類別最低學分數/課程數'"
+                  label=""
                   :prop="'category.' + categoryIndex + '.categoryMinCredit'"
                   :rules="{
                     required: true,
@@ -195,6 +199,9 @@ const checkDynamicValidateForm = () => {
                     trigger: 'blur'
                   }"
                 >
+                  <template #label
+                    ><span class="lineHeight1">最低學分數<br />/課程數</span></template
+                  >
                   <el-input-number v-model="category.categoryMinCredit" :min="1" :max="30" />
                 </el-form-item>
                 <el-form-item
@@ -232,7 +239,7 @@ const checkDynamicValidateForm = () => {
                       <el-input v-model="domain.domainName" />
                     </el-form-item>
                     <el-form-item
-                      :label="'領域最低學分數/課程數'"
+                      label=""
                       :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
                       :rules="{
                         required: true,
@@ -240,6 +247,9 @@ const checkDynamicValidateForm = () => {
                         trigger: 'blur'
                       }"
                     >
+                      <template #label
+                        ><span class="lineHeight1">最低學分數<br />/課程數</span></template
+                      >
                       <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
                     </el-form-item>
                     <el-form-item
@@ -282,19 +292,11 @@ const checkDynamicValidateForm = () => {
 
 .program-setting {
   display: grid;
-  grid-template-columns: 0.3fr minmax(50px, 1fr) minmax(50px, 1fr) 0.3fr;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   column-gap: 10px;
-  .grid-item {
-    grid-column-start: 2;
-    &:nth-child(odd) {
-      grid-column-start: 2; /* 开始于第二列 */
-      grid-column-end: 3; /* 结束于第三列 */
-    }
-
-    &:nth-child(even) {
-      grid-column-start: 3; /* 开始于第三列 */
-      grid-column-end: 4; /* 结束于第四列 */
-    }
+  padding: 0 100px;
+  .my-grid-item {
+    grid-column: span 1;
   }
 }
 $domain-border-color: rgb(133, 133, 133);
@@ -307,7 +309,9 @@ $left-domain-size: 6%;
     flex: $left-domain-size;
     border: 2px solid $domain-border-color;
     border-radius: $domain-border-radius 0 0 $domain-border-radius;
+    // border-radius: $domain-border-radius;
     padding: 20px 0;
+    // margin-right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,22 +371,8 @@ $left-domain-size: 6%;
 }
 @media screen and (max-width: 767px) {
   .program-setting {
-    display: grid;
     grid-template-columns: 1fr;
-  }
-  .grid-item {
-    grid-column-start: auto;
-    grid-column-end: auto;
-  }
-
-  .grid-item:nth-child(odd) {
-    grid-column-start: auto;
-    grid-column-end: auto;
-  }
-
-  .grid-item:nth-child(even) {
-    grid-column-start: auto;
-    grid-column-end: auto;
+    padding: 0;
   }
 }
 </style>
