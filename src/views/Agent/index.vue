@@ -175,9 +175,9 @@ const checkDynamicValidateForm = () => {
           <div class="dynamicFormArea">
             <div class="formTitle-1">學程類別{{ categoryIndex + 1 }}</div>
             <div class="domainpanel">
-              <div class="leftDomain" @click.prevent="removeCategory(category)">
+              <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
                 <span>刪除</span>
-              </div>
+              </div> -->
               <div class="rightDomain">
                 <el-form-item
                   :label="'類別名稱'"
@@ -217,15 +217,19 @@ const checkDynamicValidateForm = () => {
                 </el-form-item>
               </div>
             </div>
+            <div class="commandarea">
+              <div class="addDomain" @click="addCategory">新增類別</div>
+              <div class="delDomain" @click="removeCategory(category)">刪除</div>
+            </div>
             <hr style="border: 1px solid black" />
             <!-- 學程領域 -->
             <div class="indent">
               <template v-for="(domain, index) in category.domain" :key="domain.key">
                 <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
                 <div class="domainpanel">
-                  <div class="leftDomain" @click.prevent="removeDomain(categoryIndex, domain)">
+                  <!-- <div class="leftDomain" @click.prevent="removeDomain(categoryIndex, domain)">
                     <span>刪除</span>
-                  </div>
+                  </div> -->
                   <div class="rightDomain">
                     <el-form-item
                       :label="'領域名稱'"
@@ -265,10 +269,14 @@ const checkDynamicValidateForm = () => {
                     </el-form-item>
                   </div>
                 </div>
+                <div class="commandarea">
+                  <div class="addDomain" @click="addDomain(categoryIndex)">新增領域</div>
+                  <div class="delDomain" @click="removeDomain(categoryIndex, domain)">刪除</div>
+                </div>
               </template>
-              <el-form-item style="margin-top: 10px">
+              <!-- <el-form-item style="margin-top: 10px">
                 <el-button type="success" @click="addDomain(categoryIndex)">新增領域</el-button>
-              </el-form-item>
+              </el-form-item> -->
             </div>
           </div>
         </template>
@@ -289,7 +297,9 @@ const checkDynamicValidateForm = () => {
   color: red;
   line-height: 1;
 }
-
+.indent {
+  margin-left: 5vw;
+}
 .program-setting {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -300,7 +310,7 @@ const checkDynamicValidateForm = () => {
   }
 }
 $domain-border-color: rgb(133, 133, 133);
-$domain-border-radius: 20px;
+$domain-border-radius: 10px;
 $left-domain-size: 6%;
 .domainpanel {
   display: flex;
@@ -308,10 +318,10 @@ $left-domain-size: 6%;
   .leftDomain {
     flex: $left-domain-size;
     border: 2px solid $domain-border-color;
-    border-radius: $domain-border-radius 0 0 $domain-border-radius;
-    // border-radius: $domain-border-radius;
+    // border-radius: $domain-border-radius 0 0 $domain-border-radius;
+    border-radius: $domain-border-radius;
     padding: 20px 0;
-    // margin-right: 20px;
+    margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,8 +338,9 @@ $left-domain-size: 6%;
   .rightDomain {
     flex: calc(100% - $left-domain-size);
     border: 2px solid $domain-border-color;
-    border-left: none;
-    border-radius: 0 $domain-border-radius $domain-border-radius 0;
+    // border-left: none;
+    // border-radius: 0 $domain-border-radius $domain-border-radius 0;
+    border-radius: $domain-border-radius;
     padding: 10px;
   }
 }
@@ -338,6 +349,40 @@ $left-domain-size: 6%;
   // width: 70%;
   // display: grid;
   // grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
+}
+
+.commandarea {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  .delDomain {
+    flex: 50%;
+  }
+  .addDomain {
+    flex: 50%;
+  }
+}
+
+.addDomain,
+.delDomain {
+  background-color: rgb(110, 202, 171);
+  text-align: center;
+  padding: 5px;
+  border: 2px solid $domain-border-color;
+  border-radius: calc($domain-border-radius);
+  color: white;
+  font-size: 18px;
+  &:hover {
+    background-color: rgb(84, 196, 158);
+    cursor: pointer;
+  }
+}
+.delDomain {
+  background-color: #f63d537a;
+  border: 2px solid $domain-border-color;
+  &:hover {
+    background-color: #f63d53b7;
+  }
 }
 
 .formTitle-1 {
@@ -350,7 +395,7 @@ $left-domain-size: 6%;
   font-weight: bold;
 }
 .dynamicFormArea {
-  border: 2px dotted rgba(73, 73, 73, 0.404);
+  border: 4px dotted rgba(73, 73, 73, 0.404);
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
@@ -366,9 +411,7 @@ $left-domain-size: 6%;
   height: auto;
   line-height: 1;
 }
-.indent {
-  margin-left: 10vw;
-}
+
 @media screen and (max-width: 767px) {
   .program-setting {
     grid-template-columns: 1fr;
