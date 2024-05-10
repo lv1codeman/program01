@@ -13,8 +13,16 @@ import router from './router'
 //   console.log(res)
 // })
 
-const app = createApp(App)
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faCartShopping, faCirclePlus, faTrashCan, faCircleXmark)
+
+const app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createPinia())
 app.use(router)
 

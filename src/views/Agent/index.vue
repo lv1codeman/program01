@@ -1,4 +1,6 @@
 <script setup>
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
 // import regex from '@/assets/regex/regex.js'
@@ -115,6 +117,10 @@ const checkDynamicValidateForm = () => {
 </script>
 
 <template>
+  <!--
+  <font-awesome-icon icon="circle-plus" />
+  <font-awesome-icon icon="trash-can" />
+-->
   <div class="page-container">
     <pagetitle>學程設定</pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
@@ -173,7 +179,10 @@ const checkDynamicValidateForm = () => {
           :key="category.key"
         >
           <div class="dynamicFormArea">
-            <div class="formTitle-1">學程類別{{ categoryIndex + 1 }}</div>
+            <div class="formTitle-1">
+              <!-- <font-awesome-icon icon="cart-shopping" /> -->
+              學程類別{{ categoryIndex + 1 }}
+            </div>
             <div class="domainpanel">
               <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
                 <span>刪除</span>
@@ -217,11 +226,17 @@ const checkDynamicValidateForm = () => {
                 </el-form-item>
               </div>
             </div>
-            <div class="commandarea">
-              <div class="addDomain" @click="addCategory">新增類別</div>
-              <div class="delDomain" @click="removeCategory(category)">刪除</div>
+            <div class="categoryCommand">
+              <div class="commandarea">
+                <div class="addDomain" @click="addCategory">
+                  <font-awesome-icon icon="circle-plus" /> 新增類別
+                </div>
+                <div class="delDomain" @click="removeCategory(category)">
+                  <font-awesome-icon icon="circle-xmark" /> 刪除
+                </div>
+              </div>
             </div>
-            <hr style="border: 1px solid black" />
+            <hr />
             <!-- 學程領域 -->
             <div class="indent">
               <template v-for="(domain, index) in category.domain" :key="domain.key">
@@ -270,8 +285,12 @@ const checkDynamicValidateForm = () => {
                   </div>
                 </div>
                 <div class="commandarea">
-                  <div class="addDomain" @click="addDomain(categoryIndex)">新增領域</div>
-                  <div class="delDomain" @click="removeDomain(categoryIndex, domain)">刪除</div>
+                  <div class="addDomain" @click="addDomain(categoryIndex)">
+                    <font-awesome-icon icon="circle-plus" /> 新增領域
+                  </div>
+                  <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
+                    <font-awesome-icon icon="circle-xmark" /> 刪除
+                  </div>
                 </div>
               </template>
               <!-- <el-form-item style="margin-top: 10px">
@@ -280,9 +299,6 @@ const checkDynamicValidateForm = () => {
             </div>
           </div>
         </template>
-        <el-form-item style="margin-top: 10px">
-          <el-button type="success" @click="addCategory" style="">新增類別</el-button>
-        </el-form-item>
       </div>
     </el-form>
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
@@ -292,6 +308,11 @@ const checkDynamicValidateForm = () => {
   <el-backtop :right="30" :bottom="70" />
 </template>
 <style lang="scss" scoped>
+hr {
+  border: 1px solid #4b4b4b60;
+  margin: 20px 0;
+}
+
 .blankspace:empty {
   content: 'blank';
   color: red;
@@ -299,6 +320,12 @@ const checkDynamicValidateForm = () => {
 }
 .indent {
   margin-left: 5vw;
+}
+.dynamicFormArea {
+  border: 3px dotted rgba(73, 73, 73, 0.404);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
 }
 .program-setting {
   display: grid;
@@ -326,7 +353,7 @@ $left-domain-size: 6%;
     align-items: center;
     justify-content: center;
     background-color: #f63d537a;
-    color: white;
+    color: #4b4b4be0;
     span {
       font-size: 18px;
     }
@@ -355,25 +382,31 @@ $left-domain-size: 6%;
   display: flex;
   gap: 10px;
   margin-bottom: 40px;
+  .addDomain {
+    flex: 50%;
+  }
   .delDomain {
     flex: 50%;
   }
-  .addDomain {
-    flex: 50%;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+  &:first-of-type:is(:last-of-type) {
+    margin-bottom: 0px;
   }
 }
 
 .addDomain,
 .delDomain {
-  background-color: rgb(110, 202, 171);
+  background-color: rgba(72, 197, 155, 0.719);
   text-align: center;
   padding: 5px;
   border: 2px solid $domain-border-color;
   border-radius: calc($domain-border-radius);
-  color: white;
+  color: #4b4b4be0;
   font-size: 18px;
   &:hover {
-    background-color: rgb(84, 196, 158);
+    background-color: rgba(72, 197, 155, 1);
     cursor: pointer;
   }
 }
@@ -394,12 +427,7 @@ $left-domain-size: 6%;
   font-size: 18px;
   font-weight: bold;
 }
-.dynamicFormArea {
-  border: 4px dotted rgba(73, 73, 73, 0.404);
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 10px;
-}
+
 :deep(.el-segmented) {
   background-color: rgb(255, 255, 255);
 }
