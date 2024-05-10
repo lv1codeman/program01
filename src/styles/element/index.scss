@@ -1,3 +1,49 @@
+// elementplus預設
+// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
+//   $colors: (
+//     'primary': (
+//       'base': #409EFF
+//     ),
+//     'success': (
+//       'base': #67C23A
+//     ),
+//     'warning': (
+//       'base': #E6A23C
+//     ),
+//     'danger': (
+//       'base': #F56C6C
+//     ),
+//     'error': (
+//       'base': #A79277
+//     ),
+//     'info':(
+//       'base': #909399
+//     )
+//   )
+// );
+// 藍灰
+// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
+//   $colors: (
+//     'primary': (
+//       'base': #667D89
+//     ),
+//     'success': (
+//       'base': #4F526F
+//     ),
+//     'warning': (
+//       'base': #FFF2E1
+//     ),
+//     'danger': (
+//       'base': #D1BB9E
+//     ),
+//     'error': (
+//       'base': #A79277
+//     )
+//   )
+// );
+// 071A3C
+
+// 小兔鮮預設
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (

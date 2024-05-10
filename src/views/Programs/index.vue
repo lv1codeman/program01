@@ -7,11 +7,12 @@ const programList = ref([])
 programList.value = programData
 
 const setItemText = (percentage) => {
-  if (percentage == 100) {
-    return '已完成!'
-  } else {
-    return '目前進度: ' + percentage + '%'
-  }
+  // if (percentage == 100) {
+  //   return '已完成!'
+  // } else {
+  //   return '目前進度: ' + percentage + '%'
+  // }
+  return percentage + '%'
 }
 const setStatus = (item) => {
   if (item.state === 'success') return 'success'
@@ -19,6 +20,7 @@ const setStatus = (item) => {
     return ''
   }
 }
+console.log(programList)
 </script>
 <template>
   <div class="page-container">
@@ -27,9 +29,18 @@ const setStatus = (item) => {
     <div class="outouter-box">
       <div class="outer-box" v-for="item in programList" :key="item.id">
         <div class="box">
+          <el-tag
+            type="success"
+            size="large"
+            effect="dark"
+            style="float: right"
+            v-show="item.percent === 100"
+            >已完成</el-tag
+          >
           <div class="subjectName">
             <a :href="item.url" target="_blank">{{ item.name }}</a>
           </div>
+
           <div class="subjectUnit">{{ item.unit }}</div>
           <el-progress
             :show-text="true"
@@ -68,6 +79,7 @@ const setStatus = (item) => {
       margin-top: 10px;
       .subjectName {
         font-size: 18px;
+        font-weight: bold;
       }
       .subjectUnit {
         font-size: 14px;
@@ -84,7 +96,7 @@ const setStatus = (item) => {
 }
 
 :deep(.el-progress-bar__innerText) {
-  color: rgb(201, 106, 29);
+  color: white;
   font-weight: bold;
 }
 :deep(.el-progress__text) {

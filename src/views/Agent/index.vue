@@ -227,62 +227,73 @@ const checkDynamicValidateForm = () => {
               </div>
             </div>
 
-            <hr />
+            <!-- <hr /> -->
             <!-- 學程領域 -->
             <div class="indent">
               <template v-for="(domain, index) in category.domain" :key="domain.key">
-                <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
-                <div class="domainpanel">
-                  <div class="rightDomain">
-                    <!-- 領域名稱 -->
-                    <el-form-item
-                      :label="'領域名稱'"
-                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
-                      :rules="{
-                        required: true,
-                        message: '領域名稱不可為空',
-                        trigger: 'blur'
-                      }"
-                    >
-                      <el-input v-model="domain.domainName" />
-                    </el-form-item>
-                    <!-- 最低學分數/課程數 -->
-                    <el-form-item
-                      label=""
-                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
-                      :rules="{
-                        required: true,
-                        message: '領域最低學分數不可為空',
-                        trigger: 'blur'
-                      }"
-                    >
-                      <template #label
-                        ><span class="lineHeight1">最低學分數<br />/課程數</span></template
-                      >
-                      <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
-                    </el-form-item>
-                    <el-form-item
-                      :label="'領域需求數'"
-                      :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
-                      :rules="{
-                        required: true,
-                        message: '領域最低學分數不可為空',
-                        trigger: 'blur'
-                      }"
-                    >
-                      <el-input-number v-model="domain.domainRequireNum" :min="1" :max="10" />
-                    </el-form-item>
-                  </div>
-                </div>
-                <div class="commandarea">
-                  <div class="addDomain" @click="addDomain(categoryIndex)">
-                    <font-awesome-icon icon="circle-plus" /> 新增領域
-                  </div>
+                <div class="dynamicFormArea2">
                   <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
-                    <font-awesome-icon icon="circle-xmark" /> 刪除
+                    <font-awesome-icon icon="circle-xmark" /> 刪除領域
                   </div>
+                  <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
+
+                  <div class="domainpanel">
+                    <div class="rightDomain">
+                      <!-- 領域名稱 -->
+                      <el-form-item
+                        :label="'領域名稱'"
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
+                        :rules="{
+                          required: true,
+                          message: '領域名稱不可為空',
+                          trigger: 'blur'
+                        }"
+                      >
+                        <el-input v-model="domain.domainName" />
+                      </el-form-item>
+                      <!-- 最低學分數/課程數 -->
+                      <el-form-item
+                        label=""
+                        :prop="
+                          'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'
+                        "
+                        :rules="{
+                          required: true,
+                          message: '領域最低學分數不可為空',
+                          trigger: 'blur'
+                        }"
+                      >
+                        <template #label
+                          ><span class="lineHeight1">最低學分數<br />/課程數</span></template
+                        >
+                        <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
+                      </el-form-item>
+                      <!-- 領域需求數 -->
+                      <el-form-item
+                        :label="'領域需求數'"
+                        :prop="
+                          'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'
+                        "
+                        :rules="{
+                          required: true,
+                          message: '領域最低學分數不可為空',
+                          trigger: 'blur'
+                        }"
+                      >
+                        <el-input-number v-model="domain.domainRequireNum" :min="1" :max="10" />
+                      </el-form-item>
+                    </div>
+                  </div>
+                  <!-- <div class="commandarea">
+                    <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
+                      <font-awesome-icon icon="circle-xmark" /> 刪除
+                    </div>
+                  </div> -->
                 </div>
               </template>
+              <div class="addDomain" @click="addDomain(categoryIndex)">
+                <font-awesome-icon icon="circle-plus" /> 新增領域
+              </div>
               <!-- <el-form-item style="margin-top: 10px">
                 <el-button type="success" @click="addDomain(categoryIndex)">新增領域</el-button>
               </el-form-item> -->
@@ -300,6 +311,7 @@ const checkDynamicValidateForm = () => {
   </div>
   <el-backtop :right="30" :bottom="70" />
 </template>
+
 <style lang="scss" scoped>
 hr {
   border: 1px solid #4b4b4b60;
@@ -319,6 +331,11 @@ hr {
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
+}
+.dynamicFormArea2 {
+  // background-color: #f9f3e3;
+  // padding: 10px;
+  // border-radius: 10px;
 }
 .program-setting {
   display: grid;
@@ -345,13 +362,13 @@ $left-domain-size: 6%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f63d537a;
+    background-color: var(--el-color-warning-light-3);
     color: #4b4b4be0;
     span {
       font-size: 18px;
     }
     &:hover {
-      background-color: #f63d53b7;
+      background-color: var(--el-color-warning);
       cursor: pointer;
     }
   }
@@ -362,6 +379,8 @@ $left-domain-size: 6%;
     // border-radius: 0 $domain-border-radius $domain-border-radius 0;
     border-radius: $domain-border-radius;
     padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
@@ -373,7 +392,6 @@ $left-domain-size: 6%;
 
 .delCategory {
   float: right;
-  background-color: rgba(72, 197, 155, 0.719);
   text-align: center;
   padding: 2px 10px;
   border: 2px solid $domain-border-color;
@@ -381,10 +399,10 @@ $left-domain-size: 6%;
   color: #4b4b4be0;
   font-size: 18px;
   font-weight: bold;
-  background-color: #f63d537a;
+  background-color: var(--el-color-warning-light-5);
   border: 2px solid $domain-border-color;
   &:hover {
-    background-color: #f63d53b7;
+    background-color: var(--el-color-warning-light-7);
     // border: 2px solid white;
     color: #4b4b4b;
     cursor: pointer;
@@ -412,7 +430,7 @@ $left-domain-size: 6%;
 .addDomain,
 .addCategory,
 .delDomain {
-  background-color: rgba(72, 197, 155, 0.719);
+  background-color: var(--el-color-primary-light-5);
   text-align: center;
   padding: 5px;
   border: 2px solid $domain-border-color;
@@ -421,15 +439,20 @@ $left-domain-size: 6%;
   font-size: 18px;
   font-weight: bold;
   &:hover {
-    background-color: rgba(72, 197, 155, 1);
+    background-color: var(--el-color-primary-light-7);
     cursor: pointer;
   }
 }
 .delDomain {
-  background-color: #f63d537a;
+  float: right;
+  text-align: center;
+  padding: 2px 10px;
+  border: 2px solid $domain-border-color;
+  border-radius: calc($domain-border-radius / 2);
+  background-color: var(--el-color-warning-light-5);
   border: 2px solid $domain-border-color;
   &:hover {
-    background-color: #f63d53b7;
+    background-color: var(--el-color-warning-light-7);
   }
 }
 .addCategory {
@@ -453,7 +476,13 @@ $left-domain-size: 6%;
 :deep(.el-segmented) {
   background-color: rgb(255, 255, 255);
 }
+:deep(.el-form-item) {
+  margin-top: 10px;
+}
 :deep(.el-form-item__label) {
+  font-size: 16px;
+}
+:deep(.el-input__inner) {
   font-size: 16px;
 }
 // 處理label沒有垂直居中的問題

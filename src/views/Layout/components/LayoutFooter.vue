@@ -48,6 +48,7 @@
                     <span>掃描QRcode</span>
                     <span>立即前往</span>
                     <a
+                      class="primary"
                       href="https://acadaff.ncue.edu.tw/var/file/2/1002/img/958/course.html"
                       target="_blank"
                       >選課專區</a
@@ -184,7 +185,7 @@
     margin-top: 5px;
     color: #fff;
     border-radius: 5px;
-    background-color: $baseColor;
+    background-color: var(--el-color-info-light-5);
   }
 }
 
@@ -247,7 +248,7 @@
   }
 
   .extra {
-    background-color: #333;
+    background-color: $main-bg-dark;
   }
 
   .slogan {
