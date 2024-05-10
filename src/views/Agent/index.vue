@@ -33,19 +33,6 @@ const dynamicValidateForm = reactive({
   ]
 })
 
-const removeCategory = (item) => {
-  const index = dynamicValidateForm.category.indexOf(item)
-  if (index !== -1) {
-    dynamicValidateForm.category.splice(index, 1)
-  }
-}
-const removeDomain = (categoryIndex, domain) => {
-  const index = dynamicValidateForm.category[categoryIndex].domain.indexOf(domain)
-  if (index !== -1) {
-    dynamicValidateForm.category[categoryIndex].domain.splice(index, 1)
-  }
-}
-
 const addCategory = () => {
   dynamicValidateForm.category.push({
     key: Date.now(),
@@ -61,17 +48,25 @@ const addCategory = () => {
     ]
   })
 }
-
-const addDomain = (item) => {
-  console.log('before add Domain: ', dynamicValidateForm)
-  dynamicValidateForm.category[item].domain.push({
-    key: Date.now(),
-    categoryMinCredit: 0,
-    categoryRequireNum: 0
-  })
-  console.log('After add Domain: ', dynamicValidateForm)
+const removeCategory = (item) => {
+  const index = dynamicValidateForm.category.indexOf(item)
+  if (index !== -1) {
+    dynamicValidateForm.category.splice(index, 1)
+  }
 }
-
+const addDomain = (item) => {
+  dynamicValidateForm.category[item].domain.push({
+    key: Date.now()
+    // categoryMinCredit: 0,
+    // categoryRequireNum: 0
+  })
+}
+const removeDomain = (categoryIndex, domain) => {
+  const index = dynamicValidateForm.category[categoryIndex].domain.indexOf(domain)
+  if (index !== -1) {
+    dynamicValidateForm.category[categoryIndex].domain.splice(index, 1)
+  }
+}
 const submitForm = (formEl) => {
   if (!formEl) return
   formEl.validate((valid) => {
@@ -80,7 +75,7 @@ const submitForm = (formEl) => {
       console.log(dynamicValidateForm)
       resAB.value = dynamicValidateForm
 
-      console.log(dynamicValidateForm.category)
+      // console.log(dynamicValidateForm.category)
     } else {
       console.log('error submit!')
       return false
@@ -180,14 +175,17 @@ const checkDynamicValidateForm = () => {
         >
           <div class="dynamicFormArea">
             <div class="formTitle-1">
-              <!-- <font-awesome-icon icon="cart-shopping" /> -->
               學程類別{{ categoryIndex + 1 }}
+              <div class="delCategory" @click="removeCategory(category)">
+                <font-awesome-icon icon="circle-xmark" /> 刪除類別
+              </div>
             </div>
             <div class="domainpanel">
               <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
                 <span>刪除</span>
               </div> -->
               <div class="rightDomain">
+                <!-- 類別名稱 -->
                 <el-form-item
                   :label="'類別名稱'"
                   :prop="'category.' + categoryIndex + '.categoryName'"
@@ -199,6 +197,7 @@ const checkDynamicValidateForm = () => {
                 >
                   <el-input v-model="category.categoryName" />
                 </el-form-item>
+                <!-- 最低學分數/課程數 -->
                 <el-form-item
                   label=""
                   :prop="'category.' + categoryIndex + '.categoryMinCredit'"
@@ -213,6 +212,7 @@ const checkDynamicValidateForm = () => {
                   >
                   <el-input-number v-model="category.categoryMinCredit" :min="1" :max="30" />
                 </el-form-item>
+                <!-- 類別需求數 -->
                 <el-form-item
                   :label="'類別需求數'"
                   :prop="'category.' + categoryIndex + '.categoryRequireNum'"
@@ -226,26 +226,15 @@ const checkDynamicValidateForm = () => {
                 </el-form-item>
               </div>
             </div>
-            <div class="categoryCommand">
-              <div class="commandarea">
-                <div class="addDomain" @click="addCategory">
-                  <font-awesome-icon icon="circle-plus" /> 新增類別
-                </div>
-                <div class="delDomain" @click="removeCategory(category)">
-                  <font-awesome-icon icon="circle-xmark" /> 刪除
-                </div>
-              </div>
-            </div>
+
             <hr />
             <!-- 學程領域 -->
             <div class="indent">
               <template v-for="(domain, index) in category.domain" :key="domain.key">
                 <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
                 <div class="domainpanel">
-                  <!-- <div class="leftDomain" @click.prevent="removeDomain(categoryIndex, domain)">
-                    <span>刪除</span>
-                  </div> -->
                   <div class="rightDomain">
+                    <!-- 領域名稱 -->
                     <el-form-item
                       :label="'領域名稱'"
                       :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
@@ -257,6 +246,7 @@ const checkDynamicValidateForm = () => {
                     >
                       <el-input v-model="domain.domainName" />
                     </el-form-item>
+                    <!-- 最低學分數/課程數 -->
                     <el-form-item
                       label=""
                       :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
@@ -299,6 +289,9 @@ const checkDynamicValidateForm = () => {
             </div>
           </div>
         </template>
+        <div class="addCategory" @click="addCategory">
+          <font-awesome-icon icon="circle-plus" /> 新增類別
+        </div>
       </div>
     </el-form>
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
@@ -378,6 +371,26 @@ $left-domain-size: 6%;
   // grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
 }
 
+.delCategory {
+  float: right;
+  background-color: rgba(72, 197, 155, 0.719);
+  text-align: center;
+  padding: 2px 10px;
+  border: 2px solid $domain-border-color;
+  border-radius: calc($domain-border-radius / 2);
+  color: #4b4b4be0;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f63d537a;
+  border: 2px solid $domain-border-color;
+  &:hover {
+    background-color: #f63d53b7;
+    // border: 2px solid white;
+    color: #4b4b4b;
+    cursor: pointer;
+  }
+}
+
 .commandarea {
   display: flex;
   gap: 10px;
@@ -397,6 +410,7 @@ $left-domain-size: 6%;
 }
 
 .addDomain,
+.addCategory,
 .delDomain {
   background-color: rgba(72, 197, 155, 0.719);
   text-align: center;
@@ -405,6 +419,7 @@ $left-domain-size: 6%;
   border-radius: calc($domain-border-radius);
   color: #4b4b4be0;
   font-size: 18px;
+  font-weight: bold;
   &:hover {
     background-color: rgba(72, 197, 155, 1);
     cursor: pointer;
@@ -416,6 +431,13 @@ $left-domain-size: 6%;
   &:hover {
     background-color: #f63d53b7;
   }
+}
+.addCategory {
+  margin: 20px 0;
+}
+
+.categoryCommand {
+  margin: 20px 0;
 }
 
 .formTitle-1 {
