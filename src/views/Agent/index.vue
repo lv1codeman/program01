@@ -123,7 +123,7 @@ const checkDynamicValidateForm = () => {
       ref="formRef"
       :model="dynamicValidateForm"
       :label-position="labelPosition"
-      label-width="120px"
+      label-width="auto"
       class="demo-dynamic"
       :hide-required-asterisk="true"
       :rules="rules"
@@ -405,6 +405,7 @@ $left-domain-size: 5%;
     // padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
   }
 }
 .outer-box {
@@ -508,6 +509,10 @@ $left-domain-size: 5%;
 :deep(.el-input__inner) {
   font-size: 16px;
 }
+:deep(.el-form-item__label-wrap) {
+  padding-left: 10px;
+}
+
 // 處理label沒有垂直居中的問題
 .lineHeight1 {
   height: auto;
@@ -515,9 +520,21 @@ $left-domain-size: 5%;
 }
 
 @media screen and (max-width: 767px) {
+  :deep(.el-form-item) {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
   .program-setting {
     grid-template-columns: 1fr;
     padding: 0;
+  }
+  .domainpanel .rightDomain {
+    display: block;
+  }
+  .CategoryPanel {
+    .CategoryPanelRight {
+      gap: 0px;
+    }
   }
 }
 </style>

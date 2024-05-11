@@ -163,7 +163,7 @@
   &:hover {
     .iconfont {
       cursor: pointer;
-      color: $baseColor;
+      color: var(--el-color-info);
     }
   }
 }
@@ -185,7 +185,11 @@
     margin-top: 5px;
     color: #fff;
     border-radius: 5px;
-    background-color: var(--el-color-info-light-5);
+    background-color: var(--el-color-info);
+    &:hover {
+      cursor: pointer;
+      background-color: var(--el-color-info-dark-2);
+    }
   }
 }
 
@@ -307,6 +311,10 @@
 @media screen and (max-width: 767px) {
   .item {
     margin-top: 20px;
+    font-size: 12px;
+  }
+  .myqrcode-description a {
+    padding: 5px 5px;
   }
 }
 </style>
