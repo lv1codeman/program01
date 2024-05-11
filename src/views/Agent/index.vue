@@ -180,11 +180,11 @@ const checkDynamicValidateForm = () => {
                 <font-awesome-icon icon="circle-xmark" /> 刪除類別
               </div>
             </div>
-            <div class="domainpanel">
+            <div class="CategoryPanel">
               <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
                 <span>刪除</span>
               </div> -->
-              <div class="rightDomain">
+              <div class="CategoryPanelRight">
                 <!-- 類別名稱 -->
                 <el-form-item
                   :label="'類別名稱'"
@@ -230,18 +230,25 @@ const checkDynamicValidateForm = () => {
             <!-- <hr /> -->
             <!-- 學程領域 -->
             <div class="indent">
+              <div class="formTitle-1">學程領域</div>
               <template v-for="(domain, index) in category.domain" :key="domain.key">
                 <div class="dynamicFormArea2">
-                  <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
+                  <!-- <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
                     <font-awesome-icon icon="circle-xmark" /> 刪除領域
                   </div>
-                  <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div>
+                  <div class="formTitle-1">學程領域{{ categoryIndex + 1 }}-{{ index + 1 }}</div> -->
 
                   <div class="domainpanel">
+                    <div class="leftDomain" @click="removeDomain(categoryIndex, domain)">
+                      <div class="delDomainIcon">
+                        <font-awesome-icon icon="circle-xmark" />
+                      </div>
+                    </div>
                     <div class="rightDomain">
                       <!-- 領域名稱 -->
+                      <!-- :label="'學程領域' + (categoryIndex + 1) + '-' + (index + 1)" -->
                       <el-form-item
-                        :label="'領域名稱'"
+                        :label="'學程領域' + (index + 1)"
                         :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
                         :rules="{
                           required: true,
@@ -348,17 +355,17 @@ hr {
 }
 $domain-border-color: rgb(133, 133, 133);
 $domain-border-radius: 10px;
-$left-domain-size: 6%;
+$left-domain-size: 5%;
 .domainpanel {
   display: flex;
   margin-bottom: 5px;
   .leftDomain {
     flex: $left-domain-size;
     border: 2px solid $domain-border-color;
-    // border-radius: $domain-border-radius 0 0 $domain-border-radius;
-    border-radius: $domain-border-radius;
-    padding: 20px 0;
-    margin-right: 5px;
+    border-radius: $domain-border-radius 0 0 $domain-border-radius;
+    // border-radius: $domain-border-radius;
+    // padding: 20px 0;
+    // margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -366,6 +373,9 @@ $left-domain-size: 6%;
     color: #4b4b4be0;
     span {
       font-size: 18px;
+    }
+    .delDomainIcon {
+      font-size: 30px;
     }
     &:hover {
       background-color: var(--el-color-warning);
@@ -375,15 +385,28 @@ $left-domain-size: 6%;
   .rightDomain {
     flex: calc(100% - $left-domain-size);
     border: 2px solid $domain-border-color;
-    // border-left: none;
-    // border-radius: 0 $domain-border-radius $domain-border-radius 0;
-    border-radius: $domain-border-radius;
-    padding: 10px;
+    border-left: none;
+    border-radius: 0 $domain-border-radius $domain-border-radius 0;
+    // border-radius: $domain-border-radius;
+    // padding: 10px 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
-
+.CategoryPanel {
+  display: flex;
+  margin-bottom: 5px;
+  .CategoryPanelRight {
+    flex: calc(100% - $left-domain-size);
+    border: 2px solid $domain-border-color;
+    // border-left: none;
+    // border-radius: 0 $domain-border-radius $domain-border-radius 0;
+    border-radius: $domain-border-radius;
+    // padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
 .outer-box {
   // width: 70%;
   // display: grid;
