@@ -1,47 +1,75 @@
 <script setup>
-// import { getCategoryAPI } from '@/apis/layout'
+//#region 從DB讀取列表
+/* import { getCategoryAPI } from '@/apis/layout'
 import { getServerData } from '@/apis/testAPI'
 import { ref, onMounted } from 'vue'
 
 const categorylist = ref([])
-// const getCategory = async () => {
-//   const res = await getCategoryAPI()
-//   console.log(res)
-//   categorylist.value = res.result
-// }
+const getCategory = async () => {
+  const res = await getCategoryAPI()
+  console.log(res)
+  categorylist.value = res.result
+}
 
-// 復原以下程式碼：執行從自己的DB讀取Header列表
-// const getCategory = async () => {
-//   const res = await getServerData()
-//   console.log(res)
-//   categorylist.value = res.data
-// }
+復原以下程式碼：執行從自己的DB讀取Header列表
+const getCategory = async () => {
+  const res = await getServerData()
+  console.log(res)
+  categorylist.value = res.data
+}
 
-// onMounted(() => {
-//   getCategory()
-// })
+onMounted(() => {
+  getCategory()
+}) */
+//#endregion
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+const router = useRouter()
+
+const activeName = ref('index')
+const handleClick = () => {
+  switch (event.target.innerText) {
+    case '首頁':
+      router.push({ path: '/' })
+      break
+    case '學分學程檢查':
+      router.push({ path: '/programs' })
+      break
+    case '微學程檢查':
+      router.push({ path: '/miniprograms' })
+      break
+  }
+}
 </script>
 
 <template>
   <header class="app-header">
     <div class="page-container">
-      <h1 class="logo">
-        <RouterLink to="/">學程平台首頁</RouterLink>
-      </h1>
-      <!-- <ul class="app-header-nav">
-        <li class="home" v-for="item in categorylist" :key="item.id">
-          <RouterLink to="/">{{ item.name }}</RouterLink>
-        </li>
-      </ul>-->
-      <div class="app-header-nav2">
-        <div class="nav-list"><RouterLink to="/programs">學分學程檢查</RouterLink></div>
-        <div class="nav-list"><RouterLink to="/miniprograms">微學程檢查</RouterLink></div>
+      <div class="header-container">
+        <div class="logo">
+          <RouterLink to="/">學程平台首頁</RouterLink>
+        </div>
+        <div class="app-header-nav2">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="首頁" name="index"></el-tab-pane>
+            <el-tab-pane label="學分學程檢查" name="programs"></el-tab-pane>
+            <el-tab-pane label="微學程檢查" name="miniprograms"></el-tab-pane>
+          </el-tabs>
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <style scoped lang="scss">
+:deep(.el-tabs__content) {
+  display: none;
+}
+:deep(.el-tabs__item) {
+  padding: 0 0 0 40px;
+  font-size: var(--el-font-size-medium);
+}
+
 .app-header {
   background: #fff;
 
@@ -49,33 +77,26 @@ const categorylist = ref([])
     display: flex;
     align-items: center;
   }
+}
+.header-container {
+  display: flex;
+}
+.logo {
+  width: 200px;
 
-  .logo {
-    width: 200px;
-
-    a {
-      display: block;
-      height: 80px;
-      width: 100%;
-      text-indent: -9999px;
-      background: url('@/assets/images/ncue-logo.png') no-repeat center 14px / contain;
-    }
+  a {
+    display: block;
+    height: 80px;
+    text-indent: -9999px;
+    background: url('@/assets/images/ncue-logo.png') no-repeat center / contain;
   }
 }
-
 .app-header-nav2 {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 10px 20px 10px 40px;
-  .nav-list {
-    // flex: 1;
-    font-size: 16px;
-  }
+  margin: 20px 0 0 0;
+  padding: 0px 0px 0px 40px;
 }
 
 .app-header-nav {
-  // width: 820px;
   display: flex;
   padding-left: 40px;
   position: relative;
@@ -108,8 +129,15 @@ const categorylist = ref([])
 }
 
 @media screen and (max-width: 767px) {
-  .app-header-nav2 {
-    gap: 20px;
+  .logo {
+    width: 50px;
+  }
+  .app-header {
+    .logo {
+      a {
+        background: url('@/assets/images/ncue-logo-notext.png') no-repeat center / contain;
+      }
+    }
   }
 }
 </style>

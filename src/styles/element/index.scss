@@ -1,3 +1,31 @@
+$primaryColor : #6f8745;
+$successColor: #CA7A2C;
+$warningColor:#ffeccc;
+$dangerColor:#ae3243;
+$errorColor:#2B2118;
+$infoColor:#828282;
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': $primaryColor
+    ),
+    'success': (
+      'base': $successColor
+    ),
+    'warning': (
+      'base': $warningColor
+    ),
+    'danger': (
+      'base': $dangerColor
+    ),
+    'error': (
+      'base': $errorColor
+    ),
+    'info':(
+      'base': $infoColor
+    )
+  )
+);
 // elementplus預設
 // @forward 'element-plus/theme-chalk/src/common/var.scss' with (
 //   $colors: (
@@ -44,22 +72,22 @@
 // 071A3C
 
 // 小兔鮮預設
-@forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (
-    'primary': (
-      'base': #27ba9b
-    ),
-    'success': (
-      'base': #1dc779
-    ),
-    'warning': (
-      'base': #ffb302
-    ),
-    'danger': (
-      'base': #e26237
-    ),
-    'error': (
-      'base': #cf4444
-    )
-  )
-);
+// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
+//   $colors: (
+//     'primary': (
+//       'base': #27ba9b
+//     ),
+//     'success': (
+//       'base': #1dc779
+//     ),
+//     'warning': (
+//       'base': #ffb302
+//     ),
+//     'danger': (
+//       'base': #e26237
+//     ),
+//     'error': (
+//       'base': #cf4444
+//     )
+//   )
+// );

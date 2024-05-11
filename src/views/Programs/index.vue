@@ -39,7 +39,6 @@ console.log(programList)
           >
           <el-tag
             type="success"
-            color="#daffe4"
             size="large"
             effect="light"
             style="float: right"
@@ -101,7 +100,7 @@ console.log(programList)
 //   margin-left: 80px;
 // }
 :deep(.el-progress-bar__outer) {
-  background-color: #a9adb6;
+  background-color: var(--el-color-info-light-5);
 }
 
 :deep(.el-progress-bar__innerText) {
@@ -109,7 +108,7 @@ console.log(programList)
   font-weight: bold;
 }
 :deep(.el-progress__text) {
-  color: rgba(223, 135, 20, 0.945);
+  color: var(--el-color-success);
 }
 @media screen and (max-width: 1200px) {
   .outouter-box {
