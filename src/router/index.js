@@ -6,6 +6,7 @@ import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import Programs from '@/views/Programs/index.vue'
+import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
 import SetProgram from '@/views/Agent/index.vue'
 
@@ -37,6 +38,10 @@ const router = createRouter({
         {
           path: 'setprogram',
           component: SetProgram
+        },
+        {
+          path: 'result',
+          component: Result
         }
       ]
     },

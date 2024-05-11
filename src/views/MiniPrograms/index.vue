@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 import { ref } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { miniProgramData } from '@/assets/data/programData.js'
@@ -19,6 +21,9 @@ const setStatus = (item) => {
   else {
     return ''
   }
+}
+const goResult = () => {
+  router.push({ path: '/result' })
 }
 </script>
 <template>
@@ -49,12 +54,14 @@ const setStatus = (item) => {
           </div>
           <div class="subjectUnit">{{ item.unit }}</div>
           <el-progress
+            class="progressbar"
             :show-text="true"
             :text-inside="true"
             :stroke-width="26"
             :percentage="item.percent"
             :format="setItemText"
             :status="setStatus(item)"
+            @click="goResult"
           />
         </div>
       </div>
@@ -93,10 +100,9 @@ const setStatus = (item) => {
     }
   }
 }
-// :deep(.last-box) {
-//   margin-right: auto; /* 加上 !important 以确保优先级 */
-//   margin-left: 80px;
-// }
+.progressbar {
+  cursor: pointer;
+}
 :deep(.el-progress-bar__outer) {
   background-color: var(--el-color-info-light-5);
 }
@@ -108,6 +114,7 @@ const setStatus = (item) => {
 :deep(.el-progress__text) {
   color: var(--el-color-success);
 }
+
 @media screen and (max-width: 1200px) {
   .outouter-box {
     // height: 900px;
