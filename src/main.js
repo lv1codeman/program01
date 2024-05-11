@@ -17,9 +17,9 @@ import router from './router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { faCirclePlus, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faCircleXmark, faScaleBalanced } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCartShopping, faCirclePlus, faTrashCan, faCircleXmark)
+library.add(faCartShopping, faCirclePlus, faTrashCan, faCircleXmark, faScaleBalanced)
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

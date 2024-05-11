@@ -27,8 +27,12 @@ const linkCurri = () => {
                   本校學程
                 </div>
                 <div class="item-content-box" @click="linkProgamRules">
-                  <i class="iconfont icon-question"></i>
-                  學程法規
+                  <div class="iconGroup">
+                    <div class="iconImage">
+                      <font-awesome-icon class="iconfont" icon="fa-scale-balanced" />
+                    </div>
+                    <div class="iconText">學程法規</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -116,7 +120,7 @@ const linkCurri = () => {
   }
 }
 .item-title {
-  font-size: medium;
+  font-size: large;
   padding: 20px;
   text-align: center;
 }
@@ -142,10 +146,22 @@ const linkCurri = () => {
   flex: 1;
   max-width: 100px;
 
+  .iconGroup {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 10px;
+    .iconImage {
+    }
+    .iconText {
+      font-size: medium;
+    }
+  }
+
   &:hover {
     cursor: pointer;
     .iconfont {
-      color: var(--el-color-info);
+      color: var(--el-color-primary);
     }
   }
 }
@@ -170,7 +186,7 @@ const linkCurri = () => {
     background-color: var(--el-color-info);
     &:hover {
       cursor: pointer;
-      background-color: var(--el-color-info-dark-2);
+      background-color: var(--el-color-primary);
     }
   }
 }
