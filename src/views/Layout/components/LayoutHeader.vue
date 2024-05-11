@@ -140,4 +140,12 @@ const handleClick = () => {
     }
   }
 }
+@media screen and (max-width: 391px) {
+  .app-header-nav2 {
+    padding: 0px 0px 0px 10px;
+  }
+  :deep(.el-tabs__item) {
+    padding: 0 0 0 20px;
+  }
+}
 </style>
