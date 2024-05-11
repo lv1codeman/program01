@@ -5,7 +5,6 @@
     <div class="page-container">
       <ul>
         <template v-if="true">
-          <li><a href="javascript:;">首頁</a></li>
           <li>
             <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
           </li>

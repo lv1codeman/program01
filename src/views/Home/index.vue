@@ -29,7 +29,7 @@ programList.value = [programData.length, miniProgramData.length]
 </template>
 <style lang="scss" scoped>
 p {
-  font-size: 16px;
+  font-size: medium;
   &.warn {
     font-size: 14px;
     display: inline;
