@@ -353,7 +353,7 @@ hr {
     grid-column: span 1;
   }
 }
-$domain-border-color: rgb(133, 133, 133);
+$domain-border-color: rgb(133 133 133 / 40%);
 $domain-border-radius: 10px;
 $left-domain-size: 5%;
 .domainpanel {
@@ -500,7 +500,7 @@ $left-domain-size: 5%;
   background-color: rgb(255, 255, 255);
 }
 :deep(.el-form-item) {
-  margin-top: 10px;
+  margin-top: 18px;
 }
 :deep(.el-form-item__label) {
   font-size: 16px;
