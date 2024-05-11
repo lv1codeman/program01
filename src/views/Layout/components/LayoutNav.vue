@@ -15,17 +15,17 @@
             <a href="javascript:;"><i class="iconfont icon-user"></i>周杰倫</a>
           </li>
           <li>
-            <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+            <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
               <template #reference>
-                <el-button type="success">登出</el-button>
+                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)"
+                  >登出</el-button
+                >
               </template>
             </el-popconfirm>
           </li>
         </template>
         <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
-          <li><a href="javascript:;">帮助中心</a></li>
-          <li><a href="javascript:;">关于我们</a></li>
+          <li><a href="javascript:;">請先登錄</a></li>
         </template>
       </ul>
     </div>
@@ -54,7 +54,7 @@
         }
 
         &:hover {
-          color: $baseColor;
+          color: var(--el-color-primary-light-3);
         }
       }
       ~ li {
@@ -63,6 +63,12 @@
         }
       }
     }
+  }
+}
+.btnLogout {
+  &:hover {
+    // color: var(--el-color-primary-light-3);
+    background-color: var(--el-color-primary);
   }
 }
 </style>

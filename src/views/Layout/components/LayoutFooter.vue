@@ -23,8 +23,12 @@ const linkCurri = () => {
               <div class="item-title">學程介紹</div>
               <div class="item-content">
                 <div class="item-content-box" @click="linkProgamIntro">
-                  <i class="iconfont icon-kefu"></i>
-                  本校學程
+                  <div class="iconGroup">
+                    <div class="iconImage">
+                      <font-awesome-icon class="iconfont" icon="fa-magnifying-glass" />
+                    </div>
+                    <div class="iconText">本校學程</div>
+                  </div>
                 </div>
                 <div class="item-content-box" @click="linkProgamRules">
                   <div class="iconGroup">
@@ -42,12 +46,20 @@ const linkCurri = () => {
               <div class="item-title">外部連結</div>
               <div class="item-content">
                 <div class="item-content-box" @click="linkNCUEAA">
-                  <i class="iconfont icon-kefu"></i>
-                  彰師大教務處
+                  <div class="iconGroup">
+                    <div class="iconImage">
+                      <font-awesome-icon class="iconfont" icon="fa-building-columns" />
+                    </div>
+                    <div class="iconText">教務處網站</div>
+                  </div>
                 </div>
                 <div class="item-content-box" @click="linkCurri">
-                  <i class="iconfont icon-question"></i>
-                  課務組網頁
+                  <div class="iconGroup">
+                    <div class="iconImage">
+                      <font-awesome-icon class="iconfont" icon="fa-book" />
+                    </div>
+                    <div class="iconText">課務組網站</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,7 +92,7 @@ const linkCurri = () => {
             <div class="item">
               <div class="item-title">聯絡我們</div>
               <div class="hotline">
-                04-7232105
+                <font-awesome-icon icon="fa-phone" /> 04-7232105
                 <div class="small">#5622-5626</div>
               </div>
             </div>
@@ -120,7 +132,7 @@ const linkCurri = () => {
   }
 }
 .item-title {
-  font-size: large;
+  font-size: 20px;
   padding: 20px;
   text-align: center;
 }
@@ -131,38 +143,38 @@ const linkCurri = () => {
   justify-content: center;
   align-items: center;
 
-  .iconfont {
-    font-size: 36px;
-    display: block;
-    color: #666;
-  }
+  .item-content-box {
+    flex: 1;
+    max-width: 100px;
 
+    .iconGroup {
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+      gap: 10px;
+      .iconImage {
+        // font-size: 30px;
+        .iconfont {
+          // 以font-size設定icon大小
+          font-size: 36px;
+          // display: block;
+          // color: #666;
+        }
+      }
+      .iconText {
+        font-size: 14px;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      .iconfont {
+        color: var(--el-color-primary);
+      }
+    }
+  }
   &:last-child {
     margin-right: 0;
-  }
-}
-
-.item-content-box {
-  flex: 1;
-  max-width: 100px;
-
-  .iconGroup {
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    gap: 10px;
-    .iconImage {
-    }
-    .iconText {
-      font-size: medium;
-    }
-  }
-
-  &:hover {
-    cursor: pointer;
-    .iconfont {
-      color: var(--el-color-primary);
-    }
   }
 }
 
@@ -202,35 +214,6 @@ const linkCurri = () => {
     .page-container {
       // padding: 60px 0 40px 25px;
       display: flex;
-    }
-
-    .qrcode {
-      width: 92px;
-      height: 92px;
-      padding: 7px;
-      border: 1px solid #ededed;
-    }
-
-    .download {
-      padding-top: 5px;
-      font-size: 14px;
-      width: auto;
-      height: auto;
-      border: none;
-
-      span {
-        display: block;
-      }
-
-      a {
-        display: block;
-        line-height: 1;
-        padding: 10px 25px;
-        margin-top: 5px;
-        color: #fff;
-        border-radius: 2px;
-        background-color: $baseColor;
-      }
     }
 
     .hotline {
@@ -279,12 +262,34 @@ const linkCurri = () => {
 }
 
 @media screen and (max-width: 767px) {
+  .item-title {
+    padding: 10px;
+  }
+  .item-content {
+    gap: 0px;
+    .item-content-box {
+      .iconGroup {
+        gap: 5px;
+        .iconImage {
+          // font-size: 30px;
+          .iconfont {
+            font-size: 30px;
+          }
+        }
+        .iconText {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
   .item {
-    margin-top: 20px;
+    height: 130px;
+    margin-top: 5px;
     font-size: 12px;
   }
   .myqrcode-description a {
-    padding: 5px 5px;
+    padding: 5px 0px;
   }
 }
 </style>

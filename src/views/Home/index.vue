@@ -34,8 +34,8 @@ p {
     font-size: 14px;
     display: inline;
     font-weight: bold;
-    background-color: #ffee00;
-    color: red;
+    background-color: var(--el-color-warning);
+    color: var(--el-color-danger);
   }
 }
 
