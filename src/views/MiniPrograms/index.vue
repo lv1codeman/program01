@@ -34,7 +34,15 @@ const setStatus = (item) => {
             effect="dark"
             style="float: right"
             v-show="item.percent === 100"
-            >已完成</el-tag
+            >已完成 !!</el-tag
+          >
+          <el-tag
+            type="warning"
+            size="large"
+            effect="light"
+            style="float: right"
+            v-show="(item.percent >= 50) & (item.percent != 100)"
+            >即將完成</el-tag
           >
           <div class="subjectName">
             <a :href="item.url" target="_blank">{{ item.name }}</a>
