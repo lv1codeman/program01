@@ -248,7 +248,7 @@ const checkDynamicValidateForm = () => {
                       <!-- 領域名稱 -->
                       <!-- :label="'學程領域' + (categoryIndex + 1) + '-' + (index + 1)" -->
                       <el-form-item
-                        :label="'學程領域' + (index + 1)"
+                        :label="'類別' + (categoryIndex + 1) + '>領域' + (index + 1)"
                         :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
                         :rules="{
                           required: true,
