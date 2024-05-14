@@ -1,9 +1,9 @@
-$primaryColor : #6f8745;
-$successColor: #CA7A2C;
-$warningColor:#ffeccc;
-$dangerColor:#ae3243;
-$errorColor:#2B2118;
-$infoColor:#828282;
+$primaryColor: #667d89;
+$successColor: #4f526f;
+$warningColor: #fff2e1;
+$dangerColor: #d1bb9e;
+$errorColor: #a79277;
+$infoColor: #828282;
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
@@ -21,11 +21,19 @@ $infoColor:#828282;
     'error': (
       'base': $errorColor
     ),
-    'info':(
+    'info': (
       'base': $infoColor
     )
   )
 );
+// 日系配色
+// $primaryColor: #6f8745;
+// $successColor: #ca7a2c;
+// $warningColor: #ffeccc;
+// $dangerColor: #ae3243;
+// $errorColor: #2b2118;
+// $infoColor: #828282;
+
 // elementplus預設
 // @forward 'element-plus/theme-chalk/src/common/var.scss' with (
 //   $colors: (
@@ -50,26 +58,12 @@ $infoColor:#828282;
 //   )
 // );
 // 藍灰
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors: (
-//     'primary': (
-//       'base': #667D89
-//     ),
-//     'success': (
-//       'base': #4F526F
-//     ),
-//     'warning': (
-//       'base': #FFF2E1
-//     ),
-//     'danger': (
-//       'base': #D1BB9E
-//     ),
-//     'error': (
-//       'base': #A79277
-//     )
-//   )
-// );
-// 071A3C
+// $primaryColor : #667D89;
+// $successColor: #4F526F;
+// $warningColor:#FFF2E1;
+// $dangerColor:#D1BB9E;
+// $errorColor:#A79277;
+// $infoColor:#828282;
 
 // 小兔鮮預設
 // @forward 'element-plus/theme-chalk/src/common/var.scss' with (

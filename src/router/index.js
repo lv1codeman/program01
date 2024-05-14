@@ -9,6 +9,7 @@ import Programs from '@/views/Programs/index.vue'
 import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
 import SetProgram from '@/views/Agent/index.vue'
+import setSubject from '@/views/Agent/setSubject.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,10 @@ const router = createRouter({
         {
           path: 'result',
           component: Result
+        },
+        {
+          path: 'setSubject',
+          component: setSubject
         }
       ]
     },

@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
@@ -108,6 +110,10 @@ const resAB = ref()
 
 const checkDynamicValidateForm = () => {
   console.log(dynamicValidateForm)
+}
+
+const go_setSubject = () => {
+  router.push({ path: '/setSubject' })
 }
 </script>
 
@@ -315,6 +321,7 @@ const checkDynamicValidateForm = () => {
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
     <el-button @click="resetForm(formRef)">重設表單</el-button>
     <el-button @click="checkDynamicValidateForm">check result</el-button>
+    <el-button @click="go_setSubject">go setSubject</el-button>
   </div>
   <el-backtop :right="30" :bottom="70" />
 </template>

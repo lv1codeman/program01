@@ -14,7 +14,7 @@ const setItemText = (percentage) => {
   // } else {
   //   return '目前進度: ' + percentage + '%'
   // }
-  return percentage + '%'
+  return '點我查看明細 ' + percentage + '%'
 }
 const setStatus = (item) => {
   if (item.state === 'success') return 'success'
