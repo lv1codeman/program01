@@ -24,7 +24,8 @@ import {
   faMagnifyingGlass,
   faBuildingColumns,
   faBook,
-  faPhone
+  faPhone,
+  faLink
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -36,7 +37,8 @@ library.add(
   faMagnifyingGlass,
   faBuildingColumns,
   faBook,
-  faPhone
+  faPhone,
+  faLink
 )
 
 const app = createApp(App)

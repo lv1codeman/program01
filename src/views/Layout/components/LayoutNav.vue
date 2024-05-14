@@ -34,7 +34,7 @@
 
 <style scoped lang="scss">
 .app-topnav {
-  background: $main-bg-dark;
+  background: $nav-bg-color;
 
   ul {
     display: flex;

@@ -206,7 +206,7 @@ const linkCurri = () => {
 .app_footer {
   overflow: hidden;
   background-color: #f5f5f5;
-  padding-top: 20px;
+  margin-top: 20px;
 
   .contact {
     background: #fff;
@@ -233,7 +233,7 @@ const linkCurri = () => {
   }
 
   .extra {
-    background-color: $main-bg-dark;
+    background-color: $nav-bg-color;
   }
 
   .copyright {

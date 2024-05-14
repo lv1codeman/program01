@@ -47,12 +47,15 @@ const goResult = () => {
             type="success"
             size="large"
             effect="light"
-            style="float: right"
+            style="float: right; border-width: 2px"
             v-show="(item.percent >= 50) & (item.percent != 100)"
             >即將完成</el-tag
           >
           <div class="subjectName">
-            <a :href="item.url" target="_blank">{{ item.name }}</a>
+            <a :href="item.url" target="_blank"
+              >{{ item.name
+              }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
+            /></a>
           </div>
 
           <div class="subjectUnit">{{ item.unit }}</div>
@@ -85,7 +88,7 @@ const goResult = () => {
     padding: 0 20px;
     width: 380px;
     border: 2px solid rgb(137, 137, 137);
-    background-color: rgb(239, 239, 239);
+    background-color: rgb(250, 250, 250);
     border-radius: 10px;
     margin-top: 10px;
     margin-right: 1px;
@@ -114,9 +117,14 @@ const goResult = () => {
   background-color: var(--el-color-info-light-5);
 }
 
+$--neon-text-light: rgb(0, 0, 0);
+$--neon-text-color: #04f;
 :deep(.el-progress-bar__innerText) {
   color: white;
   font-weight: bold;
+  text-shadow: 0px 0px 2px black;
+  padding: 0 5px;
+  font-size: 14px;
 }
 :deep(.el-progress__text) {
   color: var(--el-color-success);
