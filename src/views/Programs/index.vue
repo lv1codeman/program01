@@ -88,7 +88,7 @@ const goResult = () => {
     padding: 0 20px;
     width: 380px;
     border: 2px solid rgb(137, 137, 137);
-    background-color: rgb(250, 250, 250);
+    background-color: white;
     border-radius: 10px;
     margin-top: 10px;
     margin-right: 1px;
@@ -114,7 +114,7 @@ const goResult = () => {
   cursor: pointer;
 }
 :deep(.el-progress-bar__outer) {
-  background-color: var(--el-color-info-light-5);
+  background-color: var(--el-color-info-light-7);
 }
 
 $--neon-text-light: rgb(0, 0, 0);

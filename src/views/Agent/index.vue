@@ -430,10 +430,10 @@ $left-domain-size: 5%;
   color: #4b4b4be0;
   font-size: 18px;
   font-weight: bold;
-  background-color: var(--el-color-warning-light-3);
+  background-color: var(--el-color-warning);
   border: 2px solid $domain-border-color;
   &:hover {
-    background-color: var(--el-color-warning);
+    background-color: var(--el-color-warning-light-3);
     // border: 2px solid white;
     color: #4b4b4b;
     cursor: pointer;
@@ -461,16 +461,16 @@ $left-domain-size: 5%;
 .addDomain,
 .addCategory,
 .delDomain {
-  background-color: var(--el-color-primary-light-7);
+  background-color: var(--el-color-primary);
   text-align: center;
   padding: 5px;
-  border: 2px solid $domain-border-color;
+  border: 1px solid $domain-border-color;
   border-radius: calc($domain-border-radius);
   color: #4b4b4be0;
   font-size: 18px;
   font-weight: bold;
   &:hover {
-    background-color: var(--el-color-primary-light-5);
+    background-color: var(--el-color-primary-light-3);
     cursor: pointer;
   }
 }
@@ -483,7 +483,7 @@ $left-domain-size: 5%;
   background-color: var(--el-color-warning);
   border: 2px solid $domain-border-color;
   &:hover {
-    background-color: var(--el-color-warning-light-5);
+    background-color: var(--el-color-warning-light-3);
   }
 }
 .addCategory {
