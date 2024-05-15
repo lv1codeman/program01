@@ -14,7 +14,7 @@ const setItemText = (percentage) => {
   // } else {
   //   return '目前進度: ' + percentage + '%'
   // }
-  return '點我查看明細 ' + percentage + '%'
+  return ' ' + percentage + '%'
 }
 const setStatus = (item) => {
   if (item.state === 'success') return 'success'
@@ -33,11 +33,21 @@ const goResult = () => {
     <!-- <div class="pageTitle">學分學程檢查</div> -->
     <pagetitle>學分學程檢查</pagetitle>
     <div class="outouter-box">
-      <div class="outer-box" v-for="item in programList" :key="item.id">
+      <div
+        class="outer-box"
+        v-for="item in programList"
+        :key="item.id"
+        :style="
+          item.percent == 100
+            ? { border: '2px solid var(--el-color-success)' }
+            : { border: '2px solid var(--el-color-primary)' }
+        "
+        @click="goResult"
+      >
         <div class="box">
           <el-tag
             type="success"
-            size="large"
+            size=""
             effect="dark"
             style="float: right"
             v-show="item.percent === 100"
@@ -45,9 +55,14 @@ const goResult = () => {
           >
           <el-tag
             type="success"
-            size="large"
+            size=""
             effect="light"
-            style="float: right; border-width: 2px"
+            style="
+              float: right;
+
+              border: 1px solid var(--el-color-success);
+              color: var(--el-color-success);
+            "
             v-show="(item.percent >= 50) & (item.percent != 100)"
             >即將完成</el-tag
           >
@@ -62,20 +77,27 @@ const goResult = () => {
           <el-progress
             class="progressbar"
             :show-text="true"
-            :text-inside="true"
+            :text-inside="false"
             :stroke-width="26"
             :percentage="item.percent"
             :format="setItemText"
             :status="setStatus(item)"
-            @click="goResult"
-          />
+          >
+          </el-progress>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+:root {
+  --success-color: #ccc;
+}
+// .warningborder {
+//   border: 2px solid $successColor !important;
+// }
+
 .outouter-box {
   // height: 550px;
   height: calc($baseNum * 5.6);
@@ -87,19 +109,27 @@ const goResult = () => {
   .outer-box {
     padding: 0 20px;
     width: 380px;
-    border: 2px solid rgb(137, 137, 137);
+    // border: 2px solid rgb(137, 137, 137);
+    border: 2px solid $primaryColor;
     background-color: white;
     border-radius: 10px;
     margin-top: 10px;
     margin-right: 1px;
+    &:hover {
+      cursor: pointer;
+    }
     .box {
-      // display: relative;
+      display: relative;
       // width: 400px;
-      margin-top: 10px;
+      margin-top: 12px; //outer-box有marginTop:10px，加上border的2px
       .subjectName {
         font-size: 18px;
         font-weight: bold;
+        & a:hover {
+          background-color: #dae7ff;
+        }
       }
+
       .subjectUnit {
         font-size: 14px;
       }
@@ -110,9 +140,7 @@ const goResult = () => {
 //   margin-right: auto; /* 加上 !important 以确保优先级 */
 //   margin-left: 80px;
 // }
-.progressbar {
-  cursor: pointer;
-}
+
 :deep(.el-progress-bar__outer) {
   background-color: var(--el-color-info-light-7);
 }
@@ -127,8 +155,15 @@ $--neon-text-color: #04f;
   font-size: 14px;
 }
 :deep(.el-progress__text) {
-  color: var(--el-color-success);
+  color: var(--el-color-primary);
+  min-width: 0;
+  display: flex;
+  align-items: center;
 }
+:deep(div.el-progress__text span) {
+  font-size: 18px;
+}
+
 @media screen and (max-width: 1200px) {
   .outouter-box {
     // height: 900px;
