@@ -32,6 +32,9 @@ const goResult = () => {
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
     <pagetitle>學分學程檢查</pagetitle>
+    <div style="max-width: 600px">
+      <el-alert title="點擊進度條可查看課程明細" type="info" />
+    </div>
     <div class="outouter-box">
       <div
         class="outer-box"
@@ -117,6 +120,7 @@ const goResult = () => {
     margin-right: 1px;
     &:hover {
       cursor: pointer;
+      background-color: rgba(223, 223, 223, 0.06);
     }
     .box {
       display: relative;
