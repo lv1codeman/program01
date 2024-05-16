@@ -66,8 +66,15 @@ const handleClick = () => {
   display: none;
 }
 :deep(.el-tabs__item) {
+  // font-weight: bold;
   padding: 0 0 0 40px;
   font-size: var(--el-font-size-medium);
+  &:hover {
+    color: $nav-bg-color;
+  }
+}
+:deep(.el-tabs__item.is-active) {
+  color: $nav-bg-color;
 }
 
 .app-header {

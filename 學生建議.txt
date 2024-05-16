@@ -1,0 +1,8 @@
+點選未完成課程時，導向開課查詢並顯示該課程
+if can do, 顯示該課程開在上/下學期
+
+
+https://element-plus.org/zh-CN/component/tour.html
+建立引導
+
+

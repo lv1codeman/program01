@@ -8,6 +8,13 @@ import LayoutFooter from './components/LayoutFooter.vue'
     <LayoutNav />
     <LayoutHeader />
   </el-affix>
-  <RouterView />
+  <div class="pageHeight">
+    <RouterView />
+  </div>
   <LayoutFooter />
 </template>
+<style scoped lang="scss">
+.pageHeight {
+  min-height: 506px;
+}
+</style>

@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
@@ -107,7 +109,11 @@ const labelPosition = ref('right')
 const resAB = ref()
 
 const checkDynamicValidateForm = () => {
-  console.log(dynamicValidateForm)
+  console.log(JSON.stringify(dynamicValidateForm))
+}
+
+const go_setSubject = () => {
+  router.push({ path: '/setSubject' })
 }
 </script>
 
@@ -169,16 +175,18 @@ const checkDynamicValidateForm = () => {
 
       <!-- 學程類別 -->
       <div class="outer-box">
-        <template
-          v-for="(category, categoryIndex) in dynamicValidateForm.category"
-          :key="category.key"
-        >
+        <template v-for="(category, categoryIndex) in dynamicValidateForm.category" :key="category.key">
           <div class="dynamicFormArea">
-            <div class="formTitle-1">
-              學程類別{{ categoryIndex + 1 }}
-              <div class="delCategory" @click="removeCategory(category)">
-                <font-awesome-icon icon="circle-xmark" /> 刪除類別
+            <div class="form-title-container">
+              <div class="formTitle-1">
+                學程類別{{ categoryIndex + 1 }}&nbsp;
+                <span class="delCategory" @click="removeCategory(category)">
+                  <font-awesome-icon icon="circle-xmark" /> 刪除
+                </span>
               </div>
+              <!-- <div class="delCategory" @click="removeCategory(category)">
+                <font-awesome-icon icon="circle-xmark" /> 刪除類別
+              </div> -->
             </div>
             <div class="CategoryPanel">
               <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
@@ -230,7 +238,7 @@ const checkDynamicValidateForm = () => {
             <!-- <hr /> -->
             <!-- 學程領域 -->
             <div class="indent">
-              <div class="formTitle-1">學程領域</div>
+              <div class="formTitle-2">學程領域</div>
               <template v-for="(domain, index) in category.domain" :key="domain.key">
                 <div class="dynamicFormArea2">
                   <!-- <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
@@ -261,9 +269,7 @@ const checkDynamicValidateForm = () => {
                       <!-- 最低學分數/課程數 -->
                       <el-form-item
                         label=""
-                        :prop="
-                          'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'
-                        "
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
@@ -278,9 +284,7 @@ const checkDynamicValidateForm = () => {
                       <!-- 領域需求數 -->
                       <el-form-item
                         :label="'領域需求數'"
-                        :prop="
-                          'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'
-                        "
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
@@ -307,19 +311,21 @@ const checkDynamicValidateForm = () => {
             </div>
           </div>
         </template>
-        <div class="addCategory" @click="addCategory">
-          <font-awesome-icon icon="circle-plus" /> 新增類別
-        </div>
+        <div class="addCategory" @click="addCategory"><font-awesome-icon icon="circle-plus" /> 新增類別</div>
       </div>
     </el-form>
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
     <el-button @click="resetForm(formRef)">重設表單</el-button>
     <el-button @click="checkDynamicValidateForm">check result</el-button>
+    <el-button @click="go_setSubject">go setSubject</el-button>
   </div>
   <el-backtop :right="30" :bottom="70" />
 </template>
 
 <style lang="scss" scoped>
+$domain-border-color: rgb(133 133 133 / 40%);
+$domain-border-radius: 10px;
+$left-domain-size: 5%;
 hr {
   border: 1px solid #4b4b4b60;
   margin: 20px 0;
@@ -334,10 +340,51 @@ hr {
   margin-left: 5vw;
 }
 .dynamicFormArea {
+  position: relative;
   border: 3px dotted rgba(73, 73, 73, 0.404);
-  border-radius: 10px;
+  // border-radius: 10px;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 50px;
+}
+.form-title-container {
+  display: flex;
+  justify-content: space-between;
+  .formTitle-1 {
+    position: absolute;
+    background-color: $body-bg-color;
+    top: -18px;
+    left: 1rem;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 0 5px;
+    margin-bottom: 10px;
+  }
+  .delCategory {
+    // position: absolute;
+    // display: none;
+    // right: 10px;
+    // top: -1.5rem;
+    text-align: center;
+    padding: 2px 5px;
+    border: 2px solid $domain-border-color;
+    border-radius: calc($domain-border-radius / 2);
+    color: #4b4b4be0;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--el-color-warning);
+    border: 2px solid $domain-border-color;
+    &:hover {
+      background-color: var(--el-color-warning-light-3);
+      // border: 2px solid white;
+      color: #4b4b4b;
+      cursor: pointer;
+    }
+  }
+}
+
+.formTitle-2 {
+  font-size: 22px;
+  font-weight: bold;
 }
 .dynamicFormArea2 {
   // background-color: #f9f3e3;
@@ -353,15 +400,13 @@ hr {
     grid-column: span 1;
   }
 }
-$domain-border-color: rgb(133 133 133 / 40%);
-$domain-border-radius: 10px;
-$left-domain-size: 5%;
+
 .domainpanel {
   display: flex;
   margin-bottom: 5px;
   .leftDomain {
     flex: $left-domain-size;
-    border: 2px solid $domain-border-color;
+    border: 1px solid $domain-border-color;
     border-radius: $domain-border-radius 0 0 $domain-border-radius;
     // border-radius: $domain-border-radius;
     // padding: 20px 0;
@@ -369,7 +414,7 @@ $left-domain-size: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--el-color-warning-light-3);
+    background-color: var(--el-color-warning);
     color: #4b4b4be0;
     span {
       font-size: 18px;
@@ -378,13 +423,13 @@ $left-domain-size: 5%;
       font-size: 30px;
     }
     &:hover {
-      background-color: var(--el-color-warning);
+      background-color: var(--el-color-warning-light-3);
       cursor: pointer;
     }
   }
   .rightDomain {
     flex: calc(100% - $left-domain-size);
-    border: 2px solid $domain-border-color;
+    border: 1px solid $domain-border-color;
     border-left: none;
     border-radius: 0 $domain-border-radius $domain-border-radius 0;
     // border-radius: $domain-border-radius;
@@ -395,10 +440,11 @@ $left-domain-size: 5%;
 }
 .CategoryPanel {
   display: flex;
+  margin-top: 10px;
   margin-bottom: 5px;
   .CategoryPanelRight {
     flex: calc(100% - $left-domain-size);
-    border: 2px solid $domain-border-color;
+    border: 1px solid $domain-border-color;
     // border-left: none;
     // border-radius: 0 $domain-border-radius $domain-border-radius 0;
     border-radius: $domain-border-radius;
@@ -412,25 +458,6 @@ $left-domain-size: 5%;
   // width: 70%;
   // display: grid;
   // grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
-}
-
-.delCategory {
-  float: right;
-  text-align: center;
-  padding: 2px 10px;
-  border: 2px solid $domain-border-color;
-  border-radius: calc($domain-border-radius / 2);
-  color: #4b4b4be0;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: var(--el-color-warning-light-3);
-  border: 2px solid $domain-border-color;
-  &:hover {
-    background-color: var(--el-color-warning);
-    // border: 2px solid white;
-    color: #4b4b4b;
-    cursor: pointer;
-  }
 }
 
 .commandarea {
@@ -454,16 +481,16 @@ $left-domain-size: 5%;
 .addDomain,
 .addCategory,
 .delDomain {
-  background-color: var(--el-color-primary-light-7);
+  background-color: var(--el-color-primary);
   text-align: center;
   padding: 5px;
-  border: 2px solid $domain-border-color;
+  border: 1px solid $domain-border-color;
   border-radius: calc($domain-border-radius);
   color: #4b4b4be0;
   font-size: 18px;
   font-weight: bold;
   &:hover {
-    background-color: var(--el-color-primary-light-5);
+    background-color: var(--el-color-primary-light-3);
     cursor: pointer;
   }
 }
@@ -471,12 +498,11 @@ $left-domain-size: 5%;
   float: right;
   text-align: center;
   padding: 2px 10px;
-  border: 2px solid $domain-border-color;
+  border: 1px solid $domain-border-color;
   border-radius: calc($domain-border-radius / 2);
   background-color: var(--el-color-warning);
-  border: 2px solid $domain-border-color;
   &:hover {
-    background-color: var(--el-color-warning-light-5);
+    background-color: var(--el-color-warning-light-3);
   }
 }
 .addCategory {
@@ -487,11 +513,6 @@ $left-domain-size: 5%;
   margin: 20px 0;
 }
 
-.formTitle-1 {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
 .formTitle_area {
   font-size: 18px;
   font-weight: bold;

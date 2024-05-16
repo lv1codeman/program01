@@ -1,0 +1,26 @@
+{
+  "name": "1",
+  "url": "2",
+  "type": "學分學程",
+  "unit": "",
+  "minCredit": 1,
+  "nonSelfCredit": 1,
+  "criteria": "以學分數",
+  "category": [
+    {
+      "key": 1,
+      "categoryName": "3",
+      "categoryMinCredit": 1,
+      "categoryRequireNum": 1,
+      "domain": [{ "key": 1, "domainName": "4", "domainMinCredit": 1, "domainRequireNum": 1 }]
+    },
+    {
+      "key": 1715850769461,
+      "categoryMinCredit": 1,
+      "categoryRequireNum": 1,
+      "domain": [{ "key": 1, "domainName": "6", "domainMinCredit": 1, "domainRequireNum": 1 }],
+      "categoryName": "5"
+    },
+    { "key": 1715850772038, "categoryMinCredit": 1, "categoryRequireNum": 1, "domain": [], "categoryName": "7" }
+  ]
+}

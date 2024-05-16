@@ -1,9 +1,60 @@
-$primaryColor : #6f8745;
-$successColor: #CA7A2C;
-$warningColor:#ffeccc;
-$dangerColor:#ae3232;
-$errorColor:#2B2118;
-$infoColor:#828282;
+// 思嘉配色
+$body-bg-color: #f7fafb;
+$nav-bg-color: #22668d;
+$baseColor: #ead8c0;
+
+$primaryColor: #8ecddd;
+$successColor: #ffbd41;
+$warningColor: #ffeccc;
+$dangerColor: #a33131;
+$errorColor: #d41414;
+$infoColor: #8b8b8b;
+
+// 日系配色
+// $body-bg-color: #f9fbf7;
+// $nav-bg-color: #6f8745;
+// $baseColor: #ead8c0;
+
+// $primaryColor: #94af64;
+// $successColor: #df9348;
+// $warningColor: #ffeccc;
+// $dangerColor: #ae3243;
+// $errorColor: #2b2118;
+// $infoColor: #828282;
+
+// elementplus預設
+// $body-bg-color: #f5f5f5;
+// $nav-bg-color: #5c5c5c;
+// $baseColor: #ead8c0;
+// $primaryColor: #409eff;
+// $successColor: #67c23a;
+// $warningColor: #e6a23c;
+// $dangerColor: #f56c6c;
+// $errorColor: #a79277;
+// $infoColor: #909399;
+
+// 藍灰
+// $body-bg-color: #f5f5f5;
+// $nav-bg-color: #5c5c5c;
+// $baseColor: #ead8c0;
+// $primaryColor: #667d89;
+// $successColor: #4f526f;
+// $warningColor: #fff2e1;
+// $dangerColor: #d1bb9e;
+// $errorColor: #a79277;
+// $infoColor: #828282;
+
+// 小兔鮮預設
+// $body-bg-color: #f5f5f5;
+// $nav-bg-color: #5c5c5c;
+// $baseColor: #ead8c0;
+// $primaryColor: #27ba9b;
+// $successColor: #1dc779;
+// $warningColor: #ffb302;
+// $dangerColor: #e26237;
+// $errorColor: #cf4444;
+// $infoColor: #909399;
+
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
@@ -21,73 +72,8 @@ $infoColor:#828282;
     'error': (
       'base': $errorColor
     ),
-    'info':(
+    'info': (
       'base': $infoColor
     )
   )
 );
-// elementplus預設
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors: (
-//     'primary': (
-//       'base': #409EFF
-//     ),
-//     'success': (
-//       'base': #67C23A
-//     ),
-//     'warning': (
-//       'base': #E6A23C
-//     ),
-//     'danger': (
-//       'base': #F56C6C
-//     ),
-//     'error': (
-//       'base': #A79277
-//     ),
-//     'info':(
-//       'base': #909399
-//     )
-//   )
-// );
-// 藍灰
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors: (
-//     'primary': (
-//       'base': #667D89
-//     ),
-//     'success': (
-//       'base': #4F526F
-//     ),
-//     'warning': (
-//       'base': #FFF2E1
-//     ),
-//     'danger': (
-//       'base': #D1BB9E
-//     ),
-//     'error': (
-//       'base': #A79277
-//     )
-//   )
-// );
-// 071A3C
-
-// 小兔鮮預設
-// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-//   $colors: (
-//     'primary': (
-//       'base': #27ba9b
-//     ),
-//     'success': (
-//       'base': #1dc779
-//     ),
-//     'warning': (
-//       'base': #ffb302
-//     ),
-//     'danger': (
-//       'base': #e26237
-//     ),
-//     'error': (
-//       'base': #cf4444
-//     )
-//   )
-// );
