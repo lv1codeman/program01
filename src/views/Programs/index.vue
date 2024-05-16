@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 const router = useRouter()
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { programData } from '@/assets/data/programData.js'
 const programList = ref([])
@@ -34,14 +34,65 @@ const ref3 = ref([])
 onMounted(() => {})
 
 const open = ref(false)
+const currentStep = ref(0)
+const elTourChanged = (step) => {
+  currentStep.value = step
+  console.log(currentStep.value)
+  console.log(btnName.value[1])
+}
+const btnName = computed(() => {
+  let btnNameList = []
+  if (!currentStep.value || currentStep.value === 0) {
+    btnNameList = ['', '下一步']
+  } else if (currentStep.value == 1) {
+    btnNameList = ['上一步', '下一步']
+  } else if (currentStep.value == 2) {
+    btnNameList = ['上一步', '完成']
+  }
+
+  return btnNameList
+})
 </script>
 <template>
-  <el-tour v-model="open">
+  <el-tour v-model="open" @change="elTourChanged">
     <!-- <el-tour-step :target="ref1?.$el" title="Upload File"> </el-tour-step>
     <el-tour-step :target="ref2?.$el" title="Save" description="Save your changes" /> -->
-    <el-tour-step :target="ref1[0]" title="學分學程" description="點選方框可查看結果" />
-    <el-tour-step :target="ref2[0]" title="學分學程網址" description="可連至該學分學程網站" />
-    <el-tour-step :target="ref3[0]" title="修習進度" description="修習進度" />
+    <el-tour-step
+      :target="ref1[0]"
+      title="學分學程"
+      description="點選方框可查看結果"
+      :next-button-props="{
+        children: btnName[1]
+      }"
+    />
+    <el-tour-step
+      :target="ref2[0]"
+      title="學分學程網址"
+      description="點擊後連至該學分學程網站"
+      :prev-button-props="{
+        children: btnName[0]
+      }"
+      :next-button-props="{
+        children: btnName[1]
+      }"
+    />
+    <el-tour-step
+      :target="ref3[0]"
+      title="修習進度"
+      :prev-button-props="{
+        children: btnName[0]
+      }"
+      :next-button-props="{
+        children: btnName[1]
+      }"
+    >
+      修習進度： <br />
+      <div style="color: var(--el-color-success)">已完成 = 100%</div>
+      <div style="color: var(--el-color-primary)">即將完成 >= 50%</div>
+    </el-tour-step>
+    <template #indicators="{ current, total }">
+      <span>{{ current + 1 }} / {{ total }}</span>
+    </template>
   </el-tour>
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
