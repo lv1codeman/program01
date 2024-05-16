@@ -1,7 +1,13 @@
 <script setup>
+import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref } from 'vue'
 import { subjectList } from '@/assets/data/subjectList.js'
+
+const store = useProgramStore()
+console.log(store.programData)
+console.log(JSON.stringify(store.programData))
+
 const generateData = () => {
   const data = []
 

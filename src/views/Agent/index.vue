@@ -7,26 +7,28 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
 // import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
+import { useProgramStore } from '@/stores/agentData.js'
 
+const store = useProgramStore()
 const formRef = ref()
 const dynamicValidateForm = reactive({
-  name: '',
-  url: '',
+  name: '11',
+  url: '22',
   type: '學分學程',
-  unit: '',
-  minCredit: 0,
-  nonSelfCredit: 0,
+  unit: '教育學院',
+  minCredit: 1,
+  nonSelfCredit: 2,
   criteria: '以學分數',
   category: [
     {
       key: 1,
-      categoryName: '',
+      categoryName: '基礎課程',
       categoryMinCredit: 0,
       categoryRequireNum: 0,
       domain: [
         {
           key: 1,
-          domainName: '',
+          domainName: '光電領域',
           domainMinCredit: 0,
           domainRequireNum: 0
         }
@@ -74,10 +76,10 @@ const submitForm = (formEl) => {
   formEl.validate((valid) => {
     if (valid) {
       console.log('submit!')
-      console.log(dynamicValidateForm)
-      resAB.value = dynamicValidateForm
-
+      // console.log(dynamicValidateForm)
+      store.setProgramData(dynamicValidateForm)
       // console.log(dynamicValidateForm.category)
+      router.push({ path: '/setSubject' })
     } else {
       console.log('error submit!')
       return false
@@ -106,7 +108,6 @@ const rules = ref({
   nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
 })
 const labelPosition = ref('right')
-const resAB = ref()
 
 const checkDynamicValidateForm = () => {
   console.log(JSON.stringify(dynamicValidateForm))
