@@ -237,8 +237,8 @@ const linkCurri = () => {
   }
 
   .copyright {
-    height: 170px;
-    padding-top: 40px;
+    height: 60px;
+    padding-top: 20px;
     text-align: center;
     color: #999;
     font-size: medium;

@@ -95,10 +95,10 @@ const btnName = computed(() => {
   </el-tour>
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
-    <pagetitle
-      >學分學程檢查
-      <el-button type="primary" @click="open = true">頁面引導教學</el-button></pagetitle
-    >
+    <pagetitle>
+      學分學程檢查
+      <el-button type="primary" @click="open = true">頁面引導教學</el-button>
+    </pagetitle>
 
     <div class="outouter-box">
       <div
@@ -114,33 +114,22 @@ const btnName = computed(() => {
         :ref="(el) => (ref1[index] = el)"
       >
         <div class="box">
-          <el-tag
-            type="success"
-            size=""
-            effect="dark"
-            style="float: right"
-            v-show="item.percent === 100"
+          <el-tag type="success" size="" effect="dark" style="float: right" v-show="item.percent === 100"
             >已完成 !!</el-tag
           >
           <el-tag
             type="success"
             size=""
             effect="light"
-            style="
-              float: right;
-              border: 1px solid var(--el-color-success);
-              color: var(--el-color-success);
-            "
+            style="float: right; border: 1px solid var(--el-color-success); color: var(--el-color-success)"
             v-show="(item.percent >= 50) & (item.percent != 100)"
             >即將完成</el-tag
           >
           <div class="subjectName">
             <a :href="item.url" target="_blank" :ref="(el) => (ref2[index] = el)"
-              >{{ item.name
-              }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
+              >{{ item.name }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
             /></a>
           </div>
-
           <div class="subjectUnit">{{ item.unit }}</div>
           <div :ref="(el) => (ref3[index] = el)">
             <el-progress
