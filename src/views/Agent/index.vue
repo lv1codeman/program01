@@ -109,7 +109,7 @@ const labelPosition = ref('right')
 const resAB = ref()
 
 const checkDynamicValidateForm = () => {
-  console.log(dynamicValidateForm)
+  console.log(JSON.stringify(dynamicValidateForm))
 }
 
 const go_setSubject = () => {
@@ -175,10 +175,7 @@ const go_setSubject = () => {
 
       <!-- 學程類別 -->
       <div class="outer-box">
-        <template
-          v-for="(category, categoryIndex) in dynamicValidateForm.category"
-          :key="category.key"
-        >
+        <template v-for="(category, categoryIndex) in dynamicValidateForm.category" :key="category.key">
           <div class="dynamicFormArea">
             <div class="form-title-container">
               <div class="formTitle-1">
@@ -272,9 +269,7 @@ const go_setSubject = () => {
                       <!-- 最低學分數/課程數 -->
                       <el-form-item
                         label=""
-                        :prop="
-                          'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'
-                        "
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
@@ -289,9 +284,7 @@ const go_setSubject = () => {
                       <!-- 領域需求數 -->
                       <el-form-item
                         :label="'領域需求數'"
-                        :prop="
-                          'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'
-                        "
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
@@ -318,9 +311,7 @@ const go_setSubject = () => {
             </div>
           </div>
         </template>
-        <div class="addCategory" @click="addCategory">
-          <font-awesome-icon icon="circle-plus" /> 新增類別
-        </div>
+        <div class="addCategory" @click="addCategory"><font-awesome-icon icon="circle-plus" /> 新增類別</div>
       </div>
     </el-form>
     <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>

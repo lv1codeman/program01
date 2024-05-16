@@ -1,27 +1,26 @@
 <script setup>
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref } from 'vue'
-import subjectList from '@/assets/data/subjectList.js'
+import { subjectList } from '@/assets/data/subjectList.js'
 const generateData = () => {
   const data = []
-  const data_pre = []
 
-  subjectList.forEach((item) => {})
-  // subjectList.subjectID + subjectList.subjectName
-
-  const states = [
-    '1EIEE2002530 碩士班 論文寫作(一)',
-    'Illinois',
-    'Maryland',
-    'Texas',
-    'Florida',
-    'Colorado',
-    'Connecticut'
-  ]
-
-  states.forEach((city, index) => {
+  subjectList.forEach((item, index) => {
     data.push({
-      label: city,
+      label:
+        item.subjectID +
+        '/' +
+        item.subjectName +
+        '/' +
+        item.unit +
+        '/' +
+        item.sys +
+        '/' +
+        '(' +
+        item.credit +
+        '/' +
+        item.hour +
+        ')',
       key: index
     })
   })
@@ -34,6 +33,7 @@ const value = ref([])
 <template>
   <div class="page-container">
     <pagetitle>設定課程</pagetitle>
+
     <el-transfer
       v-model="value"
       filterable
@@ -45,7 +45,8 @@ const value = ref([])
 </template>
 <style lang="scss" scoped>
 :deep(.el-transfer) {
-  --el-transfer-panel-width: 400px;
+  text-align: center;
+  --el-transfer-panel-width: 500px;
 }
 @media screen and (max-width: 818px) {
   :deep(.el-transfer) {
