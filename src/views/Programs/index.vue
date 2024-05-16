@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 const router = useRouter()
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { programData } from '@/assets/data/programData.js'
 const programList = ref([])
@@ -22,24 +22,40 @@ const setStatus = (item) => {
     return ''
   }
 }
-console.log(programList)
 
 const goResult = () => {
   router.push({ path: '/result' })
 }
+
+const ref1 = ref([])
+const ref2 = ref([])
+const ref3 = ref([])
+
+onMounted(() => {})
+
+const open = ref(false)
 </script>
 <template>
+  <el-tour v-model="open">
+    <!-- <el-tour-step :target="ref1?.$el" title="Upload File"> </el-tour-step>
+    <el-tour-step :target="ref2?.$el" title="Save" description="Save your changes" /> -->
+    <el-tour-step :target="ref1[0]" title="學分學程" description="點選方框可查看結果" />
+    <el-tour-step :target="ref2[0]" title="學分學程網址" description="可連至該學分學程網站" />
+    <el-tour-step :target="ref3[0]" title="修習進度" description="修習進度" />
+  </el-tour>
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
-    <pagetitle>學分學程檢查</pagetitle>
-    <div style="max-width: 600px">
-      <el-alert title="點擊進度條可查看課程明細" type="info" />
-    </div>
+    <pagetitle ref="ref1"
+      >學分學程檢查
+      <el-button type="primary" @click="open = true">頁面引導教學</el-button></pagetitle
+    >
+
     <div class="outouter-box">
       <div
         class="outer-box"
-        v-for="item in programList"
+        v-for="(item, index) in programList"
         :key="item.id"
+        :ref="(el) => (ref1[index] = el)"
         :style="
           item.percent == 100
             ? { border: '2px solid var(--el-color-success)' }
@@ -70,23 +86,25 @@ const goResult = () => {
             >即將完成</el-tag
           >
           <div class="subjectName">
-            <a :href="item.url" target="_blank"
+            <a :href="item.url" target="_blank" :ref="(el) => (ref2[index] = el)"
               >{{ item.name
               }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
             /></a>
           </div>
 
           <div class="subjectUnit">{{ item.unit }}</div>
-          <el-progress
-            class="progressbar"
-            :show-text="true"
-            :text-inside="false"
-            :stroke-width="26"
-            :percentage="item.percent"
-            :format="setItemText"
-            :status="setStatus(item)"
-          >
-          </el-progress>
+          <div :ref="(el) => (ref3[index] = el)">
+            <el-progress
+              class="progressbar"
+              :show-text="true"
+              :text-inside="false"
+              :stroke-width="26"
+              :percentage="item.percent"
+              :format="setItemText"
+              :status="setStatus(item)"
+            >
+            </el-progress>
+          </div>
         </div>
       </div>
     </div>
