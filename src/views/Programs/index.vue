@@ -34,7 +34,7 @@ const ref3 = ref([])
 onMounted(() => {})
 
 const open = ref(false)
-const currentStep = ref(0)
+const currentStep = ref()
 const elTourChanged = (step) => {
   currentStep.value = step
   console.log(currentStep.value)
@@ -60,7 +60,7 @@ const btnName = computed(() => {
     <el-tour-step
       :target="ref1[0]"
       title="學分學程"
-      description="點選方框可查看結果"
+      description="點選進度條可查看結果"
       :next-button-props="{
         children: btnName[1]
       }"
@@ -86,7 +86,6 @@ const btnName = computed(() => {
         children: btnName[1]
       }"
     >
-      修習進度： <br />
       <div style="color: var(--el-color-success)">已完成 = 100%</div>
       <div style="color: var(--el-color-primary)">即將完成 >= 50%</div>
     </el-tour-step>
@@ -96,7 +95,7 @@ const btnName = computed(() => {
   </el-tour>
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
-    <pagetitle ref="ref1"
+    <pagetitle
       >學分學程檢查
       <el-button type="primary" @click="open = true">頁面引導教學</el-button></pagetitle
     >
@@ -106,13 +105,13 @@ const btnName = computed(() => {
         class="outer-box"
         v-for="(item, index) in programList"
         :key="item.id"
-        :ref="(el) => (ref1[index] = el)"
         :style="
           item.percent == 100
             ? { border: '2px solid var(--el-color-success)' }
             : { border: '2px solid var(--el-color-primary)' }
         "
         @click="goResult"
+        :ref="(el) => (ref1[index] = el)"
       >
         <div class="box">
           <el-tag
@@ -129,7 +128,6 @@ const btnName = computed(() => {
             effect="light"
             style="
               float: right;
-
               border: 1px solid var(--el-color-success);
               color: var(--el-color-success);
             "
