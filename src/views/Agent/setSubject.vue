@@ -35,6 +35,9 @@ const generateData = () => {
 
 const data = ref(generateData())
 const value = ref([])
+const showRes = () => {
+  console.log(value.value)
+}
 </script>
 <template>
   <div class="page-container">
@@ -46,13 +49,30 @@ const value = ref([])
       filter-placeholder="State Abbreviations"
       :data="data"
       :titles="['單位科目', '學程科目']"
-    />
+      :button-texts="['左移', '右移']"
+    >
+      <template #left-footer>
+        <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
+      </template>
+      <template #right-footer>
+        <el-button class="transfer-footer" size="default" @click="showRes">顯示結果</el-button>
+      </template>
+    </el-transfer>
+    <pagetitle>課程檢查</pagetitle>
   </div>
 </template>
 <style lang="scss" scoped>
 :deep(.el-transfer) {
   text-align: center;
-  --el-transfer-panel-width: 500px;
+  --el-transfer-panel-width: 400px;
+}
+:deep(.el-transfer-panel__list) {
+  overflow-x: auto; // 啟用橫向卷軸
+  white-space: nowrap; //避免內容換行
+}
+:deep(.el-transfer-panel__item) {
+  display: inline-block;
+  width: 500px; //設定內容item寬度，根據內容的長度調整
 }
 @media screen and (max-width: 818px) {
   :deep(.el-transfer) {
