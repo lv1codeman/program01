@@ -35,18 +35,49 @@ const generateData = () => {
 
 const data = ref(generateData())
 const value = ref([])
+const tableData = ref([])
+
 const showRes = () => {
   console.log(value.value)
+  value.value.forEach((item) => {
+    console.log(subjectList[item])
+    tableData.value.push(subjectList[item])
+  })
+}
+
+const deleteRow = (index) => {
+  tableData.value.splice(index, 1)
+}
+const delTable = () => {
+  tableData.value = []
+}
+// const onAddItem = () => {
+//   // now.setDate(now.getDate() + 1)
+//   tableData.value.push({
+//     id: 1,
+//     unit: '電機工程學系',
+//     subjectID: '1EIEE2002530',
+//     sys: '碩士班',
+//     subjectName: '論文寫作(一)',
+//     subjectNameEng: 'Thesis Writing I',
+//     credit: 3,
+//     hour: 3
+//   })
+// }
+
+const submitProgramData = () => {
+  console.log(tableData.value)
+  console.log(store.programData)
 }
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>設定課程</pagetitle>
+    <pagetitle>課程設定</pagetitle>
 
     <el-transfer
       v-model="value"
       filterable
-      filter-placeholder="State Abbreviations"
+      filter-placeholder="科目代碼 Abbreviations"
       :data="data"
       :titles="['單位科目', '學程科目']"
       :button-texts="['左移', '右移']"
@@ -55,10 +86,27 @@ const showRes = () => {
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
       </template>
       <template #right-footer>
-        <el-button class="transfer-footer" size="default" @click="showRes">顯示結果</el-button>
+        <el-button class="transfer-footer" size="default" @click="showRes">確認</el-button>
       </template>
     </el-transfer>
-    <pagetitle>課程檢查</pagetitle>
+    <pagetitle>匯入前檢查</pagetitle>
+    <el-table :data="tableData" style="width: 100%" max-height="500" stripe>
+      <el-table-column fixed prop="id" label="ID" width="50" sortable />
+      <el-table-column prop="subjectID" label="科目代碼" width="120" sortable />
+      <el-table-column prop="subjectName" label="科目名稱" width="200" sortable />
+      <el-table-column prop="unit" label="單位" width="120" />
+      <el-table-column prop="sys" label="學制" width="120" />
+      <el-table-column prop="subjectNameEng" label="科目英文名稱" width="300" />
+      <el-table-column prop="credit" label="學分" width="120" />
+      <el-table-column prop="hour" label="學時" width="120" />
+      <el-table-column fixed="right" label="Operations" width="120">
+        <template #default="scope">
+          <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)"> Remove </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-button style="margin-top: 10px" type="primary" @click="submitProgramData"> 匯入 </el-button>
+    <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
   </div>
 </template>
 <style lang="scss" scoped>
