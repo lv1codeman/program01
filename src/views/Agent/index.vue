@@ -76,10 +76,8 @@ const submitForm = (formEl) => {
   formEl.validate((valid) => {
     if (valid) {
       console.log('submit!')
-      // console.log(dynamicValidateForm)
       store.setProgramData(dynamicValidateForm)
-      // console.log(dynamicValidateForm.category)
-      router.push({ path: '/setSubject' })
+      router.push({ path: '/checkStructure' })
     } else {
       console.log('error submit!')
       return false

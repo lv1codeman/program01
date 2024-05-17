@@ -3,11 +3,16 @@ import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref } from 'vue'
 import { subjectList } from '@/assets/data/subjectList.js'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const store = useProgramStore()
-console.log(store.programData)
-console.log(JSON.stringify(store.programData))
+// console.log(store.programData)
+// console.log(JSON.stringify(store.programData))
+const programstruct = store.programData
 
+console.log(programstruct.category)
+console.log(route.params.categoryName)
 const generateData = () => {
   const data = []
 
@@ -72,7 +77,7 @@ const submitProgramData = () => {
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>課程設定</pagetitle>
+    <pagetitle>{{ $route.params.domainName }} - 課程設定</pagetitle>
 
     <el-transfer
       v-model="value"

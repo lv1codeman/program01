@@ -10,6 +10,7 @@ import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
 import SetProgram from '@/views/Agent/index.vue'
 import setSubject from '@/views/Agent/setSubject.vue'
+import checkStructure from '@/views/Agent/checkStructure.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,8 +46,25 @@ const router = createRouter({
           component: Result
         },
         {
-          path: 'setSubject',
-          component: setSubject
+          // path: 'setSubject/:categoryName',
+          // name: 'setSubject',
+          // component: setSubject
+          path: 'setSubject/:categoryName',
+          name: 'setSubject',
+          component: setSubject,
+          props: (route) => ({
+            categoryName: route.params.categoryName,
+            domainName: route.params.domainName || '' // 使 domainName 为可选参数
+          })
+        },
+        {
+          path: 'checkStructure',
+          component: checkStructure
+        },
+        {
+          name: '404',
+          path: '/:catchAll(.*)',
+          component: () => import(`@/views/Error/404.vue`)
         }
       ]
     },
@@ -56,5 +74,4 @@ const router = createRouter({
     }
   ]
 })
-
 export default router
