@@ -7,13 +7,51 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const store = useProgramStore()
-// console.log(store.programData)
 // console.log(JSON.stringify(store.programData))
-const programstruct = store.programData
 
-console.log(programstruct.category)
-console.log(route.params.categoryName)
-console.log(route.params.domainName)
+const targetCheck = () => {
+  if (!route.params.domainName) {
+    return [route.params.categoryName]
+  } else {
+    return [route.params.categoryName, route.params.domainName]
+  }
+}
+const dialogSuccessVisible = ref(false)
+const submitProgramData = () => {
+  // console.log(tableData.value)
+  console.log(store.programData)
+
+  const target = targetCheck()
+  console.log('target=', target)
+  if (target.length > 1) {
+    // 類別之下的領域
+    console.log(target[0] + ' - ' + target[1])
+    let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
+    let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
+    if (domainItem) {
+      let temp = []
+      tableData.value.forEach((item) => {
+        temp.push(item)
+      })
+      domainItem.course = temp
+    }
+    console.log(domainItem)
+  } else {
+    // 只有類別
+    console.log(target[0])
+    let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
+    if (categoryItem) {
+      let temp = []
+      tableData.value.forEach((item) => {
+        temp.push(item)
+      })
+      categoryItem.course = temp
+    }
+    console.log(categoryItem)
+  }
+  console.log(store.programData)
+  dialogSuccessVisible.value = true
+}
 
 const pageTitle = computed(() => {
   const categoryName = route.params.categoryName
@@ -23,7 +61,7 @@ const pageTitle = computed(() => {
   if (categoryName) {
     title += categoryName + '-'
   }
-  
+
   if (domainName) {
     title += domainName + '-'
   }
@@ -88,14 +126,10 @@ const delTable = () => {
 //     hour: 3
 //   })
 // }
-
-const submitProgramData = () => {
-  console.log(tableData.value)
-  console.log(store.programData)
-}
 </script>
 <template>
   <div class="page-container">
+    <!-- <el-button @click="target">show</el-button> -->
     <pagetitle>{{ pageTitle }}</pagetitle>
 
     <el-transfer
@@ -131,6 +165,14 @@ const submitProgramData = () => {
     </el-table>
     <el-button style="margin-top: 10px" type="primary" @click="submitProgramData"> 匯入 </el-button>
     <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
+
+    <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
+      <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
+        <template #extra>
+          <el-button type="primary">Back</el-button>
+        </template>
+      </el-result>
+    </el-dialog>
   </div>
 </template>
 <style lang="scss" scoped>
