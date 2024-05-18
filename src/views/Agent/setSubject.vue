@@ -1,7 +1,7 @@
 <script setup>
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { subjectList } from '@/assets/data/subjectList.js'
 import { useRoute } from 'vue-router'
 
@@ -13,6 +13,25 @@ const programstruct = store.programData
 
 console.log(programstruct.category)
 console.log(route.params.categoryName)
+console.log(route.params.domainName)
+
+const pageTitle = computed(() => {
+  const categoryName = route.params.categoryName
+  const domainName = route.params.domainName
+  let title = ''
+
+  if (categoryName) {
+    title += categoryName + '-'
+  }
+  
+  if (domainName) {
+    title += domainName + '-'
+  }
+
+  title += '課程設定'
+  return title
+})
+
 const generateData = () => {
   const data = []
 
@@ -77,12 +96,12 @@ const submitProgramData = () => {
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>{{ $route.params.domainName }} - 課程設定</pagetitle>
+    <pagetitle>{{ pageTitle }}</pagetitle>
 
     <el-transfer
       v-model="value"
       filterable
-      filter-placeholder="科目代碼 Abbreviations"
+      filter-placeholder="請輸入關鍵字篩選"
       :data="data"
       :titles="['單位科目', '學程科目']"
       :button-texts="['左移', '右移']"

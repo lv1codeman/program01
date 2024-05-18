@@ -49,7 +49,7 @@ const router = createRouter({
           // path: 'setSubject/:categoryName',
           // name: 'setSubject',
           // component: setSubject
-          path: 'setSubject/:categoryName',
+          path: 'setSubject/:categoryName/:domainName?',
           name: 'setSubject',
           component: setSubject,
           props: (route) => ({
