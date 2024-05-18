@@ -12,6 +12,24 @@ import { useProgramStore } from '@/stores/agentData.js'
 const store = useProgramStore()
 const formRef = ref()
 const dynamicValidateForm = reactive({
+  name: '',
+  url: '',
+  type: '學分學程',
+  unit: '',
+  minCredit: 1,
+  nonSelfCredit: 1,
+  criteria: '以學分數',
+  category: [
+    {
+      key: 1,
+      categoryName: '',
+      categoryMinCredit: 0,
+      categoryRequireNum: 0,
+      domain: []
+    }
+  ]
+})
+const dynamicValidateForm_formal = reactive({
   name: '11',
   url: '22',
   type: '學分學程',
@@ -43,19 +61,21 @@ const addCategory = () => {
     categoryMinCredit: 0,
     categoryRequireNum: 0,
     domain: [
-      {
-        key: 1,
-        domainName: '',
-        domainMinCredit: 0,
-        domainRequireNum: 0
-      }
+      // {
+      //   key: 1,
+      //   domainName: '',
+      //   domainMinCredit: 0,
+      //   domainRequireNum: 0
+      // }
     ]
   })
 }
 const removeCategory = (item) => {
   const index = dynamicValidateForm.category.indexOf(item)
-  if (index !== -1) {
+  if (index > 0) {
     dynamicValidateForm.category.splice(index, 1)
+  }else{
+    console.log('至少須有一個類別');
   }
 }
 const addDomain = (item) => {
