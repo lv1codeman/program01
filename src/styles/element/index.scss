@@ -1,3 +1,5 @@
+// https://penueling.com/%E7%B7%9A%E4%B8%8A%E5%AD%B8%E7%BF%92/element-plus-%E6%96%B0%E7%89%88%E6%9C%AC%E5%A6%82%E4%BD%95%E8%87%AA%E8%A8%82%E4%B8%BB%E9%A1%8C/
+
 // 思嘉配色
 $body-bg-color: #f7fafb;
 $nav-bg-color: #22668d;
@@ -9,8 +11,11 @@ $warningColor: #ffeccc;
 $dangerColor: #a33131;
 $errorColor: #d41414;
 $infoColor: #8b8b8b;
-$textColor: #466a78;
 
+$text-color-primary: #113e50;
+$text-color-regular: #2f657b;
+$text-color-secondary: #578ea3;
+$text-color-placeholder: #b1bdc2;
 // 日系配色
 // $body-bg-color: #f9fbf7;
 // $nav-bg-color: #6f8745;
@@ -75,15 +80,12 @@ $textColor: #466a78;
     ),
     'info': (
       'base': $infoColor
-    ),
-    'text':(
-      'base': $textColor
     )
   ),
   $text-color: (
-    'primary': #36515c,
-    'regular': #476673,
-    'secondary': #659db3,
-    'placeholder': #b1bdc2,
+    'primary': $text-color-primary,
+    'regular': $text-color-regular,
+    'secondary': $text-color-secondary,
+    'placeholder': $text-color-placeholder,
   )
 );

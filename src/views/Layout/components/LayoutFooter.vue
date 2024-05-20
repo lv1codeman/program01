@@ -123,7 +123,7 @@ const linkCurri = () => {
 
 .item {
   min-height: 36px;
-  height: 150px;
+  height: 160px;
   text-align: center;
   border-right: 1px solid #f2f2f2;
   color: var(--el-color-info);
@@ -142,6 +142,7 @@ const linkCurri = () => {
   gap: 10px;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 
   .item-content-box {
     flex: 1;
@@ -183,8 +184,10 @@ const linkCurri = () => {
   height: 88px;
   padding: 2px;
   border: 1px solid #ededed;
+  margin-top: -15px;
 }
 .myqrcode-description {
+  margin-top: -15px;
   span {
     display: block;
   }

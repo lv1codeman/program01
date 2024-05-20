@@ -215,7 +215,7 @@ $--neon-text-color: #04f;
   font-size: 14px;
 }
 :deep(.el-progress__text) {
-  color: var(--el-color-primary);
+  color: var(--el-text-color-secondary);
   min-width: 0;
   display: flex;
   align-items: center;

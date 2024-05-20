@@ -176,7 +176,8 @@ const btnName = computed(() => {
     margin-right: 1px;
     &:hover {
       cursor: pointer;
-      background-color: rgba(223, 223, 223, 0.06);
+      // background-color: rgba(223, 223, 223, 0.06);
+      background-color: rgb(50 208 151 / 8%);
     }
     .box {
       display: relative;
@@ -186,7 +187,8 @@ const btnName = computed(() => {
         font-size: 18px;
         font-weight: bold;
         & a:hover {
-          background-color: #dae7ff;
+          // background-color: #dae7ff;
+          background-color: #1088c630;
         }
       }
 
@@ -215,7 +217,7 @@ $--neon-text-color: #04f;
   font-size: 14px;
 }
 :deep(.el-progress__text) {
-  color: var(--el-color-primary);
+  color: var(--el-text-color-secondary);
   min-width: 0;
   display: flex;
   align-items: center;

@@ -17,9 +17,7 @@
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
               <template #reference>
-                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)"
-                  >登出</el-button
-                >
+                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)">登出</el-button>
               </template>
             </el-popconfirm>
           </li>
@@ -45,7 +43,7 @@
     li {
       a {
         padding: 0 15px;
-        color: #cdcdcd;
+        color: #f7fafb;
         display: inline-block;
 
         i {
