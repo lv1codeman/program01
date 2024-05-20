@@ -53,7 +53,7 @@ const btnName = computed(() => {
 const show = ref(false)
 onMounted(() => {
   // 設定Zoom 縮放的時間
-  document.documentElement.style.setProperty('--el-transition-duration', '1s')
+  document.documentElement.style.setProperty('--el-transition-duration', '.5s')
   // 設定Fade 淡入淡出的時間
   document.documentElement.style.setProperty('--el-transition-duration-fast', '.5s')
   // cubic-bezier

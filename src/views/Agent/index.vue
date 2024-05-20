@@ -68,8 +68,8 @@ const removeCategory = (item) => {
   const index = dynamicValidateForm.category.indexOf(item)
   if (index > 0) {
     dynamicValidateForm.category.splice(index, 1)
-  }else{
-    console.log('至少須有一個類別');
+  } else {
+    console.log('至少須有一個類別')
   }
 }
 const addDomain = (item) => {
@@ -499,9 +499,10 @@ hr {
   padding: 5px;
   border: 1px solid $domain-border-color;
   border-radius: calc($domain-border-radius);
-  color: #4b4b4be0;
+  // color: #4b4b4be0;
+  color: white;
   font-size: 18px;
-  font-weight: bold;
+  // font-weight: bold;
   &:hover {
     background-color: var(--el-color-primary-light-3);
     cursor: pointer;
