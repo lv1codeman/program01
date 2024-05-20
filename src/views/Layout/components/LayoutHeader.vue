@@ -70,7 +70,7 @@ const handleClick = () => {
   padding: 0 0 0 40px;
   font-size: var(--el-font-size-medium);
   &:hover {
-    color: $nav-bg-color;
+    color: var(--el-text-color-secondary);
   }
 }
 :deep(.el-tabs__item.is-active) {

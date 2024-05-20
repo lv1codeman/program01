@@ -9,6 +9,7 @@ $warningColor: #ffeccc;
 $dangerColor: #a33131;
 $errorColor: #d41414;
 $infoColor: #8b8b8b;
+$textColor: #466a78;
 
 // 日系配色
 // $body-bg-color: #f9fbf7;
@@ -74,6 +75,15 @@ $infoColor: #8b8b8b;
     ),
     'info': (
       'base': $infoColor
+    ),
+    'text':(
+      'base': $textColor
     )
+  ),
+  $text-color: (
+    'primary': #36515c,
+    'regular': #476673,
+    'secondary': #659db3,
+    'placeholder': #b1bdc2,
   )
 );
