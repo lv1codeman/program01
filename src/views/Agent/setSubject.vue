@@ -126,6 +126,9 @@ const delTable = () => {
 //     hour: 3
 //   })
 // }
+const dialogSuccess = () => {
+  dialogSuccessVisible.value = false
+}
 </script>
 <template>
   <div class="page-container">
@@ -169,7 +172,7 @@ const delTable = () => {
     <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
       <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
         <template #extra>
-          <el-button type="primary">Back</el-button>
+          <el-button type="primary" @click="dialogSuccess">Back</el-button>
         </template>
       </el-result>
     </el-dialog>

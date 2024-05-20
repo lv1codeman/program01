@@ -261,7 +261,7 @@ const linkCurri = () => {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 423px) {
   .item-title {
     padding: 10px;
   }
@@ -277,7 +277,7 @@ const linkCurri = () => {
           }
         }
         .iconText {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
