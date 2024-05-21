@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 const router = useRouter()
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { programData } from '@/assets/data/programData.js'
 const programList = ref([])
@@ -32,11 +32,9 @@ const ref2 = ref([])
 const ref3 = ref([])
 
 const open = ref(false)
-const currentStep = ref()
+const currentStep = ref(0)
 const elTourChanged = (step) => {
   currentStep.value = step
-  console.log(currentStep.value)
-  console.log(btnName.value[1])
 }
 const btnName = computed(() => {
   let btnNameList = []
@@ -50,6 +48,13 @@ const btnName = computed(() => {
 
   return btnNameList
 })
+
+watch(open, (open_value) => {
+  if (open_value) {
+    currentStep.value = 0
+  }
+})
+
 const show = ref(false)
 onMounted(() => {
   // 設定Zoom 縮放的時間
