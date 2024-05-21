@@ -2,7 +2,7 @@
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted } from 'vue'
-
+import IconNextLevel from '@/components/icons/IconNextLevel.vue'
 const store = useProgramStore()
 // console.log(store.programData)
 // console.log(JSON.stringify(store.programData))
@@ -71,11 +71,13 @@ onUnmounted(() => {
         <div class="baseItem">{{ category.categoryName }}</div>
       </div>
       <div v-for="domain in category.domain" :key="domain.index">
+        <IconNextLevel class="next-level-icon" />
         <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
           <router-link
             class="baseItem islink domain"
             :to="{ name: 'setSubject', params: { categoryName: category.categoryName, domainName: domain.domainName } }"
-            >{{ domain.domainName }}</router-link
+          >
+            {{ domain.domainName }}</router-link
           >
         </el-tooltip>
       </div>
