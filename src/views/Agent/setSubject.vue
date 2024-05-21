@@ -50,6 +50,7 @@ const submitProgramData = () => {
     console.log(categoryItem)
   }
   console.log(store.programData)
+  console.log(JSON.stringify(store.programData))
   dialogSuccessVisible.value = true
 }
 
@@ -179,16 +180,51 @@ const dialogSuccess = () => {
   </div>
 </template>
 <style lang="scss" scoped>
+/*scrollbar*/
+
+// :deep(::-webkit-scrollbar) {
+//   width: 15px;
+// }
+// :deep(::-webkit-scrollbar-thumb) {
+//   -webkit-border-radius: 50px;
+//   border-radius: 50px;
+//   // border: 3px solid rgba(0, 0, 0, 0);
+//   background-color: #b60808;
+//   // box-shadow: 12px 12px 0 #5b5b5b inset;
+//   border-left: none;
+//   transition: 0.5s;
+// }
+// :deep(::-webkit-scrollbar-thumb:hover) {
+//   box-shadow: 12px 12px 0 #9d9d9d inset;
+// }
+
+/*scrollbar*/
+:deep(::-webkit-scrollbar) {
+  width: 10px;
+}
+:deep(::-webkit-scrollbar:vertical) {
+  width: 10px;
+}
+:deep(::-webkit-scrollbar:horizontal) {
+  height: 10px;
+}
+:deep(::-webkit-scrollbar-thumb) {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+
+  background: var(--el-color-primary-light-5);
+}
+
 :deep(.el-transfer) {
   text-align: center;
   --el-transfer-panel-width: 400px;
 }
 :deep(.el-transfer-panel__list) {
-  overflow-x: auto; // 啟用橫向卷軸
+  // overflow-x: auto; // 啟用橫向卷軸
   white-space: nowrap; //避免內容換行
 }
 :deep(.el-transfer-panel__item) {
-  display: inline-block;
+  // display: inline-block;
   width: 500px; //設定內容item寬度，根據內容的長度調整
 }
 @media screen and (max-width: 818px) {

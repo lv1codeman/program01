@@ -180,7 +180,7 @@ onMounted(() => {
     &:hover {
       cursor: pointer;
       // background-color: rgba(223, 223, 223, 0.06);
-      background-color: rgb(50 208 151 / 8%);
+      background-color: rgb(255 247 224 / 76%);
     }
     .box {
       display: relative;

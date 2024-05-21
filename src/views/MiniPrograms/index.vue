@@ -31,8 +31,6 @@ const ref1 = ref([])
 const ref2 = ref([])
 const ref3 = ref([])
 
-onMounted(() => {})
-
 const open = ref(false)
 const currentStep = ref()
 const elTourChanged = (step) => {
@@ -52,11 +50,20 @@ const btnName = computed(() => {
 
   return btnNameList
 })
+const show = ref(false)
+onMounted(() => {
+  // 設定Zoom 縮放的時間
+  document.documentElement.style.setProperty('--el-transition-duration', '.5s')
+  // 設定Fade 淡入淡出的時間
+  document.documentElement.style.setProperty('--el-transition-duration-fast', '.5s')
+  // cubic-bezier
+  document.documentElement.style.setProperty('--el-transition-function-ease-in-out-bezier', 'cubic-bezier(.42,0,.58,1)')
+
+  show.value = true
+})
 </script>
 <template>
   <el-tour v-model="open" @change="elTourChanged">
-    <!-- <el-tour-step :target="ref1?.$el" title="Upload File"> </el-tour-step>
-    <el-tour-step :target="ref2?.$el" title="Save" description="Save your changes" /> -->
     <el-tour-step
       :target="ref1[0]"
       title="學分學程"
@@ -95,8 +102,9 @@ const btnName = computed(() => {
   </el-tour>
   <div class="page-container">
     <!-- <div class="pageTitle">學分學程檢查</div> -->
+
     <pagetitle>
-      學分學程檢查
+      微學程檢查
       <el-button type="primary" @click="open = true">頁面引導教學</el-button>
     </pagetitle>
 
@@ -113,53 +121,48 @@ const btnName = computed(() => {
         @click="goResult"
         :ref="(el) => (ref1[index] = el)"
       >
-        <div class="box">
-          <el-tag type="success" size="" effect="dark" style="float: right" v-show="item.percent === 100"
-            >已完成 !!</el-tag
-          >
-          <el-tag
-            type="success"
-            size=""
-            effect="light"
-            style="float: right; border: 1px solid var(--el-color-success); color: var(--el-color-success)"
-            v-show="(item.percent >= 50) & (item.percent != 100)"
-            >即將完成</el-tag
-          >
-          <div class="subjectName">
-            <a :href="item.url" target="_blank" :ref="(el) => (ref2[index] = el)"
-              >{{ item.name }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
-            /></a>
-          </div>
-          <div class="subjectUnit">{{ item.unit }}</div>
-          <div :ref="(el) => (ref3[index] = el)">
-            <el-progress
-              class="progressbar"
-              :show-text="true"
-              :text-inside="false"
-              :stroke-width="26"
-              :percentage="item.percent"
-              :format="setItemText"
-              :status="setStatus(item)"
+        <transition name="el-fade-in-linear">
+          <div class="box" v-show="show">
+            <el-tag type="success" size="" effect="dark" style="float: right" v-show="item.percent === 100"
+              >已完成 !!</el-tag
             >
-            </el-progress>
+            <el-tag
+              type="success"
+              size=""
+              effect="plain"
+              style="float: right; border: 1px solid var(--el-color-success-light-3); color: var(--el-color-success)"
+              v-show="(item.percent >= 50) & (item.percent != 100)"
+              >即將完成</el-tag
+            >
+            <div class="subjectName">
+              <a :href="item.url" target="_blank" :ref="(el) => (ref2[index] = el)"
+                >{{ item.name }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
+              /></a>
+            </div>
+            <div class="subjectUnit">{{ item.unit }}</div>
+            <div :ref="(el) => (ref3[index] = el)">
+              <el-progress
+                class="progressbar"
+                :show-text="true"
+                :text-inside="false"
+                :stroke-width="26"
+                :percentage="item.percent"
+                :format="setItemText"
+                :status="setStatus(item)"
+              >
+              </el-progress>
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-:root {
-  --success-color: #ccc;
-}
-// .warningborder {
-//   border: 2px solid $successColor !important;
-// }
-
 .outouter-box {
   // height: 550px;
-  height: calc($baseNum * 4.75);
+  height: calc($baseNum * 5.6);
 
   display: flex;
   flex-wrap: wrap;
@@ -176,7 +179,8 @@ const btnName = computed(() => {
     margin-right: 1px;
     &:hover {
       cursor: pointer;
-      background-color: rgba(223, 223, 223, 0.06);
+      // background-color: rgba(223, 223, 223, 0.06);
+      background-color: rgb(255 247 224 / 76%);
     }
     .box {
       display: relative;
@@ -186,7 +190,8 @@ const btnName = computed(() => {
         font-size: 18px;
         font-weight: bold;
         & a:hover {
-          background-color: #dae7ff;
+          // background-color: #dae7ff;
+          background-color: #1088c630;
         }
       }
 
