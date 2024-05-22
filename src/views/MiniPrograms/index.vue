@@ -61,6 +61,15 @@ onMounted(() => {
 
   show.value = true
 })
+
+const setPrimary = (firstcolor) => {
+  console.log('change primary color')
+  const el = document.documentElement
+  getComputedStyle(el).getPropertyValue(`--el-color-primary`)
+  el.style.setProperty('--el-color-primary', firstcolor)
+}
+const color = ref('#6bb1cc')
+const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 </script>
 <template>
   <el-tour v-model="open" @change="elTourChanged">
@@ -106,6 +115,8 @@ onMounted(() => {
     <pagetitle>
       微學程檢查
       <el-button type="primary" @click="open = true">頁面引導教學</el-button>
+      <el-button class="mr-1" type="primary" @click="setPrimary(color)">更改primary色</el-button>
+      <el-color-picker v-model="color" show-alpha :predefine="predefineColors" @change="setPrimary(color)" />
     </pagetitle>
 
     <div class="outouter-box">
