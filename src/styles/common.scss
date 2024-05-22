@@ -9,10 +9,17 @@ html {
 }
 body {
   height: 100%;
-  color: #333;
-  min-width: 1240px;
-  font: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
-    'Hiragino Sans GB', 'STHeiti', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei',
+  color: var(--el-text-color-regular);
+  // color: #e5f3f7;
+  font:
+    1em/1.4 'Microsoft Yahei',
+    'PingFang SC',
+    'Avenir',
+    'Segoe UI',
+    'Hiragino Sans GB',
+    'STHeiti',
+    'Microsoft Sans Serif',
+    'WenQuanYi Micro Hei',
     sans-serif;
 }
 body,
@@ -28,7 +35,7 @@ dd {
 }
 a {
   text-decoration: none;
-  color: #333;
+  color: var(--el-text-color-primary);
   outline: none;
 }
 i {
@@ -57,12 +64,15 @@ ul {
 }
 
 #app {
-  background: #f5f5f5;
-  user-select: none;
+  // background: #f5f5f5;
+  background: $body-bg-color;
+  // 鎖定滑鼠選取
+  // user-select: none;
 }
 
-.container {
-  width: 1240px;
+.page-container {
+  max-width: 1240px;
+  padding: 0 20px;
   margin: 0 auto;
   position: relative;
 }
@@ -101,4 +111,10 @@ ul {
 // reset element
 .el-breadcrumb__inner.is-link {
   font-weight: 400 !important;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
