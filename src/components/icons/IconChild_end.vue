@@ -1,49 +1,48 @@
 <template>
   <svg
-    id="eBFcQijhmyR1"
+    id="eMgoKfrN5081"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 0 300 300"
+    viewBox="0 0 100 100"
     shape-rendering="geometricPrecision"
     text-rendering="geometricPrecision"
   >
     <line
       x1="0"
-      y1="-75"
+      y1="-150"
       x2="0"
-      y2="75"
-      transform="matrix(1 0 0 0.944072 150 79.1946)"
+      y2="25"
+      transform="translate(50.000001 25)"
       fill="none"
       stroke="#3f5787"
-      stroke-width="30"
-      stroke-linecap="round"
+      stroke-width="10"
       stroke-linejoin="round"
     />
     <line
-      x1="-75"
+      x1="0"
       y1="0"
-      x2="75"
+      x2="150"
       y2="0"
-      transform="matrix(.923844 0 0 1 219.2883 150)"
+      transform="matrix(1.010283 0 0-1 50.000001 50)"
       fill="none"
       stroke="#3f5787"
-      stroke-width="30"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke-width="10"
+      stroke-linecap="square"
+      stroke-linejoin="bevel"
     />
   </svg>
 </template>
 
 <script>
 export default {
-  name: 'NextLevelIcon'
+  name: 'IconChild_end'
 }
 </script>
 
 <style scoped>
 .set-icon-size {
-  width: 35px; /* 根据需要调整图标的大小 */
-  height: 35px; /* 根据需要调整图标的大小 */
+  width: 30px; /* 根据需要调整图标的大小 */
+  height: 50px; /* 根据需要调整图标的大小 */
   fill: currentColor; /* 使图标采用当前文本颜色 */
 }
 </style>

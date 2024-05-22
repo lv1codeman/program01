@@ -1,6 +1,6 @@
 <template>
   <svg
-    id="eBFcQijhmyR1"
+    id="eVuKev41Aw21"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 300 300"
@@ -12,10 +12,10 @@
       y1="-75"
       x2="0"
       y2="75"
-      transform="matrix(1 0 0 0.944072 150 79.1946)"
+      transform="matrix(1 0 0 2 150 150)"
       fill="none"
       stroke="#3f5787"
-      stroke-width="30"
+      stroke-width="10"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
@@ -24,10 +24,10 @@
       y1="0"
       x2="75"
       y2="0"
-      transform="matrix(.923844 0 0 1 219.2883 150)"
+      transform="matrix(1.496597 0 0-1 267.223638 150)"
       fill="none"
       stroke="#3f5787"
-      stroke-width="30"
+      stroke-width="10"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
@@ -36,13 +36,13 @@
 
 <script>
 export default {
-  name: 'NextLevelIcon'
+  name: 'IconNextLevel_more'
 }
 </script>
 
 <style scoped>
 .set-icon-size {
-  width: 35px; /* 根据需要调整图标的大小 */
+  width: 40px; /* 根据需要调整图标的大小 */
   height: 35px; /* 根据需要调整图标的大小 */
   fill: currentColor; /* 使图标采用当前文本颜色 */
 }
