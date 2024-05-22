@@ -1,13 +1,14 @@
 <script setup>
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { subjectList } from '@/assets/data/subjectList.js'
+import { result } from '@/assets/data/result.js'
 const tableData = []
 for (let i = 0; i < 10; i++) {
   tableData.push(subjectList[i])
 }
 const tableData2 = []
-for (let i = 10; i < 30; i++) {
-  tableData2.push(subjectList[i])
+for (let i = 0; i < 20; i++) {
+  tableData2.push(result[i])
 }
 console.log(tableData)
 </script>
@@ -34,6 +35,8 @@ console.log(tableData)
         <el-table-column prop="unit" label="開課單位" />
         <el-table-column prop="credit" label="學分" />
         <el-table-column prop="hour" label="學時" />
+        <el-table-column prop="finishtime" label="學年度-學期" />
+        <el-table-column prop="score" label="成績" />
       </el-table>
     </div>
   </div>
