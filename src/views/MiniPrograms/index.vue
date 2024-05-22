@@ -66,7 +66,7 @@ onMounted(() => {
   <el-tour v-model="open" @change="elTourChanged">
     <el-tour-step
       :target="ref1[0]"
-      title="學分學程"
+      title="微學程"
       description="點選進度條可查看結果"
       :next-button-props="{
         children: btnName[1]
@@ -74,8 +74,8 @@ onMounted(() => {
     />
     <el-tour-step
       :target="ref2[0]"
-      title="學分學程網址"
-      description="點擊後連至該學分學程網站"
+      title="微學程網址"
+      description="點擊後連至該微學程網站"
       :prev-button-props="{
         children: btnName[0]
       }"
