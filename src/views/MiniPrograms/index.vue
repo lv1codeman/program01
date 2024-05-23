@@ -67,6 +67,35 @@ const setPrimary = (firstcolor) => {
   const el = document.documentElement
   getComputedStyle(el).getPropertyValue(`--el-color-primary`)
   el.style.setProperty('--el-color-primary', firstcolor)
+  //#region 印出所有css
+  // const cssVariables = {}
+  // const sheets = document.styleSheets
+  // console.log(sheets.length)
+  // for (let i = 0; i < sheets.length; i++) {
+  //   const sheet = sheets[i]
+  //   // console.log(sheet.cssRules.length)
+  //   try {
+  //     const rules = sheet.cssRules
+  //     for (let j = 0; j < rules.length; j++) {
+  //       const rule = rules[j]
+  //       if (rule.style) {
+  //         for (let k = 0; k < rule.style.length; k++) {
+  //           const propName = rule.style[k]
+  //           if (propName.startsWith('--')) {
+  //             console.log('i=', i)
+  //             console.log('j=', j)
+  //             console.log('k=', k)
+  //             cssVariables[propName] = rule.style.getPropertyValue(propName).trim()
+  //           }
+  //         }
+  //       }
+  //     }
+  //   } catch (e) {
+  //     // console.warn(`無法存取樣式表：${sheet.href}`, e)
+  //   }
+  // }
+  // console.log(cssVariables)
+  //#endregion
 }
 const color = ref('#6bb1cc')
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])

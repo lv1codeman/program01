@@ -22,7 +22,7 @@ programList.value = [programData.length, miniProgramData.length]
         <RouterLink to="/programs"><el-button class="tab1">學分學程檢查</el-button></RouterLink>
       </el-col>
       <el-col class="tab" :span="7" :xs="11">
-        <RouterLink to="/programs"><el-button class="tab1">微學程檢查</el-button></RouterLink>
+        <RouterLink to="/miniprograms"><el-button class="tab1">微學程檢查</el-button></RouterLink>
       </el-col>
     </el-row>
   </div>
