@@ -1,11 +1,49 @@
 <script setup>
 import { ref } from 'vue'
-
-const setColor = (target, colorcode) => {
+import { rgbToHex, hexToRgb, rgbToHex_obj, rgbaToHex, genPrimaryLevel } from '@/utils/color/convertColorCode.js'
+const setColor = (target, colorCode) => {
   console.log('change primary color')
   const el = document.documentElement
-  getComputedStyle(el).getPropertyValue(`--el-color-primary`)
-  el.style.setProperty(target, colorcode)
+
+  const target_list = []
+  target_list.push({ key: target, value: colorCode })
+  target_list.push({
+    key: target + '-light-3',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 3))
+  })
+  target_list.push({
+    key: target + '-light-5',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 5))
+  })
+  target_list.push({
+    key: target + '-light-7',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 7))
+  })
+  target_list.push({
+    key: target + '-light-8',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 8))
+  })
+  target_list.push({
+    key: target + '-light-9',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 9))
+  })
+  target_list.push({
+    key: target + '-dark-2',
+    value: rgbToHex_obj(genPrimaryLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, -2))
+  })
+
+  target_list.forEach((item) => {
+    getComputedStyle(el).getPropertyValue(item.key)
+    el.style.setProperty(item.key, item.value)
+  })
+
+  // console.log(colorCode)
+
+  // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 3)))
+  // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 5)))
+  // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 7)))
+  // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 8)))
+  // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 9)))
 
   //#region 印出所有css
   // const cssVariables = {}
@@ -51,6 +89,7 @@ const primarycolor_dark_2 = ref('#568ea3')
 // const infocolor = ref('#8b8b8b')
 // const textprimarycolor = ref('#074b5f')
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
+// const colorresult = ref()
 </script>
 <template>
   <div class="page-container">
@@ -60,9 +99,9 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
       <div class="palette">
         <el-color-picker
           v-model="primarycolor"
-          show-alpha
           :predefine="predefineColors"
           @change="setColor('--el-color-primary', primarycolor)"
+          color-format="hex"
         />
       </div>
       <div class="title">主色-淡3階</div>
