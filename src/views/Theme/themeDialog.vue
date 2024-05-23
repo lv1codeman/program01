@@ -37,6 +37,7 @@ const setColor = (target, colorCode) => {
     el.style.setProperty(item.key, item.value)
   })
 
+  console.log(getComputedStyle(el).getPropertyValue('--el-color-error'))
   // console.log(colorCode)
 
   // console.log(rgbToHex_obj(genLightLevel(hexToRgb(colorCode).r, hexToRgb(colorCode).g, hexToRgb(colorCode).b, 3)))
@@ -104,54 +105,23 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
           color-format="hex"
         />
       </div>
-      <div class="title">主色-淡3階</div>
-      <div class="description">--el-color-primary-light-3</div>
-      <div class="palette">
-        <el-color-picker
-          v-model="primarycolor_light_3"
-          show-alpha
-          :predefine="predefineColors"
-          @change="setColor('--el-color-primary-light-3', primarycolor_light_3)"
-        />
+      <div class="showPalette">
+        <div class="origin">origin</div>
+        <div class="light3">light3</div>
+        <div class="light5">light5</div>
+        <div class="light7">light7</div>
+        <div class="light8">light8</div>
+        <div class="light9">light9</div>
+        <div class="dark">dark</div>
       </div>
-      <div class="title">主色-淡5階</div>
-      <div class="description">--el-color-primary-light-5</div>
+      <div class="title">成功色</div>
+      <div class="description">--el-color-success</div>
       <div class="palette">
         <el-color-picker
-          v-model="primarycolor_light_5"
-          show-alpha
+          v-model="successcolor"
           :predefine="predefineColors"
-          @change="setColor('--el-color-primary-light-5', primarycolor_light_5)"
-        />
-      </div>
-      <div class="title">主色-淡7階</div>
-      <div class="description">--el-color-primary-light-7</div>
-      <div class="palette">
-        <el-color-picker
-          v-model="primarycolor_light_7"
-          show-alpha
-          :predefine="predefineColors"
-          @change="setColor('--el-color-primary-light-7', primarycolor_light_7)"
-        />
-      </div>
-      <div class="title">主色-淡8階</div>
-      <div class="description">--el-color-primary-light-8</div>
-      <div class="palette">
-        <el-color-picker
-          v-model="primarycolor_light_8"
-          show-alpha
-          :predefine="predefineColors"
-          @change="setColor('--el-color-primary-light-8', primarycolor_light_8)"
-        />
-      </div>
-      <div class="title">主色-淡9階</div>
-      <div class="description">--el-color-primary-light-9</div>
-      <div class="palette">
-        <el-color-picker
-          v-model="primarycolor_light_9"
-          show-alpha
-          :predefine="predefineColors"
-          @change="setColor('--el-color-primary-light-9', primarycolor_light_9)"
+          @change="setColor('--el-color-success', primarycolor)"
+          color-format="hex"
         />
       </div>
     </div>
