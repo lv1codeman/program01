@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/Home/index.vue'
-import Category from '@/views/Category/index.vue'
 import Programs from '@/views/Programs/index.vue'
 import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
@@ -24,10 +23,6 @@ const router = createRouter({
           // 這邊path留空會默認當訪問parent時也會顯示這個children
           path: '',
           component: Home
-        },
-        {
-          path: 'category',
-          component: Category
         },
         {
           path: 'programs',

@@ -38,6 +38,7 @@ const elTourChanged = (step) => {
   console.log(currentStep.value)
   console.log(btnName.value[1])
 }
+
 const btnName = computed(() => {
   let btnNameList = []
   if (!currentStep.value || currentStep.value === 0) {
@@ -52,6 +53,8 @@ const btnName = computed(() => {
 })
 const show = ref(false)
 onMounted(() => {
+  //#region 設定動畫時間
+
   // 設定Zoom 縮放的時間
   document.documentElement.style.setProperty('--el-transition-duration', '.5s')
   // 設定Fade 淡入淡出的時間
@@ -60,45 +63,8 @@ onMounted(() => {
   document.documentElement.style.setProperty('--el-transition-function-ease-in-out-bezier', 'cubic-bezier(.42,0,.58,1)')
 
   show.value = true
-})
-
-const setPrimary = (firstcolor) => {
-  console.log('change primary color')
-  const el = document.documentElement
-  getComputedStyle(el).getPropertyValue(`--el-color-primary`)
-  el.style.setProperty('--el-color-primary', firstcolor)
-  //#region 印出所有css
-  // const cssVariables = {}
-  // const sheets = document.styleSheets
-  // console.log(sheets.length)
-  // for (let i = 0; i < sheets.length; i++) {
-  //   const sheet = sheets[i]
-  //   // console.log(sheet.cssRules.length)
-  //   try {
-  //     const rules = sheet.cssRules
-  //     for (let j = 0; j < rules.length; j++) {
-  //       const rule = rules[j]
-  //       if (rule.style) {
-  //         for (let k = 0; k < rule.style.length; k++) {
-  //           const propName = rule.style[k]
-  //           if (propName.startsWith('--')) {
-  //             console.log('i=', i)
-  //             console.log('j=', j)
-  //             console.log('k=', k)
-  //             cssVariables[propName] = rule.style.getPropertyValue(propName).trim()
-  //           }
-  //         }
-  //       }
-  //     }
-  //   } catch (e) {
-  //     // console.warn(`無法存取樣式表：${sheet.href}`, e)
-  //   }
-  // }
-  // console.log(cssVariables)
   //#endregion
-}
-const color = ref('#6bb1cc')
-const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
+})
 </script>
 <template>
   <el-tour v-model="open" @change="elTourChanged">
@@ -144,8 +110,6 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
     <pagetitle>
       微學程檢查
       <el-button type="primary" @click="open = true">頁面引導教學</el-button>
-      <el-button class="mr-1" type="primary" @click="setPrimary(color)">更改primary色</el-button>
-      <el-color-picker v-model="color" show-alpha :predefine="predefineColors" @change="setPrimary(color)" />
     </pagetitle>
 
     <div class="outouter-box">
