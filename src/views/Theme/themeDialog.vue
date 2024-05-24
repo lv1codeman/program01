@@ -114,13 +114,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="primary-light9">light9</div>
-          <div class="primary-light8">light8</div>
-          <div class="primary-light7">light7</div>
-          <div class="primary-light5">light5</div>
-          <div class="primary-light3">light3</div>
-          <div class="primary-origin">origin</div>
           <div class="primary-dark">dark</div>
+          <div class="primary-origin">origin</div>
+          <div class="primary-light3">light3</div>
+          <div class="primary-light5">light5</div>
+          <div class="primary-light7">light7</div>
+          <div class="primary-light8">light8</div>
+          <div class="primary-light9">light9</div>
         </div>
       </div>
       <el-divider />
@@ -135,13 +135,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="success-light9">light9</div>
-          <div class="success-light8">light8</div>
-          <div class="success-light7">light7</div>
-          <div class="success-light5">light5</div>
-          <div class="success-light3">light3</div>
-          <div class="success-origin">origin</div>
           <div class="success-dark">dark</div>
+          <div class="success-origin">origin</div>
+          <div class="success-light3">light3</div>
+          <div class="success-light5">light5</div>
+          <div class="success-light7">light7</div>
+          <div class="success-light8">light8</div>
+          <div class="success-light9">light9</div>
         </div>
       </div>
       <el-divider />
@@ -156,13 +156,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="warning-light9">light9</div>
-          <div class="warning-light8">light8</div>
-          <div class="warning-light7">light7</div>
-          <div class="warning-light5">light5</div>
-          <div class="warning-light3">light3</div>
-          <div class="warning-origin">origin</div>
           <div class="warning-dark">dark</div>
+          <div class="warning-origin">origin</div>
+          <div class="warning-light3">light3</div>
+          <div class="warning-light5">light5</div>
+          <div class="warning-light7">light7</div>
+          <div class="warning-light8">light8</div>
+          <div class="warning-light9">light9</div>
         </div>
       </div>
       <el-divider />
@@ -178,13 +178,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="danger-light9">light9</div>
-          <div class="danger-light8">light8</div>
-          <div class="danger-light7">light7</div>
-          <div class="danger-light5">light5</div>
-          <div class="danger-light3">light3</div>
-          <div class="danger-origin">origin</div>
           <div class="danger-dark">dark</div>
+          <div class="danger-origin">origin</div>
+          <div class="danger-light3">light3</div>
+          <div class="danger-light5">light5</div>
+          <div class="danger-light7">light7</div>
+          <div class="danger-light8">light8</div>
+          <div class="danger-light9">light9</div>
         </div>
       </div>
       <el-divider />
@@ -199,13 +199,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="error-light9">light9</div>
-          <div class="error-light8">light8</div>
-          <div class="error-light7">light7</div>
-          <div class="error-light5">light5</div>
-          <div class="error-light3">light3</div>
-          <div class="error-origin">origin</div>
           <div class="error-dark">dark</div>
+          <div class="error-origin">origin</div>
+          <div class="error-light3">light3</div>
+          <div class="error-light5">light5</div>
+          <div class="error-light7">light7</div>
+          <div class="error-light8">light8</div>
+          <div class="error-light9">light9</div>
         </div>
       </div>
       <el-divider />
@@ -220,13 +220,13 @@ const resetColor = () => {
               color-format="hex"
             />
           </div>
-          <div class="info-light9">light9</div>
-          <div class="info-light8">light8</div>
-          <div class="info-light7">light7</div>
-          <div class="info-light5">light5</div>
-          <div class="info-light3">light3</div>
-          <div class="info-origin">origin</div>
           <div class="info-dark">dark</div>
+          <div class="info-origin">origin</div>
+          <div class="info-light3">light3</div>
+          <div class="info-light5">light5</div>
+          <div class="info-light7">light7</div>
+          <div class="info-light8">light8</div>
+          <div class="info-light9">light9</div>
         </div>
       </div>
       <el-divider />
