@@ -52,34 +52,34 @@ export function rgbaToHex(orig) {
 export function genPrimaryLevel(r, g, b, level) {
   switch (level) {
     case -2:
-      r = r - 21
-      g = g - 35
-      b = b - 41
+      r = r - 21 < 0 ? 0 : r - 21
+      g = g - 35 < 0 ? 0 : r - 35
+      b = b - 41 < 0 ? 0 : r - 41
       break
     case 3:
-      r = r + 44
-      g = g + 23
-      b = b + 15
+      r = r + 44 > 255 ? 255 : r + 44
+      g = g + 23 > 255 ? 255 : r + 23
+      b = b + 15 > 255 ? 255 : r + 15
       break
     case 5:
-      r = r + 74
-      g = g + 39
-      b = b + 26
+      r = r + 74 > 255 ? 255 : r + 74
+      g = g + 39 > 255 ? 255 : r + 39
+      b = b + 26 > 255 ? 255 : r + 26
       break
     case 7:
-      r = r + 104
-      g = g + 55
-      b = b + 36
+      r = r + 104 > 255 ? 255 : r + 104
+      g = g + 55 > 255 ? 255 : r + 55
+      b = b + 36 > 255 ? 255 : r + 36
       break
     case 8:
-      r = r + 118
-      g = g + 62
-      b = b + 41
+      r = r + 118 > 255 ? 255 : r + 118
+      g = g + 62 > 255 ? 255 : r + 62
+      b = b + 41 > 255 ? 255 : r + 41
       break
     case 9:
-      r = r + 133
-      g = g + 70
-      b = b + 46
+      r = r + 133 > 255 ? 255 : r + 133
+      g = g + 70 > 255 ? 255 : r + 70
+      b = b + 46 > 255 ? 255 : r + 46
       break
     default:
       break
