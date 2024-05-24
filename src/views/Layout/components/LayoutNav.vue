@@ -17,7 +17,7 @@ const dialogOverflowVisible = ref(false)
             <!-- <el-button type="primary" plain>color</el-button> -->
           </li>
           <li>
-            <RouterLink to="/setprogram">學程設置(系辦)</RouterLink>
+            <a href="https://webap0.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
           </li>
           <li>
             <a href="javascript:;"><i class="iconfont icon-user"></i>周杰倫</a>
@@ -52,8 +52,11 @@ const dialogOverflowVisible = ref(false)
   color: white;
   font-size: 24px;
   margin-right: 5px;
+  border-radius: 42px;
+  cursor: pointer;
+  padding: 5px;
   &:hover {
-    background-color: var(--el-color-primary-light-3);
+    background-color: var(--el-color-primary-dark-2);
   }
 }
 

@@ -1,16 +1,10 @@
 <script setup>
 import { ref } from 'vue'
-// import { rgbToHex, hexToRgb, rgbToHex_obj, rgbaToHex, genPrimaryLevel } from '@/utils/color/convertColorCode.js'
 import generateShades from '@/utils/color/genColorGrade.js'
 const setColor = (target, colorCode) => {
   console.log('change primary color')
   const el = document.documentElement
-  // console.log(getComputedStyle(el).getPropertyValue('--el-color-primary'))
-
   const colorTable = generateShades(colorCode)
-  console.log(colorTable)
-
-  console.log('target=', target)
 
   //#region 建立色階表
   const postfix = []
@@ -28,12 +22,11 @@ const setColor = (target, colorCode) => {
   const target_list = []
   for (let i = 0; i < postfix.length; i++) target_list.push({ key: postfix[i], value: colorTable[i] })
 
-  console.log(target_list)
-
   target_list.forEach((item) => {
     getComputedStyle(el).getPropertyValue(item.key)
     el.style.setProperty(item.key, item.value)
   })
+  console.log(primaryColor.value)
 }
 
 const setTextColor = (target, colorCode) => {
