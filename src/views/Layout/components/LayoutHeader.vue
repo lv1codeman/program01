@@ -29,8 +29,7 @@ const router = useRouter()
 const activeName = ref('index')
 const handleClick = () => {
   switch (event.target.innerText) {
-    case '首頁':
-      router.push({ path: '/' })
+    case '開課查詢':
       break
     case '學分學程檢查':
       router.push({ path: '/programs' })
@@ -51,7 +50,7 @@ const handleClick = () => {
         </div>
         <div class="app-header-nav2">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="首頁" name="index"></el-tab-pane>
+            <el-tab-pane label="開課查詢" name="index"></el-tab-pane>
             <el-tab-pane label="學分學程檢查" name="programs"></el-tab-pane>
             <el-tab-pane label="微學程檢查" name="miniprograms"></el-tab-pane>
           </el-tabs>

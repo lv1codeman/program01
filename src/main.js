@@ -7,8 +7,8 @@ import App from './App.vue'
 import router from './router'
 
 //切換vue時滑至頁面頂部
-router.afterEach((to, from, next)=>{
-  window.scrollTo(0,0);
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
 })
 // 測試接口函數
 // import { getCategory } from '@/apis/testAPI'
@@ -29,7 +29,8 @@ import {
   faBuildingColumns,
   faBook,
   faPhone,
-  faLink
+  faLink,
+  faPalette
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -42,7 +43,8 @@ library.add(
   faBuildingColumns,
   faBook,
   faPhone,
-  faLink
+  faLink,
+  faPalette
 )
 
 const app = createApp(App)

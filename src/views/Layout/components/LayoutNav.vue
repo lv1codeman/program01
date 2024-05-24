@@ -13,7 +13,8 @@ const dialogOverflowVisible = ref(false)
             <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
           </li> -->
           <li>
-            <el-button type="primary" plain @click="dialogOverflowVisible = true">color</el-button>
+            <font-awesome-icon class="palette" icon="fa-palette" @click="dialogOverflowVisible = true" />
+            <!-- <el-button type="primary" plain>color</el-button> -->
           </li>
           <li>
             <RouterLink to="/setprogram">學程設置(系辦)</RouterLink>
@@ -47,6 +48,15 @@ const dialogOverflowVisible = ref(false)
 </template>
 
 <style scoped lang="scss">
+.palette {
+  color: white;
+  font-size: 24px;
+  margin-right: 5px;
+  &:hover {
+    background-color: var(--el-color-primary-light-3);
+  }
+}
+
 .app-topnav {
   background: $nav-bg-color;
 
