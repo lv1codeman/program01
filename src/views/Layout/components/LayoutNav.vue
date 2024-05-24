@@ -1,7 +1,10 @@
 <script setup>
 import themeView from '@/views/Theme/themeDialog.vue'
 import { ref } from 'vue'
-const dialogOverflowVisible = ref(false)
+const dialogVisible = ref(false)
+const handleDialogUpdate = (newVal) => {
+  dialogVisible.value = newVal
+}
 </script>
 
 <template>
@@ -13,7 +16,7 @@ const dialogOverflowVisible = ref(false)
             <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
           </li> -->
           <li>
-            <font-awesome-icon class="palette" icon="fa-palette" @click="dialogOverflowVisible = true" />
+            <font-awesome-icon class="palette" icon="fa-palette" @click="dialogVisible = !dialogVisible" />
             <!-- <el-button type="primary" plain>color</el-button> -->
           </li>
           <li>
@@ -36,15 +39,7 @@ const dialogOverflowVisible = ref(false)
       </ul>
     </div>
   </nav>
-  <el-dialog v-model="dialogOverflowVisible" title="樣板配置" width="500" draggable overflow>
-    <themeView />
-    <template #footer>
-      <div class="dialog-footer">
-        <el-button @click="dialogOverflowVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogOverflowVisible = false"> Confirm </el-button>
-      </div>
-    </template>
-  </el-dialog>
+  <themeView :isShowDialog="dialogVisible" @update:isShowDialog="handleDialogUpdate" />
 </template>
 
 <style scoped lang="scss">

@@ -1,6 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, defineProps } from 'vue'
 import generateShades from '@/utils/color/genColorGrade.js'
+
+const showDialog = ref(false)
+const props = defineProps({
+  isShowDialog: Boolean
+})
+const emit = defineEmits(['update:isShowDialog'])
+
+watch(
+  () => props.isShowDialog,
+  (newValue) => {
+    showDialog.value = newValue
+    // console.log('dialogVisible:', newValue)
+  },
+  { immediate: true }
+)
+
+const handleDialogClose = () => {
+  showDialog.value = false
+  emit('update:isShowDialog', false)
+}
+
 const setColor = (target, colorCode) => {
   console.log('change primary color')
   const el = document.documentElement
@@ -54,10 +75,9 @@ const textColor = ref('#074b5f')
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
-// const colorresult = ref()
 </script>
 <template>
-  <div class="page-container">
+  <el-dialog v-model="showDialog" @close="handleDialogClose" title="樣板配置" width="500" draggable overflow>
     <div class="themeBox">
       <div class="colorBox">
         <div class="title">主色 --el-color-primary</div>
@@ -201,7 +221,13 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
       </div>
       <el-divider />
     </div>
-  </div>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="showDialog = false">Cancel</el-button>
+        <el-button type="primary" @click="showDialog = false"> Confirm </el-button>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 <style lang="scss" scoped>
 .showPalette-text {
