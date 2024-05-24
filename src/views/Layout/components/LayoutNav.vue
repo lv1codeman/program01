@@ -1,12 +1,19 @@
-<script setup></script>
+<script setup>
+import themeView from '@/views/Theme/themeDialog.vue'
+import { ref } from 'vue'
+const dialogOverflowVisible = ref(false)
+</script>
 
 <template>
   <nav class="app-topnav">
     <div class="page-container">
       <ul>
         <template v-if="true">
-          <li>
+          <!-- <li>
             <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
+          </li> -->
+          <li>
+            <el-button type="primary" plain @click="dialogOverflowVisible = true">color</el-button>
           </li>
           <li>
             <RouterLink to="/setprogram">學程設置(系辦)</RouterLink>
@@ -28,6 +35,15 @@
       </ul>
     </div>
   </nav>
+  <el-dialog v-model="dialogOverflowVisible" title="樣板配置" width="500" draggable overflow>
+    <themeView />
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="dialogOverflowVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogOverflowVisible = false"> Confirm </el-button>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 
 <style scoped lang="scss">

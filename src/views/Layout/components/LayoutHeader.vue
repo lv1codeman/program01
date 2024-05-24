@@ -24,7 +24,6 @@ onMounted(() => {
 //#endregion
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-import themeView from '@/views/Theme/themeDialog.vue'
 const router = useRouter()
 
 const activeName = ref('index')
@@ -41,8 +40,6 @@ const handleClick = () => {
       break
   }
 }
-
-const dialogOverflowVisible = ref(false)
 </script>
 
 <template>
@@ -59,21 +56,9 @@ const dialogOverflowVisible = ref(false)
             <el-tab-pane label="微學程檢查" name="miniprograms"></el-tab-pane>
           </el-tabs>
         </div>
-        <div class="app-header-nav2">
-          <el-button type="primary" plain @click="dialogOverflowVisible = true">color</el-button>
-        </div>
       </div>
     </div>
   </header>
-  <el-dialog v-model="dialogOverflowVisible" title="樣板配置" width="500" draggable overflow>
-    <themeView />
-    <template #footer>
-      <div class="dialog-footer">
-        <el-button @click="dialogOverflowVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogOverflowVisible = false"> Confirm </el-button>
-      </div>
-    </template>
-  </el-dialog>
 </template>
 
 <style scoped lang="scss">

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
+import pageTitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { programData, miniProgramData } from '@/assets/data/programData.js'
 const programList = ref([])
 
@@ -8,7 +8,7 @@ programList.value = [programData.length, miniProgramData.length]
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>學程檢查平台</pagetitle>
+    <pageTitle>學程檢查平台</pageTitle>
     <p>
       本校至今已有設置{{ programList[0] }}個學分學程、{{
         programList[1]
