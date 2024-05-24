@@ -1,8 +1,9 @@
 <script setup>
 import { ref, watch, defineProps } from 'vue'
-import generateShades from '@/utils/color/genColorGrade.js'
-
+import mixColor from '@/utils/color/epColorMix.js'
+import genColorTag from '@/utils/color/genColorTag.js'
 const showDialog = ref(false)
+
 const props = defineProps({
   isShowDialog: Boolean
 })
@@ -12,7 +13,6 @@ watch(
   () => props.isShowDialog,
   (newValue) => {
     showDialog.value = newValue
-    // console.log('dialogVisible:', newValue)
   },
   { immediate: true }
 )
@@ -22,32 +22,35 @@ const handleDialogClose = () => {
   emit('update:isShowDialog', false)
 }
 
-const setColor = (target, colorCode) => {
-  console.log('change primary color')
+const setColor = (colorTag, colorCode) => {
+  console.log('change color by target tag')
+  const white = '#ffffff'
+  const black = '#000000'
+
   const el = document.documentElement
-  const colorTable = generateShades(colorCode)
+  let colorTagList = genColorTag(colorTag)
 
-  //#region 建立色階表
-  const postfix = []
-  postfix[0] = target
-  for (let i = 0; i < 9; i++) {
-    postfix[i + 1] = target + '-light-' + (i + 1)
+  console.log(colorTagList)
+  // 0.7 = (10-3)*0.1
+  let colorCodeList = [
+    colorCode,
+    mixColor(white, colorCode, (10 - 3) * 0.1),
+    mixColor(white, colorCode, (10 - 5) * 0.1),
+    mixColor(white, colorCode, (10 - 7) * 0.1),
+    mixColor(white, colorCode, (10 - 8) * 0.1),
+    mixColor(white, colorCode, (10 - 9) * 0.1),
+    mixColor(black, colorCode, (10 - 2) * 0.1)
+  ]
+
+  const colorList = []
+  for (let i = 0; i < 7; i++) {
+    colorList.push({ key: colorTagList[i], value: colorCodeList[i] })
   }
-  for (let i = 10; i < 12; i++) {
-    postfix[i] = target + '-dark-' + (i - 9)
-  }
-  // 第一個顏色放原本的色碼
-  colorTable.unshift(colorCode)
-  //#endregion
 
-  const target_list = []
-  for (let i = 0; i < postfix.length; i++) target_list.push({ key: postfix[i], value: colorTable[i] })
-
-  target_list.forEach((item) => {
+  colorList.forEach((item) => {
     getComputedStyle(el).getPropertyValue(item.key)
     el.style.setProperty(item.key, item.value)
   })
-  console.log(primaryColor.value)
 }
 
 const setTextColor = (target, colorCode) => {
@@ -55,14 +58,9 @@ const setTextColor = (target, colorCode) => {
   getComputedStyle(el).getPropertyValue(target)
   el.style.setProperty(target, colorCode)
 }
-// $primaryColor: #6bb1cc;
-// $successColor: #ffbd41;
-// $warningColor: #ffeccc;
-// $dangerColor: #a33131;
-// $errorColor: #d41414;
-// $infoColor: #8b8b8b;
 
 //#region 顏色變數宣告
+// origin用於resetColor, 非origin用於el-color-picker的v-modal，所以這邊都不能省略
 const primaryColor = ref('#6bb1cc')
 const successColor = ref('#ffbd41')
 const warningColor = ref('#ffeccc')
@@ -82,7 +80,6 @@ const origin_textColor = ref('#074b5f')
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 
 const resetColor = () => {
-  // setColor('--el-color-primary', primaryColor.value)
   console.log('resetColor event start')
   primaryColor.value = origin_primaryColor.value
   successColor.value = origin_successColor.value
