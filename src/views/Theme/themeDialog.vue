@@ -51,7 +51,6 @@ const setColor = (target, colorCode) => {
 }
 
 const setTextColor = (target, colorCode) => {
-  console.log('change primary color')
   const el = document.documentElement
   getComputedStyle(el).getPropertyValue(target)
   el.style.setProperty(target, colorCode)
@@ -69,12 +68,40 @@ const successColor = ref('#ffbd41')
 const warningColor = ref('#ffeccc')
 const dangerColor = ref('#a33131')
 const errorColor = ref('#d41414')
-
 const infoColor = ref('#8b8b8b')
 const textColor = ref('#074b5f')
+const origin_primaryColor = ref('#6bb1cc')
+const origin_successColor = ref('#ffbd41')
+const origin_warningColor = ref('#ffeccc')
+const origin_dangerColor = ref('#a33131')
+const origin_errorColor = ref('#d41414')
+const origin_infoColor = ref('#8b8b8b')
+const origin_textColor = ref('#074b5f')
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
+
+const resetColor = () => {
+  // setColor('--el-color-primary', primaryColor.value)
+  console.log('resetColor event start')
+  primaryColor.value = origin_primaryColor.value
+  successColor.value = origin_successColor.value
+  warningColor.value = origin_warningColor.value
+  dangerColor.value = origin_dangerColor.value
+  errorColor.value = origin_errorColor.value
+  infoColor.value = origin_infoColor.value
+  textColor.value = origin_textColor.value
+
+  setColor('--el-color-primary', primaryColor.value)
+  setColor('--el-color-success', successColor.value)
+  setColor('--el-color-warning', warningColor.value)
+  setColor('--el-color-danger', dangerColor.value)
+  setColor('--el-color-error', errorColor.value)
+  setColor('--el-color-info', infoColor.value)
+  setTextColor('--el-text-color-regular', textColor.value)
+
+  showDialog.value = false
+}
 </script>
 <template>
   <el-dialog v-model="showDialog" @close="handleDialogClose" title="樣板配置" width="500" draggable overflow>
@@ -223,7 +250,7 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
     </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="showDialog = false">Cancel</el-button>
+        <el-button @click="resetColor">Cancel</el-button>
         <el-button type="primary" @click="showDialog = false"> Confirm </el-button>
       </div>
     </template>
@@ -231,7 +258,15 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 </template>
 <style lang="scss" scoped>
 .showPalette-text {
-  padding-left: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+  text-align: center;
+  .palette {
+    width: 50px;
+  }
 }
 :deep(.el-divider--horizontal) {
   margin: 5px 0;
@@ -255,7 +290,7 @@ $darkLevel: 2;
     display: flex;
     margin: 5px 0;
     gap: 5px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
 

@@ -67,8 +67,13 @@ onMounted(() => {
 
   show.value = true
 })
+import mixColor from '@/utils/color/epColorMix.js'
+const test = () => {
+  console.log(mixColor('#ffffff', '#6bb1cc', 0.7))
+}
 </script>
 <template>
+  <el-button @click="test">aaa</el-button>
   <el-tour v-model="open" @change="elTourChanged">
     <el-tour-step
       :target="ref1[0]"
