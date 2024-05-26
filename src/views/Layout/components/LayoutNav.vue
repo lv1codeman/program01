@@ -56,7 +56,7 @@ const handleDialogUpdate = (newVal) => {
 }
 
 .app-topnav {
-  background: $nav-bg-color;
+  background: var(--nav-bg-color);
 
   ul {
     display: flex;

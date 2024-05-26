@@ -23,7 +23,6 @@
   top: -5px;
   left: 0;
   filter: invert(91%) sepia(14%) saturate(209%) hue-rotate(159deg) brightness(100%) contrast(94%);
-  // filter: invert(0.91) sepia(0.31) hue-rotate(176deg) saturate(3) brightness(0.6) contrast(1.1);
   background: url('@/assets/images/drop.png') no-repeat;
   background-size: contain;
   z-index: -1;

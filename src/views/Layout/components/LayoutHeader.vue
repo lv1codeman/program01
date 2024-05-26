@@ -74,7 +74,7 @@ const handleClick = () => {
   }
 }
 :deep(.el-tabs__item.is-active) {
-  color: $nav-bg-color;
+  color: var(nav-bg-color);
 }
 
 .app-header {

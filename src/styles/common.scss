@@ -1,3 +1,6 @@
+:root{
+  --nav-bg-color: #22668d;
+}
 // 重置样式
 * {
   box-sizing: border-box;
@@ -64,8 +67,6 @@ ul {
 }
 
 #app {
-  // background: #f5f5f5;
-  // background: $body-bg-color;
   // 鎖定滑鼠選取
   // user-select: none;
 }

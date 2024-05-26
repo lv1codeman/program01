@@ -67,30 +67,45 @@ const warningColor = ref('#ffeccc')
 const dangerColor = ref('#a33131')
 const errorColor = ref('#d41414')
 const infoColor = ref('#8b8b8b')
-const textColor = ref('#074b5f')
+const textColorRegular = ref('#276075')
+const textColorPrimary = ref('#074b5f')
+const textColorSecondary = ref('#568da3')
+const textColorPlaceholder = ref('#cce6ed')
 const bgPageColor = ref('#f7fafb')
+const navbgColor = ref('#22668d')
+
 const origin_primaryColor = ref('#6bb1cc')
 const origin_successColor = ref('#ffbd41')
 const origin_warningColor = ref('#ffeccc')
 const origin_dangerColor = ref('#a33131')
 const origin_errorColor = ref('#d41414')
 const origin_infoColor = ref('#8b8b8b')
-const origin_textColor = ref('#074b5f')
+const origin_textColorRegular = ref('#074b5f')
+const origin_textColorPrimary = ref('#074b5f')
+const origin_textColorSecondary = ref('#568da3')
+const origin_textColorPlaceholder = ref('#cce6ed')
 const origin_bgPageColor = ref('#f7fafb')
+const origin_navbgColor = ref('#22668d')
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 
 const resetColor = () => {
   console.log('resetColor event start')
+  //#region 變數重製回origin並以origin重設
   primaryColor.value = origin_primaryColor.value
   successColor.value = origin_successColor.value
   warningColor.value = origin_warningColor.value
   dangerColor.value = origin_dangerColor.value
   errorColor.value = origin_errorColor.value
   infoColor.value = origin_infoColor.value
-  textColor.value = origin_textColor.value
+  textColorRegular.value = origin_textColorRegular.value
+  textColorPrimary.value = origin_textColorPrimary.value
+  textColorSecondary.value = origin_textColorSecondary.value
+  textColorPlaceholder.value = origin_textColorPlaceholder.value
+
   bgPageColor.value = origin_bgPageColor.value
+  navbgColor.value = origin_navbgColor.value
 
   setMainColor('--el-color-primary', primaryColor.value)
   setMainColor('--el-color-success', successColor.value)
@@ -98,25 +113,32 @@ const resetColor = () => {
   setMainColor('--el-color-danger', dangerColor.value)
   setMainColor('--el-color-error', errorColor.value)
   setMainColor('--el-color-info', infoColor.value)
-  setSingleColor('--el-text-color-regular', textColor.value)
+  setSingleColor('--el-text-color-regular', textColorRegular.value)
+  setSingleColor('--el-text-color-primary', textColorPrimary.value)
+  setSingleColor('--el-text-color-secondary', textColorSecondary.value)
+  setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
   setSingleColor('--el-bg-color-page', bgPageColor.value)
-
+  setSingleColor('--nav-bg-color', navbgColor.value)
+  //#endregion
   showDialog.value = false
 }
 
 const setTemplate = (templateNumber) => {
   switch (templateNumber) {
     case 1:
-      // $body-bg-color: #f9fbf7;
-      // $nav-bg-color: #6f8745;
-      // $baseColor: #ead8c0;
       primaryColor.value = '#94af64'
       successColor.value = '#df9348'
       warningColor.value = '#ffeccc'
       dangerColor.value = '#ae3243'
       errorColor.value = '#2b2118'
       infoColor.value = '#828282'
+
+      textColorRegular.value = '#556b2e'
+      textColorPrimary.value = '#42610d'
+      textColorSecondary.value = '#668a28'
+      textColorPlaceholder.value = '#99c74a'
       bgPageColor.value = '#f2f2f2'
+      navbgColor.value = '#6f8745'
       setMainColor('--el-color-primary', primaryColor.value)
       setMainColor('--el-color-success', successColor.value)
       setMainColor('--el-color-warning', warningColor.value)
@@ -124,7 +146,13 @@ const setTemplate = (templateNumber) => {
       setMainColor('--el-color-error', errorColor.value)
       setMainColor('--el-color-info', infoColor.value)
 
+      setSingleColor('--el-text-color-regular', textColorRegular.value)
+      setSingleColor('--el-text-color-primary', textColorPrimary.value)
+      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
+      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
       setSingleColor('--el-bg-color-page', bgPageColor.value)
+      setSingleColor('--nav-bg-color', navbgColor.value)
+
       break
     case 2:
       break
@@ -136,7 +164,16 @@ const setTemplate = (templateNumber) => {
 }
 </script>
 <template>
-  <el-dialog v-model="showDialog" @close="handleDialogClose" title="樣板配置" width="500" draggable overflow>
+  <el-dialog
+    class="theme-dialog"
+    v-model="showDialog"
+    @close="handleDialogClose"
+    title="樣板配置"
+    width="500"
+    top="50px"
+    draggable
+    overflow
+  >
     <div class="templateSelect">
       <div class="template1" @click="setTemplate(1)">
         <div>&nbsp;</div>
@@ -302,13 +339,58 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="textColor"
+              v-model="textColorRegular"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-text-color-regular', textColor)"
+              @change="setSingleColor('--el-text-color-regular', textColorRegular)"
               color-format="hex"
             />
           </div>
-          <div>文字色 --el-text-color-regular</div>
+          <div>一般文字色 --el-text-color-regular</div>
+        </div>
+      </div>
+      <el-divider />
+      <div class="colorBox">
+        <div class="title"></div>
+        <div class="showPalette-single">
+          <div class="palette">
+            <el-color-picker
+              v-model="textColorPrimary"
+              :predefine="predefineColors"
+              @change="setSingleColor('--el-text-color-primary', textColorPrimary)"
+              color-format="hex"
+            />
+          </div>
+          <div>主要文字色 --el-text-color-primary</div>
+        </div>
+      </div>
+      <el-divider />
+      <div class="colorBox">
+        <div class="title"></div>
+        <div class="showPalette-single">
+          <div class="palette">
+            <el-color-picker
+              v-model="textColorSecondary"
+              :predefine="predefineColors"
+              @change="setSingleColor('--el-text-color-secondary', textColorSecondary)"
+              color-format="hex"
+            />
+          </div>
+          <div>次要文字色 --el-text-color-secondary</div>
+        </div>
+      </div>
+      <el-divider />
+      <div class="colorBox">
+        <div class="title"></div>
+        <div class="showPalette-single">
+          <div class="palette">
+            <el-color-picker
+              v-model="textColorPlaceholder"
+              :predefine="predefineColors"
+              @change="setSingleColor('--el-text-color-placeholder', textColorPlaceholder)"
+              color-format="hex"
+            />
+          </div>
+          <div>提示文字色 --el-text-color-placeholder</div>
         </div>
       </div>
       <el-divider />
