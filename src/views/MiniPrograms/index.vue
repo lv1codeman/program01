@@ -112,7 +112,7 @@ onMounted(() => {
       <el-button type="primary" @click="open = true">頁面引導教學</el-button>
     </pagetitle>
 
-    <div class="outouter-box">
+    <div class="out-outer-box">
       <div
         class="outer-box"
         v-for="(item, index) in programList"
@@ -164,7 +164,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.outouter-box {
+.out-outer-box {
   // height: 550px;
   height: calc($baseNum * 5.6);
 
@@ -234,13 +234,13 @@ $--neon-text-color: #04f;
 }
 
 @media screen and (max-width: 1200px) {
-  .outouter-box {
+  .out-outer-box {
     // height: 900px;
     height: calc($baseNum * 9);
   }
 }
 @media screen and (max-width: 818px) {
-  .outouter-box {
+  .out-outer-box {
     // height: 1700px;
     height: calc($baseNum * 17);
     justify-content: center;

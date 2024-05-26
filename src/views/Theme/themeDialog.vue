@@ -22,7 +22,7 @@ const handleDialogClose = () => {
   emit('update:isShowDialog', false)
 }
 
-const setColor = (colorTag, colorCode) => {
+const setMainColor = (colorTag, colorCode) => {
   console.log('change color by target tag')
   const white = '#ffffff'
   const black = '#000000'
@@ -53,10 +53,10 @@ const setColor = (colorTag, colorCode) => {
   })
 }
 
-const setTextColor = (target, colorCode) => {
+const setSingleColor = (colorTag, colorCode) => {
   const el = document.documentElement
-  getComputedStyle(el).getPropertyValue(target)
-  el.style.setProperty(target, colorCode)
+  getComputedStyle(el).getPropertyValue(colorTag)
+  el.style.setProperty(colorTag, colorCode)
 }
 
 //#region 顏色變數宣告
@@ -68,6 +68,7 @@ const dangerColor = ref('#a33131')
 const errorColor = ref('#d41414')
 const infoColor = ref('#8b8b8b')
 const textColor = ref('#074b5f')
+const bgPageColor = ref('#f7fafb')
 const origin_primaryColor = ref('#6bb1cc')
 const origin_successColor = ref('#ffbd41')
 const origin_warningColor = ref('#ffeccc')
@@ -75,6 +76,7 @@ const origin_dangerColor = ref('#a33131')
 const origin_errorColor = ref('#d41414')
 const origin_infoColor = ref('#8b8b8b')
 const origin_textColor = ref('#074b5f')
+const origin_bgPageColor = ref('#f7fafb')
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
@@ -88,20 +90,85 @@ const resetColor = () => {
   errorColor.value = origin_errorColor.value
   infoColor.value = origin_infoColor.value
   textColor.value = origin_textColor.value
+  bgPageColor.value = origin_bgPageColor.value
 
-  setColor('--el-color-primary', primaryColor.value)
-  setColor('--el-color-success', successColor.value)
-  setColor('--el-color-warning', warningColor.value)
-  setColor('--el-color-danger', dangerColor.value)
-  setColor('--el-color-error', errorColor.value)
-  setColor('--el-color-info', infoColor.value)
-  setTextColor('--el-text-color-regular', textColor.value)
+  setMainColor('--el-color-primary', primaryColor.value)
+  setMainColor('--el-color-success', successColor.value)
+  setMainColor('--el-color-warning', warningColor.value)
+  setMainColor('--el-color-danger', dangerColor.value)
+  setMainColor('--el-color-error', errorColor.value)
+  setMainColor('--el-color-info', infoColor.value)
+  setSingleColor('--el-text-color-regular', textColor.value)
+  setSingleColor('--el-bg-color-page', bgPageColor.value)
 
   showDialog.value = false
+}
+
+const setTemplate = (templateNumber) => {
+  switch (templateNumber) {
+    case 1:
+      // $body-bg-color: #f9fbf7;
+      // $nav-bg-color: #6f8745;
+      // $baseColor: #ead8c0;
+      primaryColor.value = '#94af64'
+      successColor.value = '#df9348'
+      warningColor.value = '#ffeccc'
+      dangerColor.value = '#ae3243'
+      errorColor.value = '#2b2118'
+      infoColor.value = '#828282'
+      bgPageColor.value = '#f2f2f2'
+      setMainColor('--el-color-primary', primaryColor.value)
+      setMainColor('--el-color-success', successColor.value)
+      setMainColor('--el-color-warning', warningColor.value)
+      setMainColor('--el-color-danger', dangerColor.value)
+      setMainColor('--el-color-error', errorColor.value)
+      setMainColor('--el-color-info', infoColor.value)
+
+      setSingleColor('--el-bg-color-page', bgPageColor.value)
+      break
+    case 2:
+      break
+    case 3:
+      break
+    default:
+      break
+  }
 }
 </script>
 <template>
   <el-dialog v-model="showDialog" @close="handleDialogClose" title="樣板配置" width="500" draggable overflow>
+    <div class="templateSelect">
+      <div class="template1" @click="setTemplate(1)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="template2" @click="setTemplate(2)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="template3" @click="setTemplate(3)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+    </div>
+    <!-- <div class="primary">&nbsp;</div>
+        <div class="success">&nbsp;</div>
+        <div class="warning">&nbsp;</div>
+        <div class="danger">&nbsp;</div>
+        <div class="error">&nbsp;</div>
+        <div class="info">&nbsp;</div> -->
     <div class="themeBox">
       <div class="colorBox">
         <div class="title">主色 --el-color-primary</div>
@@ -110,7 +177,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="primaryColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-primary', primaryColor)"
+              @change="setMainColor('--el-color-primary', primaryColor)"
               color-format="hex"
             />
           </div>
@@ -131,7 +198,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="successColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-success', successColor)"
+              @change="setMainColor('--el-color-success', successColor)"
               color-format="hex"
             />
           </div>
@@ -152,7 +219,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="warningColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-warning', warningColor)"
+              @change="setMainColor('--el-color-warning', warningColor)"
               color-format="hex"
             />
           </div>
@@ -174,7 +241,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="dangerColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-danger', dangerColor)"
+              @change="setMainColor('--el-color-danger', dangerColor)"
               color-format="hex"
             />
           </div>
@@ -195,7 +262,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="errorColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-error', errorColor)"
+              @change="setMainColor('--el-color-error', errorColor)"
               color-format="hex"
             />
           </div>
@@ -216,7 +283,7 @@ const resetColor = () => {
             <el-color-picker
               v-model="infoColor"
               :predefine="predefineColors"
-              @change="setColor('--el-color-info', infoColor)"
+              @change="setMainColor('--el-color-info', infoColor)"
               color-format="hex"
             />
           </div>
@@ -231,16 +298,32 @@ const resetColor = () => {
       </div>
       <el-divider />
       <div class="colorBox">
-        <div class="title">文字色 --el-text-color-regular</div>
-        <div class="showPalette-text">
+        <div class="title"></div>
+        <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
               v-model="textColor"
               :predefine="predefineColors"
-              @change="setTextColor('--el-text-color-regular', textColor)"
+              @change="setSingleColor('--el-text-color-regular', textColor)"
               color-format="hex"
             />
           </div>
+          <div>文字色 --el-text-color-regular</div>
+        </div>
+      </div>
+      <el-divider />
+      <div class="colorBox">
+        <div class="title"></div>
+        <div class="showPalette-single">
+          <div class="palette">
+            <el-color-picker
+              v-model="bgPageColor"
+              :predefine="predefineColors"
+              @change="setSingleColor('--el-bg-color-page', bgPageColor)"
+              color-format="hex"
+            />
+          </div>
+          <div>頁面背景色 --el-bg-color-page</div>
         </div>
       </div>
       <el-divider />
@@ -254,7 +337,96 @@ const resetColor = () => {
   </el-dialog>
 </template>
 <style lang="scss" scoped>
-.showPalette-text {
+.templateSelect {
+  display: flex;
+  justify-content: space-around;
+
+  .template1 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #94af64;
+    }
+    & > div:nth-child(2) {
+      background-color: #ffbd41;
+    }
+    & > div:nth-child(3) {
+      background-color: #ffeccc;
+    }
+    & > div:nth-child(4) {
+      background-color: #ae3243;
+    }
+    & > div:nth-child(5) {
+      background-color: #d41414;
+    }
+    & > div:nth-child(6) {
+      background-color: #8b8b8b;
+    }
+  }
+  .template2 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #409eff;
+    }
+    & > div:nth-child(2) {
+      background-color: #67c23a;
+    }
+    & > div:nth-child(3) {
+      background-color: #e6a23c;
+    }
+    & > div:nth-child(4) {
+      background-color: #f56c6c;
+    }
+    & > div:nth-child(5) {
+      background-color: #a79277;
+    }
+    & > div:nth-child(6) {
+      background-color: #909399;
+    }
+  }
+  .template3 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #27ba9b;
+    }
+    & > div:nth-child(2) {
+      background-color: #1dc779;
+    }
+    & > div:nth-child(3) {
+      background-color: #ffb302;
+    }
+    & > div:nth-child(4) {
+      background-color: #e26237;
+    }
+    & > div:nth-child(5) {
+      background-color: #cf4444;
+    }
+    & > div:nth-child(6) {
+      background-color: #909399;
+    }
+  }
+}
+.showPalette-single {
   display: flex;
   justify-content: flex-start;
   align-items: center;

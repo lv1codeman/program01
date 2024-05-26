@@ -9,7 +9,7 @@
   position: relative;
   font-size: 26px;
   font-weight: bolder;
-  margin: 30px 0 20px 0;
+  margin: 20px 0 10px 0;
   padding: 10px;
   z-index: 2;
   letter-spacing: 2px;

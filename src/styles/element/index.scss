@@ -96,5 +96,10 @@ $text-color-placeholder: #cce6ed;
     'regular': $text-color-regular,
     'secondary': $text-color-secondary,
     'placeholder': $text-color-placeholder
+  ),
+  $bg-color:(
+    '': #ffffff,
+    'page': #f7fafb,
+    'overlay': #ffffff,
   )
 );
