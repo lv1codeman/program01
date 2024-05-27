@@ -67,6 +67,7 @@ const handleClick = () => {
 }
 :deep(.el-tabs__item) {
   // font-weight: bold;
+  display: flex;
   padding: 0 0 0 40px;
   font-size: var(--el-font-size-medium);
   &:hover {
@@ -153,6 +154,7 @@ const handleClick = () => {
   }
   :deep(.el-tabs__item) {
     padding: 0 0 0 20px;
+    font-size: 14px;
   }
 }
 </style>

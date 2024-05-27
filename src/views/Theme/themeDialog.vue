@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, defineProps } from 'vue'
+import { ref, watch, defineProps, onMounted } from 'vue'
 import mixColor from '@/utils/color/epColorMix.js'
 import genColorTag from '@/utils/color/genColorTag.js'
 const showDialog = ref(false)
@@ -21,6 +21,26 @@ const handleDialogClose = () => {
   showDialog.value = false
   emit('update:isShowDialog', false)
 }
+
+// dialog自適應
+const dialogWidth = ref(500)
+const setDialogWidth = () => {
+  let windowSize = document.body.clientWidth
+  // console.log(windowSize)
+  const defaultWidth = 500 // 預設寬度
+  if (windowSize < defaultWidth) {
+    dialogWidth.value = '100%'
+  } else {
+    dialogWidth.value = defaultWidth + 'px'
+  }
+}
+onMounted(() => {
+  window.onresize = () => {
+    return (() => {
+      setDialogWidth()
+    })()
+  }
+})
 
 const setMainColor = (colorTag, colorCode) => {
   console.log('change color by target tag')
@@ -169,7 +189,7 @@ const setTemplate = (templateNumber) => {
     v-model="showDialog"
     @close="handleDialogClose"
     title="樣板配置"
-    width="500"
+    :width="dialogWidth"
     top="50px"
     draggable
     overflow
@@ -419,8 +439,13 @@ const setTemplate = (templateNumber) => {
   </el-dialog>
 </template>
 <style lang="scss" scoped>
+// .theme-dialog {
+//   width: 390px !important;
+// }
 .templateSelect {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   justify-content: space-around;
 
   .template1 {
