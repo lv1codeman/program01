@@ -81,31 +81,36 @@ const setSingleColor = (colorTag, colorCode) => {
 
 //#region 顏色變數宣告
 // origin用於resetColor, 非origin用於el-color-picker的v-modal，所以這邊都不能省略
-const primaryColor = ref('#6bb1cc')
-const successColor = ref('#ffbd41')
-const warningColor = ref('#ffeccc')
-const dangerColor = ref('#a33131')
-const errorColor = ref('#d41414')
-const infoColor = ref('#8b8b8b')
-const textColorRegular = ref('#276075')
-const textColorPrimary = ref('#074b5f')
-const textColorSecondary = ref('#568da3')
-const textColorPlaceholder = ref('#a0a0a0')
-const bgPageColor = ref('#f7fafb')
-const navbgColor = ref('#22668d')
 
-const origin_primaryColor = ref('#6bb1cc')
-const origin_successColor = ref('#ffbd41')
-const origin_warningColor = ref('#ffeccc')
-const origin_dangerColor = ref('#a33131')
-const origin_errorColor = ref('#d41414')
-const origin_infoColor = ref('#8b8b8b')
-const origin_textColorRegular = ref('#276075')
-const origin_textColorPrimary = ref('#074b5f')
-const origin_textColorSecondary = ref('#568da3')
-const origin_textColorPlaceholder = ref('#a0a0a0')
-const origin_bgPageColor = ref('#f7fafb')
-const origin_navbgColor = ref('#22668d')
+const colorObj = ref({
+  primaryColor: '#6bb1cc',
+  successColor: '#ffbd41',
+  warningColor: '#ffeccc',
+  dangerColor: '#a33131',
+  errorColor: '#d41414',
+  infoColor: '#8b8b8b',
+  textColorRegular: '#276075',
+  textColorPrimary: '#074b5f',
+  textColorSecondary: '#568da3',
+  textColorPlaceholder: '#a0a0a0',
+  bgPageColor: '#f7fafb',
+  navbgColor: '#22668d'
+})
+
+const colorOriginObj = ref({
+  primaryColor: '#6bb1cc',
+  successColor: '#ffbd41',
+  warningColor: '#ffeccc',
+  dangerColor: '#a33131',
+  errorColor: '#d41414',
+  infoColor: '#8b8b8b',
+  textColorRegular: '#276075',
+  textColorPrimary: '#074b5f',
+  textColorSecondary: '#568da3',
+  textColorPlaceholder: '#a0a0a0',
+  bgPageColor: '#f7fafb',
+  navbgColor: '#22668d'
+})
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
@@ -113,19 +118,7 @@ const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 const resetColor = () => {
   console.log('resetColor event start')
   //#region 變數重製回origin並以origin重設
-  primaryColor.value = origin_primaryColor.value
-  successColor.value = origin_successColor.value
-  warningColor.value = origin_warningColor.value
-  dangerColor.value = origin_dangerColor.value
-  errorColor.value = origin_errorColor.value
-  infoColor.value = origin_infoColor.value
-  textColorRegular.value = origin_textColorRegular.value
-  textColorPrimary.value = origin_textColorPrimary.value
-  textColorSecondary.value = origin_textColorSecondary.value
-  textColorPlaceholder.value = origin_textColorPlaceholder.value
-
-  bgPageColor.value = origin_bgPageColor.value
-  navbgColor.value = origin_navbgColor.value
+  colorObj.value = { ...colorOriginObj.value }
 
   setTemplateColor()
   //#endregion
@@ -133,84 +126,79 @@ const resetColor = () => {
 }
 
 const setTemplateColor = () => {
-  setMainColor('--el-color-primary', primaryColor.value)
-  setMainColor('--el-color-success', successColor.value)
-  setMainColor('--el-color-warning', warningColor.value)
-  setMainColor('--el-color-danger', dangerColor.value)
-  setMainColor('--el-color-error', errorColor.value)
-  setMainColor('--el-color-info', infoColor.value)
+  setMainColor('--el-color-primary', colorObj.value.primaryColor)
+  setMainColor('--el-color-success', colorObj.value.successColor)
+  setMainColor('--el-color-warning', colorObj.value.warningColor)
+  setMainColor('--el-color-danger', colorObj.value.dangerColor)
+  setMainColor('--el-color-error', colorObj.value.errorColor)
+  setMainColor('--el-color-info', colorObj.value.infoColor)
 
-  setSingleColor('--el-text-color-regular', textColorRegular.value)
-  setSingleColor('--el-text-color-primary', textColorPrimary.value)
-  setSingleColor('--el-text-color-secondary', textColorSecondary.value)
-  setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
-  setSingleColor('--el-bg-color-page', bgPageColor.value)
-  setSingleColor('--nav-bg-color', navbgColor.value)
+  setSingleColor('--el-text-color-regular', colorObj.value.textColorRegular)
+  setSingleColor('--el-text-color-primary', colorObj.value.textColorPrimary)
+  setSingleColor('--el-text-color-secondary', colorObj.value.textColorSecondary)
+  setSingleColor('--el-text-color-placeholder', colorObj.value.textColorPlaceholder)
+  setSingleColor('--el-bg-color-page', colorObj.value.bgPageColor)
+  setSingleColor('--nav-bg-color', colorObj.value.navbgColor)
 }
 
 const setTemplate = (templateNumber) => {
   switch (templateNumber) {
     case 1:
-      primaryColor.value = '#6bb1cc'
-      successColor.value = '#ffbd41'
-      warningColor.value = '#ffeccc'
-      dangerColor.value = '#a33131'
-      errorColor.value = '#d41414'
-      infoColor.value = '#8b8b8b'
-      textColorRegular.value = '#276075'
-      textColorPrimary.value = '#074b5f'
-      textColorSecondary.value = '#568da3'
-      textColorPlaceholder.value = '#a0a0a0'
-      bgPageColor.value = '#f7fafb'
-      navbgColor.value = '#22668d'
+      colorObj.value.primaryColor = '#6bb1cc'
+      colorObj.value.successColor = '#ffbd41'
+      colorObj.value.warningColor = '#ffeccc'
+      colorObj.value.dangerColor = '#a33131'
+      colorObj.value.errorColor = '#d41414'
+      colorObj.value.infoColor = '#8b8b8b'
+      colorObj.value.textColorRegular = '#276075'
+      colorObj.value.textColorPrimary = '#074b5f'
+      colorObj.value.textColorSecondary = '#568da3'
+      colorObj.value.textColorPlaceholder = '#a0a0a0'
+      colorObj.value.bgPageColor = '#f7fafb'
+      colorObj.value.navbgColor = '#22668d'
       setTemplateColor()
       break
     case 2:
-      primaryColor.value = '#94af64'
-      successColor.value = '#df9348'
-      warningColor.value = '#ffeccc'
-      dangerColor.value = '#ae3243'
-      errorColor.value = '#2b2118'
-      infoColor.value = '#828282'
-
-      textColorRegular.value = '#556b2e'
-      textColorPrimary.value = '#42610d'
-      textColorSecondary.value = '#668a28'
-      textColorPlaceholder.value = '#C7C7C7'
-      bgPageColor.value = '#f2f2f2'
-      navbgColor.value = '#6f8745'
+      colorObj.value.primaryColor = '#94af64'
+      colorObj.value.successColor = '#df9348'
+      colorObj.value.warningColor = '#ffeccc'
+      colorObj.value.dangerColor = '#ae3243'
+      colorObj.value.errorColor = '#2b2118'
+      colorObj.value.infoColor = '#828282'
+      colorObj.value.textColorRegular = '#556b2e'
+      colorObj.value.textColorPrimary = '#42610d'
+      colorObj.value.textColorSecondary = '#668a28'
+      colorObj.value.textColorPlaceholder = '#C7C7C7'
+      colorObj.value.bgPageColor = '#f2f2f2'
+      colorObj.value.navbgColor = '#6f8745'
       setTemplateColor()
       break
     case 3:
-      primaryColor.value = '#7B77C6'
-      successColor.value = '#BF72C1'
-      warningColor.value = '#ABE0D2'
-      dangerColor.value = '#ae3243'
-      // errorColor.value = '#C86C78'
-      infoColor.value = '#E4D1D1'
-
-      textColorRegular.value = '#424144'
-      textColorPrimary.value = '#4D769C'
-      textColorSecondary.value = '#CF8CAC'
-      textColorPlaceholder.value = '#1F1F1D'
-      bgPageColor.value = '#F2F2F2'
-      navbgColor.value = '#5696A0'
+      colorObj.value.primaryColor = '#7B77C6'
+      colorObj.value.successColor = '#BF72C1'
+      colorObj.value.warningColor = '#ABE0D2'
+      colorObj.value.dangerColor = '#ae3243'
+      colorObj.value.infoColor = '#E4D1D1'
+      colorObj.value.textColorRegular = '#424144'
+      colorObj.value.textColorPrimary = '#4D769C'
+      colorObj.value.textColorSecondary = '#CF8CAC'
+      colorObj.value.textColorPlaceholder = '#1F1F1D'
+      colorObj.value.bgPageColor = '#F2F2F2'
+      colorObj.value.navbgColor = '#5696A0'
       setTemplateColor()
       break
     case 4:
-      primaryColor.value = '#80A0E4'
-      successColor.value = '#E6A566'
-      warningColor.value = '#FFECCC'
-      dangerColor.value = '#CC273D'
-      // errorColor.value = '#AE3243'
-      infoColor.value = '#B4B4B4'
-
-      textColorRegular.value = '#1F6888'
-      textColorPrimary.value = '#306B91'
-      textColorSecondary.value = '#197280'
-      textColorPlaceholder.value = '#ACACAC'
-      bgPageColor.value = '#F8F8F8'
-      navbgColor.value = '#133988'
+      colorObj.value.primaryColor = '#80A0E4'
+      colorObj.value.successColor = '#E6A566'
+      colorObj.value.warningColor = '#FFECCC'
+      colorObj.value.dangerColor = '#CC273D'
+      colorObj.value.infoColor = '#B4B4B4'
+      colorObj.value.textColorRegular = '#1F6888'
+      colorObj.value.textColorPrimary = '#306B91'
+      colorObj.value.textColorSecondary = '#197280'
+      colorObj.value.textColorPlaceholder = '#ACACAC'
+      colorObj.value.bgPageColor = '#F8F8F8'
+      colorObj.value.navbgColor = '#133988'
       setTemplateColor()
       break
     case 5:
@@ -228,19 +216,17 @@ const setTemplate = (templateNumber) => {
       // textColorPlaceholder.value = '#A0A0A0'
       // bgPageColor.value = '#DCEBF0'
       // navbgColor.value = '#417D5E'
-      primaryColor.value = '#6567AA'
-      successColor.value = '#82CD5C'
-      warningColor.value = '#FFCC5E'
-      dangerColor.value = '#B44242'
-      // errorColor.value = '#AE3243'
-      infoColor.value = '#B44242'
-
-      textColorRegular.value = '#0C0739'
-      textColorPrimary.value = '#2F2E67'
-      textColorSecondary.value = '#3B3872'
-      textColorPlaceholder.value = '#C2C0C0'
-      bgPageColor.value = '#F3F3F4'
-      navbgColor.value = '#4A459B'
+      colorObj.value.primaryColor = '#6567AA'
+      colorObj.value.successColor = '#82CD5C'
+      colorObj.value.warningColor = '#FFCC5E'
+      colorObj.value.dangerColor = '#B44242'
+      colorObj.value.infoColor = '#B44242'
+      colorObj.value.textColorRegular = '#0C0739'
+      colorObj.value.textColorPrimary = '#2F2E67'
+      colorObj.value.textColorSecondary = '#3B3872'
+      colorObj.value.textColorPlaceholder = '#C2C0C0'
+      colorObj.value.bgPageColor = '#F3F3F4'
+      colorObj.value.navbgColor = '#4A459B'
       setTemplateColor()
       break
     default:
@@ -321,9 +307,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-primary">
           <div class="palette">
             <el-color-picker
-              v-model="primaryColor"
+              v-model="colorObj.primaryColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-primary', primaryColor)"
+              @change="setMainColor('--el-color-primary', colorObj.primaryColor)"
               color-format="hex"
             />
           </div>
@@ -342,9 +328,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-success">
           <div class="palette">
             <el-color-picker
-              v-model="successColor"
+              v-model="colorObj.successColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-success', successColor)"
+              @change="setMainColor('--el-color-success', colorObj.successColor)"
               color-format="hex"
             />
           </div>
@@ -363,9 +349,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-warning">
           <div class="palette">
             <el-color-picker
-              v-model="warningColor"
+              v-model="colorObj.warningColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-warning', warningColor)"
+              @change="setMainColor('--el-color-warning', colorObj.warningColor)"
               color-format="hex"
             />
           </div>
@@ -385,9 +371,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-danger">
           <div class="palette">
             <el-color-picker
-              v-model="dangerColor"
+              v-model="colorObj.dangerColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-danger', dangerColor)"
+              @change="setMainColor('--el-color-danger', colorObj.dangerColor)"
               color-format="hex"
             />
           </div>
@@ -406,9 +392,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-error">
           <div class="palette">
             <el-color-picker
-              v-model="errorColor"
+              v-model="colorObj.errorColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-error', errorColor)"
+              @change="setMainColor('--el-color-error', colorObj.errorColor)"
               color-format="hex"
             />
           </div>
@@ -427,9 +413,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-info">
           <div class="palette">
             <el-color-picker
-              v-model="infoColor"
+              v-model="colorObj.infoColor"
               :predefine="predefineColors"
-              @change="setMainColor('--el-color-info', infoColor)"
+              @change="setMainColor('--el-color-info', colorObj.infoColor)"
               color-format="hex"
             />
           </div>
@@ -448,9 +434,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="textColorRegular"
+              v-model="colorObj.textColorRegular"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-text-color-regular', textColorRegular)"
+              @change="setSingleColor('--el-text-color-regular', colorObj.textColorRegular)"
               color-format="hex"
             />
           </div>
@@ -463,9 +449,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="textColorPrimary"
+              v-model="colorObj.textColorPrimary"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-text-color-primary', textColorPrimary)"
+              @change="setSingleColor('--el-text-color-primary', colorObj.textColorPrimary)"
               color-format="hex"
             />
           </div>
@@ -478,9 +464,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="textColorSecondary"
+              v-model="colorObj.textColorSecondary"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-text-color-secondary', textColorSecondary)"
+              @change="setSingleColor('--el-text-color-secondary', colorObj.textColorSecondary)"
               color-format="hex"
             />
           </div>
@@ -493,9 +479,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="textColorPlaceholder"
+              v-model="colorObj.textColorPlaceholder"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-text-color-placeholder', textColorPlaceholder)"
+              @change="setSingleColor('--el-text-color-placeholder', colorObj.textColorPlaceholder)"
               color-format="hex"
             />
           </div>
@@ -508,9 +494,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="bgPageColor"
+              v-model="colorObj.bgPageColor"
               :predefine="predefineColors"
-              @change="setSingleColor('--el-bg-color-page', bgPageColor)"
+              @change="setSingleColor('--el-bg-color-page', colorObj.bgPageColor)"
               color-format="hex"
             />
           </div>
@@ -523,9 +509,9 @@ const setTemplate = (templateNumber) => {
         <div class="showPalette-single">
           <div class="palette">
             <el-color-picker
-              v-model="navbgColor"
+              v-model="colorObj.navbgColor"
               :predefine="predefineColors"
-              @change="setSingleColor('--nav-bg-color', navbgColor)"
+              @change="setSingleColor('--nav-bg-color', colorObj.navbgColor)"
               color-format="hex"
             />
           </div>
