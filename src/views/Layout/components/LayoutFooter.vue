@@ -112,6 +112,9 @@ const linkCurri = () => {
 </template>
 
 <style scoped lang="scss">
+// :root {
+//   --nav-bg-color: $nav-bg-color;
+// }
 .footer-row {
   flex: 1;
 }
@@ -236,14 +239,14 @@ const linkCurri = () => {
   }
 
   .extra {
-    background-color: $nav-bg-color;
+    background: var(--nav-bg-color);
   }
 
   .copyright {
     height: 60px;
     padding-top: 20px;
     text-align: center;
-    color: #999;
+    color: var(--el-bg-color-page);
     font-size: medium;
 
     p {

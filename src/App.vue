@@ -13,6 +13,9 @@
 </template>
 
 <style lang="scss">
+// :root {
+//   --nav-bg-color: $nav-bg-color;
+// }
 .test {
   color: $priceColor;
 }
@@ -29,6 +32,6 @@
   // -webkit-border-radius: 4px;
   // border-radius: 4px;
 
-  background: $nav-bg-color;
+  background: var(--nav-bg-color);
 }
 </style>

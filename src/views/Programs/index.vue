@@ -168,7 +168,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .out-outer-box-container {
-  padding-bottom: 20px;
+  // padding-bottom: 20px;
   .out-outer-box {
     // height: 550px;
     height: calc($baseNum * 5.6);

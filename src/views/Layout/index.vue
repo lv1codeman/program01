@@ -18,5 +18,6 @@ import LayoutFooter from './components/LayoutFooter.vue'
   min-height: 506px;
   background: var(--el-bg-color-page);
   padding-top: 5px;
+  padding-bottom: 20px;
 }
 </style>

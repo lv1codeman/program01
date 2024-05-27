@@ -5,8 +5,7 @@
 // https://uncolor.yunyoujun.cn/
 
 // 思嘉配色
-$body-bg-color: #f7fafb;
-$nav-bg-color: #22668d;
+
 $baseColor: #ead8c0;
 
 $primaryColor: #6bb1cc;
@@ -15,16 +14,17 @@ $warningColor: #ffeccc;
 $dangerColor: #a33131;
 $errorColor: #d41414;
 $infoColor: #8b8b8b;
-
+$text-color-regular: #276075;
+$text-color-primary: #074b5f;
+$text-color-secondary: #568da3;
+$text-color-placeholder: #a0a0a0;
+$bg-color-page: #f7fafb;
+$nav-bg-color: #22668d;
 // $text-color-primary: #113e50;
 // $text-color-regular: #2f657b;
 // $text-color-secondary: #578ea3;
 // $text-color-placeholder: #b1bdc2;
 
-$text-color-primary: #074b5f;
-$text-color-regular: #276075;
-$text-color-secondary: #568da3;
-$text-color-placeholder: #cce6ed;
 // 日系配色
 // $body-bg-color: #f9fbf7;
 // $nav-bg-color: #6f8745;
@@ -97,9 +97,9 @@ $text-color-placeholder: #cce6ed;
     'secondary': $text-color-secondary,
     'placeholder': $text-color-placeholder
   ),
-  $bg-color:(
+  $bg-color: (
     '': #ffffff,
     'page': #f7fafb,
-    'overlay': #ffffff,
+    'overlay': #ffffff
   )
 );

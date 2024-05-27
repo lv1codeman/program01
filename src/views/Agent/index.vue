@@ -12,7 +12,7 @@ import { useProgramStore } from '@/stores/agentData.js'
 const store = useProgramStore()
 const formRef = ref()
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
-const dynamicValidateForm_formal = reactive({
+const dynamicValidateForm = reactive({
   name: '',
   url: '',
   type: '學分學程',
@@ -30,7 +30,7 @@ const dynamicValidateForm_formal = reactive({
     }
   ]
 })
-const dynamicValidateForm = reactive({
+const dynamicValidateForm_formal = reactive({
   name: '11',
   url: '22',
   type: '學分學程',
@@ -150,10 +150,10 @@ const go_setSubject = () => {
       <!-- :rules="rules" -->
       <div class="program-setting">
         <el-form-item class="my-grid-item" prop="name" label="學程名稱" clearable>
-          <el-input v-model="dynamicValidateForm.name" />
+          <el-input v-model="dynamicValidateForm.name" placeholder="請輸入學程名稱" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="url" label="學程網址" clearable>
-          <el-input v-model="dynamicValidateForm.url" />
+          <el-input v-model="dynamicValidateForm.url" placeholder="請輸入學程網址" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="type" label="學程類型">
           <el-segmented v-model="dynamicValidateForm.type" :options="programOptions" />
@@ -216,7 +216,7 @@ const go_setSubject = () => {
                     trigger: 'blur'
                   }"
                 >
-                  <el-input v-model="category.categoryName" />
+                  <el-input v-model="category.categoryName" placeholder="請輸入類別名稱" />
                 </el-form-item>
                 <!-- 最低學分數/課程數 -->
                 <el-form-item
@@ -277,7 +277,7 @@ const go_setSubject = () => {
                           trigger: 'blur'
                         }"
                       >
-                        <el-input v-model="domain.domainName" />
+                        <el-input v-model="domain.domainName" placeholder="請輸入領域名稱" />
                       </el-form-item>
                       <!-- 最低學分數/課程數 -->
                       <el-form-item
@@ -364,7 +364,7 @@ hr {
   justify-content: space-between;
   .formTitle-1 {
     position: absolute;
-    background-color: $body-bg-color;
+    background-color: var(--el-bg-color-page);
     top: -18px;
     left: 1rem;
     font-size: 22px;
@@ -530,6 +530,9 @@ hr {
 .formTitle_area {
   font-size: 18px;
   font-weight: bold;
+}
+:deep(.el-input__inner::placeholder) {
+  color: var(--el-text-color-placeholder);
 }
 
 :deep(.el-segmented) {

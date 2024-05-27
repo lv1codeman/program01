@@ -90,7 +90,7 @@ const infoColor = ref('#8b8b8b')
 const textColorRegular = ref('#276075')
 const textColorPrimary = ref('#074b5f')
 const textColorSecondary = ref('#568da3')
-const textColorPlaceholder = ref('#cce6ed')
+const textColorPlaceholder = ref('#a0a0a0')
 const bgPageColor = ref('#f7fafb')
 const navbgColor = ref('#22668d')
 
@@ -100,10 +100,10 @@ const origin_warningColor = ref('#ffeccc')
 const origin_dangerColor = ref('#a33131')
 const origin_errorColor = ref('#d41414')
 const origin_infoColor = ref('#8b8b8b')
-const origin_textColorRegular = ref('#074b5f')
+const origin_textColorRegular = ref('#276075')
 const origin_textColorPrimary = ref('#074b5f')
 const origin_textColorSecondary = ref('#568da3')
-const origin_textColorPlaceholder = ref('#cce6ed')
+const origin_textColorPlaceholder = ref('#a0a0a0')
 const origin_bgPageColor = ref('#f7fafb')
 const origin_navbgColor = ref('#22668d')
 //#endregion
@@ -146,6 +146,33 @@ const resetColor = () => {
 const setTemplate = (templateNumber) => {
   switch (templateNumber) {
     case 1:
+      primaryColor.value = '#6bb1cc'
+      successColor.value = '#ffbd41'
+      warningColor.value = '#ffeccc'
+      dangerColor.value = '#a33131'
+      errorColor.value = '#d41414'
+      infoColor.value = '#8b8b8b'
+      textColorRegular.value = '#276075'
+      textColorPrimary.value = '#074b5f'
+      textColorSecondary.value = '#568da3'
+      textColorPlaceholder.value = '#a0a0a0'
+      bgPageColor.value = '#f7fafb'
+      navbgColor.value = '#22668d'
+      setMainColor('--el-color-primary', primaryColor.value)
+      setMainColor('--el-color-success', successColor.value)
+      setMainColor('--el-color-warning', warningColor.value)
+      setMainColor('--el-color-danger', dangerColor.value)
+      setMainColor('--el-color-error', errorColor.value)
+      setMainColor('--el-color-info', infoColor.value)
+
+      setSingleColor('--el-text-color-regular', textColorRegular.value)
+      setSingleColor('--el-text-color-primary', textColorPrimary.value)
+      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
+      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
+      setSingleColor('--el-bg-color-page', bgPageColor.value)
+      setSingleColor('--nav-bg-color', navbgColor.value)
+      break
+    case 2:
       primaryColor.value = '#94af64'
       successColor.value = '#df9348'
       warningColor.value = '#ffeccc'
@@ -156,7 +183,7 @@ const setTemplate = (templateNumber) => {
       textColorRegular.value = '#556b2e'
       textColorPrimary.value = '#42610d'
       textColorSecondary.value = '#668a28'
-      textColorPlaceholder.value = '#99c74a'
+      textColorPlaceholder.value = '#C7C7C7'
       bgPageColor.value = '#f2f2f2'
       navbgColor.value = '#6f8745'
       setMainColor('--el-color-primary', primaryColor.value)
@@ -172,11 +199,62 @@ const setTemplate = (templateNumber) => {
       setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
       setSingleColor('--el-bg-color-page', bgPageColor.value)
       setSingleColor('--nav-bg-color', navbgColor.value)
-
-      break
-    case 2:
       break
     case 3:
+      primaryColor.value = '#7B77C6'
+      successColor.value = '#BF72C1'
+      warningColor.value = '#ABE0D2'
+      dangerColor.value = '#ae3243'
+      // errorColor.value = '#C86C78'
+      infoColor.value = '#E4D1D1'
+
+      textColorRegular.value = '#424144'
+      textColorPrimary.value = '#4D769C'
+      textColorSecondary.value = '#CF8CAC'
+      textColorPlaceholder.value = '#1F1F1D'
+      bgPageColor.value = '#F2F2F2'
+      navbgColor.value = '#5696A0'
+      setMainColor('--el-color-primary', primaryColor.value)
+      setMainColor('--el-color-success', successColor.value)
+      setMainColor('--el-color-warning', warningColor.value)
+      setMainColor('--el-color-danger', dangerColor.value)
+      setMainColor('--el-color-error', errorColor.value)
+      setMainColor('--el-color-info', infoColor.value)
+
+      setSingleColor('--el-text-color-regular', textColorRegular.value)
+      setSingleColor('--el-text-color-primary', textColorPrimary.value)
+      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
+      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
+      setSingleColor('--el-bg-color-page', bgPageColor.value)
+      setSingleColor('--nav-bg-color', navbgColor.value)
+      break
+    case 4:
+      primaryColor.value = '#80A0E4'
+      successColor.value = '#E6A566'
+      warningColor.value = '#FFECCC'
+      dangerColor.value = '#CC273D'
+      // errorColor.value = '#AE3243'
+      infoColor.value = '#B4B4B4'
+
+      textColorRegular.value = '#1F6888'
+      textColorPrimary.value = '#306B91'
+      textColorSecondary.value = '#197280'
+      textColorPlaceholder.value = '#ACACAC'
+      bgPageColor.value = '#F8F8F8'
+      navbgColor.value = '#133988'
+      setMainColor('--el-color-primary', primaryColor.value)
+      setMainColor('--el-color-success', successColor.value)
+      setMainColor('--el-color-warning', warningColor.value)
+      setMainColor('--el-color-danger', dangerColor.value)
+      setMainColor('--el-color-error', errorColor.value)
+      setMainColor('--el-color-info', infoColor.value)
+
+      setSingleColor('--el-text-color-regular', textColorRegular.value)
+      setSingleColor('--el-text-color-primary', textColorPrimary.value)
+      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
+      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
+      setSingleColor('--el-bg-color-page', bgPageColor.value)
+      setSingleColor('--nav-bg-color', navbgColor.value)
       break
     default:
       break
@@ -212,6 +290,14 @@ const setTemplate = (templateNumber) => {
         <div>&nbsp;</div>
       </div>
       <div class="template3" @click="setTemplate(3)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="template4" @click="setTemplate(4)">
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -312,7 +398,7 @@ const setTemplate = (templateNumber) => {
         </div>
       </div>
       <el-divider />
-      <div class="colorBox">
+      <!-- <div class="colorBox">
         <div class="title">錯誤色 --el-color-error</div>
         <div class="showPalette-error">
           <div class="palette">
@@ -332,7 +418,7 @@ const setTemplate = (templateNumber) => {
           <div class="error-light9">light9</div>
         </div>
       </div>
-      <el-divider />
+      <el-divider /> -->
       <div class="colorBox">
         <div class="title">資訊色 --el-color-info</div>
         <div class="showPalette-info">
@@ -429,6 +515,21 @@ const setTemplate = (templateNumber) => {
         </div>
       </div>
       <el-divider />
+      <div class="colorBox">
+        <div class="title"></div>
+        <div class="showPalette-single">
+          <div class="palette">
+            <el-color-picker
+              v-model="navbgColor"
+              :predefine="predefineColors"
+              @change="setSingleColor('--nav-bg-color', navbgColor)"
+              color-format="hex"
+            />
+          </div>
+          <div>導覽列顏色 --nav-bg-color</div>
+        </div>
+      </div>
+      <el-divider />
     </div>
     <template #footer>
       <div class="dialog-footer">
@@ -458,7 +559,7 @@ const setTemplate = (templateNumber) => {
       width: 20px;
     }
     & > div:nth-child(1) {
-      background-color: #94af64;
+      background-color: #6bb1cc;
     }
     & > div:nth-child(2) {
       background-color: #ffbd41;
@@ -467,7 +568,7 @@ const setTemplate = (templateNumber) => {
       background-color: #ffeccc;
     }
     & > div:nth-child(4) {
-      background-color: #ae3243;
+      background-color: #a33131;
     }
     & > div:nth-child(5) {
       background-color: #d41414;
@@ -486,22 +587,22 @@ const setTemplate = (templateNumber) => {
       width: 20px;
     }
     & > div:nth-child(1) {
-      background-color: #409eff;
+      background-color: #94af64;
     }
     & > div:nth-child(2) {
-      background-color: #67c23a;
+      background-color: #ffbd41;
     }
     & > div:nth-child(3) {
-      background-color: #e6a23c;
+      background-color: #ffeccc;
     }
     & > div:nth-child(4) {
-      background-color: #f56c6c;
+      background-color: #ae3243;
     }
     & > div:nth-child(5) {
-      background-color: #a79277;
+      background-color: #d41414;
     }
     & > div:nth-child(6) {
-      background-color: #909399;
+      background-color: #8b8b8b;
     }
   }
   .template3 {
@@ -514,22 +615,50 @@ const setTemplate = (templateNumber) => {
       width: 20px;
     }
     & > div:nth-child(1) {
-      background-color: #27ba9b;
+      background-color: #7b77c6;
     }
     & > div:nth-child(2) {
-      background-color: #1dc779;
+      background-color: #bf72c1;
     }
     & > div:nth-child(3) {
-      background-color: #ffb302;
+      background-color: #abe0d2;
     }
     & > div:nth-child(4) {
-      background-color: #e26237;
+      background-color: #c86c78;
     }
     & > div:nth-child(5) {
-      background-color: #cf4444;
+      background-color: #c86c78;
     }
     & > div:nth-child(6) {
-      background-color: #909399;
+      background-color: #e4d1d1;
+    }
+  }
+  .template4 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #7b77c6;
+    }
+    & > div:nth-child(2) {
+      background-color: #bf72c1;
+    }
+    & > div:nth-child(3) {
+      background-color: #abe0d2;
+    }
+    & > div:nth-child(4) {
+      background-color: #c86c78;
+    }
+    & > div:nth-child(5) {
+      background-color: #c86c78;
+    }
+    & > div:nth-child(6) {
+      background-color: #e4d1d1;
     }
   }
 }
