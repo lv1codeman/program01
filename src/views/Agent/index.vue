@@ -12,7 +12,7 @@ import { useProgramStore } from '@/stores/agentData.js'
 const store = useProgramStore()
 const formRef = ref()
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
-const dynamicValidateForm = reactive({
+const dynamicValidateForm_formal = reactive({
   name: '',
   url: '',
   type: '學分學程',
@@ -30,7 +30,7 @@ const dynamicValidateForm = reactive({
     }
   ]
 })
-const dynamicValidateForm_formal = reactive({
+const dynamicValidateForm = reactive({
   name: '11',
   url: '22',
   type: '學分學程',

@@ -127,20 +127,25 @@ const resetColor = () => {
   bgPageColor.value = origin_bgPageColor.value
   navbgColor.value = origin_navbgColor.value
 
+  setTemplateColor()
+  //#endregion
+  showDialog.value = false
+}
+
+const setTemplateColor = () => {
   setMainColor('--el-color-primary', primaryColor.value)
   setMainColor('--el-color-success', successColor.value)
   setMainColor('--el-color-warning', warningColor.value)
   setMainColor('--el-color-danger', dangerColor.value)
   setMainColor('--el-color-error', errorColor.value)
   setMainColor('--el-color-info', infoColor.value)
+
   setSingleColor('--el-text-color-regular', textColorRegular.value)
   setSingleColor('--el-text-color-primary', textColorPrimary.value)
   setSingleColor('--el-text-color-secondary', textColorSecondary.value)
   setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
   setSingleColor('--el-bg-color-page', bgPageColor.value)
   setSingleColor('--nav-bg-color', navbgColor.value)
-  //#endregion
-  showDialog.value = false
 }
 
 const setTemplate = (templateNumber) => {
@@ -158,19 +163,7 @@ const setTemplate = (templateNumber) => {
       textColorPlaceholder.value = '#a0a0a0'
       bgPageColor.value = '#f7fafb'
       navbgColor.value = '#22668d'
-      setMainColor('--el-color-primary', primaryColor.value)
-      setMainColor('--el-color-success', successColor.value)
-      setMainColor('--el-color-warning', warningColor.value)
-      setMainColor('--el-color-danger', dangerColor.value)
-      setMainColor('--el-color-error', errorColor.value)
-      setMainColor('--el-color-info', infoColor.value)
-
-      setSingleColor('--el-text-color-regular', textColorRegular.value)
-      setSingleColor('--el-text-color-primary', textColorPrimary.value)
-      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
-      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
-      setSingleColor('--el-bg-color-page', bgPageColor.value)
-      setSingleColor('--nav-bg-color', navbgColor.value)
+      setTemplateColor()
       break
     case 2:
       primaryColor.value = '#94af64'
@@ -186,19 +179,7 @@ const setTemplate = (templateNumber) => {
       textColorPlaceholder.value = '#C7C7C7'
       bgPageColor.value = '#f2f2f2'
       navbgColor.value = '#6f8745'
-      setMainColor('--el-color-primary', primaryColor.value)
-      setMainColor('--el-color-success', successColor.value)
-      setMainColor('--el-color-warning', warningColor.value)
-      setMainColor('--el-color-danger', dangerColor.value)
-      setMainColor('--el-color-error', errorColor.value)
-      setMainColor('--el-color-info', infoColor.value)
-
-      setSingleColor('--el-text-color-regular', textColorRegular.value)
-      setSingleColor('--el-text-color-primary', textColorPrimary.value)
-      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
-      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
-      setSingleColor('--el-bg-color-page', bgPageColor.value)
-      setSingleColor('--nav-bg-color', navbgColor.value)
+      setTemplateColor()
       break
     case 3:
       primaryColor.value = '#7B77C6'
@@ -214,19 +195,7 @@ const setTemplate = (templateNumber) => {
       textColorPlaceholder.value = '#1F1F1D'
       bgPageColor.value = '#F2F2F2'
       navbgColor.value = '#5696A0'
-      setMainColor('--el-color-primary', primaryColor.value)
-      setMainColor('--el-color-success', successColor.value)
-      setMainColor('--el-color-warning', warningColor.value)
-      setMainColor('--el-color-danger', dangerColor.value)
-      setMainColor('--el-color-error', errorColor.value)
-      setMainColor('--el-color-info', infoColor.value)
-
-      setSingleColor('--el-text-color-regular', textColorRegular.value)
-      setSingleColor('--el-text-color-primary', textColorPrimary.value)
-      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
-      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
-      setSingleColor('--el-bg-color-page', bgPageColor.value)
-      setSingleColor('--nav-bg-color', navbgColor.value)
+      setTemplateColor()
       break
     case 4:
       primaryColor.value = '#80A0E4'
@@ -242,19 +211,37 @@ const setTemplate = (templateNumber) => {
       textColorPlaceholder.value = '#ACACAC'
       bgPageColor.value = '#F8F8F8'
       navbgColor.value = '#133988'
-      setMainColor('--el-color-primary', primaryColor.value)
-      setMainColor('--el-color-success', successColor.value)
-      setMainColor('--el-color-warning', warningColor.value)
-      setMainColor('--el-color-danger', dangerColor.value)
-      setMainColor('--el-color-error', errorColor.value)
-      setMainColor('--el-color-info', infoColor.value)
+      setTemplateColor()
+      break
+    case 5:
+      // 姿妤
+      // primaryColor.value = '#439266'
+      // successColor.value = '#EB9C2D'
+      // warningColor.value = '#EFAB96'
+      // dangerColor.value = '#C21717'
+      // // errorColor.value = '#AE3243'
+      // infoColor.value = '#161D3B'
 
-      setSingleColor('--el-text-color-regular', textColorRegular.value)
-      setSingleColor('--el-text-color-primary', textColorPrimary.value)
-      setSingleColor('--el-text-color-secondary', textColorSecondary.value)
-      setSingleColor('--el-text-color-placeholder', textColorPlaceholder.value)
-      setSingleColor('--el-bg-color-page', bgPageColor.value)
-      setSingleColor('--nav-bg-color', navbgColor.value)
+      // textColorRegular.value = '#01010C'
+      // textColorPrimary.value = '#0A5712'
+      // textColorSecondary.value = '#446ACC'
+      // textColorPlaceholder.value = '#A0A0A0'
+      // bgPageColor.value = '#DCEBF0'
+      // navbgColor.value = '#417D5E'
+      primaryColor.value = '#6567AA'
+      successColor.value = '#82CD5C'
+      warningColor.value = '#FFCC5E'
+      dangerColor.value = '#B44242'
+      // errorColor.value = '#AE3243'
+      infoColor.value = '#B44242'
+
+      textColorRegular.value = '#0C0739'
+      textColorPrimary.value = '#2F2E67'
+      textColorSecondary.value = '#3B3872'
+      textColorPlaceholder.value = '#C2C0C0'
+      bgPageColor.value = '#F3F3F4'
+      navbgColor.value = '#4A459B'
+      setTemplateColor()
       break
     default:
       break
@@ -298,6 +285,22 @@ const setTemplate = (templateNumber) => {
         <div>&nbsp;</div>
       </div>
       <div class="template4" @click="setTemplate(4)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="template5" @click="setTemplate(5)">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+      </div>
+      <div class="template5" @click="setTemplate(6)">
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -659,6 +662,62 @@ const setTemplate = (templateNumber) => {
     }
     & > div:nth-child(6) {
       background-color: #e4d1d1;
+    }
+  }
+  .template5 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #439266;
+    }
+    & > div:nth-child(2) {
+      background-color: #eb9c2d;
+    }
+    & > div:nth-child(3) {
+      background-color: #efab96;
+    }
+    & > div:nth-child(4) {
+      background-color: #c21717;
+    }
+    & > div:nth-child(5) {
+      background-color: #c21717;
+    }
+    & > div:nth-child(6) {
+      background-color: #161d3b;
+    }
+  }
+  .template6 {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+    & > div:nth-child(1) {
+      background-color: #439266;
+    }
+    & > div:nth-child(2) {
+      background-color: #eb9c2d;
+    }
+    & > div:nth-child(3) {
+      background-color: #efab96;
+    }
+    & > div:nth-child(4) {
+      background-color: #c21717;
+    }
+    & > div:nth-child(5) {
+      background-color: #c21717;
+    }
+    & > div:nth-child(6) {
+      background-color: #161d3b;
     }
   }
 }
