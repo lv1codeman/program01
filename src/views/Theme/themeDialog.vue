@@ -147,7 +147,6 @@ const setTemplate = (templateNumber) => {
       colorObj.value.successColor = '#ffbd41'
       colorObj.value.warningColor = '#ffeccc'
       colorObj.value.dangerColor = '#a33131'
-      colorObj.value.errorColor = '#d41414'
       colorObj.value.infoColor = '#8b8b8b'
       colorObj.value.textColorRegular = '#276075'
       colorObj.value.textColorPrimary = '#074b5f'
@@ -162,7 +161,6 @@ const setTemplate = (templateNumber) => {
       colorObj.value.successColor = '#df9348'
       colorObj.value.warningColor = '#ffeccc'
       colorObj.value.dangerColor = '#ae3243'
-      colorObj.value.errorColor = '#2b2118'
       colorObj.value.infoColor = '#828282'
       colorObj.value.textColorRegular = '#556b2e'
       colorObj.value.textColorPrimary = '#42610d'
@@ -232,12 +230,74 @@ const setTemplate = (templateNumber) => {
       break
   }
 }
-const template1Colors = ref(['#6bb1cc', '#ffbd41', '#ffeccc', '#a33131', '#8b8b8b'])
-const template2Colors = ref(['#94af64', '#ffbd41', '#ffeccc', '#ae3243', '#8b8b8b'])
-const template3Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
-const template4Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
-const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
-const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
+const template1Colors = ref([
+  '#6bb1cc',
+  '#ffbd41',
+  '#ffeccc',
+  '#a33131',
+  '#8b8b8b',
+  '#276075',
+  '#074b5f',
+  '#568da3',
+  '#a0a0a0',
+  '#f7fafb',
+  '#22668d'
+])
+const template2Colors = ref([
+  '#94af64',
+  '#df9348',
+  '#ffeccc',
+  '#ae3243',
+  '#828282',
+  '#556b2e',
+  '#42610d',
+  '#668a28',
+  '#C7C7C7',
+  '#f2f2f2',
+  '#6f8745'
+])
+const template3Colors = ref([
+  '#7B77C6',
+  '#BF72C1',
+  '#ABE0D2',
+  '#ae3243',
+  '#E4D1D1',
+  '#424144',
+  '#4D769C',
+  '#CF8CAC',
+  '#1F1F1D',
+  '#F2F2F2',
+  '#5696A0'
+])
+const template4Colors = ref([
+  '#80A0E4',
+  '#E6A566',
+  '#FFECCC',
+  '#CC273D',
+  '#B4B4B4',
+  '#1F6888',
+  '#306B91',
+  '#197280',
+  '#ACACAC',
+  '#F8F8F8',
+  '#133988'
+])
+const template5Colors = ref([
+  '#6567AA',
+  '#82CD5C',
+  '#FFCC5E',
+  '#B44242',
+  '#B44242',
+  '#0C0739',
+  '#2F2E67',
+  '#3B3872',
+  '#C2C0C0',
+  '#F3F3F4',
+  '#4A459B'
+])
+// const template4Colors = ref(['#4674D7', '#EE8A5F', '#B4D39C', '#C86C78', '#EDC0C0', '#EDC0C0'])
+// const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
+// const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
 </script>
 <template>
   <el-dialog
@@ -270,6 +330,7 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
         <div v-for="(color, index) in template6Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
     </div>
+    <p style="text-align: center; margin: 10px 0; font-size: 16px">--點選以上樣板套用，或於下方自訂色碼--</p>
     <div class="themeBox">
       <div class="colorBox">
         <div class="title">主色 --el-color-primary</div>
@@ -491,8 +552,8 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
     </div>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="resetColor">Cancel</el-button>
-        <el-button type="primary" @click="showDialog = false"> Confirm </el-button>
+        <el-button @click="resetColor">恢復預設</el-button>
+        <el-button type="primary" @click="showDialog = false">確認</el-button>
       </div>
     </template>
   </el-dialog>
