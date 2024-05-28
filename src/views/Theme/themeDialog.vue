@@ -185,17 +185,17 @@ const setTemplate = (templateNumber) => {
       setTemplateColor()
       break
     case 4:
-      colorObj.value.primaryColor = '#80A0E4'
-      colorObj.value.successColor = '#E6A566'
-      colorObj.value.warningColor = '#FFECCC'
-      colorObj.value.dangerColor = '#CC273D'
-      colorObj.value.infoColor = '#B4B4B4'
-      colorObj.value.textColorRegular = '#1F6888'
-      colorObj.value.textColorPrimary = '#306B91'
-      colorObj.value.textColorSecondary = '#197280'
-      colorObj.value.textColorPlaceholder = '#ACACAC'
-      colorObj.value.bgPageColor = '#F8F8F8'
-      colorObj.value.navbgColor = '#133988'
+      colorObj.value.primaryColor = template4Colors.value[0]
+      colorObj.value.successColor = template4Colors.value[1]
+      colorObj.value.warningColor = template4Colors.value[2]
+      colorObj.value.dangerColor = template4Colors.value[3]
+      colorObj.value.infoColor = template4Colors.value[4]
+      colorObj.value.textColorRegular = template4Colors.value[5]
+      colorObj.value.textColorPrimary = template4Colors.value[6]
+      colorObj.value.textColorSecondary = template4Colors.value[7]
+      colorObj.value.textColorPlaceholder = template4Colors.value[8]
+      colorObj.value.bgPageColor = template4Colors.value[9]
+      colorObj.value.navbgColor = template4Colors.value[10]
       setTemplateColor()
       break
     case 5:
@@ -213,17 +213,17 @@ const setTemplate = (templateNumber) => {
       // textColorPlaceholder.value = '#A0A0A0'
       // bgPageColor.value = '#DCEBF0'
       // navbgColor.value = '#417D5E'
-      colorObj.value.primaryColor = '#6567AA'
-      colorObj.value.successColor = '#82CD5C'
-      colorObj.value.warningColor = '#FFCC5E'
-      colorObj.value.dangerColor = '#B44242'
-      colorObj.value.infoColor = '#B44242'
-      colorObj.value.textColorRegular = '#0C0739'
-      colorObj.value.textColorPrimary = '#2F2E67'
-      colorObj.value.textColorSecondary = '#3B3872'
-      colorObj.value.textColorPlaceholder = '#C2C0C0'
-      colorObj.value.bgPageColor = '#F3F3F4'
-      colorObj.value.navbgColor = '#4A459B'
+      colorObj.value.primaryColor = template5Colors.value[0]
+      colorObj.value.successColor = template5Colors.value[1]
+      colorObj.value.warningColor = template5Colors.value[2]
+      colorObj.value.dangerColor = template5Colors.value[3]
+      colorObj.value.infoColor = template5Colors.value[4]
+      colorObj.value.textColorRegular = template5Colors.value[5]
+      colorObj.value.textColorPrimary = template5Colors.value[6]
+      colorObj.value.textColorSecondary = template5Colors.value[7]
+      colorObj.value.textColorPlaceholder = template5Colors.value[8]
+      colorObj.value.bgPageColor = template5Colors.value[9]
+      colorObj.value.navbgColor = template5Colors.value[10]
       setTemplateColor()
       break
     default:
@@ -417,27 +417,6 @@ const template5Colors = ref([
         </div>
       </div>
       <el-divider />
-      <!-- <div class="colorBox">
-        <div class="title">錯誤色 --el-color-error</div>
-        <div class="showPalette-error">
-          <div class="palette">
-            <el-color-picker
-              v-model="colorObj.errorColor"
-              :predefine="predefineColors"
-              @change="setMainColor('--el-color-error', colorObj.errorColor)"
-              color-format="hex"
-            />
-          </div>
-          <div class="error-dark">dark</div>
-          <div class="error-origin">origin</div>
-          <div class="error-light3">light3</div>
-          <div class="error-light5">light5</div>
-          <div class="error-light7">light7</div>
-          <div class="error-light8">light8</div>
-          <div class="error-light9">light9</div>
-        </div>
-      </div>
-      <el-divider /> -->
       <div class="colorBox">
         <div class="title">資訊色 --el-color-info</div>
         <div class="showPalette-info">
@@ -558,6 +537,28 @@ const template5Colors = ref([
     </template>
   </el-dialog>
 </template>
+<!-- 錯誤色目前專案沒用到，先隱藏
+      <div class="colorBox">
+        <div class="title">錯誤色 --el-color-error</div>
+        <div class="showPalette-error">
+          <div class="palette">
+            <el-color-picker
+              v-model="colorObj.errorColor"
+              :predefine="predefineColors"
+              @change="setMainColor('--el-color-error', colorObj.errorColor)"
+              color-format="hex"
+            />
+          </div>
+          <div class="error-dark">dark</div>
+          <div class="error-origin">origin</div>
+          <div class="error-light3">light3</div>
+          <div class="error-light5">light5</div>
+          <div class="error-light7">light7</div>
+          <div class="error-light8">light8</div>
+          <div class="error-light9">light9</div>
+        </div>
+      </div>
+      <el-divider /> -->
 <style lang="scss" scoped>
 // .theme-dialog {
 //   width: 390px !important;
