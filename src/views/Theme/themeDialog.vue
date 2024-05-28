@@ -26,7 +26,6 @@ const handleDialogClose = () => {
 const dialogWidth = ref(500)
 const setDialogWidth = () => {
   let windowSize = document.body.clientWidth
-  // console.log(windowSize)
   const defaultWidth = 500 // 預設寬度
   if (windowSize < defaultWidth) {
     dialogWidth.value = '100%'
@@ -271,12 +270,6 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
         <div v-for="(color, index) in template6Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
     </div>
-    <!-- <div class="primary">&nbsp;</div>
-        <div class="success">&nbsp;</div>
-        <div class="warning">&nbsp;</div>
-        <div class="danger">&nbsp;</div>
-        <div class="error">&nbsp;</div>
-        <div class="info">&nbsp;</div> -->
     <div class="themeBox">
       <div class="colorBox">
         <div class="title">主色 --el-color-primary</div>
