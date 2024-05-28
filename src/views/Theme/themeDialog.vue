@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch, defineProps, onMounted } from 'vue'
+import TemplateComponent from './TemplateComponent.vue'
 import mixColor from '@/utils/color/epColorMix.js'
 import genColorTag from '@/utils/color/genColorTag.js'
 const showDialog = ref(false)
@@ -43,14 +44,14 @@ onMounted(() => {
 })
 
 const setMainColor = (colorTag, colorCode) => {
-  console.log('change color by target tag')
+  // console.log('change color by target tag')
   const white = '#ffffff'
   const black = '#000000'
 
   const el = document.documentElement
   let colorTagList = genColorTag(colorTag)
 
-  console.log(colorTagList)
+  // console.log(colorTagList)
   // 0.7 = (10-3)*0.1
   let colorCodeList = [
     colorCode,
@@ -233,12 +234,20 @@ const setTemplate = (templateNumber) => {
       break
   }
 }
-const template1Colors = ref(['#6bb1cc', '#ffbd41', '#ffeccc', '#a33131', '#8b8b8b'])
-const template2Colors = ref(['#94af64', '#ffbd41', '#ffeccc', '#ae3243', '#8b8b8b'])
-const template3Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
-const template4Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
-const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
-const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
+const templates = ref([
+  ['#6bb1cc', '#ffbd41', '#ffeccc', '#a33131', '#8b8b8b'],
+  ['#94af64', '#ffbd41', '#ffeccc', '#ae3243', '#8b8b8b'],
+  ['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'],
+  ['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'],
+  ['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'],
+  ['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b']
+])
+// const template1Colors = ref(['#6bb1cc', '#ffbd41', '#ffeccc', '#a33131', '#8b8b8b'])
+// const template2Colors = ref(['#94af64', '#ffbd41', '#ffeccc', '#ae3243', '#8b8b8b'])
+// const template3Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
+// const template4Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
+// const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
+// const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
 </script>
 <template>
   <el-dialog
@@ -251,7 +260,15 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
     draggable
     overflow
   >
-    <div class="templateSelect">
+    <TemplateComponent
+      v-for="(colors, index) in templates"
+      :key="index"
+      :colors="colors"
+      :templateNumber="index + 1"
+      @select="setTemplate"
+    />
+
+    <!-- <div class="templateSelect">
       <div class="template1" @click="setTemplate(1)">
         <div v-for="(color, index) in template1Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
@@ -270,7 +287,7 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
       <div class="template6" @click="setTemplate(6)">
         <div v-for="(color, index) in template6Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
-    </div>
+    </div> -->
     <!-- <div class="primary">&nbsp;</div>
         <div class="success">&nbsp;</div>
         <div class="warning">&nbsp;</div>
@@ -508,28 +525,33 @@ const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3
 // .theme-dialog {
 //   width: 390px !important;
 // }
-.templateSelect {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-around;
-  .template {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-  }
+// .templateSelect {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+// }
+// .templateSelect {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 10px;
+//   justify-content: space-around;
+//   .template {
+//     display: flex;
+//     border: 1px solid black;
+//     &:hover {
+//       cursor: pointer;
+//     }
+//     > div {
+//       width: 20px;
+//     }
+//   }
 
-  @for $i from 1 through 6 {
-    .template#{$i} {
-      @extend .template;
-    }
-  }
-}
+//   @for $i from 1 through 6 {
+//     .template#{$i} {
+//       @extend .template;
+//     }
+//   }
+// }
 .showPalette-single {
   display: flex;
   justify-content: flex-start;
