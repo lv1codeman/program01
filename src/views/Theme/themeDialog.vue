@@ -42,14 +42,12 @@ onMounted(() => {
 })
 
 const setMainColor = (colorTag, colorCode) => {
-  console.log('change color by target tag')
   const white = '#ffffff'
   const black = '#000000'
 
   const el = document.documentElement
   let colorTagList = genColorTag(colorTag)
 
-  console.log(colorTagList)
   // 0.7 = (10-3)*0.1
   let colorCodeList = [
     colorCode,
@@ -73,49 +71,51 @@ const setMainColor = (colorTag, colorCode) => {
 }
 
 const setSingleColor = (colorTag, colorCode) => {
-  const el = document.documentElement
-  getComputedStyle(el).getPropertyValue(colorTag)
-  el.style.setProperty(colorTag, colorCode)
+  // const el = document.documentElement
+  // getComputedStyle(el).getPropertyValue(colorTag)
+  // el.style.setProperty(colorTag, colorCode)
+  document.documentElement.style.setProperty(colorTag, colorCode)
 }
 
 //#region 顏色變數宣告
 // origin用於resetColor, 非origin用於el-color-picker的v-modal，所以這邊都不能省略
+const domStyle = getComputedStyle(document.documentElement)
 
 const colorObj = ref({
-  primaryColor: '#6bb1cc',
-  successColor: '#ffbd41',
-  warningColor: '#ffeccc',
-  dangerColor: '#a33131',
-  errorColor: '#d41414',
-  infoColor: '#8b8b8b',
-  textColorRegular: '#276075',
-  textColorPrimary: '#074b5f',
-  textColorSecondary: '#568da3',
-  textColorPlaceholder: '#a0a0a0',
-  bgPageColor: '#f7fafb',
-  navbgColor: '#22668d'
+  primaryColor: domStyle.getPropertyValue('--el-color-primary'),
+  successColor: domStyle.getPropertyValue('--el-color-success'),
+  warningColor: domStyle.getPropertyValue('--el-color-warning'),
+  dangerColor: domStyle.getPropertyValue('--el-color-danger'),
+  errorColor: domStyle.getPropertyValue('--el-color-error'),
+  infoColor: domStyle.getPropertyValue('--el-color-info'),
+  textColorRegular: domStyle.getPropertyValue('--el-text-color-regular'),
+  textColorPrimary: domStyle.getPropertyValue('--el-text-color-primary'),
+  textColorSecondary: domStyle.getPropertyValue('--el-text-color-secondary'),
+  textColorPlaceholder: domStyle.getPropertyValue('--el-text-color-placeholder'),
+  bgPageColor: domStyle.getPropertyValue('--el-bg-color-page'),
+  navbgColor: domStyle.getPropertyValue('--nav-bg-color')
 })
 
 const colorOriginObj = ref({
-  primaryColor: '#6bb1cc',
-  successColor: '#ffbd41',
-  warningColor: '#ffeccc',
-  dangerColor: '#a33131',
-  errorColor: '#d41414',
-  infoColor: '#8b8b8b',
-  textColorRegular: '#276075',
-  textColorPrimary: '#074b5f',
-  textColorSecondary: '#568da3',
-  textColorPlaceholder: '#a0a0a0',
-  bgPageColor: '#f7fafb',
-  navbgColor: '#22668d'
+  primaryColor: domStyle.getPropertyValue('--el-color-primary'),
+  successColor: domStyle.getPropertyValue('--el-color-success'),
+  warningColor: domStyle.getPropertyValue('--el-color-warning'),
+  dangerColor: domStyle.getPropertyValue('--el-color-danger'),
+  errorColor: domStyle.getPropertyValue('--el-color-error'),
+  infoColor: domStyle.getPropertyValue('--el-color-info'),
+  textColorRegular: domStyle.getPropertyValue('--el-text-color-regular'),
+  textColorPrimary: domStyle.getPropertyValue('--el-text-color-primary'),
+  textColorSecondary: domStyle.getPropertyValue('--el-text-color-secondary'),
+  textColorPlaceholder: domStyle.getPropertyValue('--el-text-color-placeholder'),
+  bgPageColor: domStyle.getPropertyValue('--el-bg-color-page'),
+  navbgColor: domStyle.getPropertyValue('--nav-bg-color')
 })
 //#endregion
 
 const predefineColors = ref(['#6bb1cc', '#1e90ff', 'rgba(255, 69, 0, 0.68)'])
 
 const resetColor = () => {
-  console.log('resetColor event start')
+  // console.log('resetColor event start')
   //#region 變數重製回origin並以origin重設
   colorObj.value = { ...colorOriginObj.value }
 
@@ -199,20 +199,6 @@ const setTemplate = (templateNumber) => {
       setTemplateColor()
       break
     case 5:
-      // 姿妤
-      // primaryColor.value = '#439266'
-      // successColor.value = '#EB9C2D'
-      // warningColor.value = '#EFAB96'
-      // dangerColor.value = '#C21717'
-      // // errorColor.value = '#AE3243'
-      // infoColor.value = '#161D3B'
-
-      // textColorRegular.value = '#01010C'
-      // textColorPrimary.value = '#0A5712'
-      // textColorSecondary.value = '#446ACC'
-      // textColorPlaceholder.value = '#A0A0A0'
-      // bgPageColor.value = '#DCEBF0'
-      // navbgColor.value = '#417D5E'
       colorObj.value.primaryColor = template5Colors.value[0]
       colorObj.value.successColor = template5Colors.value[1]
       colorObj.value.warningColor = template5Colors.value[2]
@@ -224,6 +210,20 @@ const setTemplate = (templateNumber) => {
       colorObj.value.textColorPlaceholder = template5Colors.value[8]
       colorObj.value.bgPageColor = template5Colors.value[9]
       colorObj.value.navbgColor = template5Colors.value[10]
+      setTemplateColor()
+      break
+    case 6:
+      colorObj.value.primaryColor = template6Colors.value[0]
+      colorObj.value.successColor = template6Colors.value[1]
+      colorObj.value.warningColor = template6Colors.value[2]
+      colorObj.value.dangerColor = template6Colors.value[3]
+      colorObj.value.infoColor = template6Colors.value[4]
+      colorObj.value.textColorRegular = template6Colors.value[5]
+      colorObj.value.textColorPrimary = template6Colors.value[6]
+      colorObj.value.textColorSecondary = template6Colors.value[7]
+      colorObj.value.textColorPlaceholder = template6Colors.value[8]
+      colorObj.value.bgPageColor = template6Colors.value[9]
+      colorObj.value.navbgColor = template6Colors.value[10]
       setTemplateColor()
       break
     default:
@@ -294,6 +294,19 @@ const template5Colors = ref([
   '#C2C0C0',
   '#F3F3F4',
   '#4A459B'
+])
+const template6Colors = ref([
+  '#439266',
+  '#EB9C2D',
+  '#EFAB96',
+  '#C21717',
+  '#161D3B',
+  '#01010C',
+  '#0A5712',
+  '#446ACC',
+  '#A0A0A0',
+  '#DCEBF0',
+  '#417D5E'
 ])
 // const template4Colors = ref(['#4674D7', '#EE8A5F', '#B4D39C', '#C86C78', '#EDC0C0', '#EDC0C0'])
 // const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])

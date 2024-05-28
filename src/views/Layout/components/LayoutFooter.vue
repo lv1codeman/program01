@@ -129,7 +129,7 @@ const linkCurri = () => {
   height: 160px;
   text-align: center;
   border-right: 1px solid #f2f2f2;
-  color: var(--el-color-info);
+  color: var(--el-text-color-secondary);
   &:first-child {
     border-left: 1px solid #f2f2f2;
   }
