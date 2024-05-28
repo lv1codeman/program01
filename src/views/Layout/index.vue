@@ -20,4 +20,9 @@ import LayoutFooter from './components/LayoutFooter.vue'
   padding-top: 5px;
   padding-bottom: 20px;
 }
+@media screen and (max-width: 767px) {
+  .page-container-outer {
+    min-height: 200px;
+  }
+}
 </style>

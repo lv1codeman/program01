@@ -40,20 +40,27 @@ p {
 }
 
 .tabGroup {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .tab {
   /* background-color: red; */
   text-align: center;
+  &:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+  }
 }
 .tab1 {
   font-size: 40px;
   border-radius: 20px;
-  padding: 80px 50px;
+  padding: 100px 50px;
   height: 100%;
   width: 100%;
 }
 @media screen and (max-width: 767px) {
+  .tabGroup {
+    margin-top: 20px;
+  }
   .tab1 {
     font-size: 20px;
     padding: 50px 20px;

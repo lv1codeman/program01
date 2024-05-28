@@ -212,7 +212,7 @@ const linkCurri = () => {
 .app_footer {
   overflow: hidden;
   background-color: #f5f5f5;
-  margin-top: 20px;
+  // margin-top: 20px;
 
   .contact {
     background: #fff;

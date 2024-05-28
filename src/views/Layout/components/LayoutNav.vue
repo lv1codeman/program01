@@ -50,7 +50,10 @@ const handleDialogUpdate = (newVal) => {
   border-radius: 42px;
   cursor: pointer;
   padding: 5px;
+
   &:hover {
+    transform: scale(1.2);
+    transition-duration: 0.3s;
     background-color: var(--el-color-primary-dark-2);
   }
 }

@@ -40,12 +40,12 @@ onMounted(() => {
     })()
   }
 })
-
+const domStyle = getComputedStyle(document.documentElement)
 const setMainColor = (colorTag, colorCode) => {
   const white = '#ffffff'
   const black = '#000000'
 
-  const el = document.documentElement
+  // const el = document.documentElement
   let colorTagList = genColorTag(colorTag)
 
   // 0.7 = (10-3)*0.1
@@ -65,8 +65,9 @@ const setMainColor = (colorTag, colorCode) => {
   }
 
   colorList.forEach((item) => {
-    getComputedStyle(el).getPropertyValue(item.key)
-    el.style.setProperty(item.key, item.value)
+    // getComputedStyle(el).getPropertyValue(item.key)
+    domStyle.getPropertyValue(item.key)
+    document.documentElement.style.setProperty(item.key, item.value)
   })
 }
 
@@ -79,8 +80,7 @@ const setSingleColor = (colorTag, colorCode) => {
 
 //#region 顏色變數宣告
 // origin用於resetColor, 非origin用於el-color-picker的v-modal，所以這邊都不能省略
-const domStyle = getComputedStyle(document.documentElement)
-
+// 初始值都是讀取root值
 const colorObj = ref({
   primaryColor: domStyle.getPropertyValue('--el-color-primary'),
   successColor: domStyle.getPropertyValue('--el-color-success'),
@@ -95,7 +95,6 @@ const colorObj = ref({
   bgPageColor: domStyle.getPropertyValue('--el-bg-color-page'),
   navbgColor: domStyle.getPropertyValue('--nav-bg-color')
 })
-
 const colorOriginObj = ref({
   primaryColor: domStyle.getPropertyValue('--el-color-primary'),
   successColor: domStyle.getPropertyValue('--el-color-success'),
@@ -119,12 +118,12 @@ const resetColor = () => {
   //#region 變數重製回origin並以origin重設
   colorObj.value = { ...colorOriginObj.value }
 
-  setTemplateColor()
+  setColorByColorObj()
   //#endregion
   showDialog.value = false
 }
 
-const setTemplateColor = () => {
+const setColorByColorObj = () => {
   setMainColor('--el-color-primary', colorObj.value.primaryColor)
   setMainColor('--el-color-success', colorObj.value.successColor)
   setMainColor('--el-color-warning', colorObj.value.warningColor)
@@ -143,93 +142,59 @@ const setTemplateColor = () => {
 const setTemplate = (templateNumber) => {
   switch (templateNumber) {
     case 1:
-      colorObj.value.primaryColor = template1Colors.value[0]
-      colorObj.value.successColor = template1Colors.value[1]
-      colorObj.value.warningColor = template1Colors.value[2]
-      colorObj.value.dangerColor = template1Colors.value[3]
-      colorObj.value.infoColor = template1Colors.value[4]
-      colorObj.value.textColorRegular = template1Colors.value[5]
-      colorObj.value.textColorPrimary = template1Colors.value[6]
-      colorObj.value.textColorSecondary = template1Colors.value[7]
-      colorObj.value.textColorPlaceholder = template1Colors.value[8]
-      colorObj.value.bgPageColor = template1Colors.value[9]
-      colorObj.value.navbgColor = template1Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template1Colors.value[index]
+      })
+      setColorByColorObj()
       break
     case 2:
-      colorObj.value.primaryColor = template2Colors.value[0]
-      colorObj.value.successColor = template2Colors.value[1]
-      colorObj.value.warningColor = template2Colors.value[2]
-      colorObj.value.dangerColor = template2Colors.value[3]
-      colorObj.value.infoColor = template2Colors.value[4]
-      colorObj.value.textColorRegular = template2Colors.value[5]
-      colorObj.value.textColorPrimary = template2Colors.value[6]
-      colorObj.value.textColorSecondary = template2Colors.value[7]
-      colorObj.value.textColorPlaceholder = template2Colors.value[8]
-      colorObj.value.bgPageColor = template2Colors.value[9]
-      colorObj.value.navbgColor = template2Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template2Colors.value[index]
+      })
+      setColorByColorObj()
       break
     case 3:
-      colorObj.value.primaryColor = template3Colors.value[0]
-      colorObj.value.successColor = template3Colors.value[1]
-      colorObj.value.warningColor = template3Colors.value[2]
-      colorObj.value.dangerColor = template3Colors.value[3]
-      colorObj.value.infoColor = template3Colors.value[4]
-      colorObj.value.textColorRegular = template3Colors.value[5]
-      colorObj.value.textColorPrimary = template3Colors.value[6]
-      colorObj.value.textColorSecondary = template3Colors.value[7]
-      colorObj.value.textColorPlaceholder = template3Colors.value[8]
-      colorObj.value.bgPageColor = template3Colors.value[9]
-      colorObj.value.navbgColor = template3Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template3Colors.value[index]
+      })
+      setColorByColorObj()
       break
     case 4:
-      colorObj.value.primaryColor = template4Colors.value[0]
-      colorObj.value.successColor = template4Colors.value[1]
-      colorObj.value.warningColor = template4Colors.value[2]
-      colorObj.value.dangerColor = template4Colors.value[3]
-      colorObj.value.infoColor = template4Colors.value[4]
-      colorObj.value.textColorRegular = template4Colors.value[5]
-      colorObj.value.textColorPrimary = template4Colors.value[6]
-      colorObj.value.textColorSecondary = template4Colors.value[7]
-      colorObj.value.textColorPlaceholder = template4Colors.value[8]
-      colorObj.value.bgPageColor = template4Colors.value[9]
-      colorObj.value.navbgColor = template4Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template4Colors.value[index]
+      })
+      setColorByColorObj()
       break
     case 5:
-      colorObj.value.primaryColor = template5Colors.value[0]
-      colorObj.value.successColor = template5Colors.value[1]
-      colorObj.value.warningColor = template5Colors.value[2]
-      colorObj.value.dangerColor = template5Colors.value[3]
-      colorObj.value.infoColor = template5Colors.value[4]
-      colorObj.value.textColorRegular = template5Colors.value[5]
-      colorObj.value.textColorPrimary = template5Colors.value[6]
-      colorObj.value.textColorSecondary = template5Colors.value[7]
-      colorObj.value.textColorPlaceholder = template5Colors.value[8]
-      colorObj.value.bgPageColor = template5Colors.value[9]
-      colorObj.value.navbgColor = template5Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template5Colors.value[index]
+      })
+      setColorByColorObj()
       break
     case 6:
-      colorObj.value.primaryColor = template6Colors.value[0]
-      colorObj.value.successColor = template6Colors.value[1]
-      colorObj.value.warningColor = template6Colors.value[2]
-      colorObj.value.dangerColor = template6Colors.value[3]
-      colorObj.value.infoColor = template6Colors.value[4]
-      colorObj.value.textColorRegular = template6Colors.value[5]
-      colorObj.value.textColorPrimary = template6Colors.value[6]
-      colorObj.value.textColorSecondary = template6Colors.value[7]
-      colorObj.value.textColorPlaceholder = template6Colors.value[8]
-      colorObj.value.bgPageColor = template6Colors.value[9]
-      colorObj.value.navbgColor = template6Colors.value[10]
-      setTemplateColor()
+      colorProperties.forEach((property, index) => {
+        colorObj.value[property] = template6Colors.value[index]
+      })
+      setColorByColorObj()
       break
     default:
       break
   }
 }
+
+const colorProperties = [
+  'primaryColor',
+  'successColor',
+  'warningColor',
+  'dangerColor',
+  'infoColor',
+  'textColorRegular',
+  'textColorPrimary',
+  'textColorSecondary',
+  'textColorPlaceholder',
+  'bgPageColor',
+  'navbgColor'
+]
 const template1Colors = ref([
   '#6bb1cc',
   '#ffbd41',
@@ -308,9 +273,6 @@ const template6Colors = ref([
   '#DCEBF0',
   '#417D5E'
 ])
-// const template4Colors = ref(['#4674D7', '#EE8A5F', '#B4D39C', '#C86C78', '#EDC0C0', '#EDC0C0'])
-// const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
-// const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
 </script>
 <template>
   <el-dialog
@@ -343,7 +305,9 @@ const template6Colors = ref([
         <div v-for="(color, index) in template6Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
     </div>
-    <p style="text-align: center; margin: 10px 0; font-size: 16px">--點選以上樣板套用，或於下方自訂色碼--</p>
+    <p style="text-align: center; margin: 10px 0; font-size: 16px; background-color: var(--el-color-warning-light-3)">
+      點選以上樣板套用，或於下方自訂色碼
+    </p>
     <div class="themeBox">
       <div class="colorBox">
         <div class="title">主色 --el-color-primary</div>
