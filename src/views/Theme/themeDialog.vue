@@ -143,45 +143,45 @@ const setTemplateColor = () => {
 const setTemplate = (templateNumber) => {
   switch (templateNumber) {
     case 1:
-      colorObj.value.primaryColor = '#6bb1cc'
-      colorObj.value.successColor = '#ffbd41'
-      colorObj.value.warningColor = '#ffeccc'
-      colorObj.value.dangerColor = '#a33131'
-      colorObj.value.infoColor = '#8b8b8b'
-      colorObj.value.textColorRegular = '#276075'
-      colorObj.value.textColorPrimary = '#074b5f'
-      colorObj.value.textColorSecondary = '#568da3'
-      colorObj.value.textColorPlaceholder = '#a0a0a0'
-      colorObj.value.bgPageColor = '#f7fafb'
-      colorObj.value.navbgColor = '#22668d'
+      colorObj.value.primaryColor = template1Colors.value[0]
+      colorObj.value.successColor = template1Colors.value[1]
+      colorObj.value.warningColor = template1Colors.value[2]
+      colorObj.value.dangerColor = template1Colors.value[3]
+      colorObj.value.infoColor = template1Colors.value[4]
+      colorObj.value.textColorRegular = template1Colors.value[5]
+      colorObj.value.textColorPrimary = template1Colors.value[6]
+      colorObj.value.textColorSecondary = template1Colors.value[7]
+      colorObj.value.textColorPlaceholder = template1Colors.value[8]
+      colorObj.value.bgPageColor = template1Colors.value[9]
+      colorObj.value.navbgColor = template1Colors.value[10]
       setTemplateColor()
       break
     case 2:
-      colorObj.value.primaryColor = '#94af64'
-      colorObj.value.successColor = '#df9348'
-      colorObj.value.warningColor = '#ffeccc'
-      colorObj.value.dangerColor = '#ae3243'
-      colorObj.value.infoColor = '#828282'
-      colorObj.value.textColorRegular = '#556b2e'
-      colorObj.value.textColorPrimary = '#42610d'
-      colorObj.value.textColorSecondary = '#668a28'
-      colorObj.value.textColorPlaceholder = '#C7C7C7'
-      colorObj.value.bgPageColor = '#f2f2f2'
-      colorObj.value.navbgColor = '#6f8745'
+      colorObj.value.primaryColor = template2Colors.value[0]
+      colorObj.value.successColor = template2Colors.value[1]
+      colorObj.value.warningColor = template2Colors.value[2]
+      colorObj.value.dangerColor = template2Colors.value[3]
+      colorObj.value.infoColor = template2Colors.value[4]
+      colorObj.value.textColorRegular = template2Colors.value[5]
+      colorObj.value.textColorPrimary = template2Colors.value[6]
+      colorObj.value.textColorSecondary = template2Colors.value[7]
+      colorObj.value.textColorPlaceholder = template2Colors.value[8]
+      colorObj.value.bgPageColor = template2Colors.value[9]
+      colorObj.value.navbgColor = template2Colors.value[10]
       setTemplateColor()
       break
     case 3:
-      colorObj.value.primaryColor = '#7B77C6'
-      colorObj.value.successColor = '#BF72C1'
-      colorObj.value.warningColor = '#ABE0D2'
-      colorObj.value.dangerColor = '#ae3243'
-      colorObj.value.infoColor = '#E4D1D1'
-      colorObj.value.textColorRegular = '#424144'
-      colorObj.value.textColorPrimary = '#4D769C'
-      colorObj.value.textColorSecondary = '#CF8CAC'
-      colorObj.value.textColorPlaceholder = '#1F1F1D'
-      colorObj.value.bgPageColor = '#F2F2F2'
-      colorObj.value.navbgColor = '#5696A0'
+      colorObj.value.primaryColor = template3Colors.value[0]
+      colorObj.value.successColor = template3Colors.value[1]
+      colorObj.value.warningColor = template3Colors.value[2]
+      colorObj.value.dangerColor = template3Colors.value[3]
+      colorObj.value.infoColor = template3Colors.value[4]
+      colorObj.value.textColorRegular = template3Colors.value[5]
+      colorObj.value.textColorPrimary = template3Colors.value[6]
+      colorObj.value.textColorSecondary = template3Colors.value[7]
+      colorObj.value.textColorPlaceholder = template3Colors.value[8]
+      colorObj.value.bgPageColor = template3Colors.value[9]
+      colorObj.value.navbgColor = template3Colors.value[10]
       setTemplateColor()
       break
     case 4:

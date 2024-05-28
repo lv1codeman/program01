@@ -240,16 +240,20 @@ $--neon-text-color: #04f;
 }
 
 @media screen and (max-width: 1200px) {
-  .out-outer-box {
-    // height: 900px;
-    height: calc($baseNum * 9);
+  .out-outer-box-container {
+    .out-outer-box {
+      // height: 900px;
+      height: calc($baseNum * 9);
+    }
   }
 }
 @media screen and (max-width: 818px) {
-  .out-outer-box {
-    // height: 1700px;
-    height: calc($baseNum * 17);
-    justify-content: center;
+  .out-outer-box-container {
+    .out-outer-box {
+      // height: 1700px;
+      height: calc($baseNum * 17);
+      justify-content: center;
+    }
   }
 }
 </style>
