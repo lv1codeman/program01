@@ -233,6 +233,12 @@ const setTemplate = (templateNumber) => {
       break
   }
 }
+const template1Colors = ref(['#6bb1cc', '#ffbd41', '#ffeccc', '#a33131', '#8b8b8b'])
+const template2Colors = ref(['#94af64', '#ffbd41', '#ffeccc', '#ae3243', '#8b8b8b'])
+const template3Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
+const template4Colors = ref(['#7b77c6', '#bf72c1', '#abe0d2', '#c86c78', '#e4d1d1'])
+const template5Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
+const template6Colors = ref(['#439266', '#eb9c2d', '#efab96', '#c21717', '#161d3b'])
 </script>
 <template>
   <el-dialog
@@ -247,52 +253,22 @@ const setTemplate = (templateNumber) => {
   >
     <div class="templateSelect">
       <div class="template1" @click="setTemplate(1)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div v-for="(color, index) in template1Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
       <div class="template2" @click="setTemplate(2)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div v-for="(color, index) in template2Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
       <div class="template3" @click="setTemplate(3)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div v-for="(color, index) in template3Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
       <div class="template4" @click="setTemplate(4)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div v-for="(color, index) in template4Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
       <div class="template5" @click="setTemplate(5)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div v-for="(color, index) in template5Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
-      <div class="template5" @click="setTemplate(6)">
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+      <div class="template6" @click="setTemplate(6)">
+        <div v-for="(color, index) in template6Colors" :key="index" :style="{ backgroundColor: color }">&nbsp;</div>
       </div>
     </div>
     <!-- <div class="primary">&nbsp;</div>
@@ -537,173 +513,20 @@ const setTemplate = (templateNumber) => {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-around;
+  .template {
+    display: flex;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+    }
+    > div {
+      width: 20px;
+    }
+  }
 
-  .template1 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #6bb1cc;
-    }
-    & > div:nth-child(2) {
-      background-color: #ffbd41;
-    }
-    & > div:nth-child(3) {
-      background-color: #ffeccc;
-    }
-    & > div:nth-child(4) {
-      background-color: #a33131;
-    }
-    & > div:nth-child(5) {
-      background-color: #d41414;
-    }
-    & > div:nth-child(6) {
-      background-color: #8b8b8b;
-    }
-  }
-  .template2 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #94af64;
-    }
-    & > div:nth-child(2) {
-      background-color: #ffbd41;
-    }
-    & > div:nth-child(3) {
-      background-color: #ffeccc;
-    }
-    & > div:nth-child(4) {
-      background-color: #ae3243;
-    }
-    & > div:nth-child(5) {
-      background-color: #d41414;
-    }
-    & > div:nth-child(6) {
-      background-color: #8b8b8b;
-    }
-  }
-  .template3 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #7b77c6;
-    }
-    & > div:nth-child(2) {
-      background-color: #bf72c1;
-    }
-    & > div:nth-child(3) {
-      background-color: #abe0d2;
-    }
-    & > div:nth-child(4) {
-      background-color: #c86c78;
-    }
-    & > div:nth-child(5) {
-      background-color: #c86c78;
-    }
-    & > div:nth-child(6) {
-      background-color: #e4d1d1;
-    }
-  }
-  .template4 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #7b77c6;
-    }
-    & > div:nth-child(2) {
-      background-color: #bf72c1;
-    }
-    & > div:nth-child(3) {
-      background-color: #abe0d2;
-    }
-    & > div:nth-child(4) {
-      background-color: #c86c78;
-    }
-    & > div:nth-child(5) {
-      background-color: #c86c78;
-    }
-    & > div:nth-child(6) {
-      background-color: #e4d1d1;
-    }
-  }
-  .template5 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #439266;
-    }
-    & > div:nth-child(2) {
-      background-color: #eb9c2d;
-    }
-    & > div:nth-child(3) {
-      background-color: #efab96;
-    }
-    & > div:nth-child(4) {
-      background-color: #c21717;
-    }
-    & > div:nth-child(5) {
-      background-color: #c21717;
-    }
-    & > div:nth-child(6) {
-      background-color: #161d3b;
-    }
-  }
-  .template6 {
-    display: flex;
-    border: 1px solid black;
-    &:hover {
-      cursor: pointer;
-    }
-    > div {
-      width: 20px;
-    }
-    & > div:nth-child(1) {
-      background-color: #439266;
-    }
-    & > div:nth-child(2) {
-      background-color: #eb9c2d;
-    }
-    & > div:nth-child(3) {
-      background-color: #efab96;
-    }
-    & > div:nth-child(4) {
-      background-color: #c21717;
-    }
-    & > div:nth-child(5) {
-      background-color: #c21717;
-    }
-    & > div:nth-child(6) {
-      background-color: #161d3b;
+  @for $i from 1 through 6 {
+    .template#{$i} {
+      @extend .template;
     }
   }
 }
