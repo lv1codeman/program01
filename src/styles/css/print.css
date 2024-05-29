@@ -1,0 +1,7 @@
+.headtext {
+  color: red;
+}
+.el-table__header {
+  border: 1px solid black;
+  text-align: left;
+}

@@ -4,10 +4,17 @@ const router = useRouter()
 import { ref, computed, watch, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { programData } from '@/assets/data/programData.js'
-
+import { useStudentStore } from '@/stores/studentData.js'
+const store = useStudentStore()
 const programList = ref([])
 
 programList.value = programData
+
+const fakeStudent = {
+  id: 'S1234567',
+  name: '周杰倫',
+  unit: '美術學系'
+}
 
 const setItemText = (percentage) => {
   // if (percentage == 100) {
@@ -24,7 +31,11 @@ const setStatus = (item) => {
   }
 }
 
-const goResult = () => {
+const goResult = (item) => {
+  const res = {}
+  res['program'] = item
+  res['student'] = fakeStudent
+  store.setStudentData(res)
   router.push({ path: '/result' })
 }
 
@@ -124,7 +135,7 @@ onMounted(() => {
               ? { border: '2px solid var(--el-color-success)' }
               : { border: '2px solid var(--el-color-primary)' }
           "
-          @click="goResult"
+          @click="goResult(item)"
           :ref="(el) => (ref1[index] = el)"
         >
           <transition name="el-fade-in-linear">
