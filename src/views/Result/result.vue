@@ -130,10 +130,10 @@ const goPrint = () => {
         <el-table class="resTable" :data="tableData" header-cell-class-name="table_header_style">
           <el-table-column fixed prop="subjectID" label="科目代碼"></el-table-column>
           <el-table-column prop="subjectName" label="課程名稱"></el-table-column>
-          <el-table-column prop="sys" label="學制"></el-table-column>
           <el-table-column prop="unit" label="開課單位"></el-table-column>
-          <el-table-column prop="credit" label="學分"></el-table-column>
-          <el-table-column prop="hour" label="學時"></el-table-column>
+          <el-table-column prop="sys" label="學制" width="70px"></el-table-column>
+          <el-table-column prop="credit" label="學分" width="55px"></el-table-column>
+          <el-table-column prop="hour" label="學時" width="55px"></el-table-column>
         </el-table>
       </div>
       <div class="headtext2">
@@ -143,10 +143,10 @@ const goPrint = () => {
         <el-table class="resTable" :data="tableData2" header-cell-class-name="table_header_style">
           <el-table-column fixed prop="subjectID" label="科目代碼"></el-table-column>
           <el-table-column prop="subjectName" label="課程名稱"></el-table-column>
-          <el-table-column prop="sys" label="學制"></el-table-column>
           <el-table-column prop="unit" label="開課單位"></el-table-column>
-          <el-table-column prop="credit" label="學分"></el-table-column>
-          <el-table-column prop="hour" label="學時"></el-table-column>
+          <el-table-column prop="sys" label="學制" width="70px"></el-table-column>
+          <el-table-column prop="credit" label="學分" width="55px"></el-table-column>
+          <el-table-column prop="hour" label="學時" width="55px"></el-table-column>
           <el-table-column prop="finishtime" label="學年度-學期"></el-table-column>
           <el-table-column prop="score" label="成績"></el-table-column>
         </el-table>
@@ -157,7 +157,7 @@ const goPrint = () => {
   <!-- </div> -->
 </template>
 <style lang="scss" scoped>
-.printOnly {
+.print {
   display: none;
 }
 
@@ -183,7 +183,7 @@ const goPrint = () => {
 }
 .resTable {
   width: 80%;
-  height: 400px;
+  height: 300px;
   margin-top: 10px;
   margin-bottom: 20px;
 }
