@@ -16,7 +16,7 @@ export const result = [
     unit: '電機工程學系',
     subjectID: '1EIEE0003730',
     sys: '大學部',
-    subjectName: '複變函數',
+    subjectName: '複變函數複變函數複變函數複變函數',
     subjectNameEng: 'Complex Variables',
     credit: 3,
     hour: 3,

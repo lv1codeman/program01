@@ -30,7 +30,8 @@ import {
   faBook,
   faPhone,
   faLink,
-  faPalette
+  faPalette,
+  faPrint
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -44,7 +45,8 @@ library.add(
   faBook,
   faPhone,
   faLink,
-  faPalette
+  faPalette,
+  faPrint
 )
 
 const app = createApp(App)
