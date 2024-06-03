@@ -1,17 +1,25 @@
 // axios基礎的封裝
 import axios from 'axios'
 
+console.log('https start...')
+
+const token = sessionStorage.getItem['token']
+
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhX2FjY2VzcyIsImV4cCI6MTcxNzQwMjkwMn0.6BhlMViuIoZtXOQPRkYPs3MmSynH-M3-9UXQpQDuyzE'
+
+console.log(`token https.js = ${token}`)
+
 const myInstance = axios.create({
   // baseURL: 'http://localhost:8000/',
   baseURL: 'https://80f3-61-221-225-125.ngrok-free.app',
-  timeout: 5000
+  timeout: 5000,
+  headers: { 'ngrok-skip-browser-warning': '11', Authorization: `Bearer ${token}` }
+  // headers: { 'ngrok-skip-browser-warning': '11' }
 })
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhX2FjY2VzcyIsImV4cCI6MTcxNzQwMTEyNn0.Fulvumm3FUgk_XdxskHQYl3pgCh12i_G7GrSQIXiNhM'
+
 myInstance.interceptors.request.use(
   (config) => {
-    ;(config.headers['ngrok-skip-browser-warning'] = '11'), (config.headers['Authorization'] = `Bearer ${token}`)
-
     return config
   },
   (e) => Promise.reject(e)
