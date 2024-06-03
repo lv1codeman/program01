@@ -8,7 +8,15 @@ import { useStudentStore } from '@/stores/studentData.js'
 const store = useStudentStore()
 const programList = ref([])
 
-programList.value = programData
+import { getProgramData } from '@/apis/programAPI'
+
+// const pd = ref([])
+
+getProgramData()
+  .then((data) => {
+    programList.value = data
+  })
+  .catch((err) => console.error(err))
 
 const fakeStudent = {
   id: 'S1234567',

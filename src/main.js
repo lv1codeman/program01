@@ -18,6 +18,7 @@ router.afterEach((to, from, next) => {
 // })
 
 /* import font awesome icon component */
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons'
