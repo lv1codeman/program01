@@ -6,10 +6,11 @@ const myInstance = axios.create({
   baseURL: 'https://80f3-61-221-225-125.ngrok-free.app',
   timeout: 5000
 })
-const token = ''
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhX2FjY2VzcyIsImV4cCI6MTcxNzQwMTEyNn0.Fulvumm3FUgk_XdxskHQYl3pgCh12i_G7GrSQIXiNhM'
 myInstance.interceptors.request.use(
   (config) => {
-    ;(config.headers['ngrok-skip-browser-warning'] = '69420'), (config.headers['Authorization'] = `Bearer ${token}`)
+    ;(config.headers['ngrok-skip-browser-warning'] = '11'), (config.headers['Authorization'] = `Bearer ${token}`)
 
     return config
   },
