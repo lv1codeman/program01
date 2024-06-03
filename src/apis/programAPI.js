@@ -1,8 +1,23 @@
-import { myInstance } from '@/utils/http'
+import axiosInstance from '@/utils/http'
 
-export function getProgramData() {
-  return myInstance({
-    url: '/program/all',
-    method: 'get' //可以不寫，預設就是get
-  })
+// 獲取所有程序
+export async function getAllPrograms() {
+  try {
+    const response = await axiosInstance.get('/program/all')
+    return response.data
+  } catch (error) {
+    console.error('Error fetching programs:', error)
+    throw error
+  }
+}
+
+// 根據程序ID獲取程序
+export async function getProgramById(programId) {
+  try {
+    const response = await axiosInstance.get(`/program/${programId}`)
+    return response.data
+  } catch (error) {
+    console.error(`Error fetching program with ID ${programId}:`, error)
+    throw error
+  }
 }

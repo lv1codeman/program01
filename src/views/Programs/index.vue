@@ -1,64 +1,33 @@
 <script setup>
-import axios from 'axios'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 import { ref, computed, watch, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
-import { programData } from '@/assets/data/programData.js'
 import { useStudentStore } from '@/stores/studentData.js'
 const store = useStudentStore()
 const programList = ref([])
 
-import { getProgramData } from '@/apis/programAPI'
+import { getAllPrograms, getProgramById } from '@/apis/programAPI'
 
-const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
-
-// 獲取Token並存儲在session中
-async function fetchToken() {
+const fetchAllPrograms = async () => {
   try {
-    const response = await axios.post(`${BASE_URL}/token`)
-    const token = response.data.access_token
-    sessionStorage.setItem('token', token)
-    console.log('Token:', token)
+    programList.value = await getAllPrograms()
   } catch (error) {
-    console.error('Error fetching token:', error)
+    console.error('Error fetching programs:', error)
+  }
+}
+const temp = ref()
+const fetchSingleProgram = async () => {
+  try {
+    temp.value = await getProgramById('3')
+    console.log('Program:', temp.value)
+  } catch (error) {
+    console.error(`Error fetching program with ID=3 :`, error)
   }
 }
 
-// 獲取數據
-async function fetchData() {
-  const token = sessionStorage.getItem('token')
-  if (!token) {
-    await fetchToken() // 如果沒有Token，先獲取Token
-  }
-  axios
-    .get(`${BASE_URL}/program/all`, {
-      headers: {
-        'ngrok-skip-browser-warning': '11',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      }
-    })
-    .then((response) => {
-      programList.value = response.data
-      // console.log(response.data)
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error)
-      // 如果Token無效或過期，再次獲取Token
-      if (error.response && error.response.status === 401) {
-        fetchToken().then(fetchData)
-      }
-    })
-}
-
-// 初始化
-fetchToken().then(fetchData)
-
-// getProgramData()
-//   .then((data) => {
-//     programList.value = data
-//   })
-//   .catch((err) => console.error(err))
+fetchAllPrograms()
+fetchSingleProgram()
 
 const fakeStudent = {
   id: 'S1234567',

@@ -1,50 +1,64 @@
+// https://80f3-61-221-225-125.ngrok-free.app
 // axios基礎的封裝
 import axios from 'axios'
 
-console.log('https start...')
+// 定義後端URL
+const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
+const TOKEN_URL = `${BASE_URL}/token`
 
-const token = sessionStorage.getItem['token']
-
-// const token =
-//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYXRhX2FjY2VzcyIsImV4cCI6MTcxNzQwMjkwMn0.6BhlMViuIoZtXOQPRkYPs3MmSynH-M3-9UXQpQDuyzE'
-
-console.log(`token https.js = ${token}`)
-
-const myInstance = axios.create({
-  // baseURL: 'http://localhost:8000/',
-  baseURL: 'https://80f3-61-221-225-125.ngrok-free.app',
-  timeout: 5000,
-  headers: { 'ngrok-skip-browser-warning': '11', Authorization: `Bearer ${token}` }
-  // headers: { 'ngrok-skip-browser-warning': '11' }
+// 創建Axios實例
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': '11'
+  }
 })
 
-myInstance.interceptors.request.use(
-  (config) => {
+// 獲取Token並存儲在session中
+async function fetchToken() {
+  try {
+    const response = await axios.post(TOKEN_URL)
+    const token = response.data.access_token
+    sessionStorage.setItem('token', token)
+    console.log('Token:', token)
+  } catch (error) {
+    console.error('Error fetching token:', error)
+  }
+}
+
+// 設置Axios攔截器來自動附加Token
+axiosInstance.interceptors.request.use(
+  async (config) => {
+    let token = sessionStorage.getItem('token')
+    if (!token) {
+      await fetchToken()
+      token = sessionStorage.getItem('token')
+    }
+    config.headers.Authorization = `Bearer ${token}`
     return config
   },
-  (e) => Promise.reject(e)
-)
-// axios響應式攔截器
-myInstance.interceptors.response.use(
-  (res) => res.data,
-  (e) => {
-    return Promise.reject(e)
+  (error) => {
+    return Promise.reject(error)
   }
 )
-export { myInstance }
 
-// 不拆成http.js和testAPI.js的寫法
-// const url = 'https://c54c-61-221-225-124.ngrok-free.app/program/all'
-// fetch(url, {
-//   method: 'get',
-//   headers: new Headers({
-//     'ngrok-skip-browser-warning': '69420'
-//   })
-// })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(`data= ${data}`)
-//     pd.value = data
-//     console.log(pd.value)
-//   })
-//   .catch((err) => console.log(err))
+// 處理Token過期的情況
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  async (error) => {
+    const originalRequest = error.config
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+      await fetchToken()
+      const token = sessionStorage.getItem('token')
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      return axiosInstance(originalRequest)
+    }
+    return Promise.reject(error)
+  }
+)
+
+export default axiosInstance
