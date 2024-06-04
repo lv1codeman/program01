@@ -14,20 +14,21 @@ const fetchAllPrograms = async () => {
     programList.value = await getAllPrograms()
   } catch (error) {
     console.error('Error fetching programs:', error)
+    router.push({ path: '/login' })
   }
 }
 const temp = ref()
 const fetchSingleProgram = async () => {
   try {
     temp.value = await getProgramById('3')
-    console.log('Program:', temp.value)
+    // console.log('Program:', temp.value)
   } catch (error) {
     console.error(`Error fetching program with ID=3 :`, error)
   }
 }
-
+console.log(`session token: ${sessionStorage.getItem('token')}`)
 fetchAllPrograms()
-fetchSingleProgram()
+// fetchSingleProgram()
 
 const fakeStudent = {
   id: 'S1234567',

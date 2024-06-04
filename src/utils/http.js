@@ -18,7 +18,18 @@ const axiosInstance = axios.create({
 // 獲取Token並存儲在session中
 async function fetchToken() {
   try {
-    const response = await axios.post(TOKEN_URL)
+    // const form = new FormData()
+    // form.append('id', 'S12345678')
+    // form.append('name', 'S12345678')
+    // form.append('password', '0000')
+
+    const form = { id: 'S0000001', password: '0001' }
+    // console.log('aaaaa' + JSON.stringify(form))
+    const response = await axios.post(TOKEN_URL, form, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     const token = response.data.access_token
     sessionStorage.setItem('token', token)
     console.log('Token:', token)
