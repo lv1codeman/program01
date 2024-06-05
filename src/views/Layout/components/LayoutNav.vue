@@ -1,9 +1,36 @@
 <script setup>
+import { useStudentStore } from '@/stores/studentData.js'
 import themeView from '@/views/Theme/themeDialog.vue'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const store = useStudentStore()
+const isLogin = ref(false)
+
+isLogin.value = store.studentData.isLogin
+
+// if (store.studentData.isLogin) {
+//   console.log(store.studentData.isLogin)
+//   isLogin.value = true
+// } else {
+//   console.log('not login yet.')
+//   isLogin.value = false
+// }
+
+// isLogin.value = store.studentData.isLogin
+
 const dialogVisible = ref(false)
 const handleDialogUpdate = (newVal) => {
   dialogVisible.value = newVal
+}
+
+const btnLogout = () => {
+  store.updateStudentData('isLogin', false)
+  router.push({ path: '/login' })
+}
+const btnLogin = () => {
+  router.push({ path: '/login' })
 }
 </script>
 
@@ -11,30 +38,31 @@ const handleDialogUpdate = (newVal) => {
   <nav class="app-topnav">
     <div class="page-container">
       <ul>
-        <template v-if="true">
-          <!-- <li>
-            <a href="https://webapt.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
-          </li> -->
+        <li>
+          <font-awesome-icon class="palette" icon="fa-palette" @click="dialogVisible = !dialogVisible" />
+          <!-- <el-button type="primary" plain>color</el-button> -->
+        </li>
+        <li>
+          <a href="https://webap0.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
+        </li>
+        <template v-if="isLogin">
           <li>
-            <font-awesome-icon class="palette" icon="fa-palette" @click="dialogVisible = !dialogVisible" />
-            <!-- <el-button type="primary" plain>color</el-button> -->
-          </li>
-          <li>
-            <a href="https://webap0.ncue.edu.tw/deanv2/other/ob010" target="_blank">開課查詢</a>
-          </li>
-          <li>
-            <a href="javascript:;"><i class="iconfont icon-user"></i>周杰倫</a>
+            <a href="javascript:;"><i class="iconfont icon-user"></i>學生一</a>
           </li>
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
               <template #reference>
-                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)">登出</el-button>
+                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)" @click="btnLogout"
+                  >登出</el-button
+                >
               </template>
             </el-popconfirm>
           </li>
         </template>
         <template v-else>
-          <li><a href="javascript:;">請先登錄</a></li>
+          <li>
+            <el-button type="primary" @click="btnLogin">登入</el-button>
+          </li>
         </template>
       </ul>
     </div>

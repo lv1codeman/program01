@@ -21,3 +21,13 @@ export async function getProgramById(programId) {
     throw error
   }
 }
+
+// export async function login() {
+//   try {
+//     const response = await axiosInstance.get(`/login`)
+//     return response.data
+//   } catch (error) {
+//     console.error(`login failed.`, error)
+//     throw error
+//   }
+// }
