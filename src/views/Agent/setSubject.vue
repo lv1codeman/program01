@@ -7,7 +7,6 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
-// console.log(JSON.stringify(store.programData))
 
 const targetCheck = () => {
   if (!route.params.domainName) {
@@ -18,14 +17,10 @@ const targetCheck = () => {
 }
 const dialogSuccessVisible = ref(false)
 const submitProgramData = () => {
-  // console.log(tableData.value)
-  console.log(store.programData)
-
   const target = targetCheck()
-  console.log('target=', target)
+  // console.log('target=', target)
   if (target.length > 1) {
     // 類別之下的領域
-    console.log(target[0] + ' - ' + target[1])
     let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
     let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
     if (domainItem) {
@@ -35,11 +30,8 @@ const submitProgramData = () => {
       })
       domainItem.course = temp
     }
-    // console.log(`domainItem: ${domainItem}`)
-    console.log(domainItem)
   } else {
     // 只有類別
-    console.log(target[0])
     let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
     if (categoryItem) {
       let temp = []
@@ -48,10 +40,7 @@ const submitProgramData = () => {
       })
       categoryItem.course = temp
     }
-    console.log(`categoryItem: ${categoryItem}`)
   }
-  console.log(store.programData)
-  console.log(JSON.stringify(store.programData))
   dialogSuccessVisible.value = true
 }
 
@@ -99,7 +88,6 @@ const generateData = () => {
 
 // 右邊的transfer框，預設顯示目前類別、領域的課程
 const target = targetCheck()
-console.log('target = ', target)
 const selectedcourse = ref([])
 let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
 let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
@@ -139,19 +127,6 @@ const deleteRow = (index) => {
 const delTable = () => {
   tableData.value = []
 }
-// const onAddItem = () => {
-//   // now.setDate(now.getDate() + 1)
-//   tableData.value.push({
-//     id: 1,
-//     unit: '電機工程學系',
-//     subjectID: '1EIEE2002530',
-//     sys: '碩士班',
-//     subjectName: '論文寫作(一)',
-//     subjectNameEng: 'Thesis Writing I',
-//     credit: 3,
-//     hour: 3
-//   })
-// }
 const dialogSuccess = () => {
   dialogSuccessVisible.value = false
   router.push({ path: '/checkStructure' })
