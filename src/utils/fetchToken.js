@@ -15,8 +15,21 @@ export async function fetchToken(id, password) {
       }
     })
     const token = response.data.access_token
+    const userType = response.data.user_type
+    // const userDataJson = response.data.user_data
+    const userDataJSON = JSON.stringify(response.data.user_data)
+    const userDataList = JSON.parse(JSON.stringify(response.data.user_data))
+    const userData = userDataList[0]
     sessionStorage.setItem('token', token)
-    console.log('Token:', token)
+    sessionStorage.setItem('user_type', userType)
+    sessionStorage.setItem('user_id', userData.id)
+    sessionStorage.setItem('user_name', userData.name)
+    sessionStorage.setItem('user_unit', userData.unit)
+    sessionStorage.setItem('user_unit_short', userData.unit_short)
+    console.log(`token get, user_type = ${userType}`)
+    for (let i = 0; i < sessionStorage.length; i++) {
+      console.log(`key: ${sessionStorage.key(i)}, value: ${sessionStorage.getItem(sessionStorage.key(i))}`)
+    }
     if (token) {
       return true
     } else {

@@ -25,6 +25,7 @@ export async function getProgramById(programId) {
 export async function checkToken() {
   try {
     const response = await axiosInstance.get(`/checkToken`)
+    console.log(`response data = ${response.data}`)
     return response.data
   } catch (error) {
     console.error(error.response.data.detail)

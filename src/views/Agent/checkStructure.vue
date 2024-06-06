@@ -6,13 +6,55 @@ import { ref, onUnmounted } from 'vue'
 // import IconNextLevel_more from '@/components/icons/IconNextLevel_more.vue'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
-
+import transToTree from '@/utils/tree/objToTree.js'
 const store = useProgramStore()
 // console.log(store.programData)
 // console.log(JSON.stringify(store.programData))
 const programstruct = ref(store.programData)
+const ps = programstruct
+console.log(`programstruct= ${programstruct.value.category[0].categoryName}`)
 
-console.log(programstruct.value.category)
+const data = transToTree(programstruct.value)
+
+console.log(`ps: ${JSON.stringify(ps.value)}`)
+
+ps.value.category.forEach((c) => {
+  console.log(`c name: ${c.categoryName}`)
+  c.domain.forEach((d) => {
+    console.log(`domain name: ${d.domainName}`)
+  })
+})
+// data1.push({
+//   label: xxx,
+// })
+
+const defaultProps = {
+  children: 'children',
+  label: 'label'
+}
+
+// const data = [
+//   {
+//     label: '基礎課程',
+//     children: [
+//       {
+//         label: '光電領域'
+//       },
+//       {
+//         label: '11'
+//       }
+//     ]
+//   },
+//   {
+//     label: '12',
+//     children: [
+//       {
+//         label: '123'
+//       }
+//     ]
+//   }
+// ]
+
 // const categoryEditable = ref(false)
 const descriptionColNum = ref(3)
 const descriptDirection = ref('horizontal')
@@ -72,10 +114,9 @@ onUnmounted(() => {
       <div v-else>
         <div class="baseItem">{{ category.categoryName }}</div>
       </div>
+
       <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
-        <!-- <IconNextLevel class="set-icon-size" /> -->
         <div class="domainblock_left">
-          <!-- <IconNextLevel_more class="set-icon-size"></IconNextLevel_more> -->
           <span v-if="!(category.domain.length == index + 1)"
             ><IconChild_more class="set-icon-size"></IconChild_more
           ></span>
@@ -94,9 +135,23 @@ onUnmounted(() => {
             >
           </el-tooltip>
         </div>
+        <!-- <div>
+          <div class="courseblock" v-for="(course, index) in domain.course" :key="course.index">
+            <div class="courseblock_left">
+              <span v-if="!(domain.course.length == index + 1)"
+                ><IconChild_more class="set-icon-size"></IconChild_more
+              ></span>
+              <span v-else> <IconChild_end class="set-icon-size"></IconChild_end></span>
+            </div>
+            <div class="courseblock_right">
+              {{ course.subjectName }}
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
+  <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" @node-click="handleNodeClick" />
 </template>
 <!-- <style lang="scss">
 .el-popper.is-customized {
@@ -113,6 +168,9 @@ onUnmounted(() => {
 // .set-icon-size {
 //   width: 30px;
 // }
+.tree {
+  margin: 20px 0 0 50px;
+}
 .program-structure {
   padding-left: 50px;
 }
@@ -120,8 +178,20 @@ onUnmounted(() => {
 .domainblock {
   display: flex;
   padding-left: 10px;
+  // flex-wrap: wrap;
 }
 .domainblock_right {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  padding: 5px 0;
+}
+
+.courseblock {
+  display: flex;
+  padding-left: 40px;
+}
+.courseblock_right {
   display: flex;
   align-items: center;
   padding: 5px 0;

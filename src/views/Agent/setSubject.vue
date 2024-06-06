@@ -3,8 +3,8 @@ import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, computed } from 'vue'
 import { subjectList } from '@/assets/data/subjectList.js'
-import { useRoute } from 'vue-router'
-
+import { useRoute, useRouter } from 'vue-router'
+const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
 // console.log(JSON.stringify(store.programData))
@@ -129,6 +129,7 @@ const delTable = () => {
 // }
 const dialogSuccess = () => {
   dialogSuccessVisible.value = false
+  router.push({ path: '/checkStructure' })
 }
 </script>
 <template>
@@ -173,7 +174,8 @@ const dialogSuccess = () => {
     <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
       <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
         <template #extra>
-          <el-button type="primary" @click="dialogSuccess">Back</el-button>
+          <el-button type="primary" @click="dialogSuccess">繼續編輯</el-button>
+          <el-button type="primary" @click="finish">完成</el-button>
         </template>
       </el-result>
     </el-dialog>

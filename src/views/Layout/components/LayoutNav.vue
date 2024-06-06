@@ -6,6 +6,7 @@ const router = useRouter()
 import { checkToken } from '@/apis/programAPI'
 
 const isLogin = ref(false)
+const username = ref()
 
 const checkUserToken = async () => {
   let res = await checkToken()
@@ -14,6 +15,7 @@ const checkUserToken = async () => {
 checkUserToken()
 
 onMounted(() => {
+  username.value = sessionStorage.getItem('user_name')
   console.log(`isLogin.value = ${isLogin.value}`)
 })
 
@@ -54,7 +56,7 @@ const btnLogin = () => {
         </li>
         <template v-if="isLogin">
           <li>
-            <a href="javascript:;"><i class="iconfont icon-user"></i>學生一</a>
+            <a href="javascript:;"><i class="iconfont icon-user"></i>{{ username }}</a>
           </li>
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
