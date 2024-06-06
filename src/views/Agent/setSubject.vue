@@ -35,6 +35,7 @@ const submitProgramData = () => {
       })
       domainItem.course = temp
     }
+    // console.log(`domainItem: ${domainItem}`)
     console.log(domainItem)
   } else {
     // 只有類別
@@ -47,7 +48,7 @@ const submitProgramData = () => {
       })
       categoryItem.course = temp
     }
-    console.log(categoryItem)
+    console.log(`categoryItem: ${categoryItem}`)
   }
   console.log(store.programData)
   console.log(JSON.stringify(store.programData))
@@ -96,14 +97,38 @@ const generateData = () => {
   return data
 }
 
+// 右邊的transfer框，預設顯示目前類別、領域的課程
+const target = targetCheck()
+console.log('target = ', target)
+const selectedcourse = ref([])
+let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
+let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
+if (target.length > 1) {
+  // 類別之下的領域
+  if (domainItem.course && domainItem.course.length > 0) {
+    // 之前有建立過課程，將課程資料存在selectedcourse用來宣告transferData以將課程顯示在右邊的transfer框
+    domainItem.course.forEach((item) => {
+      selectedcourse.value.push(item.id - 1)
+    })
+  } else {
+    // 第一次新建課程，do nothing
+  }
+} else {
+  // 只有類別
+  if (categoryItem.course && categoryItem.course.length > 0) {
+    categoryItem.course.forEach((item) => {
+      selectedcourse.value.push(item.id - 1)
+    })
+  } else {
+    // 第一次新建課程，do nothing
+  }
+}
 const data = ref(generateData())
-const value = ref([])
+const transferData = ref(selectedcourse.value)
 const tableData = ref([])
 
 const showRes = () => {
-  console.log(value.value)
-  value.value.forEach((item) => {
-    console.log(subjectList[item])
+  transferData.value.forEach((item) => {
     tableData.value.push(subjectList[item])
   })
 }
@@ -138,12 +163,13 @@ const dialogSuccess = () => {
     <pagetitle>{{ pageTitle }}</pagetitle>
 
     <el-transfer
-      v-model="value"
+      v-model="transferData"
       filterable
       filter-placeholder="請輸入關鍵字篩選"
       :data="data"
       :titles="['單位科目', '學程科目']"
       :button-texts="['左移', '右移']"
+      :right-default-checked="selectedcourse"
     >
       <template #left-footer>
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>

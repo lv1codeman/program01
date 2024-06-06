@@ -8,24 +8,19 @@ import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
 const store = useProgramStore()
-// console.log(store.programData)
-// console.log(JSON.stringify(store.programData))
 const programstruct = ref(store.programData)
-const ps = programstruct
+// const ps = programstruct
 console.log(`programstruct= ${programstruct.value.category[0].categoryName}`)
 
 const data = transToTree(programstruct.value)
 
-console.log(`ps: ${JSON.stringify(ps.value)}`)
+// console.log(`ps: ${data}`)
 
-ps.value.category.forEach((c) => {
-  console.log(`c name: ${c.categoryName}`)
-  c.domain.forEach((d) => {
-    console.log(`domain name: ${d.domainName}`)
-  })
-})
-// data1.push({
-//   label: xxx,
+// ps.value.category.forEach((c) => {
+//   console.log(`c name: ${c.categoryName}`)
+//   c.domain.forEach((d) => {
+//     console.log(`domain name: ${d.domainName}`)
+//   })
 // })
 
 const defaultProps = {
@@ -33,29 +28,6 @@ const defaultProps = {
   label: 'label'
 }
 
-// const data = [
-//   {
-//     label: '基礎課程',
-//     children: [
-//       {
-//         label: '光電領域'
-//       },
-//       {
-//         label: '11'
-//       }
-//     ]
-//   },
-//   {
-//     label: '12',
-//     children: [
-//       {
-//         label: '123'
-//       }
-//     ]
-//   }
-// ]
-
-// const categoryEditable = ref(false)
 const descriptionColNum = ref(3)
 const descriptDirection = ref('horizontal')
 const updateColumnNum = () => {
@@ -151,7 +123,14 @@ onUnmounted(() => {
       </div>
     </div>
   </div>
-  <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" @node-click="handleNodeClick" />
+  <el-tree
+    class="tree"
+    style="max-width: 600px"
+    :data="data"
+    :props="defaultProps"
+    @node-click="handleNodeClick"
+    default-expand-all
+  />
 </template>
 <!-- <style lang="scss">
 .el-popper.is-customized {
