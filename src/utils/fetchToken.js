@@ -5,6 +5,7 @@ import axios from 'axios'
 const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
 const TOKEN_URL = `${BASE_URL}/token`
 
+// 發出POST請求，提供帳號密碼索取TOKEN，得到token後存在session中
 export async function fetchToken(id, password) {
   try {
     const form = { id: id, password: password }

@@ -1,14 +1,21 @@
 <script setup>
-import { useStudentStore } from '@/stores/studentData.js'
 import themeView from '@/views/Theme/themeDialog.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+import { checkToken } from '@/apis/programAPI'
 
-const store = useStudentStore()
 const isLogin = ref(false)
 
-isLogin.value = store.studentData.isLogin
+const checkUserToken = async () => {
+  let res = await checkToken()
+  isLogin.value = res ? true : false
+}
+checkUserToken()
+
+onMounted(() => {
+  console.log(`isLogin.value = ${isLogin.value}`)
+})
 
 // if (store.studentData.isLogin) {
 //   console.log(store.studentData.isLogin)
@@ -26,7 +33,7 @@ const handleDialogUpdate = (newVal) => {
 }
 
 const btnLogout = () => {
-  store.updateStudentData('isLogin', false)
+  sessionStorage.removeItem('token')
   router.push({ path: '/login' })
 }
 const btnLogin = () => {

@@ -22,6 +22,17 @@ export async function getProgramById(programId) {
   }
 }
 
+export async function checkToken() {
+  try {
+    const response = await axiosInstance.get(`/checkToken`)
+    return response.data
+  } catch (error) {
+    console.error(error.response.data.detail)
+    return false
+    // throw error
+  }
+}
+
 // export async function login() {
 //   try {
 //     const response = await axiosInstance.get(`/login`)

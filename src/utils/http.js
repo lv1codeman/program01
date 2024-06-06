@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
   }
 })
 
-// 設置Axios攔截器來自動附加Token
+// 設置Axios攔截器來自動附加Token，從session拿取token附加在即將送出的request上
 axiosInstance.interceptors.request.use(
   async (config) => {
     let token = sessionStorage.getItem('token')
@@ -26,21 +26,21 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-// 處理Token過期的情況
-axiosInstance.interceptors.response.use(
-  (response) => {
-    return response
-  },
-  async (error) => {
-    const originalRequest = error.config
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true
-      const token = sessionStorage.getItem('token')
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      return axiosInstance(originalRequest)
-    }
-    return Promise.reject(error)
-  }
-)
+// // 處理Token過期的情況
+// axiosInstance.interceptors.response.use(
+//   (response) => {
+//     return response
+//   },
+//   async (error) => {
+//     const originalRequest = error.config
+//     if (error.response.status === 401 && !originalRequest._retry) {
+//       originalRequest._retry = true
+//       const token = sessionStorage.getItem('token')
+//       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+//       return axiosInstance(originalRequest)
+//     }
+//     return Promise.reject(error)
+//   }
+// )
 
 export default axiosInstance

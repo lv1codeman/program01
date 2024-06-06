@@ -7,7 +7,17 @@ import { useStudentStore } from '@/stores/studentData.js'
 const store = useStudentStore()
 const programList = ref([])
 
-import { getAllPrograms, getProgramById } from '@/apis/programAPI'
+import { getAllPrograms, getProgramById, checkToken } from '@/apis/programAPI'
+
+const checkUserToken = async () => {
+  let res = await checkToken()
+  console.log(res)
+  if (!res) {
+    console.log(`user not login`)
+    router.push({ path: '/login' })
+  }
+}
+const isTokenGood = checkUserToken()
 
 const fetchAllPrograms = async () => {
   try {
@@ -17,17 +27,18 @@ const fetchAllPrograms = async () => {
     router.push({ path: '/login' })
   }
 }
-const temp = ref()
-const fetchSingleProgram = async () => {
-  try {
-    temp.value = await getProgramById('3')
-    // console.log('Program:', temp.value)
-  } catch (error) {
-    console.error(`Error fetching program with ID=3 :`, error)
-  }
-}
-console.log(`session token: ${sessionStorage.getItem('token')}`)
 fetchAllPrograms()
+// const temp = ref()
+// const fetchSingleProgram = async () => {
+//   try {
+//     temp.value = await getProgramById('3')
+//     // console.log('Program:', temp.value)
+//   } catch (error) {
+//     console.error(`Error fetching program with ID=3 :`, error)
+//   }
+// }
+// console.log(`session token: ${sessionStorage.getItem('token')}`)
+
 // fetchSingleProgram()
 
 const fakeStudent = {

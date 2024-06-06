@@ -4,6 +4,7 @@ import { fetchToken } from '@/utils/fetchToken.js'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { checkToken } from '@/apis/programAPI'
 const router = useRouter()
 
 const store = useStudentStore()
@@ -22,6 +23,9 @@ const login = async () => {
       duration: 3000,
       offset: window.screen.height / 50
     })
+
+    let res = await checkToken()
+    console.log(`checkToken: ${res}`)
     router.push({ path: '/' })
   } else {
     ElMessage({
@@ -34,6 +38,9 @@ const login = async () => {
     })
     console.log('登入失敗，請檢查學號密碼是否有誤')
   }
+}
+const goHome = () => {
+  router.push({ path: '/' })
 }
 
 const form = ref({
@@ -66,9 +73,9 @@ const msgTimeController = ref({
       <template #footer>
         <div class="card-footer">
           <!-- <el-button type="primary"></el-button> -->
-          <!-- <el-button type="primary" style="width: 30%"><RouterLink to="/">回首頁</RouterLink></el-button> -->
+          <el-button type="primary" style="width: 30%" @click="goHome">回首頁</el-button>
           <el-config-provider :message="msgTimeController">
-            <el-button type="primary" @click="login" style="width: 100%">登入</el-button>
+            <el-button type="primary" @click="login" style="width: 30%">登入</el-button>
           </el-config-provider>
         </div>
       </template>
