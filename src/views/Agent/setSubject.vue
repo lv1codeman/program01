@@ -131,6 +131,10 @@ const dialogSuccess = () => {
   dialogSuccessVisible.value = false
   router.push({ path: '/checkStructure' })
 }
+
+const finish = () => {
+  // 回傳到server端
+}
 </script>
 <template>
   <div class="page-container">
@@ -230,6 +234,7 @@ const dialogSuccess = () => {
   // display: inline-block;
   width: 500px; //設定內容item寬度，根據內容的長度調整
 }
+
 @media screen and (max-width: 818px) {
   :deep(.el-transfer) {
     --el-transfer-panel-width: 300px;

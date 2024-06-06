@@ -123,14 +123,7 @@ onUnmounted(() => {
       </div>
     </div>
   </div>
-  <el-tree
-    class="tree"
-    style="max-width: 600px"
-    :data="data"
-    :props="defaultProps"
-    @node-click="handleNodeClick"
-    default-expand-all
-  />
+  <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
 </template>
 <!-- <style lang="scss">
 .el-popper.is-customized {
@@ -144,9 +137,9 @@ onUnmounted(() => {
 }
 </style> -->
 <style lang="scss" scoped>
-// .set-icon-size {
-//   width: 30px;
-// }
+:deep(.el-tree-node__content) {
+  padding: 15px;
+}
 .tree {
   margin: 20px 0 0 50px;
 }
