@@ -132,7 +132,7 @@ const dialogSuccess = () => {
   router.push({ path: '/checkStructure' })
 }
 
-const finish = () => {
+const submit = () => {
   // 回傳到server端
 }
 </script>
@@ -180,7 +180,7 @@ const finish = () => {
       <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
         <template #extra>
           <el-button type="primary" @click="dialogSuccess">繼續編輯</el-button>
-          <el-button type="primary" @click="finish">完成</el-button>
+          <el-button type="primary" @click="submit">送出</el-button>
         </template>
       </el-result>
     </el-dialog>
