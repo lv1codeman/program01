@@ -124,8 +124,10 @@ onUnmounted(() => {
         </div> -->
       </div>
     </div>
+    <div class="description">請在以下樹形結構檢查學程架構是否正確</div>
+
+    <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
   </div>
-  <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
 </template>
 <!-- <style lang="scss">
 .el-popper.is-customized {
@@ -139,11 +141,14 @@ onUnmounted(() => {
 }
 </style> -->
 <style lang="scss" scoped>
+.description {
+  margin: 30px 0;
+}
 :deep(.el-tree-node__content) {
   padding: 15px;
 }
 .tree {
-  margin: 20px 0 0 50px;
+  margin: 20px 0 20px 50px;
 }
 .program-structure {
   padding-left: 50px;
