@@ -16,8 +16,6 @@ export async function fetchToken(id, password) {
     })
     const token = response.data.access_token
     const userType = response.data.user_type
-    // const userDataJson = response.data.user_data
-    const userDataJSON = JSON.stringify(response.data.user_data)
     const userDataList = JSON.parse(JSON.stringify(response.data.user_data))
     const userData = userDataList[0]
     sessionStorage.setItem('token', token)

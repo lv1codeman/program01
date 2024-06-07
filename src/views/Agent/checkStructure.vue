@@ -10,7 +10,9 @@ import transToTree from '@/utils/tree/objToTree.js'
 const store = useProgramStore()
 const programstruct = ref(store.programData)
 // const ps = programstruct
-console.log(`programstruct= ${programstruct.value.category[0].categoryName}`)
+// console.log(`programstruct= ${programstruct.value.category[0].categoryName}`)
+console.log('programstruct= ', programstruct.value)
+console.log('programstruct= ', JSON.stringify(programstruct.value))
 
 const data = transToTree(programstruct.value)
 
