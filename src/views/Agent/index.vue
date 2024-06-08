@@ -58,12 +58,12 @@ const dynamicValidateForm = reactive({
       category_minCredit: 0,
       category_requireNum: 0,
       domain: [
-        {
-          domain_id: domainCount++,
-          domain_name: '領域1',
-          domain_minCredit: 0,
-          domain_requireNum: 0
-        }
+        // {
+        //   domain_id: domainCount++,
+        //   domain_name: '領域1',
+        //   domain_minCredit: 0,
+        //   domain_requireNum: 0
+        // }
       ]
     }
   ]
