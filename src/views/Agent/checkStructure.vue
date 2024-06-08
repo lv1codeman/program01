@@ -71,6 +71,7 @@ onUnmounted(() => {
         <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
           <router-link
             class="baseItem islink"
+            style="margin-bottom: 10px"
             :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
             >{{ category.category_name }}</router-link
           >

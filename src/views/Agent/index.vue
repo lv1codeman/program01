@@ -8,9 +8,19 @@ import { unitList } from '@/assets/data/unitList.js'
 // import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
-
+import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const formRef = ref()
+
+import { getProgramById } from '@/apis/programAPI'
+const loadFromServer = async () => {
+  // 從SERVER讀取program_id=1的資料
+  let res = await getProgramById(1)
+  console.log('res= ', res)
+  // 轉成系統JSON格式
+  let resJson = transformServerJSON(res)
+  console.log(resJson)
+}
 
 var categoryCount = 0
 var domainCount = 1
@@ -147,7 +157,10 @@ const go_setSubject = () => {
   <font-awesome-icon icon="trash-can" />
 -->
   <div class="page-container">
-    <pagetitle>學程設定</pagetitle>
+    <pagetitle
+      >學程設定
+      <el-button @click="loadFromServer">由SERVER讀取</el-button>
+    </pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
       ref="formRef"
