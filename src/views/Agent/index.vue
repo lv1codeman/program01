@@ -11,45 +11,48 @@ import { useProgramStore } from '@/stores/agentData.js'
 
 const store = useProgramStore()
 const formRef = ref()
+
+var categoryCount = 0
+var domainCount = 1
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
 const dynamicValidateForm_formal = reactive({
-  name: '',
-  url: '',
-  type: '學分學程',
-  unit: '',
-  minCredit: 1,
-  nonSelfCredit: 1,
-  criteria: '以學分數',
+  program_name: '',
+  program_url: '',
+  program_type: '學分學程',
+  program_unit: '',
+  program_minCredit: 1,
+  program_nonSelfCredit: 1,
+  program_criteria: '以學分數',
   category: [
     {
-      key: 1,
-      categoryName: '',
-      categoryMinCredit: 0,
-      categoryRequireNum: 0,
+      category_id: categoryCount++,
+      category_Name: '類別1',
+      category_MinCredit: 0,
+      category_RequireNum: 0,
       domain: []
     }
   ]
 })
 const dynamicValidateForm = reactive({
-  name: '學程1',
-  url: '網址1',
-  type: '學分學程',
-  unit: '教育學院',
-  minCredit: 1,
-  nonSelfCredit: 2,
-  criteria: '以學分數',
+  program_name: '學程1',
+  program_url: '網址1',
+  program_type: '學分學程',
+  program_unit: '教育學院',
+  program_minCredit: 1,
+  program_nonSelfCredit: 1,
+  program_criteria: '以學分數',
   category: [
     {
-      key: 1,
-      categoryName: '類別1',
-      categoryMinCredit: 0,
-      categoryRequireNum: 0,
+      category_id: categoryCount++,
+      category_name: '類別1',
+      category_minCredit: 0,
+      category_requireNum: 0,
       domain: [
         {
-          key: 1,
-          domainName: '領域1',
-          domainMinCredit: 0,
-          domainRequireNum: 0
+          domain_id: domainCount++,
+          domain_name: '領域1',
+          domain_minCredit: 0,
+          domain_requireNum: 0
         }
       ]
     }
@@ -58,10 +61,11 @@ const dynamicValidateForm = reactive({
 console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 const addCategory = () => {
   dynamicValidateForm.category.push({
-    key: Date.now(),
-    categoryName: '',
-    categoryMinCredit: 1,
-    categoryRequireNum: 1,
+    // key: Date.now(),
+    category_id: categoryCount++,
+    category_name: '',
+    category_minCredit: 1,
+    category_requireNum: 1,
     domain: []
   })
 }
@@ -69,6 +73,7 @@ const removeCategory = (item) => {
   const index = dynamicValidateForm.category.indexOf(item)
   if (index > 0) {
     dynamicValidateForm.category.splice(index, 1)
+    categoryCount--
   } else {
     console.log('至少須有一個類別')
   }
@@ -76,16 +81,18 @@ const removeCategory = (item) => {
 
 const addDomain = (item) => {
   dynamicValidateForm.category[item].domain.push({
-    key: Date.now(),
-    domainMinCredit: 0,
-    domainRequireNum: 0
+    // key: Date.now(),
+    domain_id: domainCount++,
+    domain_name: '',
+    domain_minCredit: 1,
+    domain_requireNum: 1
   })
-  console.log(dynamicValidateForm)
 }
 const removeDomain = (categoryIndex, domain) => {
   const index = dynamicValidateForm.category[categoryIndex].domain.indexOf(domain)
   if (index !== -1) {
     dynamicValidateForm.category[categoryIndex].domain.splice(index, 1)
+    domainCount--
   }
   console.log('removeDomain dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 }
@@ -154,33 +161,33 @@ const go_setSubject = () => {
       <!-- :rules="rules" -->
       <div class="program-setting">
         <el-form-item class="my-grid-item" prop="name" label="學程名稱" clearable>
-          <el-input v-model="dynamicValidateForm.name" placeholder="請輸入學程名稱" />
+          <el-input v-model="dynamicValidateForm.program_name" placeholder="請輸入學程名稱" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="url" label="學程網址" clearable>
-          <el-input v-model="dynamicValidateForm.url" placeholder="請輸入學程網址" />
+          <el-input v-model="dynamicValidateForm.program_url" placeholder="請輸入學程網址" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="type" label="學程類型">
-          <el-segmented v-model="dynamicValidateForm.type" :options="programOptions" />
+          <el-segmented v-model="dynamicValidateForm.program_type" :options="programOptions" />
         </el-form-item>
 
         <el-form-item class="my-grid-item" prop="criteria" label="修畢條件">
-          <el-segmented v-model="dynamicValidateForm.criteria" :options="criteriaOptions" />
+          <el-segmented v-model="dynamicValidateForm.program_criteria" :options="criteriaOptions" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="minCredit" label="">
           <template #label
             ><span class="lineHeight1">最低應修<br />學分數</span></template
           >
-          <el-input-number v-model="dynamicValidateForm.minCredit" :min="1" :max="30" />
+          <el-input-number v-model="dynamicValidateForm.program_minCredit" :min="1" :max="30" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="nonSelfCredit" label="非本系學分數">
           <template #label
             ><span class="lineHeight1">非本系學<br />分數</span></template
           >
-          <el-input-number v-model="dynamicValidateForm.nonSelfCredit" :min="1" :max="10" />
+          <el-input-number v-model="dynamicValidateForm.program_nonSelfCredit" :min="1" :max="10" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="unit" label="設置單位">
           <el-select
-            v-model="dynamicValidateForm.unit"
+            v-model="dynamicValidateForm.program_unit"
             filterable
             placeholder="請選擇單位(可輸入文字篩選)"
             style="width: 240px"
@@ -213,19 +220,19 @@ const go_setSubject = () => {
                 <!-- 類別名稱 -->
                 <el-form-item
                   :label="'類別名稱'"
-                  :prop="'category.' + categoryIndex + '.categoryName'"
+                  :prop="'category.' + categoryIndex + '.category_name'"
                   :rules="{
                     required: true,
                     message: '類別名稱不可為空',
                     trigger: 'blur'
                   }"
                 >
-                  <el-input v-model="category.categoryName" placeholder="請輸入類別名稱" />
+                  <el-input v-model="category.category_name" placeholder="請輸入類別名稱" />
                 </el-form-item>
                 <!-- 最低學分數/課程數 -->
                 <el-form-item
                   label=""
-                  :prop="'category.' + categoryIndex + '.categoryMinCredit'"
+                  :prop="'category.' + categoryIndex + '.category_minCredit'"
                   :rules="{
                     required: true,
                     message: '類別最低學分數不可為空',
@@ -235,19 +242,19 @@ const go_setSubject = () => {
                   <template #label
                     ><span class="lineHeight1">最低學分數<br />/課程數</span></template
                   >
-                  <el-input-number v-model="category.categoryMinCredit" :min="1" :max="30" />
+                  <el-input-number v-model="category.category_minCredit" :min="1" :max="30" />
                 </el-form-item>
                 <!-- 類別需求數 -->
                 <el-form-item
                   :label="'類別需求數'"
-                  :prop="'category.' + categoryIndex + '.categoryRequireNum'"
+                  :prop="'category.' + categoryIndex + '.category_requireNum'"
                   :rules="{
                     required: true,
                     message: '類別最低學分數不可為空',
                     trigger: 'blur'
                   }"
                 >
-                  <el-input-number v-model="category.categoryRequireNum" :min="1" :max="10" />
+                  <el-input-number v-model="category.category_requireNum" :min="1" :max="10" />
                 </el-form-item>
               </div>
             </div>
@@ -274,19 +281,19 @@ const go_setSubject = () => {
                       <!-- :label="'學程領域' + (categoryIndex + 1) + '-' + (index + 1)" -->
                       <el-form-item
                         :label="'類別' + (categoryIndex + 1) + '>領域' + (index + 1)"
-                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainName'"
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_name'"
                         :rules="{
                           required: true,
                           message: '領域名稱不可為空',
                           trigger: 'blur'
                         }"
                       >
-                        <el-input v-model="domain.domainName" placeholder="請輸入領域名稱" />
+                        <el-input v-model="domain.domain_name" placeholder="請輸入領域名稱" />
                       </el-form-item>
                       <!-- 最低學分數/課程數 -->
                       <el-form-item
                         label=""
-                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainMinCredit'"
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_minCredit'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
@@ -296,19 +303,19 @@ const go_setSubject = () => {
                         <template #label
                           ><span class="lineHeight1">最低學分數<br />/課程數</span></template
                         >
-                        <el-input-number v-model="domain.domainMinCredit" :min="1" :max="30" />
+                        <el-input-number v-model="domain.domain_minCredit" :min="1" :max="30" />
                       </el-form-item>
                       <!-- 領域需求數 -->
                       <el-form-item
                         :label="'領域需求數'"
-                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domainRequireNum'"
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_requireNum'"
                         :rules="{
                           required: true,
                           message: '領域最低學分數不可為空',
                           trigger: 'blur'
                         }"
                       >
-                        <el-input-number v-model="domain.domainRequireNum" :min="1" :max="10" />
+                        <el-input-number v-model="domain.domain_requireNum" :min="1" :max="10" />
                       </el-form-item>
                     </div>
                   </div>
