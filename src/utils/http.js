@@ -5,7 +5,7 @@ import axios from 'axios'
 // 定義後端URL
 const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
 
-// 創建Axios實例
+// 創建Axios實例，可根據不同的BASE_URL對應創建
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -23,6 +23,13 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error)
+  }
+)
+
+axiosInstance.interceptors.response.use(
+  (response) => response.data,
+  (e) => {
+    return Promise.reject(e)
   }
 )
 

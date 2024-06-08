@@ -58,12 +58,12 @@ const dynamicValidateForm = reactive({
       category_minCredit: 0,
       category_requireNum: 0,
       domain: [
-        {
-          domain_id: domainCount++,
-          domain_name: '領域1',
-          domain_minCredit: 0,
-          domain_requireNum: 0
-        }
+        // {
+        // domain_id: domainCount++,
+        // domain_name: '領域1',
+        // domain_minCredit: 0,
+        // domain_requireNum: 0
+        // }
       ]
     }
   ]
@@ -159,7 +159,7 @@ const go_setSubject = () => {
   <div class="page-container">
     <pagetitle
       >學程設定
-      <el-button @click="loadFromServer">由SERVER讀取</el-button>
+      <el-button type="primary" @click="loadFromServer">由SERVER讀取</el-button>
     </pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
