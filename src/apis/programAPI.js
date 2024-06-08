@@ -10,6 +10,12 @@ export async function getAllPrograms() {
     throw error
   }
 }
+// export const getAllPrograms = () => {
+//   return axiosInstance({
+//     url: '/program/all',
+//     method: 'GET'
+//   })
+// }
 
 // 根據程序ID獲取程序
 export async function getProgramById(programId) {

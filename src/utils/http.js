@@ -26,12 +26,12 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-axiosInstance.interceptors.response.use(
-  (response) => response.data,
-  (e) => {
-    return Promise.reject(e)
-  }
-)
+// axiosInstance.interceptors.response.use(
+//   (response) => response.data,
+//   (e) => {
+//     return Promise.reject(e)
+//   }
+// )
 
 // // 處理Token過期的情況
 // axiosInstance.interceptors.response.use(
