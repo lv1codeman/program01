@@ -12,7 +12,7 @@
 function transformProgramStruct(programstruct) {
   return programstruct.category.map((category) => {
     const categoryNode = {
-      label: category.categoryName,
+      label: category.category_name,
       children: []
     }
 
@@ -20,7 +20,7 @@ function transformProgramStruct(programstruct) {
     if (category.course && category.course.length > 0) {
       categoryNode.children.push(
         ...category.course.map((course) => ({
-          label: `${course.subjectID} ${course.subjectName}`
+          label: `${course.subject_sub_id} ${course.subject_name}`
         }))
       )
     }
@@ -30,14 +30,14 @@ function transformProgramStruct(programstruct) {
       categoryNode.children.push(
         ...category.domain.map((domain) => {
           const domainNode = {
-            label: domain.domainName,
+            label: domain.domain_name,
             children: []
           }
 
           if (domain.course && domain.course.length > 0) {
             domainNode.children.push(
               ...domain.course.map((course) => ({
-                label: `${course.subjectID} ${course.subjectName}`
+                label: `${course.subject_sub_id} ${course.subject_name}`
               }))
             )
           }

@@ -9,10 +9,10 @@ const route = useRoute()
 const store = useProgramStore()
 
 const targetCheck = () => {
-  if (!route.params.domainName) {
-    return [route.params.categoryName]
+  if (!route.params.domain_name) {
+    return [route.params.category_name]
   } else {
-    return [route.params.categoryName, route.params.domainName]
+    return [route.params.category_name, route.params.domain_name]
   }
 }
 const dialogSuccessVisible = ref(false)
@@ -21,8 +21,8 @@ const submitProgramData = () => {
   // console.log('target=', target)
   if (target.length > 1) {
     // 類別之下的領域
-    let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
-    let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
+    let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
+    let domainItem = categoryItem.domain.find((item) => item.domain_name === target[1])
     if (domainItem) {
       let temp = []
       tableData.value.forEach((item) => {
@@ -32,7 +32,7 @@ const submitProgramData = () => {
     }
   } else {
     // 只有類別
-    let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
+    let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
     if (categoryItem) {
       let temp = []
       tableData.value.forEach((item) => {
@@ -45,16 +45,16 @@ const submitProgramData = () => {
 }
 
 const pageTitle = computed(() => {
-  const categoryName = route.params.categoryName
-  const domainName = route.params.domainName
+  const category_name = route.params.category_name
+  const domain_name = route.params.domain_name
   let title = ''
 
-  if (categoryName) {
-    title += categoryName + '-'
+  if (category_name) {
+    title += category_name + '-'
   }
 
-  if (domainName) {
-    title += domainName + '-'
+  if (domain_name) {
+    title += domain_name + '-'
   }
 
   title += '課程設定'
@@ -67,18 +67,18 @@ const generateData = () => {
   subjectList.forEach((item, index) => {
     data.push({
       label:
-        item.subjectID +
+        item.subject_sub_id +
         '/' +
-        item.subjectName +
+        item.subject_name +
         '/' +
-        item.unit +
+        item.subject_unit +
         '/' +
-        item.sys +
+        item.subject_sys +
         '/' +
         '(' +
-        item.credit +
+        item.subject_credit +
         '/' +
-        item.hour +
+        item.subject_hour +
         ')',
       key: index
     })
@@ -89,14 +89,14 @@ const generateData = () => {
 // 右邊的transfer框，預設顯示目前類別、領域的課程
 const target = targetCheck()
 const selectedcourse = ref([])
-let categoryItem = store.programData.category.find((item) => item.categoryName === target[0])
-let domainItem = categoryItem.domain.find((item) => item.domainName === target[1])
+let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
+let domainItem = categoryItem.domain.find((item) => item.domain_name === target[1])
 if (target.length > 1) {
   // 類別之下的領域
   if (domainItem.course && domainItem.course.length > 0) {
     // 之前有建立過課程，將課程資料存在selectedcourse用來宣告transferData以將課程顯示在右邊的transfer框
     domainItem.course.forEach((item) => {
-      selectedcourse.value.push(item.id - 1)
+      selectedcourse.value.push(item.subject_id - 1)
     })
   } else {
     // 第一次新建課程，do nothing
@@ -159,14 +159,14 @@ const submit = () => {
     </el-transfer>
     <pagetitle>匯入前檢查</pagetitle>
     <el-table :data="tableData" style="width: 100%" max-height="500" stripe>
-      <el-table-column fixed prop="id" label="ID" width="50" sortable />
-      <el-table-column prop="subjectID" label="科目代碼" width="120" sortable />
-      <el-table-column prop="subjectName" label="科目名稱" width="200" sortable />
-      <el-table-column prop="unit" label="單位" width="120" />
-      <el-table-column prop="sys" label="學制" width="120" />
-      <el-table-column prop="subjectNameEng" label="科目英文名稱" width="300" />
-      <el-table-column prop="credit" label="學分" width="120" />
-      <el-table-column prop="hour" label="學時" width="120" />
+      <el-table-column fixed prop="subject_id" label="ID" width="50" sortable />
+      <el-table-column prop="subject_sub_id" label="科目代碼" width="120" sortable />
+      <el-table-column prop="subject_name" label="科目名稱" width="200" sortable />
+      <el-table-column prop="subject_unit" label="單位" width="120" />
+      <el-table-column prop="subject_sys" label="學制" width="120" />
+      <el-table-column prop="subject_eng_name" label="科目英文名稱" width="300" />
+      <el-table-column prop="subject_credit" label="學分" width="120" />
+      <el-table-column prop="subject_hour" label="學時" width="120" />
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default="scope">
           <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)"> Remove </el-button>
@@ -187,24 +187,6 @@ const submit = () => {
   </div>
 </template>
 <style lang="scss" scoped>
-/*scrollbar*/
-
-// :deep(::-webkit-scrollbar) {
-//   width: 15px;
-// }
-// :deep(::-webkit-scrollbar-thumb) {
-//   -webkit-border-radius: 50px;
-//   border-radius: 50px;
-//   // border: 3px solid rgba(0, 0, 0, 0);
-//   background-color: #b60808;
-//   // box-shadow: 12px 12px 0 #5b5b5b inset;
-//   border-left: none;
-//   transition: 0.5s;
-// }
-// :deep(::-webkit-scrollbar-thumb:hover) {
-//   box-shadow: 12px 12px 0 #9d9d9d inset;
-// }
-
 /*scrollbar*/
 :deep(::-webkit-scrollbar) {
   width: 10px;

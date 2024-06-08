@@ -122,13 +122,13 @@ const criteriaOptions = ref(['以課程數', '以學分數'])
 const unitListAll = unitList
 
 const rules = ref({
-  name: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
-  url: { required: true, /*pattern: regex.reg_url,*/ message: '網址格式錯誤', trigger: 'blur' },
-  type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
-  unit: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
-  criteria: { required: true, message: '請輸入修畢條件', trigger: 'blur' },
-  minCredit: { required: true, message: '請輸入最低應修學分數', trigger: 'blur' },
-  nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
+  program_name: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_url: { required: true, /*pattern: regex.reg_url,*/ message: '網址格式錯誤', trigger: 'blur' },
+  program_type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_unit: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_criteria: { required: true, message: '請輸入修畢條件', trigger: 'blur' },
+  program_minCredit: { required: true, message: '請輸入最低應修學分數', trigger: 'blur' },
+  program_nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
 })
 const labelPosition = ref('right')
 

@@ -1,2002 +1,2002 @@
 export const subjectList = [
   {
-    id: 1,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2002530',
-    sys: '碩士班',
-    subjectName: '論文寫作(一)',
-    subjectNameEng: 'Thesis Writing I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 2,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2002630',
-    sys: '碩士班',
-    subjectName: '論文寫作(二)',
-    subjectNameEng: 'Thesis Writing II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 3,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2002830',
-    sys: '碩士班',
-    subjectName: '科技英文寫作',
-    subjectNameEng: 'Technical English Writing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 4,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2002930',
-    sys: '碩士班',
-    subjectName: '科技英文',
-    subjectNameEng: 'Technical English',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 5,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1003030',
-    sys: '博士班',
-    subjectName: '科技英文',
-    subjectNameEng: 'Technical English',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 6,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003130',
-    sys: '大學部',
-    subjectName: '工程數學(三)',
-    subjectNameEng: 'Engineering Mathematics (III)',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 7,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003230',
-    sys: '大學部',
-    subjectName: '工程數學(一)',
-    subjectNameEng: 'Engineering Mathematics I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 8,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003330',
-    sys: '大學部',
-    subjectName: '工程數學(二)',
-    subjectNameEng: 'Engineering Mathematics II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 9,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003430',
-    sys: '大學部',
-    subjectName: '機率與統計',
-    subjectNameEng: 'Probability and Statistics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 10,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003530',
-    sys: '大學部',
-    subjectName: '數值分析',
-    subjectNameEng: 'Numerical Analysis',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 11,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003630',
-    sys: '大學部',
-    subjectName: '線性代數',
-    subjectNameEng: 'Linear Algebra',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 12,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003730',
-    sys: '大學部',
-    subjectName: '複變函數',
-    subjectNameEng: 'Complex Variables',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 13,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003830',
-    sys: '大學部',
-    subjectName: '微積分(一)',
-    subjectNameEng: 'Calculus I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 14,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0003930',
-    sys: '大學部',
-    subjectName: '微積分(二)',
-    subjectNameEng: 'Calculus II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 15,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004030',
-    sys: '大學部',
-    subjectName: '光電導論',
-    subjectNameEng: 'Introduction of Optoelectronics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 16,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2004130',
-    sys: '碩士班',
-    subjectName: '光纖通訊',
-    subjectNameEng: 'Optical-Fiber Communication',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 17,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1004230',
-    sys: '博士班',
-    subjectName: '光纖通訊',
-    subjectNameEng: 'Optical-Fiber Communication',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 18,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004330',
-    sys: '大學部',
-    subjectName: '近代物理',
-    subjectNameEng: 'Modern Physics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 19,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1004430',
-    sys: '博士班',
-    subjectName: '電磁波',
-    subjectNameEng: 'Electromagnetic Wave',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 20,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004530',
-    sys: '大學部',
-    subjectName: '普通物理(一)',
-    subjectNameEng: 'General Physics I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 21,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004630',
-    sys: '大學部',
-    subjectName: '普通物理(二)',
-    subjectNameEng: 'General Physics II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 22,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004730',
-    sys: '大學部',
-    subjectName: '電磁學(一)',
-    subjectNameEng: 'Electromagnetics I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 23,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0004830',
-    sys: '大學部',
-    subjectName: '電磁學(二)',
-    subjectNameEng: 'Electromagnetics II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 24,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2004910',
-    sys: '碩士班',
-    subjectName: '半導體製程自動化專題研究(一)',
-    subjectNameEng: 'Case Study of Semiconductor Fabrication Automation I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 25,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2005010',
-    sys: '碩士班',
-    subjectName: '半導體製程自動化專題研究(二)',
-    subjectNameEng: 'Case Study of Semiconductor Fabrication Automation II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 26,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0005130',
-    sys: '大學部',
-    subjectName: '射頻電路設計',
-    subjectNameEng: 'RF Circuit Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 27,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2005230',
-    sys: '碩士班',
-    subjectName: '射頻電路設計',
-    subjectNameEng: 'RF Circuit Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 28,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0005430',
-    sys: '大學部',
-    subjectName: '人機界面',
-    subjectNameEng: 'Human-Computer Interaction',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 29,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2005530',
-    sys: '碩士班',
-    subjectName: '人機界面',
-    subjectNameEng: 'Human-Computer Interaction',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 30,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1005630',
-    sys: '博士班',
-    subjectName: '人機界面',
-    subjectNameEng: 'Human-Computer Interaction',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 31,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1005730',
-    sys: '博士班',
-    subjectName: '機械視覺',
-    subjectNameEng: 'Machine Vision',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 32,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1005830',
-    sys: '博士班',
-    subjectName: '電磁相容分析與計算方法',
-    subjectNameEng: 'EMC Analysis and Computational Methods',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 33,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0005920',
-    sys: '大學部',
-    subjectName: '產業研發實習',
-    subjectNameEng: 'Industry Study',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 34,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006130',
-    sys: '大學部',
-    subjectName: '數位信號處理',
-    subjectNameEng: 'Digital Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 35,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006230',
-    sys: '大學部',
-    subjectName: '機器人學',
-    subjectNameEng: 'Introduction to Robotics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 36,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006330',
-    sys: '大學部',
-    subjectName: '機器人動態特性與模態分析',
-    subjectNameEng: 'Dynamic Simulation and Modal Analysis of Robotics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 37,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2006430',
-    sys: '碩士班',
-    subjectName: '影像處理',
-    subjectNameEng: 'Image Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 38,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1006530',
-    sys: '博士班',
-    subjectName: '中央空調系統',
-    subjectNameEng: 'Central Air-Conditioning System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 39,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006630',
-    sys: '大學部',
-    subjectName: '超大型積體電路設計',
-    subjectNameEng: 'VLSI Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 40,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2006730',
-    sys: '碩士班',
-    subjectName: '超大型積體電路設計',
-    subjectNameEng: 'VLSI Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 41,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006830',
-    sys: '大學部',
-    subjectName: '電子學(一)',
-    subjectNameEng: 'Electronics I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 42,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0006930',
-    sys: '大學部',
-    subjectName: '電子學(二)',
-    subjectNameEng: 'Electronics II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 43,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0007030',
-    sys: '大學部',
-    subjectName: '電路學(一)',
-    subjectNameEng: 'Circuit Theory I',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 44,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0007130',
-    sys: '大學部',
-    subjectName: '電路學(二)',
-    subjectNameEng: 'Circuit Theory II',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 45,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0007230',
-    sys: '大學部',
-    subjectName: '電子學(三)',
-    subjectNameEng: 'Electronics III',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 46,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2007330',
-    sys: '碩士班',
-    subjectName: '自動量測系統',
-    subjectNameEng: 'Automatic Measurement System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 47,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1007430',
-    sys: '博士班',
-    subjectName: '自動量測系統',
-    subjectNameEng: 'Automatic Measurement System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 48,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2007530',
-    sys: '碩士班',
-    subjectName: '高等電力電子學',
-    subjectNameEng: 'Advanced Power Electronics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 49,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1007630',
-    sys: '博士班',
-    subjectName: '高等電力電子學',
-    subjectNameEng: 'Advanced Power Electronics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 50,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1007730',
-    sys: '博士班',
-    subjectName: '直流機控制',
-    subjectNameEng: 'DC Electrical Machine Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 51,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1007830',
-    sys: '博士班',
-    subjectName: '電力系統動態分析',
-    subjectNameEng: 'Power System Dynamics Analysis',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 52,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1007930',
-    sys: '博士班',
-    subjectName: '圖形監控系統',
-    subjectNameEng: 'Graphic Controller System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 53,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1008130',
-    sys: '博士班',
-    subjectName: '數位影像處理',
-    subjectNameEng: 'Digital Image Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 54,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0008230',
-    sys: '大學部',
-    subjectName: '數位訊號處理',
-    subjectNameEng: 'Digital Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 55,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1008330',
-    sys: '博士班',
-    subjectName: '數位訊號處理',
-    subjectNameEng: 'Digital Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 56,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2008430',
-    sys: '碩士班',
-    subjectName: '數位訊號處理',
-    subjectNameEng: 'Digital Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 57,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0008630',
-    sys: '大學部',
-    subjectName: '語音分析',
-    subjectNameEng: 'Speech Analysis',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 58,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1008730',
-    sys: '博士班',
-    subjectName: '數據通訊',
-    subjectNameEng: 'Data Communicaiton',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 59,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0008830',
-    sys: '大學部',
-    subjectName: '無線通訊系統',
-    subjectNameEng: 'Wireless Communicaiton Systems',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 60,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1008930',
-    sys: '博士班',
-    subjectName: '無線通訊系統',
-    subjectNameEng: 'Wireless Communicaiton Systems',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 61,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2009030',
-    sys: '碩士班',
-    subjectName: '無線通訊系統',
-    subjectNameEng: 'Wireless Communicaiton Systems',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 62,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2009130',
-    sys: '碩士班',
-    subjectName: '網路程式設計',
-    subjectNameEng: 'Network Programming',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 63,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1009230',
-    sys: '博士班',
-    subjectName: '動態網頁設計',
-    subjectNameEng: 'Dynamic Homepage Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 64,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1009330',
-    sys: '博士班',
-    subjectName: '半導體元件物理',
-    subjectNameEng: 'Physics of Semiconductor Devices',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 65,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1009430',
-    sys: '博士班',
-    subjectName: '類比積體電路設計',
-    subjectNameEng: 'Analog Integrated Circuit Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 66,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0009530',
-    sys: '大學部',
-    subjectName: '數位通訊',
-    subjectNameEng: 'Digital Communication',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 67,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2009630',
-    sys: '碩士班',
-    subjectName: '數位通訊',
-    subjectNameEng: 'Digital Communication',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 68,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1009730',
-    sys: '博士班',
-    subjectName: '天線理論',
-    subjectNameEng: 'Antenna Theory',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 69,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1009830',
-    sys: '博士班',
-    subjectName: '光波導原理',
-    subjectNameEng: 'Theory of Optical Wave Guides',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 70,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0009920',
-    sys: '大學部',
-    subjectName: '電機資訊工程概論',
-    subjectNameEng: 'Introduction to Electrical Information Engineering',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 71,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010030',
-    sys: '大學部',
-    subjectName: '硬體描述語言',
-    subjectNameEng: 'Hardware Description Language',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 72,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010120',
-    sys: '大學部',
-    subjectName: '電子技術(一)',
-    subjectNameEng: 'Electronic Technology I',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 73,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010220',
-    sys: '大學部',
-    subjectName: '電子技術(二)',
-    subjectNameEng: 'Electronic Technology II',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 74,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2010330',
-    sys: '碩士班',
-    subjectName: '系統工程概論',
-    subjectNameEng: 'Introduction to System Engineering',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 75,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1010430',
-    sys: '博士班',
-    subjectName: '系統工程概論',
-    subjectNameEng: 'Introduction to System Engineering',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 76,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010520',
-    sys: '大學部',
-    subjectName: '電腦輔助積體電路設計技術',
-    subjectNameEng: 'Techniques of Computer-Aided Integrated Circuit Design',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 77,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2010620',
-    sys: '碩士班',
-    subjectName: '電腦輔助積體電路設計技術',
-    subjectNameEng: 'Techniques of Computer-Aided Integrated Circuit Design',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 78,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010720',
-    sys: '大學部',
-    subjectName: '電子技術(三)',
-    subjectNameEng: 'Electronic Technology III',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 79,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0010830',
-    sys: '大學部',
-    subjectName: '電機機械',
-    subjectNameEng: 'Electric Machinery',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 80,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1010930',
-    sys: '博士班',
-    subjectName: '線性系統',
-    subjectNameEng: 'Linear System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 81,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1011030',
-    sys: '博士班',
-    subjectName: '電機控制',
-    subjectNameEng: 'Electrical Machine Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 82,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011120',
-    sys: '大學部',
-    subjectName: '系統實作專題(一)',
-    subjectNameEng: 'Special Topic for Systems I',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 83,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011220',
-    sys: '大學部',
-    subjectName: '系統實作專題(二)',
-    subjectNameEng: 'Special Topic for Systems II',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 84,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011320',
-    sys: '大學部',
-    subjectName: '系統實作專題(三)',
-    subjectNameEng: 'Special Topic for Systems III',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 85,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011420',
-    sys: '大學部',
-    subjectName: '產業實作專題(一)',
-    subjectNameEng: 'Special Topic for Industry I',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 86,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011520',
-    sys: '大學部',
-    subjectName: '產業實作專題(二)',
-    subjectNameEng: 'Special Topic for Industry II',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 87,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011620',
-    sys: '大學部',
-    subjectName: '產業實作專題(三)',
-    subjectNameEng: 'Special Topic for Industry III',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 88,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011720',
-    sys: '大學部',
-    subjectName: '研發實作專題(一)',
-    subjectNameEng: 'Special Topic for Research I',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 89,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011820',
-    sys: '大學部',
-    subjectName: '研發實作專題(二)',
-    subjectNameEng: 'Special Topic for Research II',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 90,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0011920',
-    sys: '大學部',
-    subjectName: '研發實作專題(三)',
-    subjectNameEng: 'Special Topic for Research III',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 91,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012030',
-    sys: '大學部',
-    subjectName: '控制系統',
-    subjectNameEng: 'Control System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 92,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2012130',
-    sys: '碩士班',
-    subjectName: '控制系統',
-    subjectNameEng: 'Control System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 93,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012230',
-    sys: '大學部',
-    subjectName: '電力系統',
-    subjectNameEng: 'Electric Power System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 94,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2012330',
-    sys: '碩士班',
-    subjectName: '電力系統',
-    subjectNameEng: 'Electric Power System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 95,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2012430',
-    sys: '碩士班',
-    subjectName: '電力系統運轉與控制',
-    subjectNameEng: 'Power System Operation & Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 96,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012520',
-    sys: '大學部',
-    subjectName: '電機基礎技術',
-    subjectNameEng: 'Basic Electrical Technology',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 97,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012630',
-    sys: '大學部',
-    subjectName: '電力電子學',
-    subjectNameEng: 'Power Electronics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 98,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2012730',
-    sys: '碩士班',
-    subjectName: '電力電子學',
-    subjectNameEng: 'Power Electronics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 99,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012830',
-    sys: '大學部',
-    subjectName: '控制工程',
-    subjectNameEng: 'Control Engineering',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 100,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0012920',
-    sys: '大學部',
-    subjectName: '介面電路技術',
-    subjectNameEng: 'Interface Circuit Technology',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 101,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013020',
-    sys: '大學部',
-    subjectName: '電路技術',
-    subjectNameEng: 'Circuit Theory Experiments',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 102,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2013130',
-    sys: '碩士班',
-    subjectName: '電子電路',
-    subjectNameEng: 'Electronic Circuits',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 103,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1013230',
-    sys: '博士班',
-    subjectName: '感測器原理與應用',
-    subjectNameEng: 'Theory and Applications of Sensors',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 104,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013330',
-    sys: '大學部',
-    subjectName: '冷凍空調原理',
-    subjectNameEng: 'Principles of Refrigeration and Air-Conditioning',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 105,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1013430',
-    sys: '博士班',
-    subjectName: '微處理機控制與應用',
-    subjectNameEng: 'Microprocessor Control & Application',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 106,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013520',
-    sys: '大學部',
-    subjectName: '電機技術',
-    subjectNameEng: 'Electrical Technology',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 107,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013630',
-    sys: '大學部',
-    subjectName: '通訊系統',
-    subjectNameEng: 'Communication System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 108,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013730',
-    sys: '大學部',
-    subjectName: '伺服器架設與管理',
-    subjectNameEng: 'Network Servers Administration',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 109,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0013830',
-    sys: '大學部',
-    subjectName: '通訊導論',
-    subjectNameEng: 'Introduction to Communication',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 110,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2013930',
-    sys: '碩士班',
-    subjectName: '數位濾波器設計',
-    subjectNameEng: 'Digital Filter Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 111,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1014030',
-    sys: '博士班',
-    subjectName: '數位濾波器設計',
-    subjectNameEng: 'Digital Filter Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 112,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014130',
-    sys: '大學部',
-    subjectName: 'RFID晶片設計',
-    subjectNameEng: 'RFID Chip Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 113,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014230',
-    sys: '大學部',
-    subjectName: 'RFID概論',
-    subjectNameEng: 'Introduction of Radio Frequency Identification',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 114,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014330',
-    sys: '大學部',
-    subjectName: 'RFID應用',
-    subjectNameEng: 'RFID Applications',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 115,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014430',
-    sys: '大學部',
-    subjectName: 'RFID天線設計',
-    subjectNameEng: 'RFID Antenna Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 116,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014530',
-    sys: '大學部',
-    subjectName: '模糊控制',
-    subjectNameEng: 'Fuzzy Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 117,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2014630',
-    sys: '碩士班',
-    subjectName: '模糊控制',
-    subjectNameEng: 'Fuzzy Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 118,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1014730',
-    sys: '博士班',
-    subjectName: '模糊控制',
-    subjectNameEng: 'Fuzzy Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 119,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0014820',
-    sys: '大學部',
-    subjectName: '微處理機技術',
-    subjectNameEng: 'Microprocessor Technology',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 120,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1014930',
-    sys: '博士班',
-    subjectName: '電動機控制',
-    subjectNameEng: 'Motor Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 121,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0015030',
-    sys: '大學部',
-    subjectName: '邏輯設計',
-    subjectNameEng: 'Logic Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 122,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0015120',
-    sys: '大學部',
-    subjectName: '邏輯設計技術',
-    subjectNameEng: 'Logic Design Technology',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 123,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2015230',
-    sys: '碩士班',
-    subjectName: '數位積體電路設計',
-    subjectNameEng: 'Digital Integrated Circuits Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 124,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1015330',
-    sys: '博士班',
-    subjectName: '照明光學',
-    subjectNameEng: 'Illumination Optics',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 125,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1015430',
-    sys: '博士班',
-    subjectName: '切換式電源轉換器',
-    subjectNameEng: 'Switching Mode Power Converter',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 126,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1015530',
-    sys: '博士班',
-    subjectName: '高等電力網路分析',
-    subjectNameEng: 'Advanced Power Network Analysis',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 127,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1015630',
-    sys: '博士班',
-    subjectName: '光電工程學',
-    subjectNameEng: 'Principles of Electro-Optical Engineering',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 128,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0015730',
-    sys: '大學部',
-    subjectName: '適應性信號處理',
-    subjectNameEng: 'Adaptive Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 129,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1015830',
-    sys: '博士班',
-    subjectName: '適應性信號處理',
-    subjectNameEng: 'Adaptive Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 130,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2015930',
-    sys: '碩士班',
-    subjectName: '適應性信號處理',
-    subjectNameEng: 'Adaptive Signal Processing',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 131,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016030',
-    sys: '碩士班',
-    subjectName: '最佳控制',
-    subjectNameEng: 'Optimal Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 132,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1016130',
-    sys: '博士班',
-    subjectName: '類神經網路',
-    subjectNameEng: 'Neural Network',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 133,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0016230',
-    sys: '大學部',
-    subjectName: '訊號與系統',
-    subjectNameEng: 'Signals and Systems',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 134,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016310',
-    sys: '碩士班',
-    subjectName: '光電製程自動化專題研究(一)',
-    subjectNameEng: 'Case Study of Electro-Optical Fabrication Automation I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 135,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016410',
-    sys: '碩士班',
-    subjectName: '光電製程自動化專題研究(二)',
-    subjectNameEng: 'Case Study of Electro-Optical Fabrication Automation II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 136,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016530',
-    sys: '碩士班',
-    subjectName: '研發與生產',
-    subjectNameEng: 'R&D and Production',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 137,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016630',
-    sys: '碩士班',
-    subjectName: '製程自動化原理',
-    subjectNameEng: 'Principle of Fabrication Automation',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 138,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0016730',
-    sys: '大學部',
-    subjectName: '演算法',
-    subjectNameEng: 'Algorithm',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 139,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2016830',
-    sys: '碩士班',
-    subjectName: '研發智財管理',
-    subjectNameEng: 'R&D Intelligence Property Management',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 140,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0016930',
-    sys: '大學部',
-    subjectName: '計算機概論',
-    subjectNameEng: 'Introduction to Computer Science',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 141,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1017030',
-    sys: '博士班',
-    subjectName: '算術處理器電路設計',
-    subjectNameEng: 'Computer Arithmetic Circuit Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 142,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017130',
-    sys: '大學部',
-    subjectName: '程式設計',
-    subjectNameEng: 'Program Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 143,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1017230',
-    sys: '博士班',
-    subjectName: '微電腦系統設計',
-    subjectNameEng: 'Microcomputer System Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 144,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017330',
-    sys: '大學部',
-    subjectName: '計算機結構',
-    subjectNameEng: 'Computer Architecture',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 145,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017430',
-    sys: '大學部',
-    subjectName: '資料結構',
-    subjectNameEng: 'Data Structure',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 146,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017530',
-    sys: '大學部',
-    subjectName: '作業系統',
-    subjectNameEng: 'Operating Systems',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 147,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017630',
-    sys: '大學部',
-    subjectName: '智慧感測與資料探勘',
-    subjectNameEng: 'Intelligence Sensing and Data Prospecting',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 148,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017730',
-    sys: '大學部',
-    subjectName: '計算機組織與結構',
-    subjectNameEng: 'Computer Architecture',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 149,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017830',
-    sys: '大學部',
-    subjectName: '物件導向程式設計',
-    subjectNameEng: 'Object Oriented Program Design',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 150,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0017930',
-    sys: '大學部',
-    subjectName: '計算機網路',
-    subjectNameEng: 'Computer Network',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 151,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1018030',
-    sys: '博士班',
-    subjectName: '計算機網路',
-    subjectNameEng: 'Computer Network',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 152,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0018120',
-    sys: '大學部',
-    subjectName: '電腦與教學',
-    subjectNameEng: 'Computer & Instruction',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 153,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0018220',
-    sys: '大學部',
-    subjectName: '工科教材教法',
-    subjectNameEng: 'Methods & Materials for Teaching Industrial Subjects',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 154,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0018320',
-    sys: '大學部',
-    subjectName: '工科教學實習',
-    subjectNameEng: 'Industrial Subjects Teaching Practicum',
-    credit: 2,
-    hour: 4
-  },
-  {
-    id: 155,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0018430',
-    sys: '大學部',
-    subjectName: '產業職能教育',
-    subjectNameEng: 'Education for Industry Profession',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 156,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1018530',
-    sys: '博士班',
-    subjectName: '電機產業職能研究',
-    subjectNameEng: 'Study of Electrical Industrial Profession',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 157,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2019610',
-    sys: '碩士班',
-    subjectName: '書報討論(上)',
-    subjectNameEng: 'Seminar I',
-    credit: 1,
-    hour: 1
-  },
-  {
-    id: 158,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2019720',
-    sys: '碩士班',
-    subjectName: '書報討論(上)',
-    subjectNameEng: 'Seminar I',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 159,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2019810',
-    sys: '碩士班',
-    subjectName: '書報討論(上)',
-    subjectNameEng: 'Seminar I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 160,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1019920',
-    sys: '博士班',
-    subjectName: '書報討論(上)',
-    subjectNameEng: 'Seminar I',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 161,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1020010',
-    sys: '博士班',
-    subjectName: '書報討論(上)',
-    subjectNameEng: 'Seminar I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 162,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2020110',
-    sys: '碩士班',
-    subjectName: '書報討論(下)',
-    subjectNameEng: 'Seminar II',
-    credit: 1,
-    hour: 1
-  },
-  {
-    id: 163,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2020220',
-    sys: '碩士班',
-    subjectName: '書報討論(下)',
-    subjectNameEng: 'Seminar II',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 164,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1020320',
-    sys: '博士班',
-    subjectName: '書報討論(下)',
-    subjectNameEng: 'Seminar II',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 165,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1020410',
-    sys: '博士班',
-    subjectName: '書報討論(下)',
-    subjectNameEng: 'Seminar II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 166,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2020510',
-    sys: '碩士班',
-    subjectName: '書報討論(下)',
-    subjectNameEng: 'Seminar II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 167,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2020600',
-    sys: '碩士班',
-    subjectName: '論文',
-    subjectNameEng: 'Thesis',
-    credit: 0,
-    hour: 0
-  },
-  {
-    id: 168,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1020700',
-    sys: '博士班',
-    subjectName: '論文',
-    subjectNameEng: 'Thesis',
-    credit: 0,
-    hour: 0
-  },
-  {
-    id: 169,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2020830',
-    sys: '碩士班',
-    subjectName: '論文指導(一)',
-    subjectNameEng: 'Thesis Supervision I',
-    credit: 3,
-    hour: 0
-  },
-  {
-    id: 170,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1020930',
-    sys: '博士班',
-    subjectName: '論文指導(一)',
-    subjectNameEng: 'Thesis Supervision I',
-    credit: 3,
-    hour: 0
-  },
-  {
-    id: 171,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2021030',
-    sys: '碩士班',
-    subjectName: '論文指導(二)',
-    subjectNameEng: 'Thesis Supervision II',
-    credit: 3,
-    hour: 0
-  },
-  {
-    id: 172,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1021130',
-    sys: '博士班',
-    subjectName: '論文指導(二)',
-    subjectNameEng: 'Thesis Supervision II',
-    credit: 3,
-    hour: 0
-  },
-  {
-    id: 173,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2021310',
-    sys: '碩士班',
-    subjectName: '專題研討(上)',
-    subjectNameEng: 'Literature Study I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 174,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1021420',
-    sys: '博士班',
-    subjectName: '專題研討(上)',
-    subjectNameEng: 'Literature Study I',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 175,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1021510',
-    sys: '博士班',
-    subjectName: '專題研討(上)',
-    subjectNameEng: 'Literature Study I',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 176,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2021620',
-    sys: '碩士班',
-    subjectName: '專題研討(上)',
-    subjectNameEng: 'Literature Study I',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 177,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2021710',
-    sys: '碩士班',
-    subjectName: '專題研討(下)',
-    subjectNameEng: 'Literature Study II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 178,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2021820',
-    sys: '碩士班',
-    subjectName: '專題研討(下)',
-    subjectNameEng: 'Literature Study II',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 179,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1021920',
-    sys: '博士班',
-    subjectName: '專題研討(下)',
-    subjectNameEng: 'Literature Study II',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 180,
-    unit: '電機工程學系',
-    subjectID: '1EIEE1022010',
-    sys: '博士班',
-    subjectName: '專題研討(下)',
-    subjectNameEng: 'Literature Study II',
-    credit: 1,
-    hour: 2
-  },
-  {
-    id: 181,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0022730',
-    sys: '大學部',
-    subjectName: '機器人專題製作',
-    subjectNameEng: 'Special Topics for Robotic Implementation',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 182,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0022830',
-    sys: '大學部',
-    subjectName: '自動量測系統',
-    subjectNameEng: 'Automatic Measurement System',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 183,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0022920',
-    sys: '大學部',
-    subjectName: '教育哲學',
-    subjectNameEng: 'Educational Philosophy',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 184,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023020',
-    sys: '大學部',
-    subjectName: '教育概論',
-    subjectNameEng: 'Introduction to Education',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 185,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023120',
-    sys: '大學部',
-    subjectName: '教育史',
-    subjectNameEng: 'History of Education',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 186,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023220',
-    sys: '大學部',
-    subjectName: '教育統計',
-    subjectNameEng: 'Educational Statistics',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 187,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023320',
-    sys: '大學部',
-    subjectName: '教育行政',
-    subjectNameEng: 'Educational Administration',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 188,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023420',
-    sys: '大學部',
-    subjectName: '親職教育',
-    subjectNameEng: 'Parenting Education',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 189,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023520',
-    sys: '大學部',
-    subjectName: '教學原理',
-    subjectNameEng: 'Principles of Teaching',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 190,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023620',
-    sys: '大學部',
-    subjectName: '教育社會學',
-    subjectNameEng: 'Sociology of Education',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 191,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023730',
-    sys: '大學部',
-    subjectName: '特殊教育導論',
-    subjectNameEng: 'Introduction to Special Education',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 192,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023820',
-    sys: '大學部',
-    subjectName: '青少年心理學',
-    subjectNameEng: 'Adolescent Psychology',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 193,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0023920',
-    sys: '大學部',
-    subjectName: '學校行政',
-    subjectNameEng: 'School Administration',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 194,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0024020',
-    sys: '大學部',
-    subjectName: '輔導原理與實務',
-    subjectNameEng: 'Principles & Practice of Guidance',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 195,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0024120',
-    sys: '大學部',
-    subjectName: '教育心理學',
-    subjectNameEng: 'Educational Psychology',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 196,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0024220',
-    sys: '大學部',
-    subjectName: '班級經營',
-    subjectNameEng: 'Class Management',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 197,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2024830',
-    sys: '碩士班',
-    subjectName: '直流機控制',
-    subjectNameEng: 'DC Electrical Machine Control',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 198,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0027330',
-    sys: '大學部',
-    subjectName: '導向程式設計',
-    subjectNameEng: 'Object - Oriented Programming',
-    credit: 3,
-    hour: 3
-  },
-  {
-    id: 199,
-    unit: '電機工程學系',
-    subjectID: '1EIEE0027420',
-    sys: '大學部',
-    subjectName: '環保教育',
-    subjectNameEng: 'Environment Education',
-    credit: 2,
-    hour: 2
-  },
-  {
-    id: 200,
-    unit: '電機工程學系',
-    subjectID: '1EIEE2123030',
-    sys: '碩士班',
-    subjectName: '人型機器人學',
-    subjectNameEng: 'Humanoid Robots',
-    credit: 3,
-    hour: 3
+    subject_id: 1,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2002530',
+    subject_sys: '碩士班',
+    subject_name: '論文寫作(一)',
+    subject_eng_name: 'Thesis Writing I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 2,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2002630',
+    subject_sys: '碩士班',
+    subject_name: '論文寫作(二)',
+    subject_eng_name: 'Thesis Writing II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 3,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2002830',
+    subject_sys: '碩士班',
+    subject_name: '科技英文寫作',
+    subject_eng_name: 'Technical English Writing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 4,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2002930',
+    subject_sys: '碩士班',
+    subject_name: '科技英文',
+    subject_eng_name: 'Technical English',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 5,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1003030',
+    subject_sys: '博士班',
+    subject_name: '科技英文',
+    subject_eng_name: 'Technical English',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 6,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003130',
+    subject_sys: '大學部',
+    subject_name: '工程數學(三)',
+    subject_eng_name: 'Engineering Mathematics (III)',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 7,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003230',
+    subject_sys: '大學部',
+    subject_name: '工程數學(一)',
+    subject_eng_name: 'Engineering Mathematics I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 8,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003330',
+    subject_sys: '大學部',
+    subject_name: '工程數學(二)',
+    subject_eng_name: 'Engineering Mathematics II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 9,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003430',
+    subject_sys: '大學部',
+    subject_name: '機率與統計',
+    subject_eng_name: 'Probability and Statistics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 10,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003530',
+    subject_sys: '大學部',
+    subject_name: '數值分析',
+    subject_eng_name: 'Numerical Analysis',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 11,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003630',
+    subject_sys: '大學部',
+    subject_name: '線性代數',
+    subject_eng_name: 'Linear Algebra',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 12,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003730',
+    subject_sys: '大學部',
+    subject_name: '複變函數',
+    subject_eng_name: 'Complex Variables',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 13,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003830',
+    subject_sys: '大學部',
+    subject_name: '微積分(一)',
+    subject_eng_name: 'Calculus I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 14,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0003930',
+    subject_sys: '大學部',
+    subject_name: '微積分(二)',
+    subject_eng_name: 'Calculus II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 15,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004030',
+    subject_sys: '大學部',
+    subject_name: '光電導論',
+    subject_eng_name: 'Introduction of Optoelectronics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 16,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2004130',
+    subject_sys: '碩士班',
+    subject_name: '光纖通訊',
+    subject_eng_name: 'Optical-Fiber Communication',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 17,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1004230',
+    subject_sys: '博士班',
+    subject_name: '光纖通訊',
+    subject_eng_name: 'Optical-Fiber Communication',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 18,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004330',
+    subject_sys: '大學部',
+    subject_name: '近代物理',
+    subject_eng_name: 'Modern Physics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 19,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1004430',
+    subject_sys: '博士班',
+    subject_name: '電磁波',
+    subject_eng_name: 'Electromagnetic Wave',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 20,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004530',
+    subject_sys: '大學部',
+    subject_name: '普通物理(一)',
+    subject_eng_name: 'General Physics I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 21,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004630',
+    subject_sys: '大學部',
+    subject_name: '普通物理(二)',
+    subject_eng_name: 'General Physics II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 22,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004730',
+    subject_sys: '大學部',
+    subject_name: '電磁學(一)',
+    subject_eng_name: 'Electromagnetics I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 23,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0004830',
+    subject_sys: '大學部',
+    subject_name: '電磁學(二)',
+    subject_eng_name: 'Electromagnetics II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 24,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2004910',
+    subject_sys: '碩士班',
+    subject_name: '半導體製程自動化專題研究(一)',
+    subject_eng_name: 'Case Study of Semiconductor Fabrication Automation I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 25,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2005010',
+    subject_sys: '碩士班',
+    subject_name: '半導體製程自動化專題研究(二)',
+    subject_eng_name: 'Case Study of Semiconductor Fabrication Automation II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 26,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0005130',
+    subject_sys: '大學部',
+    subject_name: '射頻電路設計',
+    subject_eng_name: 'RF Circuit Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 27,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2005230',
+    subject_sys: '碩士班',
+    subject_name: '射頻電路設計',
+    subject_eng_name: 'RF Circuit Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 28,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0005430',
+    subject_sys: '大學部',
+    subject_name: '人機界面',
+    subject_eng_name: 'Human-Computer Interaction',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 29,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2005530',
+    subject_sys: '碩士班',
+    subject_name: '人機界面',
+    subject_eng_name: 'Human-Computer Interaction',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 30,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1005630',
+    subject_sys: '博士班',
+    subject_name: '人機界面',
+    subject_eng_name: 'Human-Computer Interaction',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 31,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1005730',
+    subject_sys: '博士班',
+    subject_name: '機械視覺',
+    subject_eng_name: 'Machine Vision',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 32,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1005830',
+    subject_sys: '博士班',
+    subject_name: '電磁相容分析與計算方法',
+    subject_eng_name: 'EMC Analysis and Computational Methods',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 33,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0005920',
+    subject_sys: '大學部',
+    subject_name: '產業研發實習',
+    subject_eng_name: 'Industry Study',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 34,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006130',
+    subject_sys: '大學部',
+    subject_name: '數位信號處理',
+    subject_eng_name: 'Digital Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 35,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006230',
+    subject_sys: '大學部',
+    subject_name: '機器人學',
+    subject_eng_name: 'Introduction to Robotics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 36,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006330',
+    subject_sys: '大學部',
+    subject_name: '機器人動態特性與模態分析',
+    subject_eng_name: 'Dynamic Simulation and Modal Analysis of Robotics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 37,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2006430',
+    subject_sys: '碩士班',
+    subject_name: '影像處理',
+    subject_eng_name: 'Image Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 38,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1006530',
+    subject_sys: '博士班',
+    subject_name: '中央空調系統',
+    subject_eng_name: 'Central Air-Conditioning System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 39,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006630',
+    subject_sys: '大學部',
+    subject_name: '超大型積體電路設計',
+    subject_eng_name: 'VLSI Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 40,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2006730',
+    subject_sys: '碩士班',
+    subject_name: '超大型積體電路設計',
+    subject_eng_name: 'VLSI Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 41,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006830',
+    subject_sys: '大學部',
+    subject_name: '電子學(一)',
+    subject_eng_name: 'Electronics I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 42,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0006930',
+    subject_sys: '大學部',
+    subject_name: '電子學(二)',
+    subject_eng_name: 'Electronics II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 43,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0007030',
+    subject_sys: '大學部',
+    subject_name: '電路學(一)',
+    subject_eng_name: 'Circuit Theory I',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 44,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0007130',
+    subject_sys: '大學部',
+    subject_name: '電路學(二)',
+    subject_eng_name: 'Circuit Theory II',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 45,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0007230',
+    subject_sys: '大學部',
+    subject_name: '電子學(三)',
+    subject_eng_name: 'Electronics III',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 46,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2007330',
+    subject_sys: '碩士班',
+    subject_name: '自動量測系統',
+    subject_eng_name: 'Automatic Measurement System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 47,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1007430',
+    subject_sys: '博士班',
+    subject_name: '自動量測系統',
+    subject_eng_name: 'Automatic Measurement System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 48,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2007530',
+    subject_sys: '碩士班',
+    subject_name: '高等電力電子學',
+    subject_eng_name: 'Advanced Power Electronics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 49,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1007630',
+    subject_sys: '博士班',
+    subject_name: '高等電力電子學',
+    subject_eng_name: 'Advanced Power Electronics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 50,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1007730',
+    subject_sys: '博士班',
+    subject_name: '直流機控制',
+    subject_eng_name: 'DC Electrical Machine Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 51,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1007830',
+    subject_sys: '博士班',
+    subject_name: '電力系統動態分析',
+    subject_eng_name: 'Power System Dynamics Analysis',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 52,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1007930',
+    subject_sys: '博士班',
+    subject_name: '圖形監控系統',
+    subject_eng_name: 'Graphic Controller System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 53,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1008130',
+    subject_sys: '博士班',
+    subject_name: '數位影像處理',
+    subject_eng_name: 'Digital Image Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 54,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0008230',
+    subject_sys: '大學部',
+    subject_name: '數位訊號處理',
+    subject_eng_name: 'Digital Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 55,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1008330',
+    subject_sys: '博士班',
+    subject_name: '數位訊號處理',
+    subject_eng_name: 'Digital Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 56,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2008430',
+    subject_sys: '碩士班',
+    subject_name: '數位訊號處理',
+    subject_eng_name: 'Digital Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 57,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0008630',
+    subject_sys: '大學部',
+    subject_name: '語音分析',
+    subject_eng_name: 'Speech Analysis',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 58,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1008730',
+    subject_sys: '博士班',
+    subject_name: '數據通訊',
+    subject_eng_name: 'Data Communicaiton',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 59,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0008830',
+    subject_sys: '大學部',
+    subject_name: '無線通訊系統',
+    subject_eng_name: 'Wireless Communicaiton Systems',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 60,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1008930',
+    subject_sys: '博士班',
+    subject_name: '無線通訊系統',
+    subject_eng_name: 'Wireless Communicaiton Systems',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 61,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2009030',
+    subject_sys: '碩士班',
+    subject_name: '無線通訊系統',
+    subject_eng_name: 'Wireless Communicaiton Systems',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 62,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2009130',
+    subject_sys: '碩士班',
+    subject_name: '網路程式設計',
+    subject_eng_name: 'Network Programming',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 63,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1009230',
+    subject_sys: '博士班',
+    subject_name: '動態網頁設計',
+    subject_eng_name: 'Dynamic Homepage Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 64,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1009330',
+    subject_sys: '博士班',
+    subject_name: '半導體元件物理',
+    subject_eng_name: 'Physics of Semiconductor Devices',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 65,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1009430',
+    subject_sys: '博士班',
+    subject_name: '類比積體電路設計',
+    subject_eng_name: 'Analog Integrated Circuit Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 66,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0009530',
+    subject_sys: '大學部',
+    subject_name: '數位通訊',
+    subject_eng_name: 'Digital Communication',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 67,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2009630',
+    subject_sys: '碩士班',
+    subject_name: '數位通訊',
+    subject_eng_name: 'Digital Communication',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 68,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1009730',
+    subject_sys: '博士班',
+    subject_name: '天線理論',
+    subject_eng_name: 'Antenna Theory',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 69,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1009830',
+    subject_sys: '博士班',
+    subject_name: '光波導原理',
+    subject_eng_name: 'Theory of Optical Wave Guides',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 70,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0009920',
+    subject_sys: '大學部',
+    subject_name: '電機資訊工程概論',
+    subject_eng_name: 'Introduction to Electrical Information Engineering',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 71,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010030',
+    subject_sys: '大學部',
+    subject_name: '硬體描述語言',
+    subject_eng_name: 'Hardware Description Language',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 72,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010120',
+    subject_sys: '大學部',
+    subject_name: '電子技術(一)',
+    subject_eng_name: 'Electronic Technology I',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 73,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010220',
+    subject_sys: '大學部',
+    subject_name: '電子技術(二)',
+    subject_eng_name: 'Electronic Technology II',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 74,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2010330',
+    subject_sys: '碩士班',
+    subject_name: '系統工程概論',
+    subject_eng_name: 'Introduction to System Engineering',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 75,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1010430',
+    subject_sys: '博士班',
+    subject_name: '系統工程概論',
+    subject_eng_name: 'Introduction to System Engineering',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 76,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010520',
+    subject_sys: '大學部',
+    subject_name: '電腦輔助積體電路設計技術',
+    subject_eng_name: 'Techniques of Computer-Aided Integrated Circuit Design',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 77,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2010620',
+    subject_sys: '碩士班',
+    subject_name: '電腦輔助積體電路設計技術',
+    subject_eng_name: 'Techniques of Computer-Aided Integrated Circuit Design',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 78,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010720',
+    subject_sys: '大學部',
+    subject_name: '電子技術(三)',
+    subject_eng_name: 'Electronic Technology III',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 79,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0010830',
+    subject_sys: '大學部',
+    subject_name: '電機機械',
+    subject_eng_name: 'Electric Machinery',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 80,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1010930',
+    subject_sys: '博士班',
+    subject_name: '線性系統',
+    subject_eng_name: 'Linear System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 81,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1011030',
+    subject_sys: '博士班',
+    subject_name: '電機控制',
+    subject_eng_name: 'Electrical Machine Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 82,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011120',
+    subject_sys: '大學部',
+    subject_name: '系統實作專題(一)',
+    subject_eng_name: 'Special Topic for Systems I',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 83,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011220',
+    subject_sys: '大學部',
+    subject_name: '系統實作專題(二)',
+    subject_eng_name: 'Special Topic for Systems II',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 84,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011320',
+    subject_sys: '大學部',
+    subject_name: '系統實作專題(三)',
+    subject_eng_name: 'Special Topic for Systems III',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 85,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011420',
+    subject_sys: '大學部',
+    subject_name: '產業實作專題(一)',
+    subject_eng_name: 'Special Topic for Industry I',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 86,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011520',
+    subject_sys: '大學部',
+    subject_name: '產業實作專題(二)',
+    subject_eng_name: 'Special Topic for Industry II',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 87,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011620',
+    subject_sys: '大學部',
+    subject_name: '產業實作專題(三)',
+    subject_eng_name: 'Special Topic for Industry III',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 88,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011720',
+    subject_sys: '大學部',
+    subject_name: '研發實作專題(一)',
+    subject_eng_name: 'Special Topic for Research I',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 89,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011820',
+    subject_sys: '大學部',
+    subject_name: '研發實作專題(二)',
+    subject_eng_name: 'Special Topic for Research II',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 90,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0011920',
+    subject_sys: '大學部',
+    subject_name: '研發實作專題(三)',
+    subject_eng_name: 'Special Topic for Research III',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 91,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012030',
+    subject_sys: '大學部',
+    subject_name: '控制系統',
+    subject_eng_name: 'Control System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 92,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2012130',
+    subject_sys: '碩士班',
+    subject_name: '控制系統',
+    subject_eng_name: 'Control System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 93,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012230',
+    subject_sys: '大學部',
+    subject_name: '電力系統',
+    subject_eng_name: 'Electric Power System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 94,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2012330',
+    subject_sys: '碩士班',
+    subject_name: '電力系統',
+    subject_eng_name: 'Electric Power System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 95,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2012430',
+    subject_sys: '碩士班',
+    subject_name: '電力系統運轉與控制',
+    subject_eng_name: 'Power System Operation & Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 96,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012520',
+    subject_sys: '大學部',
+    subject_name: '電機基礎技術',
+    subject_eng_name: 'Basic Electrical Technology',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 97,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012630',
+    subject_sys: '大學部',
+    subject_name: '電力電子學',
+    subject_eng_name: 'Power Electronics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 98,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2012730',
+    subject_sys: '碩士班',
+    subject_name: '電力電子學',
+    subject_eng_name: 'Power Electronics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 99,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012830',
+    subject_sys: '大學部',
+    subject_name: '控制工程',
+    subject_eng_name: 'Control Engineering',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 100,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0012920',
+    subject_sys: '大學部',
+    subject_name: '介面電路技術',
+    subject_eng_name: 'Interface Circuit Technology',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 101,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013020',
+    subject_sys: '大學部',
+    subject_name: '電路技術',
+    subject_eng_name: 'Circuit Theory Experiments',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 102,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2013130',
+    subject_sys: '碩士班',
+    subject_name: '電子電路',
+    subject_eng_name: 'Electronic Circuits',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 103,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1013230',
+    subject_sys: '博士班',
+    subject_name: '感測器原理與應用',
+    subject_eng_name: 'Theory and Applications of Sensors',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 104,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013330',
+    subject_sys: '大學部',
+    subject_name: '冷凍空調原理',
+    subject_eng_name: 'Principles of Refrigeration and Air-Conditioning',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 105,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1013430',
+    subject_sys: '博士班',
+    subject_name: '微處理機控制與應用',
+    subject_eng_name: 'Microprocessor Control & Application',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 106,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013520',
+    subject_sys: '大學部',
+    subject_name: '電機技術',
+    subject_eng_name: 'Electrical Technology',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 107,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013630',
+    subject_sys: '大學部',
+    subject_name: '通訊系統',
+    subject_eng_name: 'Communication System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 108,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013730',
+    subject_sys: '大學部',
+    subject_name: '伺服器架設與管理',
+    subject_eng_name: 'Network Servers Administration',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 109,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0013830',
+    subject_sys: '大學部',
+    subject_name: '通訊導論',
+    subject_eng_name: 'Introduction to Communication',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 110,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2013930',
+    subject_sys: '碩士班',
+    subject_name: '數位濾波器設計',
+    subject_eng_name: 'Digital Filter Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 111,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1014030',
+    subject_sys: '博士班',
+    subject_name: '數位濾波器設計',
+    subject_eng_name: 'Digital Filter Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 112,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014130',
+    subject_sys: '大學部',
+    subject_name: 'RFID晶片設計',
+    subject_eng_name: 'RFID Chip Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 113,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014230',
+    subject_sys: '大學部',
+    subject_name: 'RFID概論',
+    subject_eng_name: 'Introduction of Radio Frequency Identification',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 114,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014330',
+    subject_sys: '大學部',
+    subject_name: 'RFID應用',
+    subject_eng_name: 'RFID Applications',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 115,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014430',
+    subject_sys: '大學部',
+    subject_name: 'RFID天線設計',
+    subject_eng_name: 'RFID Antenna Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 116,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014530',
+    subject_sys: '大學部',
+    subject_name: '模糊控制',
+    subject_eng_name: 'Fuzzy Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 117,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2014630',
+    subject_sys: '碩士班',
+    subject_name: '模糊控制',
+    subject_eng_name: 'Fuzzy Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 118,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1014730',
+    subject_sys: '博士班',
+    subject_name: '模糊控制',
+    subject_eng_name: 'Fuzzy Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 119,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0014820',
+    subject_sys: '大學部',
+    subject_name: '微處理機技術',
+    subject_eng_name: 'Microprocessor Technology',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 120,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1014930',
+    subject_sys: '博士班',
+    subject_name: '電動機控制',
+    subject_eng_name: 'Motor Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 121,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0015030',
+    subject_sys: '大學部',
+    subject_name: '邏輯設計',
+    subject_eng_name: 'Logic Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 122,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0015120',
+    subject_sys: '大學部',
+    subject_name: '邏輯設計技術',
+    subject_eng_name: 'Logic Design Technology',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 123,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2015230',
+    subject_sys: '碩士班',
+    subject_name: '數位積體電路設計',
+    subject_eng_name: 'Digital Integrated Circuits Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 124,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1015330',
+    subject_sys: '博士班',
+    subject_name: '照明光學',
+    subject_eng_name: 'Illumination Optics',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 125,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1015430',
+    subject_sys: '博士班',
+    subject_name: '切換式電源轉換器',
+    subject_eng_name: 'Switching Mode Power Converter',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 126,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1015530',
+    subject_sys: '博士班',
+    subject_name: '高等電力網路分析',
+    subject_eng_name: 'Advanced Power Network Analysis',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 127,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1015630',
+    subject_sys: '博士班',
+    subject_name: '光電工程學',
+    subject_eng_name: 'Principles of Electro-Optical Engineering',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 128,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0015730',
+    subject_sys: '大學部',
+    subject_name: '適應性信號處理',
+    subject_eng_name: 'Adaptive Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 129,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1015830',
+    subject_sys: '博士班',
+    subject_name: '適應性信號處理',
+    subject_eng_name: 'Adaptive Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 130,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2015930',
+    subject_sys: '碩士班',
+    subject_name: '適應性信號處理',
+    subject_eng_name: 'Adaptive Signal Processing',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 131,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016030',
+    subject_sys: '碩士班',
+    subject_name: '最佳控制',
+    subject_eng_name: 'Optimal Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 132,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1016130',
+    subject_sys: '博士班',
+    subject_name: '類神經網路',
+    subject_eng_name: 'Neural Network',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 133,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0016230',
+    subject_sys: '大學部',
+    subject_name: '訊號與系統',
+    subject_eng_name: 'Signals and Systems',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 134,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016310',
+    subject_sys: '碩士班',
+    subject_name: '光電製程自動化專題研究(一)',
+    subject_eng_name: 'Case Study of Electro-Optical Fabrication Automation I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 135,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016410',
+    subject_sys: '碩士班',
+    subject_name: '光電製程自動化專題研究(二)',
+    subject_eng_name: 'Case Study of Electro-Optical Fabrication Automation II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 136,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016530',
+    subject_sys: '碩士班',
+    subject_name: '研發與生產',
+    subject_eng_name: 'R&D and Production',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 137,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016630',
+    subject_sys: '碩士班',
+    subject_name: '製程自動化原理',
+    subject_eng_name: 'Principle of Fabrication Automation',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 138,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0016730',
+    subject_sys: '大學部',
+    subject_name: '演算法',
+    subject_eng_name: 'Algorithm',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 139,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2016830',
+    subject_sys: '碩士班',
+    subject_name: '研發智財管理',
+    subject_eng_name: 'R&D Intelligence Property Management',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 140,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0016930',
+    subject_sys: '大學部',
+    subject_name: '計算機概論',
+    subject_eng_name: 'Introduction to Computer Science',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 141,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1017030',
+    subject_sys: '博士班',
+    subject_name: '算術處理器電路設計',
+    subject_eng_name: 'Computer Arithmetic Circuit Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 142,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017130',
+    subject_sys: '大學部',
+    subject_name: '程式設計',
+    subject_eng_name: 'Program Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 143,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1017230',
+    subject_sys: '博士班',
+    subject_name: '微電腦系統設計',
+    subject_eng_name: 'Microcomputer System Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 144,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017330',
+    subject_sys: '大學部',
+    subject_name: '計算機結構',
+    subject_eng_name: 'Computer Architecture',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 145,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017430',
+    subject_sys: '大學部',
+    subject_name: '資料結構',
+    subject_eng_name: 'Data Structure',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 146,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017530',
+    subject_sys: '大學部',
+    subject_name: '作業系統',
+    subject_eng_name: 'Operating Systems',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 147,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017630',
+    subject_sys: '大學部',
+    subject_name: '智慧感測與資料探勘',
+    subject_eng_name: 'Intelligence Sensing and Data Prospecting',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 148,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017730',
+    subject_sys: '大學部',
+    subject_name: '計算機組織與結構',
+    subject_eng_name: 'Computer Architecture',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 149,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017830',
+    subject_sys: '大學部',
+    subject_name: '物件導向程式設計',
+    subject_eng_name: 'Object Oriented Program Design',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 150,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0017930',
+    subject_sys: '大學部',
+    subject_name: '計算機網路',
+    subject_eng_name: 'Computer Network',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 151,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1018030',
+    subject_sys: '博士班',
+    subject_name: '計算機網路',
+    subject_eng_name: 'Computer Network',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 152,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0018120',
+    subject_sys: '大學部',
+    subject_name: '電腦與教學',
+    subject_eng_name: 'Computer & Instruction',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 153,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0018220',
+    subject_sys: '大學部',
+    subject_name: '工科教材教法',
+    subject_eng_name: 'Methods & Materials for Teaching Industrial Subjects',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 154,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0018320',
+    subject_sys: '大學部',
+    subject_name: '工科教學實習',
+    subject_eng_name: 'Industrial Subjects Teaching Practicum',
+    subject_credit: 2,
+    subject_hour: 4
+  },
+  {
+    subject_id: 155,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0018430',
+    subject_sys: '大學部',
+    subject_name: '產業職能教育',
+    subject_eng_name: 'Education for Industry Profession',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 156,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1018530',
+    subject_sys: '博士班',
+    subject_name: '電機產業職能研究',
+    subject_eng_name: 'Study of Electrical Industrial Profession',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 157,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2019610',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(上)',
+    subject_eng_name: 'Seminar I',
+    subject_credit: 1,
+    subject_hour: 1
+  },
+  {
+    subject_id: 158,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2019720',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(上)',
+    subject_eng_name: 'Seminar I',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 159,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2019810',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(上)',
+    subject_eng_name: 'Seminar I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 160,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1019920',
+    subject_sys: '博士班',
+    subject_name: '書報討論(上)',
+    subject_eng_name: 'Seminar I',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 161,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1020010',
+    subject_sys: '博士班',
+    subject_name: '書報討論(上)',
+    subject_eng_name: 'Seminar I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 162,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2020110',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(下)',
+    subject_eng_name: 'Seminar II',
+    subject_credit: 1,
+    subject_hour: 1
+  },
+  {
+    subject_id: 163,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2020220',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(下)',
+    subject_eng_name: 'Seminar II',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 164,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1020320',
+    subject_sys: '博士班',
+    subject_name: '書報討論(下)',
+    subject_eng_name: 'Seminar II',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 165,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1020410',
+    subject_sys: '博士班',
+    subject_name: '書報討論(下)',
+    subject_eng_name: 'Seminar II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 166,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2020510',
+    subject_sys: '碩士班',
+    subject_name: '書報討論(下)',
+    subject_eng_name: 'Seminar II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 167,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2020600',
+    subject_sys: '碩士班',
+    subject_name: '論文',
+    subject_eng_name: 'Thesis',
+    subject_credit: 0,
+    subject_hour: 0
+  },
+  {
+    subject_id: 168,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1020700',
+    subject_sys: '博士班',
+    subject_name: '論文',
+    subject_eng_name: 'Thesis',
+    subject_credit: 0,
+    subject_hour: 0
+  },
+  {
+    subject_id: 169,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2020830',
+    subject_sys: '碩士班',
+    subject_name: '論文指導(一)',
+    subject_eng_name: 'Thesis Supervision I',
+    subject_credit: 3,
+    subject_hour: 0
+  },
+  {
+    subject_id: 170,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1020930',
+    subject_sys: '博士班',
+    subject_name: '論文指導(一)',
+    subject_eng_name: 'Thesis Supervision I',
+    subject_credit: 3,
+    subject_hour: 0
+  },
+  {
+    subject_id: 171,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2021030',
+    subject_sys: '碩士班',
+    subject_name: '論文指導(二)',
+    subject_eng_name: 'Thesis Supervision II',
+    subject_credit: 3,
+    subject_hour: 0
+  },
+  {
+    subject_id: 172,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1021130',
+    subject_sys: '博士班',
+    subject_name: '論文指導(二)',
+    subject_eng_name: 'Thesis Supervision II',
+    subject_credit: 3,
+    subject_hour: 0
+  },
+  {
+    subject_id: 173,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2021310',
+    subject_sys: '碩士班',
+    subject_name: '專題研討(上)',
+    subject_eng_name: 'Literature Study I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 174,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1021420',
+    subject_sys: '博士班',
+    subject_name: '專題研討(上)',
+    subject_eng_name: 'Literature Study I',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 175,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1021510',
+    subject_sys: '博士班',
+    subject_name: '專題研討(上)',
+    subject_eng_name: 'Literature Study I',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 176,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2021620',
+    subject_sys: '碩士班',
+    subject_name: '專題研討(上)',
+    subject_eng_name: 'Literature Study I',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 177,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2021710',
+    subject_sys: '碩士班',
+    subject_name: '專題研討(下)',
+    subject_eng_name: 'Literature Study II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 178,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2021820',
+    subject_sys: '碩士班',
+    subject_name: '專題研討(下)',
+    subject_eng_name: 'Literature Study II',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 179,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1021920',
+    subject_sys: '博士班',
+    subject_name: '專題研討(下)',
+    subject_eng_name: 'Literature Study II',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 180,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE1022010',
+    subject_sys: '博士班',
+    subject_name: '專題研討(下)',
+    subject_eng_name: 'Literature Study II',
+    subject_credit: 1,
+    subject_hour: 2
+  },
+  {
+    subject_id: 181,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0022730',
+    subject_sys: '大學部',
+    subject_name: '機器人專題製作',
+    subject_eng_name: 'Special Topics for Robotic Implementation',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 182,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0022830',
+    subject_sys: '大學部',
+    subject_name: '自動量測系統',
+    subject_eng_name: 'Automatic Measurement System',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 183,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0022920',
+    subject_sys: '大學部',
+    subject_name: '教育哲學',
+    subject_eng_name: 'Educational Philosophy',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 184,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023020',
+    subject_sys: '大學部',
+    subject_name: '教育概論',
+    subject_eng_name: 'Introduction to Education',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 185,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023120',
+    subject_sys: '大學部',
+    subject_name: '教育史',
+    subject_eng_name: 'History of Education',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 186,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023220',
+    subject_sys: '大學部',
+    subject_name: '教育統計',
+    subject_eng_name: 'Educational Statistics',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 187,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023320',
+    subject_sys: '大學部',
+    subject_name: '教育行政',
+    subject_eng_name: 'Educational Administration',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 188,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023420',
+    subject_sys: '大學部',
+    subject_name: '親職教育',
+    subject_eng_name: 'Parenting Education',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 189,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023520',
+    subject_sys: '大學部',
+    subject_name: '教學原理',
+    subject_eng_name: 'Principles of Teaching',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 190,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023620',
+    subject_sys: '大學部',
+    subject_name: '教育社會學',
+    subject_eng_name: 'Sociology of Education',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 191,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023730',
+    subject_sys: '大學部',
+    subject_name: '特殊教育導論',
+    subject_eng_name: 'Introduction to Special Education',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 192,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023820',
+    subject_sys: '大學部',
+    subject_name: '青少年心理學',
+    subject_eng_name: 'Adolescent Psychology',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 193,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0023920',
+    subject_sys: '大學部',
+    subject_name: '學校行政',
+    subject_eng_name: 'School Administration',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 194,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0024020',
+    subject_sys: '大學部',
+    subject_name: '輔導原理與實務',
+    subject_eng_name: 'Principles & Practice of Guidance',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 195,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0024120',
+    subject_sys: '大學部',
+    subject_name: '教育心理學',
+    subject_eng_name: 'Educational Psychology',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 196,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0024220',
+    subject_sys: '大學部',
+    subject_name: '班級經營',
+    subject_eng_name: 'Class Management',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 197,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2024830',
+    subject_sys: '碩士班',
+    subject_name: '直流機控制',
+    subject_eng_name: 'DC Electrical Machine Control',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 198,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0027330',
+    subject_sys: '大學部',
+    subject_name: '導向程式設計',
+    subject_eng_name: 'Object - Oriented Programming',
+    subject_credit: 3,
+    subject_hour: 3
+  },
+  {
+    subject_id: 199,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE0027420',
+    subject_sys: '大學部',
+    subject_name: '環保教育',
+    subject_eng_name: 'Environment Education',
+    subject_credit: 2,
+    subject_hour: 2
+  },
+  {
+    subject_id: 200,
+    subject_unit: '電機工程學系',
+    subject_sub_id: '1EIEE2123030',
+    subject_sys: '碩士班',
+    subject_name: '人型機器人學',
+    subject_eng_name: 'Humanoid Robots',
+    subject_credit: 3,
+    subject_hour: 3
   }
 ]

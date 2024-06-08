@@ -2,28 +2,15 @@
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted } from 'vue'
-// import IconNextLevel from '@/components/icons/IconNextLevel.vue'
-// import IconNextLevel_more from '@/components/icons/IconNextLevel_more.vue'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
 const store = useProgramStore()
 const programstruct = ref(store.programData)
-// const ps = programstruct
-// console.log(`programstruct= ${programstruct.value.category[0].categoryName}`)
 console.log('programstruct= ', programstruct.value)
 console.log('programstruct= ', JSON.stringify(programstruct.value))
 
 const data = transToTree(programstruct.value)
-
-// console.log(`ps: ${data}`)
-
-// ps.value.category.forEach((c) => {
-//   console.log(`c name: ${c.categoryName}`)
-//   c.domain.forEach((d) => {
-//     console.log(`domain name: ${d.domainName}`)
-//   })
-// })
 
 const defaultProps = {
   children: 'children',
@@ -62,17 +49,21 @@ onUnmounted(() => {
       <!-- <template #extra>
         <el-button type="primary">Operation</el-button>
       </template> -->
-      <el-descriptions-item label="名稱" label-align="center"> {{ programstruct.name }}</el-descriptions-item>
-      <el-descriptions-item label="網址" label-align="center"> {{ programstruct.url }}</el-descriptions-item>
-      <el-descriptions-item label="類型" label-align="center"> {{ programstruct.type }}</el-descriptions-item>
-      <el-descriptions-item label="修畢條件" label-align="center"> {{ programstruct.criteria }}</el-descriptions-item>
+      <el-descriptions-item label="名稱" label-align="center"> {{ programstruct.program_name }}</el-descriptions-item>
+      <el-descriptions-item label="網址" label-align="center"> {{ programstruct.program_url }}</el-descriptions-item>
+      <el-descriptions-item label="類型" label-align="center"> {{ programstruct.program_type }}</el-descriptions-item>
+      <el-descriptions-item label="修畢條件" label-align="center">
+        {{ programstruct.program_criteria }}</el-descriptions-item
+      >
       <el-descriptions-item label="最低應修學分數" label-align="center">
-        {{ programstruct.minCredit }}</el-descriptions-item
+        {{ programstruct.program_minCredit }}</el-descriptions-item
       >
       <el-descriptions-item label="非本系學分數" label-align="center">
-        {{ programstruct.nonSelfCredit }}</el-descriptions-item
+        {{ programstruct.program_nonSelfCredit }}</el-descriptions-item
       >
-      <el-descriptions-item label="設置單位" label-align="center"> {{ programstruct.unit }}</el-descriptions-item>
+      <el-descriptions-item label="設置單位" label-align="center">
+        {{ programstruct.program_unit }}</el-descriptions-item
+      >
     </el-descriptions>
     <pagetitle>學程架構</pagetitle>
     <div class="program-structure" v-for="category in programstruct.category" :key="category.key">
@@ -80,13 +71,13 @@ onUnmounted(() => {
         <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
           <router-link
             class="baseItem islink"
-            :to="{ name: 'setSubject', params: { categoryName: category.categoryName } }"
-            >{{ category.categoryName }}</router-link
+            :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
+            >{{ category.category_name }}</router-link
           >
         </el-tooltip>
       </div>
       <div v-else>
-        <div class="baseItem">{{ category.categoryName }}</div>
+        <div class="baseItem">{{ category.category_name }}</div>
       </div>
 
       <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
@@ -102,26 +93,13 @@ onUnmounted(() => {
               class="baseItem islink domain"
               :to="{
                 name: 'setSubject',
-                params: { categoryName: category.categoryName, domainName: domain.domainName }
+                params: { category_name: category.category_name, domain_name: domain.domain_name }
               }"
             >
-              {{ domain.domainName }}</router-link
+              {{ domain.domain_name }}</router-link
             >
           </el-tooltip>
         </div>
-        <!-- <div>
-          <div class="courseblock" v-for="(course, index) in domain.course" :key="course.index">
-            <div class="courseblock_left">
-              <span v-if="!(domain.course.length == index + 1)"
-                ><IconChild_more class="set-icon-size"></IconChild_more
-              ></span>
-              <span v-else> <IconChild_end class="set-icon-size"></IconChild_end></span>
-            </div>
-            <div class="courseblock_right">
-              {{ course.subjectName }}
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
     <div class="description">請在以下樹形結構檢查學程架構是否正確</div>
@@ -129,17 +107,6 @@ onUnmounted(() => {
     <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
   </div>
 </template>
-<!-- <style lang="scss">
-.el-popper.is-customized {
-  /* Set padding to ensure the height is 32px */
-  padding: 6px 12px;
-  background: linear-gradient(90deg, rgb(159, 229, 151), rgb(204, 229, 129));
-}
-.el-popper.is-customized .el-popper__arrow::before {
-  background: linear-gradient(45deg, #b2e68d, #bce689);
-  right: 0;
-}
-</style> -->
 <style lang="scss" scoped>
 .description {
   margin: 30px 0;

@@ -44,12 +44,12 @@ const router = createRouter({
           // path: 'setSubject/:categoryName',
           // name: 'setSubject',
           // component: setSubject
-          path: 'setSubject/:categoryName/:domainName?',
+          path: 'setSubject/:category_name/:domain_name?',
           name: 'setSubject',
           component: setSubject,
           props: (route) => ({
-            categoryName: route.params.categoryName,
-            domainName: route.params.domainName || '' // 使 domainName 为可选参数
+            category_name: route.params.category_name,
+            domain_name: route.params.domain_name || '' // 使 domainName 为可选参数
           })
         },
         {
