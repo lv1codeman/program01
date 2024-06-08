@@ -31,8 +31,8 @@ const dynamicValidateForm_formal = reactive({
   ]
 })
 const dynamicValidateForm = reactive({
-  name: '11',
-  url: '22',
+  name: '學程1',
+  url: '網址1',
   type: '學分學程',
   unit: '教育學院',
   minCredit: 1,
@@ -41,13 +41,13 @@ const dynamicValidateForm = reactive({
   category: [
     {
       key: 1,
-      categoryName: '基礎課程',
+      categoryName: '類別1',
       categoryMinCredit: 0,
       categoryRequireNum: 0,
       domain: [
         {
           key: 1,
-          domainName: '光電領域',
+          domainName: '領域1',
           domainMinCredit: 0,
           domainRequireNum: 0
         }
@@ -55,12 +55,13 @@ const dynamicValidateForm = reactive({
     }
   ]
 })
-
+console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 const addCategory = () => {
   dynamicValidateForm.category.push({
     key: Date.now(),
-    categoryMinCredit: 0,
-    categoryRequireNum: 0,
+    categoryName: '',
+    categoryMinCredit: 1,
+    categoryRequireNum: 1,
     domain: []
   })
 }
@@ -72,18 +73,21 @@ const removeCategory = (item) => {
     console.log('至少須有一個類別')
   }
 }
+
 const addDomain = (item) => {
   dynamicValidateForm.category[item].domain.push({
-    key: Date.now()
-    // categoryMinCredit: 0,
-    // categoryRequireNum: 0
+    key: Date.now(),
+    domainMinCredit: 0,
+    domainRequireNum: 0
   })
+  console.log(dynamicValidateForm)
 }
 const removeDomain = (categoryIndex, domain) => {
   const index = dynamicValidateForm.category[categoryIndex].domain.indexOf(domain)
   if (index !== -1) {
     dynamicValidateForm.category[categoryIndex].domain.splice(index, 1)
   }
+  console.log('removeDomain dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 }
 const submitForm = (formEl) => {
   if (!formEl) return
