@@ -9,14 +9,16 @@ const isLogin = ref(false)
 const username = ref()
 
 const checkUserToken = async () => {
-  let res = await checkToken()
-  isLogin.value = res ? true : false
+  // 如果Session內有token，檢查token是否合法
+  if (sessionStorage.getItem('token')) {
+    let res = await checkToken()
+    isLogin.value = res ? true : false
+  }
 }
 checkUserToken()
 
 onMounted(() => {
   username.value = sessionStorage.getItem('user_name')
-  console.log(`isLogin.value = ${isLogin.value}`)
 })
 
 // if (store.studentData.isLogin) {
@@ -35,7 +37,7 @@ const handleDialogUpdate = (newVal) => {
 }
 
 const btnLogout = () => {
-  sessionStorage.removeItem('token')
+  sessionStorage.clear()
   router.push({ path: '/login' })
 }
 const btnLogin = () => {

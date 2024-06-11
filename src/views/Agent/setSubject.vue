@@ -8,6 +8,17 @@ const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
 
+const pageShow = ref(false)
+console.log('sessionStorage.getItem user_role', sessionStorage.getItem('user_role'))
+pageShow.value =
+  sessionStorage.getItem('user_role') == 'admin' || sessionStorage.getItem('user_role') == 'staff' ? true : false
+
+if (!pageShow.value) {
+  router.push({ path: '/login' })
+}
+
+console.log('pageShow value=', pageShow.value)
+
 const targetCheck = () => {
   if (!route.params.domain_name) {
     return [route.params.category_name]

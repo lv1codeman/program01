@@ -1,20 +1,15 @@
 <script setup>
 import { useStudentStore } from '@/stores/studentData.js'
-import { fetchToken } from '@/utils/fetchToken.js'
+// import { fetchToken } from '@/utils/fetchToken.js'
+
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { checkToken } from '@/apis/programAPI'
+import { login } from '@/apis/programAPI'
 const router = useRouter()
 
-const store = useStudentStore()
-console.log(store.studentData.isLogin)
-const login = async () => {
-  store.setStudentData(form)
-  store.addStudentData('isLogin', true)
-
-  console.log(store.studentData)
-  if (await fetchToken(form.value.id, form.value.password)) {
+const btnLogin = async () => {
+  if (await login(form.value.id, form.value.password)) {
     ElMessage({
       showClose: true,
       message: '登入成功',
@@ -24,19 +19,11 @@ const login = async () => {
       offset: window.screen.height / 50
     })
 
-    let res = await checkToken()
-    console.log(`checkToken: ${res}`)
+    // let res = await checkToken()
+    // console.log(`checkToken: ${res}`)
     router.push({ path: '/' })
   } else {
-    ElMessage({
-      showClose: true,
-      message: '登入失敗，請檢查學號密碼是否有誤',
-      type: 'error',
-      customClass: 'msg-zindex',
-      duration: 3000,
-      offset: window.screen.height / 50
-    })
-    console.log('登入失敗，請檢查學號密碼是否有誤')
+    // 在http.js由攔截器統一處理
   }
 }
 const goHome = () => {
@@ -75,7 +62,7 @@ const msgTimeController = ref({
           <!-- <el-button type="primary"></el-button> -->
           <el-button type="primary" style="width: 30%" @click="goHome">回首頁</el-button>
           <el-config-provider :message="msgTimeController">
-            <el-button type="primary" @click="login" style="width: 30%">登入</el-button>
+            <el-button type="primary" @click="btnLogin" style="width: 30%">登入</el-button>
           </el-config-provider>
         </div>
       </template>
