@@ -4,7 +4,17 @@ import axiosInstance from '@/utils/http'
 export async function getAllPrograms() {
   try {
     const response = await axiosInstance.get('/program/all')
-    return response.data
+    return response
+  } catch (error) {
+    console.error('Error fetching programs:', error)
+    throw error
+  }
+}
+
+export async function getfakePrograms() {
+  try {
+    const response = await axiosInstance.get('/fakeprogram/all')
+    return response
   } catch (error) {
     console.error('Error fetching programs:', error)
     throw error
@@ -15,7 +25,7 @@ export async function getAllPrograms() {
 export async function getProgramById(programId) {
   try {
     const response = await axiosInstance.get(`/program/${programId}`)
-    return response.data
+    return response
   } catch (error) {
     console.error(`Error fetching program with ID ${programId}:`, error)
     throw error
@@ -24,14 +34,15 @@ export async function getProgramById(programId) {
 
 export async function checkToken() {
   try {
-    let tokenObj = { token: sessionStorage.getItem('token') }
+    let tokenObj =
+      sessionStorage.getItem('token') == null ? { token: '沒有token' } : { token: sessionStorage.getItem('token') }
     const response = await axiosInstance.post(`/checkToken`, tokenObj)
 
     if (response.status == 'error') {
       sessionStorage.clear()
     }
 
-    return response.data
+    return response
   } catch (error) {
     sessionStorage.clear()
     console.error(error)

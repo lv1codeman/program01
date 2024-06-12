@@ -5,9 +5,24 @@ import { programData, miniProgramData } from '@/assets/data/programData.js'
 const programList = ref([])
 
 programList.value = [programData.length, miniProgramData.length]
+
+import { getAllPrograms } from '@/apis/programAPI'
+import { getfakePrograms, getProgramById, checkToken } from '@/apis/programAPI'
+const gogo = async () => {
+  console.log('gogogo')
+  // getAllPrograms().then((res) => {
+  //   console.log('program id: ', res[0].program_id)
+  //   console.log('program name: ', res[0].program_name)
+  // })
+  let res = await getAllPrograms()
+  console.log(res)
+  // let res = await checkToken()
+  // console.log('jwt token auth result = ', res)
+}
 </script>
 <template>
   <div class="page-container">
+    <el-button @click="gogo">check</el-button>
     <pageTitle>學程檢查平台</pageTitle>
     <p>
       本校至今已有設置{{ programList[0] }}個學分學程、{{
