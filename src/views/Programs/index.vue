@@ -7,7 +7,8 @@ import { useStudentStore } from '@/stores/studentData.js'
 const store = useStudentStore()
 const programList = ref([])
 
-import { getfakePrograms, getProgramById, checkToken } from '@/apis/programAPI'
+import { getfakePrograms, getProgramById } from '@/apis/programAPI'
+import { checkToken } from '@/apis/loginAPI'
 
 const checkUserToken = async () => {
   let res = await checkToken()

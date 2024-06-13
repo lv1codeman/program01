@@ -3,7 +3,7 @@ import themeView from '@/views/Theme/themeDialog.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-import { checkToken } from '@/apis/programAPI'
+import { checkToken } from '@/apis/loginAPI'
 
 const isLogin = ref(false)
 const username = ref()

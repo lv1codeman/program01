@@ -9,7 +9,7 @@ import { login } from '@/apis/loginAPI'
 import CryptoJS from 'crypto-js'
 const router = useRouter()
 
-const crypt_key = 'l36DoqKUYQP0N7e1'
+const crypt_key = import.meta.env.VITE_SECRET_AES_KEY
 
 // AES加密
 const encrypt = (data) => {
