@@ -7,7 +7,9 @@ const programList = ref([])
 programList.value = [programData.length, miniProgramData.length]
 
 import { getAllPrograms } from '@/apis/programAPI'
-import { getfakePrograms, getProgramById, checkToken } from '@/apis/programAPI'
+// import { getfakePrograms, getProgramById } from '@/apis/programAPI'
+// import { checkToken } from '@/apis/loginAPI'
+
 const gogo = async () => {
   console.log('gogogo')
   // getAllPrograms().then((res) => {

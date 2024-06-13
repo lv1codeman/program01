@@ -4,6 +4,7 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, computed } from 'vue'
 import { subjectList } from '@/assets/data/subjectList.js'
 import { useRoute, useRouter } from 'vue-router'
+import { getAllSubjects } from '@/apis/subjectAPI'
 const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
@@ -18,6 +19,7 @@ if (!pageShow.value) {
 }
 
 console.log('pageShow value=', pageShow.value)
+console.log('getAllSubjects = ', await getAllSubjects())
 
 const targetCheck = () => {
   if (!route.params.domain_name) {

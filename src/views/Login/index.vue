@@ -5,37 +5,28 @@ import { useStudentStore } from '@/stores/studentData.js'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { login } from '@/apis/programAPI'
+import { login } from '@/apis/loginAPI'
 import CryptoJS from 'crypto-js'
 const router = useRouter()
 
-const encryptionKey = 'WkO1be7S4pxbR9letUT7wg'
-
 const crypt_key = 'l36DoqKUYQP0N7e1'
-const crypt_iv = '131b0c8a7a6e072e'
 
-//加密
+// AES加密
 const encrypt = (data) => {
-  let aes_key = CryptoJS.enc.Utf8.parse(crypt_key) //解析后的key
-  let new_iv = CryptoJS.enc.Utf8.parse(crypt_iv) //解析后的iv
+  let aes_key = CryptoJS.enc.Utf8.parse(crypt_key)
   let encrypted = CryptoJS.AES.encrypt(data, aes_key, {
-    //AES加密
-    iv: new_iv,
-    mode: CryptoJS.mode.CBC,
+    mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.ZeroPadding
   })
   return encrypted.toString()
 }
-
+// AES解密
 const decrypt = (data) => {
-  let aes_key = CryptoJS.enc.Utf8.parse(crypt_key) // 解析后的key
-  let aes_iv = CryptoJS.enc.Utf8.parse(crypt_iv) // 解析后的iv
-  let baseResult = CryptoJS.enc.Base64.parse(data) // Base64解密
-  let ciphertext = CryptoJS.enc.Base64.stringify(baseResult) // Base64解密
+  let aes_key = CryptoJS.enc.Utf8.parse(crypt_key)
+  let baseResult = CryptoJS.enc.Base64.parse(data)
+  let ciphertext = CryptoJS.enc.Base64.stringify(baseResult)
   let decryptResult = CryptoJS.AES.decrypt(ciphertext, aes_key, {
-    // AES解密
-    iv: aes_iv,
-    mode: CryptoJS.mode.CBC,
+    mode: CryptoJS.mode.ECB,
     padding: CryptoJS.pad.ZeroPadding
   })
 
@@ -45,22 +36,20 @@ const decrypt = (data) => {
 
 const btnLogin = async () => {
   let en = encrypt(form.value.password)
-  console.log(en)
-  console.log(decrypt(en))
-
-  // if (await login(form.value.id, form.value.password)) {
-  //   ElMessage({
-  //     showClose: true,
-  //     message: '登入成功',
-  //     type: 'success',
-  //     customClass: 'msg-zindex',
-  //     duration: 3000,
-  //     offset: window.screen.height / 50
-  //   })
-  //   router.push({ path: '/' })
-  // } else {
-  //   // 在http.js由攔截器統一處理
-  // }
+  console.log('加密後的密碼=', en)
+  if (await login(form.value.id, en)) {
+    ElMessage({
+      showClose: true,
+      message: '登入成功',
+      type: 'success',
+      customClass: 'msg-zindex',
+      duration: 3000,
+      offset: window.screen.height / 50
+    })
+    router.push({ path: '/' })
+  } else {
+    // 在http.js由攔截器統一處理
+  }
 }
 const goHome = () => {
   router.push({ path: '/' })
