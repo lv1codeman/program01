@@ -12,14 +12,14 @@ import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const formRef = ref()
 
-import { getProgramById } from '@/apis/programAPI'
+import { selectProgram } from '@/apis/programAPI'
 const loadFromServer = async () => {
   // 從SERVER讀取program_id=1的資料
-  let res = await getProgramById(1)
+  let res = await selectProgram({ unit: '公共事務與公民教育學系' })
   console.log('res= ', res)
   // 轉成系統JSON格式
-  let resJson = transformServerJSON(res)
-  console.log(resJson)
+  // let resJson = transformServerJSON(res)
+  // console.log(resJson)
 }
 
 var categoryCount = 0

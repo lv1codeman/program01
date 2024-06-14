@@ -41,3 +41,12 @@ export async function submitProgram(programJSON) {
     console.error(error)
   }
 }
+
+export async function selectProgram(unit) {
+  try {
+    const response = await axiosInstance.post(`/program/select`, unit)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
