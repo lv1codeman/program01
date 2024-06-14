@@ -1,51 +1,34 @@
 import axiosInstance from '@/utils/http'
 
 // 獲取所有程序
-export async function getAllPrograms() {
-  try {
-    const response = await axiosInstance.get('/program/all')
-    return response.data
-  } catch (error) {
-    console.error('Error fetching programs:', error)
-    throw error
-  }
+export const getAllPrograms = async () => {
+  return axiosInstance({
+    url: '/program/all',
+    method: 'GET'
+  })
 }
-// export const getAllPrograms = () => {
-//   return axiosInstance({
-//     url: '/program/all',
-//     method: 'GET'
-//   })
-// }
 
 // 根據程序ID獲取程序
-export async function getProgramById(programId) {
-  try {
-    const response = await axiosInstance.get(`/program/${programId}`)
-    return response.data
-  } catch (error) {
-    console.error(`Error fetching program with ID ${programId}:`, error)
-    throw error
-  }
+export const getProgramById = (programId) => {
+  return axiosInstance({
+    url: `/program/${programId}`,
+    method: 'GET'
+  })
+}
+export const checkToken = () => {
+  return axiosInstance({
+    url: '/checkToken',
+    method: 'GET'
+  })
 }
 
-export async function checkToken() {
-  try {
-    const response = await axiosInstance.get(`/checkToken`)
-    console.log(`response data = ${response.data}`)
-    return response.data
-  } catch (error) {
-    console.error(error.response.data.detail)
-    return false
-    // throw error
-  }
+export const getToken = ({ id, password }) => {
+  return axiosInstance({
+    url: '/token',
+    method: 'POST',
+    data: {
+      id: id,
+      password: password
+    }
+  })
 }
-
-// export async function login() {
-//   try {
-//     const response = await axiosInstance.get(`/login`)
-//     return response.data
-//   } catch (error) {
-//     console.error(`login failed.`, error)
-//     throw error
-//   }
-// }

@@ -1,6 +1,7 @@
 import '@/styles/common.scss'
 // elementplus message組件需要導入的SCSS
 import 'element-plus/theme-chalk/src/message.scss'
+// import 'element-plus/theme-chalk/el-message.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

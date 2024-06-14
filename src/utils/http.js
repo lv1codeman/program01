@@ -1,7 +1,5 @@
-// https://80f3-61-221-225-125.ngrok-free.app
-// axios基礎的封裝
 import axios from 'axios'
-// import { fetchToken } from '@/utils/fetchToken.js'
+import { ElMessage } from 'element-plus'
 // 定義後端URL
 const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
 
@@ -9,7 +7,7 @@ const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': '11'
   }
 })
@@ -26,12 +24,22 @@ axiosInstance.interceptors.request.use(
   }
 )
 
-// axiosInstance.interceptors.response.use(
-//   (response) => response.data,
-//   (e) => {
-//     return Promise.reject(e)
-//   }
-// )
+axiosInstance.interceptors.response.use(
+  (response) => response.data,
+  (e) => {
+    // 統一錯誤提示
+    ElMessage({
+      showClose: true,
+      message: e.response.data.message,
+      type: 'error',
+      duration: 3000,
+      offset: window.screen.height / 50
+    })
+    return Promise.reject(e)
+  }
+)
+
+export default axiosInstance
 
 // // 處理Token過期的情況
 // axiosInstance.interceptors.response.use(
@@ -49,5 +57,3 @@ axiosInstance.interceptors.request.use(
 //     return Promise.reject(error)
 //   }
 // )
-
-export default axiosInstance

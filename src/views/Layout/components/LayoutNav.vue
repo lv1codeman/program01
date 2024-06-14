@@ -10,6 +10,7 @@ const username = ref()
 
 const checkUserToken = async () => {
   let res = await checkToken()
+  console.log('checkToken in LayoutNav res = ', res)
   isLogin.value = res ? true : false
 }
 checkUserToken()

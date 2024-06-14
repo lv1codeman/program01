@@ -11,7 +11,6 @@ import { getAllPrograms, getProgramById, checkToken } from '@/apis/programAPI'
 
 const checkUserToken = async () => {
   let res = await checkToken()
-  console.log(res)
   if (!res) {
     console.log(`user not login`)
     router.push({ path: '/login' })

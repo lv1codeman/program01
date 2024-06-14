@@ -19,20 +19,18 @@ const login = async () => {
       showClose: true,
       message: '登入成功',
       type: 'success',
-      customClass: 'msg-zindex',
       duration: 3000,
       offset: window.screen.height / 50
     })
 
     let res = await checkToken()
     console.log(`checkToken: ${res}`)
-    router.push({ path: '/' })
+    router.replace({ path: '/' })
   } else {
     ElMessage({
       showClose: true,
       message: '登入失敗，請檢查學號密碼是否有誤',
       type: 'error',
-      customClass: 'msg-zindex',
       duration: 3000,
       offset: window.screen.height / 50
     })
