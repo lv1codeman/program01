@@ -31,3 +31,13 @@ export async function getProgramById(programId) {
     throw error
   }
 }
+
+export async function submitProgram(programJSON) {
+  try {
+    console.log('programJSON=', programJSON)
+    const response = await axiosInstance.post(`/program/submit`, programJSON)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}

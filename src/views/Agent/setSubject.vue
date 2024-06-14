@@ -4,9 +4,12 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAllSubjects } from '@/apis/subjectAPI'
+import { submitProgram } from '@/apis/programAPI'
 const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
+
+const loading = ref(true)
 
 const pageShow = ref(false)
 console.log('sessionStorage.getItem user_role', sessionStorage.getItem('user_role'))
@@ -88,6 +91,7 @@ const generateData = () => {
 
   subjectList.value.forEach((item, index) => {
     data.push({
+      key: index,
       label:
         item.subject_sub_id +
         '/' +
@@ -101,8 +105,7 @@ const generateData = () => {
         item.subject_credit +
         '/' +
         item.subject_hour +
-        ')',
-      key: index
+        ')'
     })
   })
   console.log('data=', data)
@@ -111,31 +114,34 @@ const generateData = () => {
 
 const target = targetCheck()
 const selectedcourse = ref([])
-let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
-let domainItem = categoryItem.domain.find((item) => item.domain_name === target[1])
-if (target.length > 1) {
-  // 類別之下的領域
-  if (domainItem.course && domainItem.course.length > 0) {
-    domainItem.course.forEach((item) => {
-      selectedcourse.value.push(item.subject_id - 1)
-    })
-  }
-} else {
-  // 只有類別
-  if (categoryItem.course && categoryItem.course.length > 0) {
-    categoryItem.course.forEach((item) => {
-      selectedcourse.value.push(item.id - 1)
-    })
-  }
-}
 
 const data = ref([])
-const transferData = ref(selectedcourse.value)
+const transferData = ref([])
 const tableData = ref([])
 
 onMounted(async () => {
   await fetchAllSubject()
   data.value = generateData()
+  loading.value = false
+
+  let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
+  let domainItem = categoryItem?.domain.find((item) => item.domain_name === target[1])
+  if (target.length > 1) {
+    // 類別之下的領域
+    if (domainItem?.course && domainItem.course.length > 0) {
+      domainItem.course.forEach((item) => {
+        transferData.value.push(item.subject_id - 1)
+      })
+    }
+  } else {
+    // 只有類別
+    if (categoryItem?.course && categoryItem.course.length > 0) {
+      categoryItem.course.forEach((item) => {
+        transferData.value.push(item.subject_id - 1)
+      })
+    }
+  }
+  selectedcourse.value = transferData.value
 })
 
 const showRes = () => {
@@ -155,8 +161,11 @@ const dialogSuccess = () => {
   router.push({ path: '/checkStructure' })
 }
 
-const submit = () => {
+const submit = async () => {
   // 回傳到server端
+  console.log('學程資料: ', JSON.stringify(store.programData))
+  let res = await submitProgram(JSON.stringify(store.programData))
+  console.log('submit response=', res)
 }
 </script>
 
@@ -172,6 +181,7 @@ const submit = () => {
       :titles="['單位科目', '學程科目']"
       :button-texts="['左移', '右移']"
       :right-default-checked="selectedcourse"
+      v-loading="loading"
     >
       <template #left-footer>
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
