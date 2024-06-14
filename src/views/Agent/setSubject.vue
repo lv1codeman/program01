@@ -1,8 +1,7 @@
 <script setup>
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
-import { ref, computed } from 'vue'
-import { subjectList } from '@/assets/data/subjectList.js'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAllSubjects } from '@/apis/subjectAPI'
 const router = useRouter()
@@ -19,19 +18,6 @@ if (!pageShow.value) {
 }
 
 console.log('pageShow value=', pageShow.value)
-// console.log('getAllSubjects = ', await getAllSubjects())
-
-// const subjectList = ref([])
-
-// const fetchAllSubject = async () => {
-//   try {
-//     subjectList.value = await getAllSubjects()
-//     console.log(subjectList.value)
-//   } catch (error) {
-//     console.error('Error fetching subjects:', error)
-//   }
-// }
-// fetchAllSubject()
 
 const targetCheck = () => {
   if (!route.params.domain_name) {
@@ -40,10 +26,10 @@ const targetCheck = () => {
     return [route.params.category_name, route.params.domain_name]
   }
 }
+
 const dialogSuccessVisible = ref(false)
 const submitProgramData = () => {
   const target = targetCheck()
-  // console.log('target=', target)
   if (target.length > 1) {
     // 類別之下的領域
     let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
@@ -86,10 +72,21 @@ const pageTitle = computed(() => {
   return title
 })
 
+const subjectList = ref([])
+
+const fetchAllSubject = async () => {
+  try {
+    let res = await getAllSubjects()
+    subjectList.value = res
+  } catch (error) {
+    console.error('Error fetching subjects:', error)
+  }
+}
+
 const generateData = () => {
   const data = []
 
-  subjectList.forEach((item, index) => {
+  subjectList.value.forEach((item, index) => {
     data.push({
       label:
         item.subject_sub_id +
@@ -112,7 +109,6 @@ const generateData = () => {
   return data
 }
 
-// 右邊的transfer框，預設顯示目前類別、領域的課程
 const target = targetCheck()
 const selectedcourse = ref([])
 let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
@@ -120,12 +116,9 @@ let domainItem = categoryItem.domain.find((item) => item.domain_name === target[
 if (target.length > 1) {
   // 類別之下的領域
   if (domainItem.course && domainItem.course.length > 0) {
-    // 之前有建立過課程，將課程資料存在selectedcourse用來宣告transferData以將課程顯示在右邊的transfer框
     domainItem.course.forEach((item) => {
       selectedcourse.value.push(item.subject_id - 1)
     })
-  } else {
-    // 第一次新建課程，do nothing
   }
 } else {
   // 只有類別
@@ -133,17 +126,21 @@ if (target.length > 1) {
     categoryItem.course.forEach((item) => {
       selectedcourse.value.push(item.id - 1)
     })
-  } else {
-    // 第一次新建課程，do nothing
   }
 }
-const data = ref(generateData())
+
+const data = ref([])
 const transferData = ref(selectedcourse.value)
 const tableData = ref([])
 
+onMounted(async () => {
+  await fetchAllSubject()
+  data.value = generateData()
+})
+
 const showRes = () => {
   transferData.value.forEach((item) => {
-    tableData.value.push(subjectList[item])
+    tableData.value.push(subjectList.value[item])
   })
 }
 
@@ -162,9 +159,9 @@ const submit = () => {
   // 回傳到server端
 }
 </script>
+
 <template>
   <div class="page-container">
-    <!-- <el-button @click="target">show</el-button> -->
     <pagetitle>{{ pageTitle }}</pagetitle>
 
     <el-transfer
@@ -212,6 +209,7 @@ const submit = () => {
     </el-dialog>
   </div>
 </template>
+
 <style lang="scss" scoped>
 /*scrollbar*/
 :deep(::-webkit-scrollbar) {
@@ -235,12 +233,10 @@ const submit = () => {
   --el-transfer-panel-width: 400px;
 }
 :deep(.el-transfer-panel__list) {
-  // overflow-x: auto; // 啟用橫向卷軸
-  white-space: nowrap; //避免內容換行
+  white-space: nowrap;
 }
 :deep(.el-transfer-panel__item) {
-  // display: inline-block;
-  width: 500px; //設定內容item寬度，根據內容的長度調整
+  width: 500px;
 }
 
 @media screen and (max-width: 818px) {
