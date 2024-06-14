@@ -1,10 +1,10 @@
-// https://80f3-61-221-225-125.ngrok-free.app
+// https://1cb2-61-221-225-124.ngrok-free.app
 // axios基礎的封裝
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 // import { fetchToken } from '@/utils/fetchToken.js'
 // 定義後端URL
-const BASE_URL = 'https://80f3-61-221-225-125.ngrok-free.app'
+const BASE_URL = 'https://1cb2-61-221-225-124.ngrok-free.app'
 
 // 創建Axios實例
 const axiosInstance = axios.create({

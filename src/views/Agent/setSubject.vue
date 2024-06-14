@@ -19,7 +19,19 @@ if (!pageShow.value) {
 }
 
 console.log('pageShow value=', pageShow.value)
-console.log('getAllSubjects = ', await getAllSubjects())
+// console.log('getAllSubjects = ', await getAllSubjects())
+
+// const subjectList = ref([])
+
+// const fetchAllSubject = async () => {
+//   try {
+//     subjectList.value = await getAllSubjects()
+//     console.log(subjectList.value)
+//   } catch (error) {
+//     console.error('Error fetching subjects:', error)
+//   }
+// }
+// fetchAllSubject()
 
 const targetCheck = () => {
   if (!route.params.domain_name) {
@@ -96,6 +108,7 @@ const generateData = () => {
       key: index
     })
   })
+  console.log('data=', data)
   return data
 }
 
