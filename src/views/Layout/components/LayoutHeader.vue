@@ -41,12 +41,15 @@ const handleClick = () => {
       break
   }
 }
+const btnHome = () => {
+  activeName.value = null
+}
 </script>
 <template>
   <header class="app-header">
     <div class="page-container">
       <div class="header-container">
-        <div class="logo">
+        <div class="logo" @click="btnHome">
           <RouterLink to="/">學程平台首頁</RouterLink>
         </div>
         <div class="app-header-nav2">
