@@ -7,19 +7,8 @@ import { unitList } from '@/assets/data/unitList.js'
 // import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
-import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const formRef = ref()
-
-import { selectProgram } from '@/apis/programAPI'
-const loadFromServer = async () => {
-  // 從SERVER讀取program_unit=user_unit的資料
-  let res = await selectProgram({ unit: '公共事務與公民教育學系' })
-  console.log('res= ', res.data)
-  // 轉成系統JSON格式
-  let resJson = transformServerJSON(res.data)
-  console.log(JSON.stringify(resJson))
-}
 
 var categoryCount = 0
 var domainCount = 1

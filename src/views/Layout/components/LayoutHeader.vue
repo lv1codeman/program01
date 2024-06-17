@@ -31,7 +31,7 @@ const handleClick = () => {
   switch (event.target.innerText) {
     case '學程設置(系辦)':
       // window.open('https://webap0.ncue.edu.tw/deanv2/other/ob010', '_blank')
-      router.push({ path: '/setprogram' })
+      router.push({ path: '/loadStructure' })
       break
     case '學分學程檢查':
       router.push({ path: '/programs' })

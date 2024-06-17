@@ -7,7 +7,8 @@ import Home from '@/views/Home/index.vue'
 import Programs from '@/views/Programs/index.vue'
 import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
-import SetProgram from '@/views/Agent/index.vue'
+import loadStructure from '@/views/Agent/loadStructure.vue'
+import createStructure from '@/views/Agent/createStructure.vue'
 import setSubject from '@/views/Agent/setSubject.vue'
 import checkStructure from '@/views/Agent/checkStructure.vue'
 
@@ -33,8 +34,12 @@ const router = createRouter({
           component: MiniPrograms
         },
         {
-          path: 'setprogram',
-          component: SetProgram
+          path: 'loadStructure',
+          component: loadStructure
+        },
+        {
+          path: 'createStructure',
+          component: createStructure
         },
         {
           path: 'result',
