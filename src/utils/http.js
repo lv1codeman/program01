@@ -4,7 +4,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 // import { fetchToken } from '@/utils/fetchToken.js'
 // 定義後端URL
-const BASE_URL = 'https://f201-1-170-73-91.ngrok-free.app'
+const BASE_URL = 'https://8b3c-61-221-225-124.ngrok-free.app'
 
 // 創建Axios實例
 const axiosInstance = axios.create({

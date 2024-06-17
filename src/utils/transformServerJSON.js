@@ -1,4 +1,5 @@
 export default function transformServerJSON(input) {
+  console.log('input get', input)
   // Initialize the output structure with values from the first item in the input array
   const output = {
     program_name: input[0].program_name,
@@ -28,8 +29,8 @@ export default function transformServerJSON(input) {
       categoryMap[item.category_id] = category
       output.category.push(category)
     }
-
-    if (item.domain_id === 0) {
+    // 資料表JOIN之後domain_id、domain_name等資料因為domains表中沒有資料所以為null
+    if (item.domain_id === null) {
       category.course.push({
         subject_id: item.subject_id,
         subject_unit: item.subject_unit,

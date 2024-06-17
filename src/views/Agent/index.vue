@@ -14,12 +14,12 @@ const formRef = ref()
 
 import { selectProgram } from '@/apis/programAPI'
 const loadFromServer = async () => {
-  // 從SERVER讀取program_id=1的資料
+  // 從SERVER讀取program_unit=user_unit的資料
   let res = await selectProgram({ unit: '公共事務與公民教育學系' })
-  console.log('res= ', res)
+  console.log('res= ', res.data)
   // 轉成系統JSON格式
-  // let resJson = transformServerJSON(res)
-  // console.log(resJson)
+  let resJson = transformServerJSON(res.data)
+  console.log(JSON.stringify(resJson))
 }
 
 var categoryCount = 0
