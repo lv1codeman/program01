@@ -8,10 +8,9 @@ import { submitProgram } from '@/apis/programAPI'
 const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
-
 const loading = ref(true)
-
 const pageShow = ref(false)
+
 console.log('sessionStorage.getItem user_role', sessionStorage.getItem('user_role'))
 pageShow.value =
   sessionStorage.getItem('user_role') == 'admin' || sessionStorage.getItem('user_role') == 'staff' ? true : false
@@ -123,6 +122,9 @@ onMounted(async () => {
   await fetchAllSubject()
   data.value = generateData()
   loading.value = false
+
+  console.log('store.programData @ onMounted = ', store.programData)
+  console.log('target[0]=', target[0])
 
   let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
   let domainItem = categoryItem?.domain.find((item) => item.domain_name === target[1])

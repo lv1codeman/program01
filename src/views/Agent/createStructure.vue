@@ -100,6 +100,7 @@ const submitForm = (formEl) => {
     if (valid) {
       console.log('submit!', JSON.stringify(dynamicValidateForm))
       store.setProgramData(dynamicValidateForm)
+      console.log('store data = ', store.programData)
       router.push({ path: '/checkStructure' })
     } else {
       console.log('error submit!')
