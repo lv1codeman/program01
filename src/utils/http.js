@@ -43,6 +43,15 @@ axiosInstance.interceptors.response.use(
 
     if (e.response.status == 422) {
       console.log('e.response.status = 422')
+    } else if (e.response.status == 401) {
+      console.log('e.response.status = 401', e.response.data.detail)
+      ElMessage({
+        type: 'error',
+        message: e.response.data.detail,
+        showClose: true,
+        duration: 3000,
+        offset: window.screen.height / 50
+      })
     } else {
       ElMessage({
         type: 'warning',

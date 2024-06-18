@@ -70,15 +70,22 @@ const msgTimeController = ref({
       <template #header>
         <div class="card-header">
           <div class="card-header-title">登入</div>
-          <div class="card-header-subtitle">請輸入學號密碼以登入系統</div>
+          <div class="card-header-subtitle">請輸入帳號密碼以登入系統</div>
         </div>
       </template>
       <el-form class="form" :model="form" label-width="auto" label-position="right">
-        <el-form-item label="學號">
-          <el-input v-model="form.id" placeholder="請輸入學號" clearable />
+        <el-form-item label="帳號">
+          <el-input v-model="form.id" placeholder="學生請輸入學號" clearable autofocus @keyup.enter="btnLogin" />
         </el-form-item>
         <el-form-item label="密碼">
-          <el-input v-model="form.password" type="password" placeholder="請輸入密碼" show-password clearable />
+          <el-input
+            v-model="form.password"
+            type="password"
+            placeholder="請輸入密碼"
+            show-password
+            clearable
+            @keyup.enter="btnLogin"
+          />
         </el-form-item>
       </el-form>
       <div class="form-footer">忘記密碼</div>

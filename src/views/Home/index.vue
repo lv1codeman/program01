@@ -21,12 +21,11 @@ onMounted(async () => {
   <div class="page-container">
     <pageTitle>學程檢查平台</pageTitle>
     <p>
-      本校至今已有設置{{ programNum }}個學分學程、{{
-        miniProgramNum
-      }}個微學程，為使本校學生在畢業前了解自身所學課程與各學程間的相關性，故建立本平台以利同學查詢。
+      本校至今已有設置15個學分學程、12個微學程，為使本校學生在畢業前了解自身所學課程與各學程間的相關性，故建立本平台以利同學查詢。
     </p>
     <p class="warn">
-      部分學程因規則複雜，故本系統資訊僅供參考，認證時仍須依各學程規定辦理，且申請認證的科目須至少1門非學生主系的專業科目。
+      部分學程因規則複雜，故本系統資訊僅供參考，認證時仍須依各學程規定辦理，且申請認證的科目須至少1門非學生主系的專業科目。<br />
+      (目前本平台涵蓋了{{ programNum }}個學分學程、{{ miniProgramNum }}個微學程)
     </p>
     <el-row class="tabGroup" justify="space-evenly">
       <el-col class="tab" :span="7" :xs="11">
