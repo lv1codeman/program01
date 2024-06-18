@@ -23,15 +23,15 @@ onMounted(() => {
 }) */
 //#endregion
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const router = useRouter()
 
 const activeName = ref('index')
 const handleClick = () => {
   switch (event.target.innerText) {
-    case '學程設置(系辦)':
+    case '學程管理':
       // window.open('https://webap0.ncue.edu.tw/deanv2/other/ob010', '_blank')
-      router.push({ path: '/loadStructure' })
+      router.push({ path: '/managePrograms' })
       break
     case '學分學程檢查':
       router.push({ path: '/programs' })
@@ -44,6 +44,32 @@ const handleClick = () => {
 const btnHome = () => {
   activeName.value = null
 }
+
+const showlist = ref([])
+const userRole = sessionStorage.getItem('user_role')
+
+switch (userRole) {
+  case 'admin':
+    showlist.value = [true, true, true]
+    break
+  case 'staff':
+    showlist.value = [false, false, true]
+    break
+  case 'student':
+    showlist.value = [true, true, false]
+    break
+  default:
+    showlist.value = [false, false, false] // 預設情況下，所有選項卡都不可見
+    break
+}
+const tabs = [
+  { label: '學分學程檢查', name: 'programs' },
+  { label: '微學程檢查', name: 'miniprograms' },
+  { label: '學程管理', name: 'setprogram' }
+]
+const filteredTabs = computed(() => {
+  return tabs.filter((_, index) => showlist.value[index])
+})
 </script>
 <template>
   <header class="app-header">
@@ -54,9 +80,7 @@ const btnHome = () => {
         </div>
         <div class="app-header-nav2">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="學分學程檢查" name="programs"></el-tab-pane>
-            <el-tab-pane label="微學程檢查" name="miniprograms"></el-tab-pane>
-            <el-tab-pane label="學程設置(系辦)" name="setprogram"></el-tab-pane>
+            <el-tab-pane v-for="tab in filteredTabs" :key="tab.name" :label="tab.label" :name="tab.name"></el-tab-pane>
           </el-tabs>
         </div>
       </div>

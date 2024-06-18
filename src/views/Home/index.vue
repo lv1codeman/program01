@@ -1,34 +1,28 @@
 <script setup>
-import { ref } from 'vue'
 import pageTitle from '@/views/Layout/components/LayoutPageTitle.vue'
-import { programData, miniProgramData } from '@/assets/data/programData.js'
-const programList = ref([])
+import { ref, onMounted } from 'vue'
+import { getAllPrograms } from '@/apis/programAPI.js'
 
-programList.value = [programData.length, miniProgramData.length]
+const programNum = ref(0)
+const miniProgramNum = ref(0)
 
-import { getAllPrograms } from '@/apis/programAPI'
-// import { getfakePrograms, getProgramById } from '@/apis/programAPI'
-// import { checkToken } from '@/apis/loginAPI'
-
-const gogo = async () => {
-  console.log('gogogo')
-  // getAllPrograms().then((res) => {
-  //   console.log('program id: ', res[0].program_id)
-  //   console.log('program name: ', res[0].program_name)
-  // })
-  let res = await getAllPrograms()
-  console.log(res)
-  // let res = await checkToken()
-  // console.log('jwt token auth result = ', res)
-}
+onMounted(async () => {
+  const res = await getAllPrograms()
+  res.forEach((item) => {
+    if (item.program_type == '學分學程') {
+      programNum.value++
+    } else {
+      miniProgramNum.value++
+    }
+  })
+})
 </script>
 <template>
   <div class="page-container">
-    <el-button @click="gogo">check</el-button>
     <pageTitle>學程檢查平台</pageTitle>
     <p>
-      本校至今已有設置{{ programList[0] }}個學分學程、{{
-        programList[1]
+      本校至今已有設置{{ programNum }}個學分學程、{{
+        miniProgramNum
       }}個微學程，為使本校學生在畢業前了解自身所學課程與各學程間的相關性，故建立本平台以利同學查詢。
     </p>
     <p class="warn">
@@ -51,7 +45,7 @@ p {
     font-size: 14px;
     display: inline;
     font-weight: bold;
-    background-color: var(--el-color-warning);
+    background-color: var(--el-color-warning-light-7);
     color: var(--el-color-danger);
   }
 }

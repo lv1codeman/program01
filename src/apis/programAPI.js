@@ -42,9 +42,18 @@ export async function submitProgram(programJSON) {
   }
 }
 
-export async function selectProgram(unit) {
+export async function getUnitPrograms(unit) {
   try {
-    const response = await axiosInstance.post(`/program/select`, unit)
+    const response = await axiosInstance.post(`/program/getUnitPrograms`, unit)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getUnitProgramById(unit, program_id) {
+  try {
+    const response = await axiosInstance.post(`/program/getUnitPrograms`, unit, program_id)
     return response
   } catch (error) {
     console.error(error)

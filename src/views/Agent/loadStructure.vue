@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
-import { selectProgram } from '@/apis/programAPI'
+import { getUnitPrograms } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
@@ -41,19 +41,12 @@ const data = ref([])
 
 const loadFromServer = async () => {
   try {
-    let res = await selectProgram({ unit: '公共事務與公民教育學系' })
+    let res = await getUnitPrograms({ unit: '公共事務與公民教育學系', program_id: 1 })
     console.log('res= ', res.data)
     let resJson = transformServerJSON(res.data)
-    // store.programData = JSON.stringify(resJson)
     store.setProgramData(resJson)
     programstruct.value = resJson
-    // programstruct.value = ''
     data.value = transToTree(programstruct.value)
-
-    // console.log('programstruct= ', programstruct.value)
-    // console.log('programstruct= ', JSON.stringify(programstruct.value))
-
-    console.log('store.programData=', store.programData)
   } catch (error) {
     console.error('Error loading data from server:', error)
   }

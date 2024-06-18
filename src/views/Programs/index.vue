@@ -8,17 +8,17 @@ const store = useStudentStore()
 const programList = ref([])
 
 import { getfakePrograms, getProgramById } from '@/apis/programAPI'
-import { checkToken } from '@/apis/loginAPI'
+// import { checkToken } from '@/apis/loginAPI'
 
-const checkUserToken = async () => {
-  let res = await checkToken()
-  console.log('jwt token auth result = ', res)
-  if (!res) {
-    console.log(`user not login`)
-    router.push({ path: '/login' })
-  }
-}
-const isTokenGood = checkUserToken()
+// const checkUserToken = async () => {
+//   let res = await checkToken()
+//   console.log('jwt token auth result = ', res)
+//   if (!res) {
+//     console.log(`user not login`)
+//     router.push({ path: '/login' })
+//   }
+// }
+// const isTokenGood = checkUserToken()
 
 const fetchAllPrograms = async () => {
   try {

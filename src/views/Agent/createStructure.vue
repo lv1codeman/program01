@@ -141,15 +141,8 @@ const go_setSubject = () => {
 </script>
 
 <template>
-  <!--
-  <font-awesome-icon icon="circle-plus" />
-  <font-awesome-icon icon="trash-can" />
--->
   <div class="page-container">
-    <pagetitle
-      >學程設定
-      <el-button @click="loadFromServer">由SERVER讀取</el-button>
-    </pagetitle>
+    <pagetitle>學程設定</pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
       ref="formRef"
@@ -397,7 +390,7 @@ hr {
     color: #4b4b4be0;
     font-size: 18px;
     font-weight: bold;
-    background-color: var(--el-color-warning);
+    background-color: var(--el-color-warning-light-7);
     border: 2px solid $domain-border-color;
     &:hover {
       background-color: var(--el-color-warning-light-3);
@@ -440,7 +433,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--el-color-warning);
+    background-color: var(--el-color-warning-light-7);
     color: #4b4b4be0;
     span {
       font-size: 18px;
@@ -527,7 +520,7 @@ hr {
   padding: 2px 10px;
   border: 1px solid $domain-border-color;
   border-radius: calc($domain-border-radius / 2);
-  background-color: var(--el-color-warning);
+  background-color: var(--el-color-warning-light-7);
   &:hover {
     background-color: var(--el-color-warning-light-3);
   }

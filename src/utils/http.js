@@ -30,12 +30,23 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (res) => res.data,
   (e) => {
+    if (e.code == 'ERR_NETWORK') {
+      console.log('ERR_NETWORK', e)
+      ElMessage({
+        type: 'error',
+        message: '連線異常，請聯絡系統管理員。',
+        showClose: true,
+        duration: 3000,
+        offset: window.screen.height / 50
+      })
+    }
+
     if (e.response.status == 422) {
       console.log('e.response.status = 422')
     } else {
       ElMessage({
-        type: 'error',
-        message: e.response.data.detail,
+        type: 'warning',
+        message: '使用者未登入',
         showClose: true,
         duration: 3000,
         offset: window.screen.height / 50
