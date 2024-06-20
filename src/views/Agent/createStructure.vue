@@ -56,7 +56,7 @@ const dynamicValidateForm = reactive({
     }
   ]
 })
-console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
+// console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 const addCategory = () => {
   dynamicValidateForm.category.push({
     // key: Date.now(),
@@ -98,9 +98,9 @@ const submitForm = (formEl) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
-      console.log('submit!', JSON.stringify(dynamicValidateForm))
+      // console.log('submit!', JSON.stringify(dynamicValidateForm))
       store.setProgramData(dynamicValidateForm)
-      console.log('store data = ', store.programData)
+      // console.log('store data = ', store.programData)
       router.push({ path: '/checkStructure' })
     } else {
       console.log('error submit!')

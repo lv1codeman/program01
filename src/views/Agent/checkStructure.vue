@@ -1,7 +1,7 @@
 <script setup>
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
-import { ref, onUnmounted } from 'vue'
+import { ref, onUnmounted, computed } from 'vue'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
@@ -85,9 +85,11 @@ const submit = async () => {
   // console.log('submit response=', res)
 }
 
-const textColor = ref({
-  color: red;
-})
+const getClass = (c) => {
+  return {
+    noSubject: !c.domain.length > 0 && (!c.course || c.course.length == 0)
+  }
+}
 </script>
 <template>
   <div class="page-container">
@@ -125,6 +127,7 @@ const textColor = ref({
         <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
           <router-link
             class="baseItem islink"
+            :class="getClass(category)"
             style="margin-bottom: 10px"
             :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
             >{{ category.category_name }}</router-link
@@ -132,7 +135,7 @@ const textColor = ref({
         </el-tooltip>
       </div>
       <div v-else>
-        <div class="baseItem" :class="textColor">{{ category.category_name }}</div>
+        <div class="baseItem" :class="getClass(category)">{{ category.category_name }}</div>
       </div>
 
       <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
@@ -247,10 +250,10 @@ const textColor = ref({
     cursor: pointer;
   }
 }
-.nosub {
-  color: red;
+.hasSubject {
+  color: green;
 }
-.sub {
-  color: white;
+.noSubject {
+  color: red;
 }
 </style>
