@@ -42,6 +42,16 @@ export async function submitProgram(programJSON) {
   }
 }
 
+export async function deleteProgram(program_id) {
+  try {
+    console.log('program_id will be deleted. id = ', program_id)
+    const response = await axiosInstance.post(`/program/delete_program`, program_id)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export async function getUnitPrograms(unit) {
   try {
     const response = await axiosInstance.post(`/program/getUnitPrograms`, unit)

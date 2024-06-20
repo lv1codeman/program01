@@ -35,7 +35,7 @@ const dynamicValidateForm = reactive({
   program_name: '學程1',
   program_url: '網址1',
   program_type: '學分學程',
-  program_unit: '教育學院',
+  program_unit: sessionStorage.getItem('user_unit'),
   program_minCredit: 1,
   program_nonSelfCredit: 1,
   program_criteria: '以學分數',

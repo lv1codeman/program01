@@ -5,6 +5,7 @@ import { ref, onUnmounted } from 'vue'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
+import { submitProgram } from '@/apis/programAPI'
 const store = useProgramStore()
 const programstruct = ref(store.programData)
 console.log('programstruct= ', programstruct.value)
@@ -35,10 +36,18 @@ window.addEventListener('resize', updateColumnNum)
 onUnmounted(() => {
   window.removeEventListener('resize', updateColumnNum)
 })
+const submit = async () => {
+  // 回傳到server端
+  console.log('學程資料: ', JSON.stringify(store.programData))
+  let res = await submitProgram(JSON.stringify(store.programData))
+
+  console.log('submit response=', res)
+}
 </script>
 <template>
   <div class="page-container">
     <pagetitle>學程資訊</pagetitle>
+    <el-button type="success" @click="submit">送出</el-button>
     <el-descriptions
       class="margin-top"
       :column="descriptionColNum"
@@ -106,6 +115,7 @@ onUnmounted(() => {
     <div class="description">請在以下樹形結構檢查學程架構是否正確</div>
 
     <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
+    <el-button type="success" @click="submit">送出</el-button>
   </div>
 </template>
 <style lang="scss" scoped>

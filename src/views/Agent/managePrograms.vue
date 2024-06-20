@@ -4,7 +4,7 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
 import { ref, onMounted } from 'vue'
-import { getUnitPG, getUnitPrograms } from '@/apis/programAPI.js'
+import { getUnitPG, getUnitPrograms, deleteProgram } from '@/apis/programAPI.js'
 
 const router = useRouter()
 const store = useProgramStore()
@@ -15,7 +15,9 @@ const go_createStructure = () => {
 
 const tableData = ref([])
 
-const deleteRow = (index) => {
+const deleteRow = async (index, row) => {
+  const res = await deleteProgram({ program_id: row.program_id })
+  console.log('delete result = ', res)
   tableData.value.splice(index, 1)
   // 刪除學程
 }
@@ -57,7 +59,7 @@ const tableRowClicked = (row, event, column) => {
       <el-table-column align="center" fixed="right" label="操作" width="150">
         <template #default="scope">
           <el-button type="primary" size="small" @click.prevent="editRow(scope.row)"> 編輯 </el-button>
-          <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index)"> 刪除 </el-button>
+          <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button>
         </template>
       </el-table-column>
     </el-table>
