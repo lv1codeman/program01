@@ -51,9 +51,9 @@ export async function getUnitPrograms(unit) {
   }
 }
 
-export async function getUnitPGByid(unit, program_id) {
+export async function getUnitPGById(unit, program_id) {
   try {
-    const response = await axiosInstance.post(`/program/getUnitPGByid`, unit, program_id)
+    const response = await axiosInstance.post(`/program/getUnitPGById`, unit, program_id)
     return response
   } catch (error) {
     console.error(error)

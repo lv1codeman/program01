@@ -46,7 +46,12 @@ const btnLogin = async () => {
       duration: 3000,
       offset: window.screen.height / 50
     })
-    router.push({ path: '/' })
+
+    if (sessionStorage.getItem('user_role') == 'staff') {
+      router.push({ path: '/managePrograms' })
+    } else {
+      router.push({ path: '/' })
+    }
   } else {
     // 在http.js由攔截器統一處理
   }

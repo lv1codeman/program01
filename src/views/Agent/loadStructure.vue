@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
-import { getUnitPrograms } from '@/apis/programAPI'
+import { getUnitPrograms, getUnitPGById } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
@@ -39,9 +39,17 @@ onUnmounted(() => {
 })
 const data = ref([])
 
+// 直接從store中讀取
+// programstruct.value = store.programData
+// data.value = transToTree(programstruct.value)
+
 const loadFromServer = async () => {
   try {
-    let res = await getUnitPrograms({ unit: '公共事務與公民教育學系', program_id: 1 })
+    let user_unit = sessionStorage.getItem('user_unit')
+    console.log('user_unit=', user_unit)
+    console.log('store.currentPGId=', store.currentPGId)
+
+    let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
     console.log('res= ', res.data)
     let resJson = transformServerJSON(res.data)
     store.setProgramData(resJson)
