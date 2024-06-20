@@ -37,17 +37,62 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateColumnNum)
 })
 const submit = async () => {
-  // 回傳到server端
-  console.log('學程資料: ', JSON.stringify(store.programData))
-  let res = await submitProgram(JSON.stringify(store.programData))
+  // 送出前檢查
+  console.log(store.programData)
+  let p = store.programData
 
-  console.log('submit response=', res)
+  p.category.forEach((c) => {
+    // 如果類別沒有課程(代表要有領域)
+    if (!c.course || c.course.length <= 0) {
+      // 如果類別沒有領域，顯示訊息
+      if (c.domain.length <= 0) {
+        console.log(`類別 ${c.category_name} 尚未指定科目`)
+      } else {
+        // 如果有領域，檢查領域
+        c.domain.forEach((d) => {
+          // 每個領域中，沒有科目的項目，顯示訊息
+          if (!d.course || d.course.length <= 0) {
+            console.log(`領域 ${d.domain_name} 尚未指定科目`)
+          }
+        })
+      }
+    }
+
+    // if (c.course && c.course.length > 0) {
+    //   // c.course.forEach((crs) => {
+    //   //   console.log(`科目: ${crs.subject_sub_id} ${crs.subject_name}`)
+    //   // })
+    // } else {
+    //   if (c.domain.length > 0) {
+    //     // console.log('有領域')
+    //     c.domain.forEach((d) => {
+    //       if (d.course && d.course.length > 0) {
+    //         // console.log('領域有課程')
+    //       } else {
+    //         console.log(`領域 ${d.domain_name} 尚未指定科目`)
+    //       }
+    //     })
+    //   } else {
+    //     console.log(`類別 ${c.category_name} 尚未指定科目`)
+    //   }
+    // }
+  })
+
+  // 回傳到server端
+  // console.log('學程資料: ', JSON.stringify(store.programData))
+  // let res = await submitProgram(JSON.stringify(store.programData))
+
+  // console.log('submit response=', res)
 }
+
+const textColor = ref({
+  color: red;
+})
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>學程資訊</pagetitle>
-    <el-button type="success" @click="submit">送出</el-button>
+    <pagetitle>學程資訊<el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button></pagetitle>
+
     <el-descriptions
       class="margin-top"
       :column="descriptionColNum"
@@ -87,7 +132,7 @@ const submit = async () => {
         </el-tooltip>
       </div>
       <div v-else>
-        <div class="baseItem">{{ category.category_name }}</div>
+        <div class="baseItem" :class="textColor">{{ category.category_name }}</div>
       </div>
 
       <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
@@ -201,5 +246,11 @@ const submit = async () => {
 
     cursor: pointer;
   }
+}
+.nosub {
+  color: red;
+}
+.sub {
+  color: white;
 }
 </style>

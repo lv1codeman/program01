@@ -54,7 +54,8 @@ const submitProgramData = () => {
       categoryItem.course = temp
     }
   }
-  dialogSuccessVisible.value = true
+  router.push({ path: '/checkStructure' })
+  // dialogSuccessVisible.value = true
 }
 
 const pageTitle = computed(() => {
@@ -163,17 +164,20 @@ const dialogSuccess = () => {
   router.push({ path: '/checkStructure' })
 }
 
-const submit = async () => {
-  // 回傳到server端
-  console.log('學程資料: ', JSON.stringify(store.programData))
-  let res = await submitProgram(JSON.stringify(store.programData))
-  console.log('submit response=', res)
-}
+// const submit = async () => {
+//   // 回傳到server端
+//   console.log('學程資料: ', JSON.stringify(store.programData))
+//   let res = await submitProgram(JSON.stringify(store.programData))
+//   console.log('submit response=', res)
+// }
 </script>
 
 <template>
   <div class="page-container">
-    <pagetitle>{{ pageTitle }}</pagetitle>
+    <pagetitle
+      >{{ pageTitle }}
+      <el-button style="margin-left: 10px" type="primary" @click="submitProgramData"> 返回 </el-button></pagetitle
+    >
 
     <el-transfer
       v-model="transferData"
@@ -208,14 +212,14 @@ const submit = async () => {
         </template>
       </el-table-column>
     </el-table>
-    <el-button style="margin-top: 10px" type="primary" @click="submitProgramData"> 匯入 </el-button>
+    <el-button style="margin-top: 10px" type="primary" @click="submitProgramData"> 返回 </el-button>
     <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
 
     <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
       <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
         <template #extra>
-          <el-button type="primary" @click="dialogSuccess">繼續編輯</el-button>
-          <el-button type="primary" @click="submit">送出</el-button>
+          <el-button type="primary" @click="dialogSuccess">返回學程資訊頁面</el-button>
+          <!-- <el-button type="primary" @click="submit">送出</el-button> -->
         </template>
       </el-result>
     </el-dialog>

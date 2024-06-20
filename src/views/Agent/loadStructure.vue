@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
-import { getUnitPrograms, getUnitPGById } from '@/apis/programAPI'
+import { getUnitPrograms, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
@@ -66,11 +66,21 @@ const gocheck = () => {
   router.push({ path: '/createStructure' })
 }
 const loading = ref(true)
+
+// const updateProgram = async () => {
+// 更新學程資料
+
+// console.log('學程資料: ', JSON.stringify(store.programData))
+// let res = await submitProgram(JSON.stringify(store.programData))
+// console.log('submit response=', res)
+// }
 </script>
 <template>
   <div class="page-container">
-    <el-button @click="gocheck"> gocheck</el-button>
-    <pagetitle>學程資訊</pagetitle>
+    <pagetitle
+      >學程資訊
+      <!-- <el-button type="success" @click="updateProgram" style="margin-left: 10px">送出</el-button> -->
+    </pagetitle>
     <div v-if="programstruct">
       <el-descriptions :column="descriptionColNum" size="default" border :direction="descriptDirection">
         <el-descriptions-item label="名稱" label-align="center"> {{ programstruct.program_name }}</el-descriptions-item>
