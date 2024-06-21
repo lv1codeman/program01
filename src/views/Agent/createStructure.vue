@@ -109,6 +109,8 @@ const resetForm = (formEl) => {
 const programOptions = ref(['學分學程', '微學程'])
 const criteriaOptions = ref(['以課程數', '以學分數'])
 
+const minNonSelfCredit = ref(1)
+
 // console.log(unitList)
 const unitListAll = unitList
 
@@ -133,6 +135,23 @@ const go_setSubject = () => {
 const cancel = () => {
   router.push({ path: '/managePrograms' })
 }
+
+// 如果學程類型是微學程，非本系學分數最小值為0
+const typeChange = () => {
+  if (dynamicValidateForm.program_type == '微學程') {
+    // 設定最小值為0
+    minNonSelfCredit.value = 0
+    // 設定非本系學分數值為0
+    dynamicValidateForm.program_nonSelfCredit = 0
+  } else {
+    if (dynamicValidateForm.program_nonSelfCredit == 0) {
+      // 設定最小值為1
+      minNonSelfCredit.value = 1
+      // 設定非本系學分數值為1
+      dynamicValidateForm.program_nonSelfCredit = 1
+    }
+  }
+}
 </script>
 
 <template>
@@ -146,7 +165,6 @@ const cancel = () => {
       label-width="auto"
       class="demo-dynamic"
       :hide-required-asterisk="true"
-      :rules="rules"
     >
       <!-- :rules="rules" -->
       <div class="program-setting">
@@ -157,7 +175,7 @@ const cancel = () => {
           <el-input v-model="dynamicValidateForm.program_url" placeholder="請輸入學程網址" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="program_type" label="學程類型">
-          <el-segmented v-model="dynamicValidateForm.program_type" :options="programOptions" />
+          <el-segmented v-model="dynamicValidateForm.program_type" :options="programOptions" @change="typeChange" />
         </el-form-item>
 
         <el-form-item class="my-grid-item" prop="program_criteria" label="修畢條件">
@@ -173,7 +191,7 @@ const cancel = () => {
           <template #label
             ><span class="lineHeight1">非本系學<br />分數</span></template
           >
-          <el-input-number v-model="dynamicValidateForm.program_nonSelfCredit" :min="1" :max="10" />
+          <el-input-number v-model="dynamicValidateForm.program_nonSelfCredit" :min="minNonSelfCredit" :max="10" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="program_unit" label="設置單位">
           <el-select

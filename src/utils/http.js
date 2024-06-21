@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
   (res) => res.data,
   (e) => {
     if (e.code == 'ERR_NETWORK') {
-      console.log('ERR_NETWORK', e)
+      // console.log('ERR_NETWORK', e)
       ElMessage({
         type: 'error',
         message: '連線異常，請聯絡系統管理員。',

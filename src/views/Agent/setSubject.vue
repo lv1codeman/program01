@@ -70,8 +70,6 @@ const pageTitle = computed(() => {
   if (domain_name) {
     title += domain_name + '-'
   }
-
-  title += '課程設定'
   return title
 })
 
@@ -164,7 +162,13 @@ const confirm = () => {
     // 如果右transfer框的科目沒有在tableData中，則匯入課程
     if (!tableData.value.includes(subjectList.value[item])) tableData.value.push(subjectList.value[item])
   })
-  transferData2.value = ''
+
+  const rightKeys = new Set(transferData2.value)
+  console.log(rightKeys)
+  // 左框排除右框的項目後存入左框
+  data.value = data.value.filter((item) => !rightKeys.has(item.key))
+  // 清空右框数据
+  transferData2.value = []
 }
 
 const deleteRow = (index, row) => {
@@ -200,8 +204,9 @@ const dialogSuccess = () => {
 <template>
   <div class="page-container">
     <pagetitle
-      >{{ pageTitle }}
-      <el-button style="margin-left: 10px" type="primary" @click="submitProgramData"> 返回 </el-button></pagetitle
+      >{{ pageTitle }} 科目設定
+      <el-button type="primary" style="margin-left: 10px">教學引導</el-button>
+      <el-button style="margin-left: 10px" type="warning" @click="submitProgramData"> 返回 </el-button></pagetitle
     >
 
     <el-transfer
@@ -218,29 +223,33 @@ const dialogSuccess = () => {
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
       </template>
       <template #right-footer>
-        <el-button class="transfer-footer" size="default" @click="confirm">確認</el-button>
+        <el-button type="primary" class="transfer-footer" size="default" @click="confirm">確認</el-button>
       </template>
     </el-transfer>
-    <pagetitle>匯入前檢查</pagetitle>
-    <el-table :data="tableData" style="width: 100%" max-height="500" stripe>
-      <el-table-column fixed prop="subject_id" label="ID" width="50" sortable />
-      <el-table-column prop="subject_sub_id" label="科目代碼" width="120" sortable />
-      <el-table-column prop="subject_name" label="科目名稱" width="200" sortable />
-      <el-table-column prop="subject_unit" label="單位" width="120" />
-      <el-table-column prop="subject_sys" label="學制" width="120" />
-      <el-table-column prop="subject_eng_name" label="科目英文名稱" width="300" />
-      <el-table-column prop="subject_credit" label="學分" width="120" />
-      <el-table-column prop="subject_hour" label="學時" width="120" />
-      <el-table-column fixed="right" label="Operations" width="120">
-        <template #default="scope">
-          <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)">
-            Remove
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <el-button style="margin-top: 10px" type="primary" @click="submitProgramData"> 返回 </el-button>
-    <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
+    <pagetitle>{{ pageTitle }} 科目列表</pagetitle>
+    <div class="tabelDataBox">
+      <el-table :data="tableData" style="width: 100%" max-height="500" stripe>
+        <el-table-column fixed prop="subject_id" label="ID" width="50" sortable />
+        <el-table-column prop="subject_sub_id" label="科目代碼" width="130" sortable />
+        <el-table-column prop="subject_name" label="科目名稱" width="240" sortable />
+        <el-table-column prop="subject_unit" label="單位" width="120" />
+        <el-table-column prop="subject_sys" label="學制" width="120" />
+        <!-- <el-table-column prop="subject_eng_name" label="科目英文名稱" width="300" /> -->
+        <el-table-column prop="subject_credit" label="學分" width="120" />
+        <el-table-column prop="subject_hour" label="學時" width="120" />
+        <el-table-column fixed="right" label="操作" width="120">
+          <template #default="scope">
+            <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)">
+              刪除
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="btnGroup">
+        <el-button style="margin-top: 10px" type="warning" @click="submitProgramData"> 返回 </el-button>
+        <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
+      </div>
+    </div>
 
     <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
       <el-result icon="success" title="Success Tip" sub-title="Please follow the instructions">
@@ -254,15 +263,28 @@ const dialogSuccess = () => {
 </template>
 
 <style lang="scss" scoped>
+.tabelDataBox {
+  display: flex;
+  justify-content: center;
+  padding: 0 90px;
+  flex-wrap: wrap;
+}
+.btnGroup {
+  width: 100%;
+  // background-color: red;
+  display: flex;
+  justify-content: start;
+}
+
 /*scrollbar*/
 :deep(::-webkit-scrollbar) {
   width: 10px;
 }
 :deep(::-webkit-scrollbar:vertical) {
-  width: 10px;
+  width: 15px;
 }
 :deep(::-webkit-scrollbar:horizontal) {
-  height: 10px;
+  height: 15px;
 }
 :deep(::-webkit-scrollbar-thumb) {
   -webkit-border-radius: 4px;
