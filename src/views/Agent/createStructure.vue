@@ -171,7 +171,7 @@ const typeChange = () => {
       class="demo-dynamic"
       :hide-required-asterisk="true"
     >
-      <!-- :rules="rules" -->
+      <!-- el-form加入這行以套用驗證 :rules="rules" -->
       <div class="program-setting">
         <el-form-item class="my-grid-item" prop="program_name" label="學程名稱" clearable>
           <el-input v-model="dynamicValidateForm.program_name" placeholder="請輸入學程名稱" />
@@ -221,14 +221,8 @@ const typeChange = () => {
                   <font-awesome-icon icon="circle-xmark" /> 刪除
                 </span>
               </div>
-              <!-- <div class="delCategory" @click="removeCategory(category)">
-                <font-awesome-icon icon="circle-xmark" /> 刪除類別
-              </div> -->
             </div>
             <div class="CategoryPanel">
-              <!-- <div class="leftDomain" @click.prevent="removeCategory(category)">
-                <span>刪除</span>
-              </div> -->
               <div class="CategoryPanelRight">
                 <!-- 類別名稱 -->
                 <el-form-item
@@ -397,10 +391,6 @@ hr {
     margin-bottom: 10px;
   }
   .delCategory {
-    // position: absolute;
-    // display: none;
-    // right: 10px;
-    // top: -1.5rem;
     text-align: center;
     padding: 2px 5px;
     border: 2px solid $domain-border-color;

@@ -245,10 +245,8 @@ const dialogSuccess = () => {
           </template>
         </el-table-column>
       </el-table>
-      <div class="btnGroup">
-        <el-button style="margin-top: 10px" type="warning" @click="submitProgramData"> 返回 </el-button>
-        <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
-      </div>
+      <el-button style="margin-top: 10px" type="warning" @click="submitProgramData"> 返回 </el-button>
+      <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
     </div>
 
     <el-dialog v-model="dialogSuccessVisible" style="width: 300px">
@@ -264,16 +262,7 @@ const dialogSuccess = () => {
 
 <style lang="scss" scoped>
 .tabelDataBox {
-  display: flex;
-  justify-content: center;
   padding: 0 90px;
-  flex-wrap: wrap;
-}
-.btnGroup {
-  width: 100%;
-  // background-color: red;
-  display: flex;
-  justify-content: start;
 }
 
 /*scrollbar*/
@@ -307,6 +296,9 @@ const dialogSuccess = () => {
 @media screen and (max-width: 818px) {
   :deep(.el-transfer) {
     --el-transfer-panel-width: 300px;
+  }
+  .tabelDataBox {
+    padding: 0;
   }
 }
 </style>

@@ -1,4 +1,6 @@
 import '@/styles/common.scss'
+import '@/styles/mystyle.scss'
+
 // elementplus message組件需要導入的SCSS
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/el-message-box.css'
