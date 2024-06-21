@@ -90,6 +90,11 @@ const getClass = (c) => {
     noSubject: !c.domain.length > 0 && (!c.course || c.course.length == 0)
   }
 }
+const getClassD = (d) => {
+  return {
+    noSubject: (d.course && !d.course.length > 0) || !d.course
+  }
+}
 </script>
 <template>
   <div class="page-container">
@@ -149,6 +154,7 @@ const getClass = (c) => {
           <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
             <router-link
               class="baseItem islink domain"
+              :class="getClassD(domain)"
               :to="{
                 name: 'setSubject',
                 params: { category_name: category.category_name, domain_name: domain.domain_name }

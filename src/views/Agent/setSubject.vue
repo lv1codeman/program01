@@ -19,7 +19,7 @@ if (!pageShow.value) {
   router.push({ path: '/login' })
 }
 
-console.log('pageShow value=', pageShow.value)
+// console.log('pageShow value=', pageShow.value)
 
 const targetCheck = () => {
   if (!route.params.domain_name) {
@@ -93,6 +93,8 @@ const generateData = () => {
     data.push({
       key: index,
       label:
+        item.subject_id +
+        '. ' +
         item.subject_sub_id +
         '/' +
         item.subject_name +
@@ -108,7 +110,7 @@ const generateData = () => {
         ')'
     })
   })
-  console.log('data=', data)
+  // console.log('data=', data)
   return data
 }
 
@@ -116,7 +118,9 @@ const target = targetCheck()
 const selectedcourse = ref([])
 
 const data = ref([])
+const data2 = ref([])
 const transferData = ref([])
+const transferData2 = ref([])
 const tableData = ref([])
 
 onMounted(async () => {
@@ -125,7 +129,7 @@ onMounted(async () => {
   loading.value = false
 
   console.log('store.programData @ onMounted = ', store.programData)
-  console.log('target[0]=', target[0])
+  // console.log('target[0]=', target[0])
 
   let categoryItem = store.programData.category.find((item) => item.category_name === target[0])
   let domainItem = categoryItem?.domain.find((item) => item.domain_name === target[1])
@@ -145,15 +149,33 @@ onMounted(async () => {
     }
   }
   selectedcourse.value = transferData.value
-})
+  console.log(transferData.value)
+  data2.value = data.value
 
-const showRes = () => {
+  data.value = data2.value.filter((_, index) => !transferData.value.includes(index))
+  // 在畫面產生時讀入已有的課程到"匯入前檢查"
   transferData.value.forEach((item) => {
     tableData.value.push(subjectList.value[item])
   })
+})
+
+const confirm = () => {
+  transferData2.value.forEach((item) => {
+    // 如果右transfer框的科目沒有在tableData中，則匯入課程
+    if (!tableData.value.includes(subjectList.value[item])) tableData.value.push(subjectList.value[item])
+  })
 }
 
-const deleteRow = (index) => {
+const deleteRow = (index, row) => {
+  console.log('row.subject_id = ', row.subject_id)
+  console.log('刪除前:', transferData.value)
+  // transferData.value = transferData.value.filter((value) => value !== row.subject_id)
+  transferData.value.splice(index, 1)
+  console.log('刪除後:', transferData.value)
+
+  console.log('data2.value = ', data2.value)
+  data.value = data2.value.filter((_, index) => !transferData.value.includes(index))
+  console.log('data.value = ', data.value)
   tableData.value.splice(index, 1)
 }
 const delTable = () => {
@@ -180,7 +202,7 @@ const dialogSuccess = () => {
     >
 
     <el-transfer
-      v-model="transferData"
+      v-model="transferData2"
       filterable
       filter-placeholder="請輸入關鍵字篩選"
       :data="data"
@@ -193,7 +215,7 @@ const dialogSuccess = () => {
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
       </template>
       <template #right-footer>
-        <el-button class="transfer-footer" size="default" @click="showRes">確認</el-button>
+        <el-button class="transfer-footer" size="default" @click="confirm">確認</el-button>
       </template>
     </el-transfer>
     <pagetitle>匯入前檢查</pagetitle>
@@ -208,7 +230,9 @@ const dialogSuccess = () => {
       <el-table-column prop="subject_hour" label="學時" width="120" />
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default="scope">
-          <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)"> Remove </el-button>
+          <el-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)">
+            Remove
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
