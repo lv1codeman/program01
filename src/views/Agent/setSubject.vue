@@ -164,6 +164,7 @@ const confirm = () => {
     // 如果右transfer框的科目沒有在tableData中，則匯入課程
     if (!tableData.value.includes(subjectList.value[item])) tableData.value.push(subjectList.value[item])
   })
+  transferData2.value = ''
 }
 
 const deleteRow = (index, row) => {
