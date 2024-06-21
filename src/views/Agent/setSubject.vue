@@ -180,6 +180,8 @@ const deleteRow = (index, row) => {
   tableData.value.splice(index, 1)
 }
 const delTable = () => {
+  data.value = data2.value
+  transferData.value = null
   tableData.value = []
 }
 const dialogSuccess = () => {

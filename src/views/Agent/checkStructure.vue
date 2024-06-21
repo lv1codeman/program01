@@ -6,6 +6,10 @@ import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
 import { submitProgram } from '@/apis/programAPI'
+import { ElMessage } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const store = useProgramStore()
 const programstruct = ref(store.programData)
 console.log('programstruct= ', programstruct.value)
@@ -39,6 +43,7 @@ onUnmounted(() => {
 const submit = async () => {
   // 送出前檢查
   console.log(store.programData)
+  let resultMsg = ''
   let p = store.programData
 
   p.category.forEach((c) => {
@@ -46,13 +51,15 @@ const submit = async () => {
     if (!c.course || c.course.length <= 0) {
       // 如果類別沒有領域，顯示訊息
       if (c.domain.length <= 0) {
-        console.log(`類別 ${c.category_name} 尚未指定科目`)
+        // console.log(`類別 ${c.category_name} 尚未指定科目`)
+        resultMsg += '類別 ' + c.category_name + ' 尚未指定科目<br/>'
       } else {
         // 如果有領域，檢查領域
         c.domain.forEach((d) => {
           // 每個領域中，沒有科目的項目，顯示訊息
           if (!d.course || d.course.length <= 0) {
-            console.log(`領域 ${d.domain_name} 尚未指定科目`)
+            // console.log(`領域 ${d.domain_name} 尚未指定科目`)
+            resultMsg += '領域 ' + d.domain_name + ' 尚未指定科目<br/>'
           }
         })
       }
@@ -77,12 +84,26 @@ const submit = async () => {
     //   }
     // }
   })
-
-  // 回傳到server端
-  // console.log('學程資料: ', JSON.stringify(store.programData))
-  // let res = await submitProgram(JSON.stringify(store.programData))
-
-  // console.log('submit response=', res)
+  console.log(resultMsg)
+  if (!resultMsg) {
+    // 回傳到server端
+    console.log('學程資料: ', JSON.stringify(store.programData))
+    let res = await submitProgram(JSON.stringify(store.programData))
+    console.log('submit response=', res)
+    router.push({ path: '/managePrograms' })
+  } else {
+    ElMessageBox.alert(resultMsg, '學程架構錯誤', {
+      confirmButtonText: '確認',
+      dangerouslyUseHTMLString: true,
+      draggable: true
+    })
+      .then((res) => {
+        console.log('user click  OK.', res)
+      })
+      .catch((e) => {
+        console.log('user click cancel.', e)
+      })
+  }
 }
 
 const getClass = (c) => {
