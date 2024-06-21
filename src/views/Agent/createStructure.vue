@@ -110,6 +110,7 @@ const programOptions = ref(['學分學程', '微學程'])
 const criteriaOptions = ref(['以課程數', '以學分數'])
 
 const minNonSelfCredit = ref(1)
+const minCredit = ref(15)
 
 // console.log(unitList)
 const unitListAll = unitList
@@ -143,12 +144,20 @@ const typeChange = () => {
     minNonSelfCredit.value = 0
     // 設定非本系學分數值為0
     dynamicValidateForm.program_nonSelfCredit = 0
+    // 設定最小值為1
+    minCredit.value = 8
+    // 設定最低學分數值為1
+    dynamicValidateForm.program_minCredit = 8
   } else {
     if (dynamicValidateForm.program_nonSelfCredit == 0) {
       // 設定最小值為1
       minNonSelfCredit.value = 1
       // 設定非本系學分數值為1
       dynamicValidateForm.program_nonSelfCredit = 1
+      // 設定最小值為1
+      minCredit.value = 15
+      // 設定最低學分數值為1
+      dynamicValidateForm.program_minCredit = 15
     }
   }
 }
@@ -185,7 +194,7 @@ const typeChange = () => {
           <template #label
             ><span class="lineHeight1">最低應修<br />學分數</span></template
           >
-          <el-input-number v-model="dynamicValidateForm.program_minCredit" :min="1" :max="30" />
+          <el-input-number v-model="dynamicValidateForm.program_minCredit" :min="minCredit" :max="30" />
         </el-form-item>
         <el-form-item class="my-grid-item" prop="program_nonSelfCredit" label="非本系學分數">
           <template #label
