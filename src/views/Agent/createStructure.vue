@@ -137,26 +137,22 @@ const cancel = () => {
   router.push({ path: '/managePrograms' })
 }
 
-// 如果學程類型是微學程，非本系學分數最小值為0
+// 如果學程類型是微學程，非本系學分數最小值為0，否則為1；微學程最低學分數為8，學分學程為15
 const typeChange = () => {
   if (dynamicValidateForm.program_type == '微學程') {
     // 設定最小值為0
     minNonSelfCredit.value = 0
     // 設定非本系學分數值為0
     dynamicValidateForm.program_nonSelfCredit = 0
-    // 設定最小值為1
+    // 設定最小值為8
     minCredit.value = 8
-    // 設定最低學分數值為1
+    // 設定最低學分數值為8
     dynamicValidateForm.program_minCredit = 8
   } else {
     if (dynamicValidateForm.program_nonSelfCredit == 0) {
-      // 設定最小值為1
       minNonSelfCredit.value = 1
-      // 設定非本系學分數值為1
       dynamicValidateForm.program_nonSelfCredit = 1
-      // 設定最小值為1
       minCredit.value = 15
-      // 設定最低學分數值為1
       dynamicValidateForm.program_minCredit = 15
     }
   }
