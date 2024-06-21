@@ -74,12 +74,16 @@ const loading = ref(true)
 // let res = await submitProgram(JSON.stringify(store.programData))
 // console.log('submit response=', res)
 // }
+const backToManagePrograms = () => {
+  router.push({ path: '/managePrograms' })
+}
 </script>
 <template>
   <div class="page-container">
     <pagetitle
       >學程資訊
       <!-- <el-button type="success" @click="updateProgram" style="margin-left: 10px">送出</el-button> -->
+      <el-button type="warning" @click="backToManagePrograms" style="margin-left: 10px">返回</el-button>
     </pagetitle>
     <div v-if="programstruct">
       <el-descriptions :column="descriptionColNum" size="default" border :direction="descriptDirection">

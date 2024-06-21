@@ -40,6 +40,11 @@ window.addEventListener('resize', updateColumnNum)
 onUnmounted(() => {
   window.removeEventListener('resize', updateColumnNum)
 })
+
+const cancel = () => {
+  router.push({ path: '/managePrograms' })
+}
+
 const submit = async () => {
   // 送出前檢查
   console.log(store.programData)
@@ -90,6 +95,14 @@ const submit = async () => {
     console.log('學程資料: ', JSON.stringify(store.programData))
     let res = await submitProgram(JSON.stringify(store.programData))
     console.log('submit response=', res)
+
+    ElMessage({
+      type: 'success',
+      message: '學程新增成功',
+      showClose: true,
+      duration: 3000,
+      offset: window.screen.height / 15
+    })
     router.push({ path: '/managePrograms' })
   } else {
     ElMessageBox.alert(resultMsg, '學程架構錯誤', {
@@ -119,7 +132,11 @@ const getClassD = (d) => {
 </script>
 <template>
   <div class="page-container">
-    <pagetitle>學程資訊<el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button></pagetitle>
+    <pagetitle
+      >學程資訊
+      <el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button>
+      <el-button type="warning" @click="cancel" style="margin-left: 10px">返回</el-button>
+    </pagetitle>
 
     <el-descriptions
       class="margin-top"

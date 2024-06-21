@@ -4,20 +4,21 @@ const router = useRouter()
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
-// import regex from '@/assets/regex/regex.js'
+import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
+
 const store = useProgramStore()
 const formRef = ref()
 
 var categoryCount = 0
 var domainCount = 1
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
-const dynamicValidateForm_formal = reactive({
+const dynamicValidateForm = reactive({
   program_name: '',
   program_url: '',
   program_type: '學分學程',
-  program_unit: '',
+  program_unit: sessionStorage.getItem('user_unit'),
   program_minCredit: 1,
   program_nonSelfCredit: 1,
   program_criteria: '以學分數',
@@ -31,7 +32,7 @@ const dynamicValidateForm_formal = reactive({
     }
   ]
 })
-const dynamicValidateForm = reactive({
+const dynamicValidateForm_formal = reactive({
   program_name: '學程1',
   program_url: '網址1',
   program_type: '學分學程',
@@ -45,14 +46,7 @@ const dynamicValidateForm = reactive({
       category_name: '類別1',
       category_minCredit: 0,
       category_requireNum: 0,
-      domain: [
-        // {
-        //   domain_id: domainCount++,
-        //   domain_name: '領域1',
-        //   domain_minCredit: 0,
-        //   domain_requireNum: 0
-        // }
-      ]
+      domain: []
     }
   ]
 })
@@ -98,9 +92,7 @@ const submitForm = (formEl) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
-      // console.log('submit!', JSON.stringify(dynamicValidateForm))
       store.setProgramData(dynamicValidateForm)
-      // console.log('store data = ', store.programData)
       router.push({ path: '/checkStructure' })
     } else {
       console.log('error submit!')
@@ -122,9 +114,9 @@ const unitListAll = unitList
 
 const rules = ref({
   program_name: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
-  program_url: { required: true, /*pattern: regex.reg_url,*/ message: '網址格式錯誤', trigger: 'blur' },
+  program_url: { required: true, pattern: regex.reg_url, message: '網址格式錯誤', trigger: 'blur' },
   program_type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
-  program_unit: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_unit: { required: true, message: '請輸入單位名稱', trigger: 'blur' },
   program_criteria: { required: true, message: '請輸入修畢條件', trigger: 'blur' },
   program_minCredit: { required: true, message: '請輸入最低應修學分數', trigger: 'blur' },
   program_nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
@@ -138,11 +130,14 @@ const checkDynamicValidateForm = () => {
 const go_setSubject = () => {
   router.push({ path: '/setSubject' })
 }
+const cancel = () => {
+  router.push({ path: '/managePrograms' })
+}
 </script>
 
 <template>
   <div class="page-container">
-    <pagetitle>學程設定</pagetitle>
+    <pagetitle>學程設定 <el-button type="warning" @click="cancel" style="margin-left: 10px">返回</el-button></pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
       ref="formRef"
@@ -155,32 +150,32 @@ const go_setSubject = () => {
     >
       <!-- :rules="rules" -->
       <div class="program-setting">
-        <el-form-item class="my-grid-item" prop="name" label="學程名稱" clearable>
+        <el-form-item class="my-grid-item" prop="program_name" label="學程名稱" clearable>
           <el-input v-model="dynamicValidateForm.program_name" placeholder="請輸入學程名稱" />
         </el-form-item>
-        <el-form-item class="my-grid-item" prop="url" label="學程網址" clearable>
+        <el-form-item class="my-grid-item" prop="program_url" label="學程網址" clearable>
           <el-input v-model="dynamicValidateForm.program_url" placeholder="請輸入學程網址" />
         </el-form-item>
-        <el-form-item class="my-grid-item" prop="type" label="學程類型">
+        <el-form-item class="my-grid-item" prop="program_type" label="學程類型">
           <el-segmented v-model="dynamicValidateForm.program_type" :options="programOptions" />
         </el-form-item>
 
-        <el-form-item class="my-grid-item" prop="criteria" label="修畢條件">
+        <el-form-item class="my-grid-item" prop="program_criteria" label="修畢條件">
           <el-segmented v-model="dynamicValidateForm.program_criteria" :options="criteriaOptions" />
         </el-form-item>
-        <el-form-item class="my-grid-item" prop="minCredit" label="">
+        <el-form-item class="my-grid-item" prop="program_minCredit" label="">
           <template #label
             ><span class="lineHeight1">最低應修<br />學分數</span></template
           >
           <el-input-number v-model="dynamicValidateForm.program_minCredit" :min="1" :max="30" />
         </el-form-item>
-        <el-form-item class="my-grid-item" prop="nonSelfCredit" label="非本系學分數">
+        <el-form-item class="my-grid-item" prop="program_nonSelfCredit" label="非本系學分數">
           <template #label
             ><span class="lineHeight1">非本系學<br />分數</span></template
           >
           <el-input-number v-model="dynamicValidateForm.program_nonSelfCredit" :min="1" :max="10" />
         </el-form-item>
-        <el-form-item class="my-grid-item" prop="unit" label="設置單位">
+        <el-form-item class="my-grid-item" prop="program_unit" label="設置單位">
           <el-select
             v-model="dynamicValidateForm.program_unit"
             filterable

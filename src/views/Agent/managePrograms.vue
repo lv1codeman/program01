@@ -5,7 +5,6 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { useProgramStore } from '@/stores/agentData.js'
 import { ref, onMounted } from 'vue'
 import { getUnitPG, getUnitPrograms, deleteProgram } from '@/apis/programAPI.js'
-
 const router = useRouter()
 const store = useProgramStore()
 
@@ -45,7 +44,7 @@ const tableRowClicked = (row, event, column) => {
     <el-table
       :data="tableData"
       style="width: 100%"
-      max-height="250"
+      max-height="350"
       @row-click="tableRowClicked"
       :header-cell-style="{ 'text-align': 'left' }"
       :cell-style="{ 'text-align': 'left' }"
