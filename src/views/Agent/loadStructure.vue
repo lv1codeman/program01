@@ -8,7 +8,7 @@ import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
-import { getUnitPrograms, getUnitPGById, submitProgram } from '@/apis/programAPI'
+import { deleteProgram, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
@@ -47,15 +47,16 @@ const data = ref([])
 
 const loadFromServer = async () => {
   try {
-    let user_unit = sessionStorage.getItem('user_unit')
-    console.log('user_unit=', user_unit)
-    console.log('store.currentPGId=', store.currentPGId)
+    // let user_unit = sessionStorage.getItem('user_unit')
+    // console.log('user_unit=', user_unit)
+    // console.log('store.currentPGId=', store.currentPGId)
 
-    let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
-    console.log('res= ', res.data)
-    let resJson = transformServerJSON(res.data)
-    store.setProgramData(resJson)
-    programstruct.value = resJson
+    // let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
+    // console.log('res= ', res.data)
+    // let resJson = transformServerJSON(res.data)
+    // store.setProgramData(resJson)
+    // programstruct.value = resJson
+    programstruct.value = store.programData
     data.value = transToTree(programstruct.value)
   } catch (error) {
     console.error('Error loading data from server:', error)
@@ -109,12 +110,16 @@ const submit = async () => {
   if (!resultMsg) {
     // 回傳到server端
     console.log('學程資料: ', JSON.stringify(store.programData))
+    // 刪除DB中原本的program，將目前修改好的新增到DB
+    console.log('store.currentPGId = ', store.currentPGId)
+    const resD = await deleteProgram({ program_id: store.currentPGId })
+    console.log('delete res = ', resD)
     let res = await submitProgram(JSON.stringify(store.programData))
     console.log('submit response=', res)
 
     ElMessage({
       type: 'success',
-      message: '學程新增成功',
+      message: '學程修改成功',
       showClose: true,
       duration: 3000,
       offset: window.screen.height / 15
@@ -179,7 +184,7 @@ const submit = async () => {
             <router-link
               class="baseItem islink"
               style="margin-bottom: 10px"
-              :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
+              :to="{ name: 'setSubject', params: { category_name: category.category_name, isFromLoad: true } }"
               >{{ category.category_name }}</router-link
             >
           </el-tooltip>
@@ -201,7 +206,7 @@ const submit = async () => {
                 class="baseItem islink domain"
                 :to="{
                   name: 'setSubject',
-                  params: { category_name: category.category_name, domain_name: domain.domain_name }
+                  params: { category_name: category.category_name, domain_name: domain.domain_name, isFromLoad: true }
                 }"
               >
                 {{ domain.domain_name }}</router-link

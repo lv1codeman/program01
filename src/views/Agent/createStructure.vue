@@ -13,6 +13,7 @@ const formRef = ref()
 
 var categoryCount = 0
 var domainCount = 1
+
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
 const dynamicValidateForm = reactive({
   program_name: '',

@@ -20,6 +20,7 @@ if (!pageShow.value) {
 }
 
 // console.log('pageShow value=', pageShow.value)
+console.log('route.params = ', route.params)
 
 const targetCheck = () => {
   if (!route.params.domain_name) {
@@ -54,7 +55,14 @@ const submitProgramData = () => {
       categoryItem.course = temp
     }
   }
-  router.push({ path: '/checkStructure' })
+
+  console.log('route.params.isFromLoad =', route.params.isFromLoad)
+  if (route.params.isFromLoad) {
+    router.push({ path: '/loadStructure' })
+  } else {
+    router.push({ path: '/checkStructure' })
+  }
+
   // dialogSuccessVisible.value = true
 }
 

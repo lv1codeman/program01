@@ -27,7 +27,7 @@ const router = createRouter({
         { path: 'createStructure', component: createStructure },
         { path: 'result', component: Result },
         {
-          path: 'setSubject/:category_name/:domain_name?',
+          path: 'setSubject/:category_name/:domain_name?/:isFromLoad?',
           name: 'setSubject',
           component: setSubject,
           props: (route) => ({

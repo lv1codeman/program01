@@ -4,7 +4,8 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
 import { ref, onMounted } from 'vue'
-import { getUnitPG, getUnitPrograms, deleteProgram } from '@/apis/programAPI.js'
+import { getUnitPG, getUnitPGById, deleteProgram } from '@/apis/programAPI.js'
+import transformServerJSON from '@/utils/transformServerJSON.js'
 const router = useRouter()
 const store = useProgramStore()
 
@@ -20,9 +21,20 @@ const deleteRow = async (index, row) => {
   tableData.value.splice(index, 1)
   // 刪除學程
 }
-const editRow = (row) => {
+const editRow = async (row) => {
   // 編輯學程
+  // 從server讀取這筆資料(by program_id)存到store.programData
   store.setCurrentPGId(row.program_id)
+
+  let user_unit = sessionStorage.getItem('user_unit')
+  console.log('user_unit=', user_unit)
+  console.log('store.currentPGId=', store.currentPGId)
+
+  let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
+  console.log('res= ', res.data)
+  let resJson = transformServerJSON(res.data)
+  store.setProgramData(resJson)
+
   router.push({ path: '/loadStructure' })
 }
 

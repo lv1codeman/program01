@@ -42,7 +42,7 @@ onUnmounted(() => {
 })
 
 const cancel = () => {
-  router.push({ path: '/managePrograms' })
+  router.push({ path: '/createStructure' })
 }
 
 const submit = async () => {
