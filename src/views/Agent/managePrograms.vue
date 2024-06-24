@@ -69,7 +69,7 @@ const tableRowClicked = (row, event, column) => {
 
       <el-table-column align="center" fixed="right" label="操作" width="150">
         <template #default="scope">
-          <el-button type="primary" size="small" @click.prevent="editRow(scope.row)"> 查看 </el-button>
+          <el-button type="primary" size="small" @click.prevent="editRow(scope.row)"> 編輯 </el-button>
           <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button>
         </template>
       </el-table-column>
