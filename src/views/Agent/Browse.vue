@@ -10,7 +10,7 @@ const router = useRouter()
 const store = useProgramStore()
 
 const go_createStructure = () => {
-  router.push({ path: '/createStructure' })
+  router.push({ path: '/agent/create' })
 }
 
 const tableData = ref([])
@@ -35,7 +35,7 @@ const editRow = async (row) => {
   let resJson = transformServerJSON(res.data)
   store.setProgramData(resJson)
 
-  router.push({ path: '/loadStructure' })
+  router.push({ path: '/agent/edit' })
 }
 
 onMounted(async () => {

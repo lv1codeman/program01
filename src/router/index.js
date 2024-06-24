@@ -6,11 +6,11 @@ import Home from '@/views/Home/index.vue'
 import Programs from '@/views/Programs/index.vue'
 import Result from '@/views/Result/result.vue'
 import MiniPrograms from '@/views/MiniPrograms/index.vue'
-import managePrograms from '@/views/Agent/managePrograms.vue'
-import loadStructure from '@/views/Agent/loadStructure.vue'
-import createStructure from '@/views/Agent/createStructure.vue'
+import Browse from '@/views/Agent/Browse.vue'
+import Edit from '@/views/Agent/Edit.vue'
+import Create from '@/views/Agent/Create.vue'
 import setSubject from '@/views/Agent/setSubject.vue'
-import checkStructure from '@/views/Agent/checkStructure.vue'
+import Check from '@/views/Agent/Check.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,10 +22,23 @@ const router = createRouter({
         { path: '', component: Home },
         { path: 'programs', component: Programs },
         { path: 'miniprograms', component: MiniPrograms },
-        { path: 'managePrograms', component: managePrograms },
-        { path: 'loadStructure', component: loadStructure },
-        { path: 'createStructure', component: createStructure },
         { path: 'result', component: Result },
+        {
+          name: '404',
+          path: '/:catchAll(.*)',
+          component: () => import(`@/views/Error/404.vue`)
+        }
+      ]
+    },
+    { path: '/login', component: Login },
+    {
+      path: '/agent',
+      component: Layout,
+      children: [
+        { path: '', component: Browse }, //首頁預設為Browse，管理介面
+        { path: 'create', component: Create },
+        { path: 'check', component: Check },
+        { path: 'edit', component: Edit },
         {
           path: 'setSubject/:category_name/:domain_name?/:isFromLoad?',
           name: 'setSubject',
@@ -34,16 +47,9 @@ const router = createRouter({
             category_name: route.params.category_name,
             domain_name: route.params.domain_name || ''
           })
-        },
-        { path: 'checkStructure', component: checkStructure },
-        {
-          name: '404',
-          path: '/:catchAll(.*)',
-          component: () => import(`@/views/Error/404.vue`)
         }
       ]
-    },
-    { path: '/login', component: Login }
+    }
   ]
 })
 

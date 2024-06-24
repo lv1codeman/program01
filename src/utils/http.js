@@ -47,7 +47,8 @@ axiosInstance.interceptors.response.use(
       console.log('e.response.status = 401', e.response.data.detail)
       ElMessage({
         type: 'error',
-        message: e.response.data.detail,
+        //message: e.response.data.detail,
+        message: '請先登入',
         showClose: true,
         duration: 3000,
         offset: window.screen.height / 50

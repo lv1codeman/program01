@@ -94,7 +94,7 @@ const submitForm = (formEl) => {
   formEl.validate((valid) => {
     if (valid) {
       store.setProgramData(dynamicValidateForm)
-      router.push({ path: '/checkStructure' })
+      router.push({ path: '/agent/check' })
     } else {
       console.log('error submit!')
       return false
@@ -132,10 +132,10 @@ const checkDynamicValidateForm = () => {
 }
 
 const go_setSubject = () => {
-  router.push({ path: '/setSubject' })
+  router.push({ path: '/agent/setSubject' })
 }
 const cancel = () => {
-  router.push({ path: '/managePrograms' })
+  router.push({ path: '/agent/' })
 }
 
 // 如果學程類型是微學程，非本系學分數最小值為0，否則為1；微學程最低學分數為8，學分學程為15

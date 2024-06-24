@@ -42,7 +42,7 @@ onUnmounted(() => {
 })
 
 const cancel = () => {
-  router.push({ path: '/createStructure' })
+  router.push({ path: '/agent/create' })
 }
 
 const submit = async () => {
@@ -84,7 +84,7 @@ const submit = async () => {
       duration: 3000,
       offset: window.screen.height / 15
     })
-    router.push({ path: '/managePrograms' })
+    router.push({ path: '/agent' })
   } else {
     ElMessageBox.alert(resultMsg, '學程架構錯誤', {
       confirmButtonText: '確認',

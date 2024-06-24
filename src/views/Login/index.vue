@@ -48,7 +48,7 @@ const btnLogin = async () => {
     })
 
     if (sessionStorage.getItem('user_role') == 'staff') {
-      router.push({ path: '/managePrograms' })
+      router.push({ path: '/agent' })
     } else {
       router.push({ path: '/' })
     }

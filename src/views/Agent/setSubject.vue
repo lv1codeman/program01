@@ -58,9 +58,9 @@ const submitProgramData = () => {
 
   console.log('route.params.isFromLoad =', route.params.isFromLoad)
   if (route.params.isFromLoad) {
-    router.push({ path: '/loadStructure' })
+    router.push({ path: '/agent/edit' })
   } else {
-    router.push({ path: '/checkStructure' })
+    router.push({ path: '/agent/check' })
   }
 
   // dialogSuccessVisible.value = true
