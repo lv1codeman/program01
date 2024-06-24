@@ -6,6 +6,8 @@ import { useRouter } from 'vue-router'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
+import { ElMessage } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 import { getUnitPrograms, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
@@ -77,12 +79,67 @@ const loading = ref(true)
 const backToManagePrograms = () => {
   router.push({ path: '/managePrograms' })
 }
+
+const submit = async () => {
+  // 送出前檢查
+  console.log(store.programData)
+  let resultMsg = ''
+  let p = store.programData
+
+  p.category.forEach((c) => {
+    // 如果類別沒有課程(代表要有領域)
+    if (!c.course || c.course.length <= 0) {
+      // 如果類別沒有領域，顯示訊息
+      if (c.domain.length <= 0) {
+        // console.log(`類別 ${c.category_name} 尚未指定科目`)
+        resultMsg += '類別 ' + c.category_name + ' 尚未指定科目<br/>'
+      } else {
+        // 如果有領域，檢查領域
+        c.domain.forEach((d) => {
+          // 每個領域中，沒有科目的項目，顯示訊息
+          if (!d.course || d.course.length <= 0) {
+            // console.log(`領域 ${d.domain_name} 尚未指定科目`)
+            resultMsg += '領域 ' + d.domain_name + ' 尚未指定科目<br/>'
+          }
+        })
+      }
+    }
+  })
+  console.log(resultMsg)
+  if (!resultMsg) {
+    // 回傳到server端
+    console.log('學程資料: ', JSON.stringify(store.programData))
+    let res = await submitProgram(JSON.stringify(store.programData))
+    console.log('submit response=', res)
+
+    ElMessage({
+      type: 'success',
+      message: '學程新增成功',
+      showClose: true,
+      duration: 3000,
+      offset: window.screen.height / 15
+    })
+    router.push({ path: '/managePrograms' })
+  } else {
+    ElMessageBox.alert(resultMsg, '學程架構錯誤', {
+      confirmButtonText: '確認',
+      dangerouslyUseHTMLString: true,
+      draggable: true
+    })
+      .then((res) => {
+        console.log('user click  OK.', res)
+      })
+      .catch((e) => {
+        console.log('user click cancel.', e)
+      })
+  }
+}
 </script>
 <template>
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <!-- <el-button type="success" @click="updateProgram" style="margin-left: 10px">送出</el-button> -->
+      <el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button>
       <el-button type="warning" @click="backToManagePrograms" style="margin-left: 10px">返回</el-button>
     </pagetitle>
     <div v-if="programstruct">

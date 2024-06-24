@@ -69,25 +69,6 @@ const submit = async () => {
         })
       }
     }
-
-    // if (c.course && c.course.length > 0) {
-    //   // c.course.forEach((crs) => {
-    //   //   console.log(`科目: ${crs.subject_sub_id} ${crs.subject_name}`)
-    //   // })
-    // } else {
-    //   if (c.domain.length > 0) {
-    //     // console.log('有領域')
-    //     c.domain.forEach((d) => {
-    //       if (d.course && d.course.length > 0) {
-    //         // console.log('領域有課程')
-    //       } else {
-    //         console.log(`領域 ${d.domain_name} 尚未指定科目`)
-    //       }
-    //     })
-    //   } else {
-    //     console.log(`類別 ${c.category_name} 尚未指定科目`)
-    //   }
-    // }
   })
   console.log(resultMsg)
   if (!resultMsg) {
