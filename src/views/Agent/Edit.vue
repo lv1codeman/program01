@@ -340,6 +340,7 @@ const submit = async (formEl) => {
       <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
+    <el-button type="success" @click="submit(formRef)">送出</el-button>
     <el-button type="warning" @click="backToManagePrograms">返回</el-button>
   </div>
 </template>
