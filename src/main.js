@@ -31,6 +31,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import {
   faCirclePlus,
+  faCircleLeft,
   faCircleXmark,
   faScaleBalanced,
   faMagnifyingGlass,
@@ -39,10 +40,12 @@ import {
   faPhone,
   faLink,
   faPalette,
-  faPrint
+  faPrint,
+  faCloudArrowUp
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faCircleLeft,
   faCartShopping,
   faCirclePlus,
   faTrashCan,
@@ -54,10 +57,12 @@ library.add(
   faPhone,
   faLink,
   faPalette,
-  faPrint
+  faPrint,
+  faCloudArrowUp
 )
 
 const app = createApp(App)
+// for using @element-plus/icons-vue
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

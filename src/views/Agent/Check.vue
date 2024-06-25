@@ -99,13 +99,15 @@ const submit = async () => {
       })
   }
 }
-
+const needEdit = ref(false)
 const getClass = (c) => {
+  needEdit.value = true
   return {
     noSubject: !c.domain.length > 0 && (!c.course || c.course.length == 0)
   }
 }
 const getClassD = (d) => {
+  needEdit.value = true
   return {
     noSubject: (d.course && !d.course.length > 0) || !d.course
   }
@@ -115,8 +117,12 @@ const getClassD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button>
-      <el-button type="warning" @click="cancel" style="margin-left: 10px">返回</el-button>
+      <el-button type="success" @click="submit" style="margin-left: 10px">
+        <font-awesome-icon icon="fa-cloud-arrow-up" class="mr-2" />送出</el-button
+      >
+      <el-button type="warning" @click="cancel" style="margin-left: 10px">
+        <font-awesome-icon icon="fa-circle-left" class="mr-2 fontsize-16" />返回</el-button
+      >
     </pagetitle>
 
     <el-descriptions
@@ -154,12 +160,19 @@ const getClassD = (d) => {
             :class="getClass(category)"
             style="margin-bottom: 10px"
             :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
-            >{{ category.category_name }}</router-link
+          >
+            <span v-if="needEdit"
+              ><el-icon><More /></el-icon
+            ></span>
+            {{ category.category_name }}</router-link
           >
         </el-tooltip>
       </div>
       <div v-else>
-        <div class="baseItem" :class="getClass(category)">{{ category.category_name }}</div>
+        <div class="baseItem" :class="getClass(category)">
+          <span v-if="needEdit">aaa</span>
+          {{ category.category_name }}
+        </div>
       </div>
 
       <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
@@ -179,7 +192,7 @@ const getClassD = (d) => {
                 params: { category_name: category.category_name, domain_name: domain.domain_name }
               }"
             >
-              {{ domain.domain_name }}</router-link
+              <span v-if="needEdit">aaa</span>{{ domain.domain_name }}</router-link
             >
           </el-tooltip>
         </div>
@@ -188,7 +201,10 @@ const getClassD = (d) => {
     <div class="description">請在以下樹形結構檢查學程架構是否正確</div>
 
     <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
-    <el-button type="success" @click="submit">送出</el-button>
+    <el-button type="success" @click="submit">
+      <font-awesome-icon icon="fa-cloud-arrow-up" class="mr-2" />
+      送出</el-button
+    >
   </div>
 </template>
 <style lang="scss" scoped>

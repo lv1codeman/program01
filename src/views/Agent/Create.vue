@@ -153,7 +153,12 @@ const typeChange = () => {
 
 <template>
   <div class="page-container">
-    <pagetitle>學程設定 <el-button type="warning" @click="cancel" style="margin-left: 10px">返回</el-button></pagetitle>
+    <pagetitle
+      >學程設定
+      <el-button type="warning" @click="cancel" style="margin-left: 10px"
+        ><font-awesome-icon icon="fa-circle-left" class="mr-2 fontsize-16" />返回</el-button
+      ></pagetitle
+    >
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
       ref="formRef"
@@ -337,7 +342,7 @@ const typeChange = () => {
         <div class="addCategory" @click="addCategory"><font-awesome-icon icon="circle-plus" /> 新增類別</div>
       </div>
     </el-form>
-    <el-button type="primary" @click="submitForm(formRef)">送出表單</el-button>
+    <el-button type="primary" @click="submitForm(formRef)"> 送出表單</el-button>
     <el-button @click="resetForm(formRef)">重設表單</el-button>
     <el-button @click="checkDynamicValidateForm">check result</el-button>
     <el-button @click="go_setSubject">go setSubject</el-button>

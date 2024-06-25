@@ -3,3 +3,58 @@
   justify-content: center;
   align-items: center;
 }
+.centerH {
+  display: flex;
+  justify-content: center;
+}
+.centerV {
+  display: flex;
+  align-items: center;
+}
+.bg-red {
+  background-color: red;
+}
+
+.ml-2 {
+  margin-left: 2px;
+}
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mr-2 {
+  margin-right: 2px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.fontsize-14 {
+  font-size: 14px;
+}
+
+.fontsize-16 {
+  font-size: 16px;
+}
+
+.fontsize-18 {
+  font-size: 18px;
+}
+
+.fontsize-20 {
+  font-size: 20px;
+}
+
+.fontsize-30 {
+  font-size: 30px;
+}

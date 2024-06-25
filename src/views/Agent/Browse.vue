@@ -54,15 +54,16 @@ const tableRowClicked = (row, event, column) => {
 <template>
   <div class="page-container">
     <pagetitle>學程管理</pagetitle>
-    <el-button class="btn_create" type="success" @click="go_createStructure">新增學程</el-button>
-    <el-icon :size="20"> <Edit /> </el-icon>
+    <el-button class="btn_create" type="success" @click="go_createStructure">
+      <el-icon :size="15" class="mr-2"> <Plus /> </el-icon>新增學程
+    </el-button>
+
     <el-table
       :data="tableData"
       style="width: 100%"
       max-height="350"
       @row-click="tableRowClicked"
       :header-cell-style="{ 'text-align': 'left' }"
-      :cell-style="{ 'text-align': 'left' }"
     >
       <el-table-column fixed prop="program_id" label="學程ID" width="150" />
       <el-table-column prop="program_name" label="學程名稱" width="120" />
@@ -70,9 +71,12 @@ const tableRowClicked = (row, event, column) => {
       <el-table-column prop="program_unit" label="學程單位" width="120" />
       <el-table-column prop="program_url" label="學程網址" />
 
-      <el-table-column align="center" fixed="right" label="操作" width="150">
+      <el-table-column align="center" fixed="right" label="操作" width="180">
         <template #default="scope">
-          <el-button type="primary" size="small" @click.prevent="editRow(scope.row)"> 編輯 </el-button>
+          <el-button type="primary" class="op_button" @click.prevent="editRow(scope.row)">
+            <el-icon class="mr-2" :size="16"><Edit /></el-icon>
+            編輯
+          </el-button>
           <!-- <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button> -->
           <el-popconfirm
             title="確定要刪除嗎?"
@@ -84,7 +88,10 @@ const tableRowClicked = (row, event, column) => {
           >
             <!-- icon="el-icon-info" -->
             <template #reference>
-              <el-button type="primary" size="small"> 刪除 </el-button>
+              <el-button type="primary" class="op_button">
+                <el-icon class="mr-2" :size="16"><Delete /></el-icon>
+                刪除
+              </el-button>
             </template>
           </el-popconfirm>
         </template>
@@ -93,6 +100,10 @@ const tableRowClicked = (row, event, column) => {
   </div>
 </template>
 <style lang="scss" scoped>
+.op_button {
+  padding: 5px 10px;
+}
+
 .btn_create {
   margin: 10px 0;
 }
