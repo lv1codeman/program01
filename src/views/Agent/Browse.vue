@@ -5,6 +5,7 @@ import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { useProgramStore } from '@/stores/agentData.js'
 import { ref, onMounted } from 'vue'
 import { getUnitPG, getUnitPGById, deleteProgram } from '@/apis/programAPI.js'
+import { InfoFilled } from '@element-plus/icons-vue'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const router = useRouter()
 const store = useProgramStore()
@@ -54,7 +55,7 @@ const tableRowClicked = (row, event, column) => {
   <div class="page-container">
     <pagetitle>學程管理</pagetitle>
     <el-button class="btn_create" type="success" @click="go_createStructure">新增學程</el-button>
-
+    <el-icon :size="20"> <Edit /> </el-icon>
     <el-table
       :data="tableData"
       style="width: 100%"
@@ -78,7 +79,10 @@ const tableRowClicked = (row, event, column) => {
             confirmButtonText="確認"
             cancelButtonText="取消"
             @confirm="deleteRow(scope.$index, scope.row)"
+            iconColor="var(--el-color-warning)"
+            :icon="InfoFilled"
           >
+            <!-- icon="el-icon-info" -->
             <template #reference>
               <el-button type="primary" size="small"> 刪除 </el-button>
             </template>

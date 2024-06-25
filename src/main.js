@@ -5,6 +5,8 @@ import '@/styles/mystyle.scss'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/el-message-box.css'
 
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 // import print from 'print-js'
@@ -56,6 +58,10 @@ library.add(
 )
 
 const app = createApp(App)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
+
 app.component('font-awesome-icon', FontAwesomeIcon)
 // app.use(print)
 app.use(createPinia())
