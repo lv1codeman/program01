@@ -16,6 +16,8 @@ const go_createStructure = () => {
 const tableData = ref([])
 
 const deleteRow = async (index, row) => {
+  console.log('deleteRow start...')
+
   const res = await deleteProgram({ program_id: row.program_id })
   console.log('delete result = ', res)
   tableData.value.splice(index, 1)
@@ -70,7 +72,17 @@ const tableRowClicked = (row, event, column) => {
       <el-table-column align="center" fixed="right" label="操作" width="150">
         <template #default="scope">
           <el-button type="primary" size="small" @click.prevent="editRow(scope.row)"> 編輯 </el-button>
-          <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button>
+          <!-- <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button> -->
+          <el-popconfirm
+            title="確定要刪除嗎?"
+            confirmButtonText="確認"
+            cancelButtonText="取消"
+            @confirm="deleteRow(scope.$index, scope.row)"
+          >
+            <template #reference>
+              <el-button type="primary" size="small"> 刪除 </el-button>
+            </template>
+          </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>

@@ -7,6 +7,7 @@ import { unitList } from '@/assets/data/unitList.js'
 import regex from '@/assets/regex/regex.js'
 import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
+import { ElMessage } from 'element-plus'
 
 const store = useProgramStore()
 const formRef = ref()
@@ -24,31 +25,13 @@ const dynamicValidateForm = reactive({
   program_nonSelfCredit: 1,
   program_criteria: '以學分數',
   category: [
-    {
-      category_id: categoryCount++,
-      category_Name: '類別1',
-      category_MinCredit: 0,
-      category_RequireNum: 0,
-      domain: []
-    }
-  ]
-})
-const dynamicValidateForm_formal = reactive({
-  program_name: '學程1',
-  program_url: '網址1',
-  program_type: '學分學程',
-  program_unit: sessionStorage.getItem('user_unit'),
-  program_minCredit: 1,
-  program_nonSelfCredit: 1,
-  program_criteria: '以學分數',
-  category: [
-    {
-      category_id: categoryCount++,
-      category_name: '類別1',
-      category_minCredit: 0,
-      category_requireNum: 0,
-      domain: []
-    }
+    // {
+    //   category_id: categoryCount++,
+    //   category_Name: '類別1',
+    //   category_MinCredit: 0,
+    //   category_RequireNum: 0,
+    //   domain: []
+    // }
   ]
 })
 // console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
@@ -62,12 +45,20 @@ const addCategory = () => {
     domain: []
   })
 }
+addCategory()
 const removeCategory = (item) => {
   const index = dynamicValidateForm.category.indexOf(item)
   if (index > 0) {
     dynamicValidateForm.category.splice(index, 1)
     categoryCount--
   } else {
+    ElMessage({
+      type: 'warning',
+      message: '至少須有一個類別',
+      showClose: true,
+      duration: 3000,
+      offset: window.screen.height / 15
+    })
     console.log('至少須有一個類別')
   }
 }
