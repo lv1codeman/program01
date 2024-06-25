@@ -3,8 +3,10 @@ import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import regex from '@/assets/regex/regex.js'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
+import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
@@ -39,6 +41,7 @@ window.addEventListener('resize', updateColumnNum)
 onUnmounted(() => {
   window.removeEventListener('resize', updateColumnNum)
 })
+
 const data = ref([])
 
 // 直接從store中讀取
@@ -64,7 +67,19 @@ const loadFromServer = async () => {
 }
 onMounted(() => {
   loadFromServer()
+  console.log(programstruct.value)
+  dynamicValidateForm.value['program_name'] = programstruct.value.program_name
+  dynamicValidateForm.value['program_url'] = programstruct.value.program_url
+  dynamicValidateForm.value['program_type'] = programstruct.value.program_type
+  dynamicValidateForm.value['program_unit'] = programstruct.value.program_unit
+  dynamicValidateForm.value['program_minCredit'] = programstruct.value.program_minCredit
+  dynamicValidateForm.value['program_nonSelfCredit'] = programstruct.value.program_nonSelfCredit
+  dynamicValidateForm.value['program_criteria'] = programstruct.value.program_criteria
 })
+
+const dynamicValidateForm = ref({})
+const labelPosition = ref('right')
+
 const gocheck = () => {
   router.push({ path: '/agent/create' })
 }
@@ -81,74 +96,179 @@ const backToManagePrograms = () => {
   router.push({ path: '/agent' })
 }
 
-const submit = async () => {
-  // 送出前檢查
-  console.log(store.programData)
-  let resultMsg = ''
-  let p = store.programData
+const formRef = ref()
+const unitListAll = unitList
+const programOptions = ref(['學分學程', '微學程'])
+const criteriaOptions = ref(['以課程數', '以學分數'])
+const minNonSelfCredit = ref(1)
+const minCredit = ref(15)
+const typeChange = () => {
+  if (dynamicValidateForm.value.program_type == '微學程') {
+    // 設定最小值為0
+    minNonSelfCredit.value = 0
+    // 設定非本系學分數值為0
+    dynamicValidateForm.value.program_nonSelfCredit = 0
+    // 設定最小值為8
+    minCredit.value = 8
+    // 設定最低學分數值為8
+    dynamicValidateForm.value.program_minCredit = 8
+  } else {
+    if (dynamicValidateForm.value.program_nonSelfCredit == 0) {
+      minNonSelfCredit.value = 1
+      dynamicValidateForm.value.program_nonSelfCredit = 1
+      minCredit.value = 15
+      dynamicValidateForm.value.program_minCredit = 15
+    }
+  }
+}
+const rules = ref({
+  program_name: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_url: { required: true, pattern: regex.reg_url, message: '網址格式錯誤', trigger: 'blur' },
+  program_type: { required: true, message: '請輸入學程名稱', trigger: 'blur' },
+  program_unit: { required: true, message: '請輸入單位名稱', trigger: 'blur' },
+  program_criteria: { required: true, message: '請輸入修畢條件', trigger: 'blur' },
+  program_minCredit: { required: true, message: '請輸入最低應修學分數', trigger: 'blur' },
+  program_nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
+})
 
-  p.category.forEach((c) => {
-    // 如果類別沒有課程(代表要有領域)
-    if (!c.course || c.course.length <= 0) {
-      // 如果類別沒有領域，顯示訊息
-      if (c.domain.length <= 0) {
-        // console.log(`類別 ${c.category_name} 尚未指定科目`)
-        resultMsg += '類別 ' + c.category_name + ' 尚未指定科目<br/>'
-      } else {
-        // 如果有領域，檢查領域
-        c.domain.forEach((d) => {
-          // 每個領域中，沒有科目的項目，顯示訊息
-          if (!d.course || d.course.length <= 0) {
-            // console.log(`領域 ${d.domain_name} 尚未指定科目`)
-            resultMsg += '領域 ' + d.domain_name + ' 尚未指定科目<br/>'
+const submit = async (formEl) => {
+  if (!formEl) {
+    return
+  }
+
+  formEl.validate(async (valid) => {
+    if (valid) {
+      // 寫入學程資料
+      store.programData.program_name = dynamicValidateForm.value.program_name
+      store.programData.program_url = dynamicValidateForm.value.program_url
+      store.programData.program_type = dynamicValidateForm.value.program_type
+      store.programData.program_unit = dynamicValidateForm.value.program_unit
+      store.programData.program_minCredit = dynamicValidateForm.value.program_minCredit
+      store.programData.program_nonSelfCredit = dynamicValidateForm.value.program_nonSelfCredit
+      store.programData.program_criteria = dynamicValidateForm.value.program_criteria
+
+      // 檢查學程架構
+      console.log(store.programData)
+      let resultMsg = ''
+      let p = store.programData
+
+      p.category.forEach((c) => {
+        // 如果類別沒有課程(代表要有領域)
+        if (!c.course || c.course.length <= 0) {
+          // 如果類別沒有領域，顯示訊息
+          if (c.domain.length <= 0) {
+            // console.log(`類別 ${c.category_name} 尚未指定科目`)
+            resultMsg += '類別 ' + c.category_name + ' 尚未指定科目<br/>'
+          } else {
+            // 如果有領域，檢查領域
+            c.domain.forEach((d) => {
+              // 每個領域中，沒有科目的項目，顯示訊息
+              if (!d.course || d.course.length <= 0) {
+                // console.log(`領域 ${d.domain_name} 尚未指定科目`)
+                resultMsg += '領域 ' + d.domain_name + ' 尚未指定科目<br/>'
+              }
+            })
           }
+        }
+      })
+      console.log(resultMsg)
+      // 如果學程架構有誤，resultMsg會有訊息，否則為空白
+      if (!resultMsg) {
+        // 回傳到server端
+        console.log('學程資料: ', JSON.stringify(store.programData))
+        // 刪除DB中原本的program，將目前修改好的新增到DB
+        console.log('store.currentPGId = ', store.currentPGId)
+        const resD = await deleteProgram({ program_id: store.currentPGId })
+        console.log('delete res = ', resD)
+        let res = await submitProgram(JSON.stringify(store.programData))
+        console.log('submit response=', res)
+
+        ElMessage({
+          type: 'success',
+          message: '學程修改成功',
+          showClose: true,
+          duration: 3000,
+          offset: window.screen.height / 15
         })
+        router.push({ path: '/agent' })
+      } else {
+        ElMessageBox.alert(resultMsg, '學程架構錯誤', {
+          confirmButtonText: '確認',
+          dangerouslyUseHTMLString: true,
+          draggable: true
+        })
+          .then((res) => {
+            console.log('user click  OK.', res)
+          })
+          .catch((e) => {
+            console.log('user click cancel.', e)
+          })
       }
+    } else {
+      console.log('error submit!')
+      return false
     }
   })
-  console.log(resultMsg)
-  if (!resultMsg) {
-    // 回傳到server端
-    console.log('學程資料: ', JSON.stringify(store.programData))
-    // 刪除DB中原本的program，將目前修改好的新增到DB
-    console.log('store.currentPGId = ', store.currentPGId)
-    const resD = await deleteProgram({ program_id: store.currentPGId })
-    console.log('delete res = ', resD)
-    let res = await submitProgram(JSON.stringify(store.programData))
-    console.log('submit response=', res)
-
-    ElMessage({
-      type: 'success',
-      message: '學程修改成功',
-      showClose: true,
-      duration: 3000,
-      offset: window.screen.height / 15
-    })
-    router.push({ path: '/agent' })
-  } else {
-    ElMessageBox.alert(resultMsg, '學程架構錯誤', {
-      confirmButtonText: '確認',
-      dangerouslyUseHTMLString: true,
-      draggable: true
-    })
-      .then((res) => {
-        console.log('user click  OK.', res)
-      })
-      .catch((e) => {
-        console.log('user click cancel.', e)
-      })
-  }
 }
 </script>
 <template>
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <el-button type="success" @click="submit" style="margin-left: 10px">送出</el-button>
+      <el-button type="success" @click="submit(formRef)" style="margin-left: 10px">送出</el-button>
       <el-button type="warning" @click="backToManagePrograms" style="margin-left: 10px">返回</el-button>
     </pagetitle>
     <div v-if="programstruct">
-      <el-descriptions :column="descriptionColNum" size="default" border :direction="descriptDirection">
+      <el-form
+        ref="formRef"
+        :model="dynamicValidateForm"
+        :label-position="labelPosition"
+        label-width="auto"
+        class="demo-dynamic"
+        :hide-required-asterisk="true"
+        :rules="rules"
+      >
+        <!-- el-form加入這行以套用驗證 :rules="rules" -->
+        <div class="program-setting">
+          <el-form-item class="my-grid-item" prop="program_name" label="學程名稱" clearable>
+            <el-input v-model="dynamicValidateForm.program_name" placeholder="請輸入學程名稱" />
+          </el-form-item>
+          <el-form-item class="my-grid-item" prop="program_url" label="學程網址" clearable>
+            <el-input v-model="dynamicValidateForm.program_url" placeholder="請輸入學程網址" />
+          </el-form-item>
+          <el-form-item class="my-grid-item" prop="program_type" label="學程類型">
+            <el-segmented v-model="dynamicValidateForm.program_type" :options="programOptions" @change="typeChange" />
+          </el-form-item>
+
+          <el-form-item class="my-grid-item" prop="program_criteria" label="修畢條件">
+            <el-segmented v-model="dynamicValidateForm.program_criteria" :options="criteriaOptions" />
+          </el-form-item>
+          <el-form-item class="my-grid-item" prop="program_minCredit" label="">
+            <template #label
+              ><span class="lineHeight1">最低應修<br />學分數</span></template
+            >
+            <el-input-number v-model="dynamicValidateForm.program_minCredit" :min="minCredit" :max="30" />
+          </el-form-item>
+          <el-form-item class="my-grid-item" prop="program_nonSelfCredit" label="非本系學分數">
+            <template #label
+              ><span class="lineHeight1">非本系學<br />分數</span></template
+            >
+            <el-input-number v-model="dynamicValidateForm.program_nonSelfCredit" :min="minNonSelfCredit" :max="10" />
+          </el-form-item>
+          <el-form-item class="my-grid-item" prop="program_unit" label="設置單位">
+            <el-select
+              v-model="dynamicValidateForm.program_unit"
+              filterable
+              placeholder="請選擇單位(可輸入文字篩選)"
+              style="width: 240px"
+            >
+              <el-option v-for="item in unitListAll" :key="item" :label="item" :value="item" />
+            </el-select>
+          </el-form-item>
+        </div>
+      </el-form>
+
+      <!-- <el-descriptions :column="descriptionColNum" size="default" border :direction="descriptDirection">
         <el-descriptions-item label="名稱" label-align="center"> {{ programstruct.program_name }}</el-descriptions-item>
         <el-descriptions-item label="設置單位" label-align="center">
           {{ programstruct.program_unit }}</el-descriptions-item
@@ -175,7 +295,7 @@ const submit = async () => {
         <el-descriptions-item label="非本系學分數" label-align="center">
           {{ programstruct.program_nonSelfCredit }}</el-descriptions-item
         >
-      </el-descriptions>
+      </el-descriptions> -->
       <pagetitle>學程架構</pagetitle>
 
       <div class="program-structure" v-for="category in programstruct.category" :key="category.key">
@@ -321,5 +441,18 @@ const submit = async () => {
 
     cursor: pointer;
   }
+}
+
+.program-setting {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  column-gap: 10px;
+  padding: 0 100px;
+  .my-grid-item {
+    grid-column: span 1;
+  }
+}
+:deep(.el-segmented) {
+  background-color: rgb(255, 255, 255);
 }
 </style>
