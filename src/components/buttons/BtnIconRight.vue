@@ -1,11 +1,5 @@
 <template>
-  <el-button
-    class="lineHeight-0"
-    :class="props.customClass"
-    :type="props.type"
-    @click="handleClick"
-    :style="props.style"
-  >
+  <el-button :class="props.customClass" :type="props.type" @click="handleClick" :style="props.style">
     <slot>送出</slot>
     <font-awesome-icon :icon="props.icon" :class="props.iconClass" />
   </el-button>
@@ -54,8 +48,4 @@ const handleClick = () => {
 }
 </script>
 
-<style scoped>
-.lineHeight-0 {
-  line-height: 0;
-}
-</style>
+<style lang="scss" scoped></style>

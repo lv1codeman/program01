@@ -256,11 +256,19 @@ const checkPencilD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <el-button type="success" @click="submit(formRef)" class="ml-10">送出</el-button>
+      <BtnIconLeft
+        type="success"
+        icon="fa-cloud-arrow-up"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="submit(formRef)"
+        :style="{ marginLeft: '10px', padding: '0 10px' }"
+      >
+        送出
+      </BtnIconLeft>
       <BtnIconLeft
         type="warning"
         icon="fa-circle-left"
-        iconClass="mr-3 mb-1"
+        iconClass="mr-4 mb-2 fontsize-16"
         @click="backToManagePrograms"
         :style="{ marginLeft: '10px', padding: '0 12px' }"
       >
@@ -370,8 +378,24 @@ const checkPencilD = (d) => {
       <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
-    <el-button type="success" @click="submit(formRef)">送出</el-button>
-    <BtnIconLeft type="warning" icon="fa-circle-left" @click="backToManagePrograms"> 返回 </BtnIconLeft>
+    <BtnIconLeft
+      type="success"
+      icon="fa-cloud-arrow-up"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="submit(formRef)"
+      :style="{ marginLeft: '10px', padding: '0 10px' }"
+    >
+      送出
+    </BtnIconLeft>
+    <BtnIconLeft
+      type="warning"
+      icon="fa-circle-left"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="backToManagePrograms"
+      :style="{ marginLeft: '10px', padding: '0 10px' }"
+    >
+      返回
+    </BtnIconLeft>
   </div>
 </template>
 <style lang="scss" scoped>
