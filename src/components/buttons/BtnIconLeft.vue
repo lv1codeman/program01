@@ -49,6 +49,12 @@ const emit = defineEmits(['click'])
     :type="buttonType"
 */
 
+const computedClass = () => {
+  return [
+    'lineHeight-0',
+    props.customClass // 将父组件传递的 customClass 直接应用到 class 中
+  ]
+}
 const handleClick = () => {
   emit('click')
 }
@@ -56,6 +62,6 @@ const handleClick = () => {
 
 <style lang="scss" scoped>
 .lineHeight-0 {
-  line-height: 0;
+  // line-height: 0;
 }
 </style>

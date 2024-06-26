@@ -260,7 +260,7 @@ const checkPencilD = (d) => {
       <BtnIconLeft
         type="warning"
         icon="fa-circle-left"
-        iconClass="mr-3"
+        iconClass="mr-3 mb-1"
         @click="backToManagePrograms"
         :style="{ marginLeft: '10px', padding: '0 12px' }"
       >
