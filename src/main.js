@@ -41,10 +41,12 @@ import {
   faLink,
   faPalette,
   faPrint,
-  faCloudArrowUp
+  faCloudArrowUp,
+  faPencil
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faPencil,
   faCircleLeft,
   faCartShopping,
   faCirclePlus,

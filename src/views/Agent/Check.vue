@@ -153,7 +153,7 @@ const getClassD = (d) => {
     </el-descriptions>
     <pagetitle>學程架構</pagetitle>
     <div class="program-structure" v-for="category in programstruct.category" :key="category.key">
-      <div v-if="category.domain.length === 0">
+      <div style="display: flex" v-if="category.domain.length === 0">
         <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
           <router-link
             class="baseItem islink"
@@ -161,16 +161,15 @@ const getClassD = (d) => {
             style="margin-bottom: 10px"
             :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
           >
-            <span v-if="needEdit"
-              ><el-icon><More /></el-icon
-            ></span>
-            {{ category.category_name }}</router-link
-          >
+            <span v-if="needEdit">
+              <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon>
+            </span>
+            {{ category.category_name }}
+          </router-link>
         </el-tooltip>
       </div>
       <div v-else>
         <div class="baseItem" :class="getClass(category)">
-          <span v-if="needEdit">aaa</span>
           {{ category.category_name }}
         </div>
       </div>
@@ -192,7 +191,9 @@ const getClassD = (d) => {
                 params: { category_name: category.category_name, domain_name: domain.domain_name }
               }"
             >
-              <span v-if="needEdit">aaa</span>{{ domain.domain_name }}</router-link
+              <span v-if="needEdit">
+                <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon> </span
+              >{{ domain.domain_name }}</router-link
             >
           </el-tooltip>
         </div>
