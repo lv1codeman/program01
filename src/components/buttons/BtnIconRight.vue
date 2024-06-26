@@ -6,8 +6,8 @@
     @click="handleClick"
     :style="props.style"
   >
-    <font-awesome-icon :icon="props.icon" :class="props.iconClass" />
     <slot>送出</slot>
+    <font-awesome-icon :icon="props.icon" :class="props.iconClass" />
   </el-button>
 </template>
 
@@ -54,7 +54,7 @@ const handleClick = () => {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .lineHeight-0 {
   line-height: 0;
 }

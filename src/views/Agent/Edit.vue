@@ -257,7 +257,15 @@ const checkPencilD = (d) => {
     <pagetitle
       >學程資訊
       <el-button type="success" @click="submit(formRef)" class="ml-10">送出</el-button>
-      <BtnIconLeft type="warning" icon="fa-circle-left" @click="backToManagePrograms"> 返回 </BtnIconLeft>
+      <BtnIconLeft
+        type="warning"
+        icon="fa-circle-left"
+        iconClass="mr-3"
+        @click="backToManagePrograms"
+        :style="{ marginLeft: '10px', padding: '0 12px' }"
+      >
+        返回
+      </BtnIconLeft>
     </pagetitle>
     <div v-if="programstruct">
       <el-form
