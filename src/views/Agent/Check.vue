@@ -112,6 +112,32 @@ const getClassD = (d) => {
     noSubject: (d.course && !d.course.length > 0) || !d.course
   }
 }
+
+const check = (c) => {
+  if (!c.domain.length > 0 && (!c.course || c.course.length == 0)) return '未設定科目，點此可編輯科目'
+  else {
+    return '已設定科目，點此可繼續編輯'
+  }
+}
+const checkD = (d) => {
+  if ((d.course && !d.course.length > 0) || !d.course) return '未設定科目，點此可編輯科目'
+  else {
+    return '已設定科目，點此可繼續編輯'
+  }
+}
+
+const checkPencil = (c) => {
+  if (!c.domain.length > 0 && (!c.course || c.course.length == 0)) return true
+  else {
+    return false
+  }
+}
+const checkPencilD = (d) => {
+  if ((d.course && !d.course.length > 0) || !d.course) return true
+  else {
+    return false
+  }
+}
 </script>
 <template>
   <div class="page-container">
@@ -154,14 +180,14 @@ const getClassD = (d) => {
     <pagetitle>學程架構</pagetitle>
     <div class="program-structure" v-for="category in programstruct.category" :key="category.key">
       <div style="display: flex" v-if="category.domain.length === 0">
-        <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
+        <el-tooltip class="box-item" effect="dark" :content="check(category)" placement="right">
           <router-link
             class="baseItem islink"
             :class="getClass(category)"
             style="margin-bottom: 10px"
             :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
           >
-            <span v-if="needEdit">
+            <span v-if="checkPencil(category)">
               <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon>
             </span>
             {{ category.category_name }}
@@ -182,7 +208,7 @@ const getClassD = (d) => {
           <span v-else> <IconChild_end class="set-icon-size"></IconChild_end></span>
         </div>
         <div class="domainblock_right">
-          <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
+          <el-tooltip class="box-item" effect="dark" :content="checkD(domain)" placement="right">
             <router-link
               class="baseItem islink domain"
               :class="getClassD(domain)"
@@ -191,7 +217,7 @@ const getClassD = (d) => {
                 params: { category_name: category.category_name, domain_name: domain.domain_name }
               }"
             >
-              <span v-if="needEdit">
+              <span v-if="checkPencilD(domain)">
                 <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon> </span
               >{{ domain.domain_name }}</router-link
             >
@@ -209,6 +235,9 @@ const getClassD = (d) => {
   </div>
 </template>
 <style lang="scss" scoped>
+.box-item {
+  background-color: red;
+}
 .description {
   margin: 30px 0;
 }
@@ -296,6 +325,6 @@ const getClassD = (d) => {
   color: green;
 }
 .noSubject {
-  color: red;
+  color: var(--el-color-danger);
 }
 </style>

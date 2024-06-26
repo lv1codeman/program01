@@ -10,6 +10,7 @@ import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
+import BtnIconLeft from '@/components/buttons/BtnIconLeft.vue'
 import { deleteProgram, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
@@ -210,13 +211,53 @@ const submit = async (formEl) => {
     }
   })
 }
+
+const needEdit = ref(false)
+const getClass = (c) => {
+  needEdit.value = true
+  return {
+    noSubject: !c.domain.length > 0 && (!c.course || c.course.length == 0)
+  }
+}
+const getClassD = (d) => {
+  needEdit.value = true
+  return {
+    noSubject: (d.course && !d.course.length > 0) || !d.course
+  }
+}
+
+const check = (c) => {
+  if (!c.domain.length > 0 && (!c.course || c.course.length == 0)) return '未設定科目，點此可編輯科目'
+  else {
+    return '已設定科目，點此可繼續編輯'
+  }
+}
+const checkD = (d) => {
+  if ((d.course && !d.course.length > 0) || !d.course) return '未設定科目，點此可編輯科目'
+  else {
+    return '已設定科目，點此可繼續編輯'
+  }
+}
+
+const checkPencil = (c) => {
+  if (!c.domain.length > 0 && (!c.course || c.course.length == 0)) return true
+  else {
+    return false
+  }
+}
+const checkPencilD = (d) => {
+  if ((d.course && !d.course.length > 0) || !d.course) return true
+  else {
+    return false
+  }
+}
 </script>
 <template>
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <el-button type="success" @click="submit(formRef)" style="margin-left: 10px">送出</el-button>
-      <el-button type="warning" @click="backToManagePrograms" style="margin-left: 10px">返回</el-button>
+      <el-button type="success" @click="submit(formRef)" class="ml-10">送出</el-button>
+      <BtnIconLeft type="warning" icon="fa-circle-left" @click="backToManagePrograms"> 返回 </BtnIconLeft>
     </pagetitle>
     <div v-if="programstruct">
       <el-form
@@ -268,49 +309,27 @@ const submit = async (formEl) => {
         </div>
       </el-form>
 
-      <!-- <el-descriptions :column="descriptionColNum" size="default" border :direction="descriptDirection">
-        <el-descriptions-item label="名稱" label-align="center"> {{ programstruct.program_name }}</el-descriptions-item>
-        <el-descriptions-item label="設置單位" label-align="center">
-          {{ programstruct.program_unit }}</el-descriptions-item
-        >
-        <el-descriptions-item label="類型" label-align="center"> {{ programstruct.program_type }}</el-descriptions-item>
-
-        <el-descriptions-item
-          class-name="item_url"
-          label-class-name="item_url_label"
-          label="網址"
-          label-align="center"
-          span="3"
-        >
-          <div class="item_url_content">
-            {{ programstruct.program_url }}
-          </div></el-descriptions-item
-        >
-        <el-descriptions-item label="修畢條件" label-align="center">
-          {{ programstruct.program_criteria }}</el-descriptions-item
-        >
-        <el-descriptions-item label="最低應修學分數" label-align="center">
-          {{ programstruct.program_minCredit }}</el-descriptions-item
-        >
-        <el-descriptions-item label="非本系學分數" label-align="center">
-          {{ programstruct.program_nonSelfCredit }}</el-descriptions-item
-        >
-      </el-descriptions> -->
       <pagetitle>學程架構</pagetitle>
-
       <div class="program-structure" v-for="category in programstruct.category" :key="category.key">
-        <div v-if="category.domain.length === 0">
-          <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
+        <div style="display: flex" v-if="category.domain.length === 0">
+          <el-tooltip popper-class="tps" class="box-item" effect="dark" :content="check(category)" placement="right">
             <router-link
               class="baseItem islink"
+              :class="getClass(category)"
               style="margin-bottom: 10px"
-              :to="{ name: 'setSubject', params: { category_name: category.category_name, isFromLoad: true } }"
-              >{{ category.category_name }}</router-link
+              :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
             >
+              <span v-if="checkPencil(category)">
+                <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon>
+              </span>
+              {{ category.category_name }}
+            </router-link>
           </el-tooltip>
         </div>
         <div v-else>
-          <div class="baseItem">{{ category.category_name }}</div>
+          <div class="baseItem" :class="getClass(category)">
+            {{ category.category_name }}
+          </div>
         </div>
 
         <div class="domainblock" v-for="(domain, index) in category.domain" :key="domain.index">
@@ -321,15 +340,18 @@ const submit = async (formEl) => {
             <span v-else> <IconChild_end class="set-icon-size"></IconChild_end></span>
           </div>
           <div class="domainblock_right">
-            <el-tooltip class="box-item" effect="dark" content="點我開始設定課程" placement="right">
+            <el-tooltip class="box-item" effect="dark" :content="checkD(domain)" placement="right">
               <router-link
                 class="baseItem islink domain"
+                :class="getClassD(domain)"
                 :to="{
                   name: 'setSubject',
-                  params: { category_name: category.category_name, domain_name: domain.domain_name, isFromLoad: true }
+                  params: { category_name: category.category_name, domain_name: domain.domain_name }
                 }"
               >
-                {{ domain.domain_name }}</router-link
+                <span v-if="checkPencilD(domain)">
+                  <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon> </span
+                >{{ domain.domain_name }}</router-link
               >
             </el-tooltip>
           </div>
@@ -341,10 +363,14 @@ const submit = async (formEl) => {
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
     <el-button type="success" @click="submit(formRef)">送出</el-button>
-    <el-button type="warning" @click="backToManagePrograms">返回</el-button>
+    <BtnIconLeft type="warning" icon="fa-circle-left" @click="backToManagePrograms"> 返回 </BtnIconLeft>
   </div>
 </template>
 <style lang="scss" scoped>
+// element-plus預設在兩個按鈕之間有間隔12px
+// .el-button + .el-button {
+//   margin-left: 0px !important;
+// }
 :deep(.el-loading-mask) {
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -455,5 +481,11 @@ const submit = async (formEl) => {
 }
 :deep(.el-segmented) {
   background-color: rgb(255, 255, 255);
+}
+.noSubject {
+  color: var(--el-color-danger);
+}
+.box-item {
+  background-color: red;
 }
 </style>
