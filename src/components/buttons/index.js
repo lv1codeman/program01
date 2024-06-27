@@ -37,4 +37,5 @@ const CustomButtonWrapper = defineComponent({
 // 将 CustomButtonWrapper 和按钮组件一起导出
 BKbuttons.CustomButtonWrapper = CustomButtonWrapper
 
-export default BKbuttons
+// export default BKbuttons
+export { CustomButtonWrapper as isLeft, BKbuttons }
