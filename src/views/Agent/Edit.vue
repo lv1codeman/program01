@@ -1,5 +1,5 @@
 <script setup>
-import BKbuttons from '@/components/buttons'
+import * as BKbutton from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
@@ -237,7 +237,16 @@ const checkPencilD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <component
+      <BKbutton.isLeft
+        type="success"
+        icon="fa-cloud-arrow-up"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="submit(formRef)"
+        :style="{ marginLeft: '10px', padding: '0 10px' }"
+      >
+        送出
+      </BKbutton.isLeft>
+      <!-- <component
         :is="BKbuttons.BtnIconLeft"
         type="success"
         icon="fa-cloud-arrow-up"
@@ -246,7 +255,7 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 10px' }"
       >
         送出
-      </component>
+      </component> -->
       <component
         :is="BKbuttons.BtnIconLeft"
         type="warning"
