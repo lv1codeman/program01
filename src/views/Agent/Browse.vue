@@ -1,4 +1,5 @@
 <script setup>
+import BKbuttons from '@/components/buttons'
 import { useRouter } from 'vue-router'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
@@ -54,9 +55,28 @@ const tableRowClicked = (row, event, column) => {
 <template>
   <div class="page-container">
     <pagetitle>學程管理</pagetitle>
-    <el-button class="btn_create" type="success" @click="go_createStructure">
+    <BKbuttons.CustomButtonWrapper
+      type="success"
+      icon="fa-plus"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="go_createStructure"
+      :style="{ marginBottom: '10px', padding: '0 10px' }"
+    >
+      新增學程
+    </BKbuttons.CustomButtonWrapper>
+    <BKbuttons.CustomButtonWrapper
+      :is="BKbuttons.BtnIconRight"
+      type="success"
+      icon="fa-plus"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="go_createStructure"
+      :style="{ marginBottom: '10px', padding: '0 10px' }"
+    >
+      新增學程
+    </BKbuttons.CustomButtonWrapper>
+    <!-- <el-button class="btn_create" type="success" @click="go_createStructure">
       <el-icon :size="15" class="mr-2"> <Plus /> </el-icon>新增學程
-    </el-button>
+    </el-button> -->
 
     <el-table
       :data="tableData"
