@@ -1,4 +1,5 @@
 <script setup>
+import BKbutton from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
@@ -10,14 +11,11 @@ import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
-import BtnIconLeft from '@/components/buttons/BtnIconLeft.vue'
 import { deleteProgram, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
 const router = useRouter()
-
-// const data = transToTree(programstruct.value)
 
 const defaultProps = {
   children: 'children',
@@ -256,7 +254,8 @@ const checkPencilD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <BtnIconLeft
+      <component
+        :is="BKbutton.BtnIconLeft"
         type="success"
         icon="fa-cloud-arrow-up"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -264,8 +263,9 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 10px' }"
       >
         送出
-      </BtnIconLeft>
-      <BtnIconLeft
+      </component>
+      <component
+        :is="BKbutton.BtnIconLeft"
         type="warning"
         icon="fa-circle-left"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -273,7 +273,25 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 12px' }"
       >
         返回
-      </BtnIconLeft>
+      </component>
+      <!-- <BtnIconLeft
+        type="success"
+        icon="fa-cloud-arrow-up"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="submit(formRef)"
+        :style="{ marginLeft: '10px', padding: '0 10px' }"
+      >
+        送出
+      </BtnIconLeft> -->
+      <!-- <BtnIconLeft
+        type="warning"
+        icon="fa-circle-left"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="backToManagePrograms"
+        :style="{ marginLeft: '10px', padding: '0 12px' }"
+      >
+        返回
+      </BtnIconLeft> -->
     </pagetitle>
     <div v-if="programstruct">
       <el-form
@@ -378,7 +396,8 @@ const checkPencilD = (d) => {
       <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
-    <BtnIconLeft
+    <component
+      :is="BKbutton.BtnIconLeft"
       type="success"
       icon="fa-cloud-arrow-up"
       iconClass="mr-4 mb-2 fontsize-16"
@@ -386,16 +405,17 @@ const checkPencilD = (d) => {
       :style="{ marginLeft: '10px', padding: '0 10px' }"
     >
       送出
-    </BtnIconLeft>
-    <BtnIconLeft
+    </component>
+    <component
+      :is="BKbutton.BtnIconLeft"
       type="warning"
       icon="fa-circle-left"
       iconClass="mr-4 mb-2 fontsize-16"
       @click="backToManagePrograms"
-      :style="{ marginLeft: '10px', padding: '0 10px' }"
+      :style="{ marginLeft: '10px', padding: '0 12px' }"
     >
       返回
-    </BtnIconLeft>
+    </component>
   </div>
 </template>
 <style lang="scss" scoped>

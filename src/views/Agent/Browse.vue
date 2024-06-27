@@ -1,4 +1,5 @@
 <script setup>
+import BKbuttons from '@/components/buttons'
 import { useRouter } from 'vue-router'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
@@ -9,6 +10,13 @@ import { InfoFilled } from '@element-plus/icons-vue'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const router = useRouter()
 const store = useProgramStore()
+
+onMounted(async () => {
+  let unit = sessionStorage.getItem('user_unit')
+  const res = await getUnitPG({ unit: unit })
+  console.log(res)
+  tableData.value = res
+})
 
 const go_createStructure = () => {
   router.push({ path: '/agent/create' })
@@ -41,12 +49,6 @@ const editRow = async (row) => {
   router.push({ path: '/agent/edit' })
 }
 
-onMounted(async () => {
-  let unit = sessionStorage.getItem('user_unit')
-  const res = await getUnitPG({ unit: unit })
-  console.log(res)
-  tableData.value = res
-})
 const tableRowClicked = (row, event, column) => {
   // console.log('row', row)
 }
@@ -54,9 +56,20 @@ const tableRowClicked = (row, event, column) => {
 <template>
   <div class="page-container">
     <pagetitle>學程管理</pagetitle>
-    <el-button class="btn_create" type="success" @click="go_createStructure">
+
+    <BKbuttons.CustomButtonWrapper
+      type="success"
+      icon="fa-plus"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="go_createStructure"
+      :style="{ marginBottom: '10px', padding: '0 10px' }"
+    >
+      新增学程
+    </BKbuttons.CustomButtonWrapper>
+
+    <!-- <el-button class="btn_create" type="success" @click="go_createStructure">
       <el-icon :size="15" class="mr-2"> <Plus /> </el-icon>新增學程
-    </el-button>
+    </el-button> -->
 
     <el-table
       :data="tableData"

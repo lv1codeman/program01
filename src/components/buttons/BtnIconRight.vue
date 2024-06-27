@@ -29,7 +29,7 @@ const props = defineProps({
   },
   iconClass: {
     type: String,
-    default: 'mr-2'
+    default: 'ml-2'
   }
 })
 
