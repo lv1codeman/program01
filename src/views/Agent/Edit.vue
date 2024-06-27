@@ -1,4 +1,5 @@
 <script setup>
+import BKbuttons from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
@@ -10,7 +11,6 @@ import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
-import BtnIconLeft from '@/components/buttons/BtnIconLeft.vue'
 import { deleteProgram, getUnitPGById, submitProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
@@ -45,21 +45,9 @@ onUnmounted(() => {
 
 const data = ref([])
 
-// 直接從store中讀取
-// programstruct.value = store.programData
-// data.value = transToTree(programstruct.value)
-
 const loadFromServer = async () => {
   try {
-    // let user_unit = sessionStorage.getItem('user_unit')
-    // console.log('user_unit=', user_unit)
-    // console.log('store.currentPGId=', store.currentPGId)
-
-    // let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
-    // console.log('res= ', res.data)
-    // let resJson = transformServerJSON(res.data)
-    // store.setProgramData(resJson)
-    // programstruct.value = resJson
+    // 直接從store中讀取
     programstruct.value = store.programData
     data.value = transToTree(programstruct.value)
   } catch (error) {
@@ -86,13 +74,6 @@ const gocheck = () => {
 }
 const loading = ref(true)
 
-// const updateProgram = async () => {
-// 更新學程資料
-
-// console.log('學程資料: ', JSON.stringify(store.programData))
-// let res = await submitProgram(JSON.stringify(store.programData))
-// console.log('submit response=', res)
-// }
 const backToManagePrograms = () => {
   router.push({ path: '/agent' })
 }
@@ -256,7 +237,8 @@ const checkPencilD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <BtnIconLeft
+      <component
+        :is="BKbuttons.BtnIconLeft"
         type="success"
         icon="fa-cloud-arrow-up"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -264,8 +246,9 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 10px' }"
       >
         送出
-      </BtnIconLeft>
-      <BtnIconLeft
+      </component>
+      <component
+        :is="BKbuttons.BtnIconLeft"
         type="warning"
         icon="fa-circle-left"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -273,7 +256,7 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 12px' }"
       >
         返回
-      </BtnIconLeft>
+      </component>
     </pagetitle>
     <div v-if="programstruct">
       <el-form
@@ -378,7 +361,8 @@ const checkPencilD = (d) => {
       <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
-    <BtnIconLeft
+    <component
+      :is="BKbuttons.BtnIconLeft"
       type="success"
       icon="fa-cloud-arrow-up"
       iconClass="mr-4 mb-2 fontsize-16"
@@ -386,16 +370,17 @@ const checkPencilD = (d) => {
       :style="{ marginLeft: '10px', padding: '0 10px' }"
     >
       送出
-    </BtnIconLeft>
-    <BtnIconLeft
+    </component>
+    <component
+      :is="BKbuttons.BtnIconLeft"
       type="warning"
       icon="fa-circle-left"
       iconClass="mr-4 mb-2 fontsize-16"
       @click="backToManagePrograms"
-      :style="{ marginLeft: '10px', padding: '0 10px' }"
+      :style="{ marginLeft: '10px', padding: '0 12px' }"
     >
       返回
-    </BtnIconLeft>
+    </component>
   </div>
 </template>
 <style lang="scss" scoped>
