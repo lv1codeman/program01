@@ -22,7 +22,14 @@ const CustomButtonWrapper = defineComponent({
   setup(props, { slots, attrs }) {
     return () => {
       const componentToRender = props.is ? BKbutton[props.is] : BKbutton.BtnIconLeft
-      return h(componentToRender, attrs, slots.default ? { default: () => slots.default() } : {})
+      return h(
+        componentToRender,
+        {
+          ...attrs,
+          onClick: attrs.onClick // 将父组件的 click 事件传递给子组件
+        },
+        slots.default ? { default: () => slots.default() } : {}
+      )
     }
   }
 })

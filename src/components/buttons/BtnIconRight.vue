@@ -42,8 +42,8 @@ const emit = defineEmits(['click'])
     :type="buttonType"
 */
 
-const handleClick = () => {
-  emit('click')
+const handleClick = (event) => {
+  emit('click', event)
 }
 </script>
 

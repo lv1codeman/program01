@@ -1,5 +1,5 @@
 <script setup>
-import * as BKbutton from '@/components/buttons'
+import BKbtn from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
@@ -237,7 +237,7 @@ const checkPencilD = (d) => {
   <div class="page-container">
     <pagetitle
       >學程資訊
-      <BKbutton.isLeft
+      <BKbtn
         type="success"
         icon="fa-cloud-arrow-up"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -245,7 +245,7 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 10px' }"
       >
         送出
-      </BKbutton.isLeft>
+      </BKbtn>
       <!-- <component
         :is="BKbuttons.BtnIconLeft"
         type="success"
@@ -256,8 +256,7 @@ const checkPencilD = (d) => {
       >
         送出
       </component> -->
-      <component
-        :is="BKbuttons.BtnIconLeft"
+      <BKbtn
         type="warning"
         icon="fa-circle-left"
         iconClass="mr-4 mb-2 fontsize-16"
@@ -265,7 +264,7 @@ const checkPencilD = (d) => {
         :style="{ marginLeft: '10px', padding: '0 12px' }"
       >
         返回
-      </component>
+      </BKbtn>
     </pagetitle>
     <div v-if="programstruct">
       <el-form
@@ -370,8 +369,7 @@ const checkPencilD = (d) => {
       <el-tree class="tree" style="max-width: 600px" :data="data" :props="defaultProps" default-expand-all />
     </div>
     <div v-else class="loading" v-loading="loading">資料讀取中</div>
-    <component
-      :is="BKbuttons.BtnIconLeft"
+    <BKbtn
       type="success"
       icon="fa-cloud-arrow-up"
       iconClass="mr-4 mb-2 fontsize-16"
@@ -379,9 +377,8 @@ const checkPencilD = (d) => {
       :style="{ marginLeft: '10px', padding: '0 10px' }"
     >
       送出
-    </component>
-    <component
-      :is="BKbuttons.BtnIconLeft"
+    </BKbtn>
+    <BKbtn
       type="warning"
       icon="fa-circle-left"
       iconClass="mr-4 mb-2 fontsize-16"
@@ -389,7 +386,7 @@ const checkPencilD = (d) => {
       :style="{ marginLeft: '10px', padding: '0 12px' }"
     >
       返回
-    </component>
+    </BKbtn>
   </div>
 </template>
 <style lang="scss" scoped>
