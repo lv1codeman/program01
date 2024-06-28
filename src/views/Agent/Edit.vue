@@ -324,7 +324,7 @@ const checkPencilD = (d) => {
               class="baseItem islink"
               :class="getClass(category)"
               style="margin-bottom: 10px"
-              :to="{ name: 'setSubject', params: { category_name: category.category_name } }"
+              :to="{ name: 'setSubject', params: { category_name: category.category_name, isFromLoad: true } }"
             >
               <span v-if="checkPencil(category)">
                 <font-awesome-icon icon="fa-pencil" class="fontsize-15 mr-2"></font-awesome-icon>
@@ -353,7 +353,7 @@ const checkPencilD = (d) => {
                 :class="getClassD(domain)"
                 :to="{
                   name: 'setSubject',
-                  params: { category_name: category.category_name, domain_name: domain.domain_name }
+                  params: { category_name: category.category_name, domain_name: domain.domain_name, isFromLoad: true }
                 }"
               >
                 <span v-if="checkPencilD(domain)">

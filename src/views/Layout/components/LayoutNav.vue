@@ -59,7 +59,8 @@ const btnLogin = () => {
         </li>
         <template v-if="isLogin">
           <li>
-            <a href="javascript:;"><i class="iconfont icon-user"></i>{{ username }}</a>
+            <a href="javascript:;"><font-awesome-icon icon="fa-user" class="mr-5 fontsize-14" />{{ username }}</a>
+            <!-- <i class="iconfont icon-user"></i> -->
           </li>
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">

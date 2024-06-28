@@ -78,7 +78,7 @@ function hasAccess(role, path) {
 }
 
 router.beforeEach(async (to, from, next) => {
-  console.log('即將前往：', to)
+  // console.log('即將前往：', to)
 
   if (whiteList.includes(to.path)) {
     next()

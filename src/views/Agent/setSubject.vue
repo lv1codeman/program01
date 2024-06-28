@@ -31,6 +31,7 @@ const targetCheck = () => {
 }
 
 const dialogSuccessVisible = ref(false)
+console.log('route.params.isFromLoad =', route.params.isFromLoad)
 const submitProgramData = () => {
   const target = targetCheck()
   if (target.length > 1) {
@@ -60,7 +61,7 @@ const submitProgramData = () => {
   if (route.params.isFromLoad) {
     router.push({ path: '/agent/edit' })
   } else {
-    router.push({ path: '/agent/check' })
+    router.push({ path: '/agent/create' })
   }
 
   // dialogSuccessVisible.value = true

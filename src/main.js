@@ -39,7 +39,8 @@ import {
   faRightFromBracket,
   faRightToBracket,
   faTrash,
-  faTrashCan
+  faTrashCan,
+  faUser
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faCirclePlus,
@@ -58,6 +59,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faUser,
   faCircleInfo,
   faHouse,
   faRightToBracket,
