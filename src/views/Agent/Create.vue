@@ -1,7 +1,7 @@
 <script setup>
+import BKbtn from '@/components/buttons'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { unitList } from '@/assets/data/unitList.js'
 import regex from '@/assets/regex/regex.js'
@@ -155,10 +155,18 @@ const typeChange = () => {
   <div class="page-container">
     <pagetitle
       >學程設定
-      <el-button type="warning" @click="cancel" style="margin-left: 10px"
+      <!-- <el-button type="warning" @click="cancel" style="margin-left: 10px"
         ><font-awesome-icon icon="fa-circle-left" class="mr-2 fontsize-16" />返回</el-button
-      ></pagetitle
-    >
+      > -->
+      <BKbtn
+        type="warning"
+        icon="fa-circle-left"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="cancel"
+        :style="{ marginLeft: '10px', padding: '0 12px' }"
+        >返回</BKbtn
+      >
+    </pagetitle>
     <!-- 隱藏星號 :hide-required-asterisk="true" -->
     <el-form
       ref="formRef"

@@ -79,7 +79,7 @@ const submit = async () => {
 
     ElMessage({
       type: 'success',
-      message: '學程新增成功',
+      message: '學程新增、修改成功',
       showClose: true,
       duration: 3000,
       offset: window.screen.height / 15

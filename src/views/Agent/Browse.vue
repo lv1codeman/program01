@@ -1,10 +1,7 @@
 <script setup>
-// import * as BKbtn from '@/components/buttons'
-// import { BKbtn } from '@/components/buttons'
 import BKbtn from '@/components/buttons'
 import { useRouter } from 'vue-router'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
-// import { reactive, ref } from 'vue'
 import { useProgramStore } from '@/stores/agentData.js'
 import { ref, onMounted } from 'vue'
 import { getUnitPG, getUnitPGById, deleteProgram } from '@/apis/programAPI.js'

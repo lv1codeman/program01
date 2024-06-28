@@ -1,10 +1,10 @@
 <script setup>
+import BKbtn from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAllSubjects } from '@/apis/subjectAPI'
-import { submitProgram } from '@/apis/programAPI'
 const router = useRouter()
 const route = useRoute()
 const store = useProgramStore()
@@ -213,9 +213,25 @@ const dialogSuccess = () => {
   <div class="page-container">
     <pagetitle
       >{{ pageTitle }} 科目設定
-      <el-button type="primary" style="margin-left: 10px">教學引導</el-button>
-      <el-button style="margin-left: 10px" type="warning" @click="submitProgramData"> 返回 </el-button></pagetitle
-    >
+      <!-- <el-button type="primary" style="margin-left: 10px">教學引導</el-button> -->
+      <BKbtn
+        type="primary"
+        icon="fa-circle-play"
+        iconClass="mr-4 fontsize-16"
+        :style="{ marginLeft: '10px', padding: '0 12px' }"
+      >
+        教學引導
+      </BKbtn>
+      <BKbtn
+        type="warning"
+        icon="fa-circle-left"
+        iconClass="mr-4 fontsize-16"
+        @click="submitProgramData"
+        :style="{ marginLeft: '10px', padding: '0 12px' }"
+      >
+        返回
+      </BKbtn>
+    </pagetitle>
 
     <el-transfer
       v-model="transferData2"
@@ -231,7 +247,16 @@ const dialogSuccess = () => {
         <el-button class="transfer-footer" size="default" style="visibility: hidden">showRes</el-button>
       </template>
       <template #right-footer>
-        <el-button type="primary" class="transfer-footer" size="default" @click="confirm">確認</el-button>
+        <!-- <el-button type="primary" class="transfer-footer" size="default" @click="confirm">確認</el-button> -->
+        <BKbtn
+          type="primary"
+          icon="fa-check"
+          iconClass="mr-4 fontsize-16"
+          @click="confirm"
+          :style="{ marginLeft: '10px', padding: '0 12px' }"
+        >
+          確認
+        </BKbtn>
       </template>
     </el-transfer>
     <pagetitle>{{ pageTitle }} 科目列表</pagetitle>
@@ -253,7 +278,17 @@ const dialogSuccess = () => {
           </template>
         </el-table-column>
       </el-table>
-      <el-button style="margin-top: 10px" type="warning" @click="submitProgramData"> 返回 </el-button>
+
+      <!-- <el-button style="margin-top: 10px" type="warning" @click="submitProgramData"> 返回 </el-button> -->
+      <BKbtn
+        type="warning"
+        icon="fa-circle-left"
+        iconClass="mr-4 fontsize-16"
+        @click="submitProgramData"
+        :style="{ marginTop: '10px', padding: '0 12px' }"
+      >
+        返回
+      </BKbtn>
       <el-button style="margin-top: 10px" @click="delTable"> 清空表格 </el-button>
     </div>
 

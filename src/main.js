@@ -28,7 +28,18 @@ router.afterEach((to, from, next) => {
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCartShopping, faPenToSquare, faPlus, faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCartShopping,
+  faCheck,
+  faCirclePlay,
+  faHouse,
+  faPenToSquare,
+  faPlus,
+  faRightFromBracket,
+  faRightToBracket,
+  faTrash,
+  faTrashCan
+} from '@fortawesome/free-solid-svg-icons'
 import {
   faCirclePlus,
   faCircleLeft,
@@ -46,6 +57,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+  faHouse,
+  faRightToBracket,
+  faRightFromBracket,
+  faCirclePlay,
+  faCheck,
   faPenToSquare,
   faTrash,
   faPlus,

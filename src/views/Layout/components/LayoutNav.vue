@@ -1,4 +1,5 @@
 <script setup>
+import BKbtn from '@/components/buttons'
 import themeView from '@/views/Theme/themeDialog.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -63,16 +64,34 @@ const btnLogin = () => {
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
               <template #reference>
-                <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)" @click="btnLogout"
+                <!-- <el-button class="btnLogout" type="success" color="var(--el-color-primary-light-3)" @click="btnLogout"
                   >登出</el-button
+                > -->
+                <BKbtn
+                  type="primary"
+                  icon="fa-right-from-bracket"
+                  iconClass="mr-4 fontsize-16"
+                  @click="btnLogout"
+                  :style="{ padding: '0px 12px' }"
                 >
+                  登出
+                </BKbtn>
               </template>
             </el-popconfirm>
           </li>
         </template>
         <template v-else>
           <li>
-            <el-button type="primary" @click="btnLogin">登入</el-button>
+            <!-- <el-button type="primary" @click="btnLogin">登入</el-button> -->
+            <BKbtn
+              type="primary"
+              icon="fa-right-to-bracket"
+              iconClass="mr-4 fontsize-16"
+              @click="btnLogin"
+              :style="{ padding: '0px 12px' }"
+            >
+              登入
+            </BKbtn>
           </li>
         </template>
       </ul>

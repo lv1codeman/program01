@@ -1,4 +1,5 @@
 <script setup>
+import BKbtn from '@/components/buttons'
 import { useStudentStore } from '@/stores/studentData.js'
 // import { fetchToken } from '@/utils/fetchToken.js'
 
@@ -64,7 +65,7 @@ const form = ref({
   id: '',
   password: ''
 })
-const msgTimeController = ref({
+const msgTimesController = ref({
   max: 3
 })
 </script>
@@ -96,10 +97,26 @@ const msgTimeController = ref({
       <div class="form-footer">忘記密碼</div>
       <template #footer>
         <div class="card-footer">
-          <!-- <el-button type="primary"></el-button> -->
-          <el-button type="primary" style="width: 30%" @click="goHome">回首頁</el-button>
-          <el-config-provider :message="msgTimeController">
-            <el-button type="primary" @click="btnLogin" style="width: 30%">登入</el-button>
+          <!-- 限制彈出提示的次數:3 -->
+          <el-config-provider :message="msgTimesController">
+            <BKbtn
+              type="primary"
+              icon="fa-house"
+              iconClass="mr-4 fontsize-14"
+              :style="{ width: '30%' }"
+              @click="goHome"
+            >
+              回首頁
+            </BKbtn>
+            <BKbtn
+              type="success"
+              icon="fa-right-to-bracket"
+              iconClass="mr-4 fontsize-16"
+              :style="{ width: '30%' }"
+              @click="btnLogin"
+            >
+              登入
+            </BKbtn>
           </el-config-provider>
         </div>
       </template>
