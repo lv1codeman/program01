@@ -1,4 +1,5 @@
 <script setup>
+import BKbtn from '@/components/buttons'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 import { ref, computed, watch, onMounted } from 'vue'
@@ -154,7 +155,9 @@ onMounted(() => {
 
     <pagetitle>
       學分學程檢查
-      <el-button type="primary" @click="open = true">使用教學</el-button>
+      <BKbtn type="primary" icon="fa-circle-info" iconClass="mr-4" @click="open = true" :style="{ padding: '0 8px' }">
+        使用教學
+      </BKbtn>
     </pagetitle>
     <div class="out-outer-box-container">
       <div class="out-outer-box">

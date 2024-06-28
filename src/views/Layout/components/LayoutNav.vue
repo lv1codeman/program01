@@ -72,7 +72,7 @@ const btnLogin = () => {
                   icon="fa-right-from-bracket"
                   iconClass="mr-4 fontsize-16"
                   @click="btnLogout"
-                  :style="{ padding: '0px 12px' }"
+                  :style="{ padding: '0px 10px' }"
                 >
                   登出
                 </BKbtn>
@@ -88,7 +88,7 @@ const btnLogin = () => {
               icon="fa-right-to-bracket"
               iconClass="mr-4 fontsize-16"
               @click="btnLogin"
-              :style="{ padding: '0px 12px' }"
+              :style="{ padding: '0px 10px' }"
             >
               登入
             </BKbtn>
