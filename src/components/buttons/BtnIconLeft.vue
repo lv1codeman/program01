@@ -8,8 +8,7 @@
 <script setup>
 const props = defineProps({
   onClick: {
-    type: Function,
-    required: true
+    type: Function
   },
   customClass: {
     type: String,

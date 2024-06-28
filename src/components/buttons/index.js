@@ -28,7 +28,7 @@ const CustomButtonWrapper = defineComponent({
 })
 
 // 将 CustomButtonWrapper 重命名为 default 并加入 BKbutton
-BKbutton.default = CustomButtonWrapper
+// BKbutton.default = CustomButtonWrapper
 
-export { BKbutton }
+// export { BKbutton }
 export default CustomButtonWrapper

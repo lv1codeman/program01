@@ -1,7 +1,7 @@
 <script setup>
-// import * as BKbutton from '@/components/buttons'
-// import { BKbutton } from '@/components/buttons'
-import BKbutton from '@/components/buttons'
+// import * as BKbtn from '@/components/buttons'
+// import { BKbtn } from '@/components/buttons'
+import BKbtn from '@/components/buttons'
 import { useRouter } from 'vue-router'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
@@ -57,41 +57,15 @@ const tableRowClicked = (row, event, column) => {
 <template>
   <div class="page-container">
     <pagetitle>學程管理</pagetitle>
-    <BKbutton
+    <BKbtn
       type="success"
       icon="fa-plus"
       iconClass="mr-4 mb-2 fontsize-16"
       @click="go_createStructure"
       :style="{ marginBottom: '10px', padding: '0 10px' }"
     >
-      新增學程1
-    </BKbutton>
-
-    <!-- 使用 BKbutton.BtnIconLeft BtnIconLeft -->
-    <BKbutton
-      is="BtnIconRight"
-      type="success"
-      icon="fa-plus"
-      iconClass="mr-4 mb-2 fontsize-16"
-      @click="go_createStructure"
-      :style="{ marginBottom: '10px', padding: '0 10px' }"
-    >
-      新增學程2
-    </BKbutton>
-
-    <!-- 使用 BKbutton.BtnIconRight，引用 BtnIconRight -->
-    <BKbutton
-      type="success"
-      icon="fa-plus"
-      iconClass="mr-4 mb-2 fontsize-16"
-      @click="go_createStructure"
-      :style="{ marginBottom: '10px', padding: '0 10px' }"
-    >
-      新增學程2
-    </BKbutton>
-    <!-- <el-button class="btn_create" type="success" @click="go_createStructure">
-      <el-icon :size="15" class="mr-2"> <Plus /> </el-icon>新增學程
-    </el-button> -->
+      新增學程
+    </BKbtn>
 
     <el-table
       :data="tableData"
@@ -106,12 +80,17 @@ const tableRowClicked = (row, event, column) => {
       <el-table-column prop="program_unit" label="學程單位" width="120" />
       <el-table-column prop="program_url" label="學程網址" />
 
-      <el-table-column align="center" fixed="right" label="操作" width="180">
+      <el-table-column align="center" fixed="right" label="操作" width="200">
         <template #default="scope">
-          <el-button type="primary" class="op_button" @click.prevent="editRow(scope.row)">
-            <el-icon class="mr-2" :size="16"><Edit /></el-icon>
+          <BKbtn
+            type="primary"
+            icon="fa-pen-to-square"
+            iconClass="mr-4 fontsize-16"
+            @click.prevent="editRow(scope.row)"
+            :style="{ padding: '5px 14px' }"
+          >
             編輯
-          </el-button>
+          </BKbtn>
           <!-- <el-button type="primary" size="small" @click.prevent="deleteRow(scope.$index, scope.row)"> 刪除 </el-button> -->
           <el-popconfirm
             title="確定要刪除嗎?"
@@ -123,10 +102,14 @@ const tableRowClicked = (row, event, column) => {
           >
             <!-- icon="el-icon-info" -->
             <template #reference>
-              <el-button type="primary" class="op_button">
+              <BKbtn type="primary" icon="fa-trash" iconClass="mr-4 fontsize-16" :style="{ padding: '5px 14px' }">
+                刪除
+              </BKbtn>
+
+              <!-- <el-button type="primary" class="op_button">
                 <el-icon class="mr-2" :size="16"><Delete /></el-icon>
                 刪除
-              </el-button>
+              </el-button> -->
             </template>
           </el-popconfirm>
         </template>
