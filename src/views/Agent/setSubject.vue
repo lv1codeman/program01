@@ -57,11 +57,13 @@ const submitProgramData = () => {
     }
   }
 
-  console.log('route.params.isFromLoad =', route.params.isFromLoad)
+  // console.log('route.params.isFromLoad =', route.params.isFromLoad)
+  // 目前覺得都用form去顯示學程資料讓使用者可以隨時更改就好
+  // 所以原本的check頁面就不用了，原本以下的else是返回到check頁面
   if (route.params.isFromLoad) {
     router.push({ path: '/agent/edit' })
   } else {
-    router.push({ path: '/agent/create' })
+    router.push({ path: '/agent/edit' })
   }
 
   // dialogSuccessVisible.value = true
