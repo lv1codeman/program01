@@ -12,7 +12,7 @@ for (const path in modules) {
 
 // 创建一个包装组件
 const CustomButtonWrapper = defineComponent({
-  name: 'CustomButtonWrapper', // 组件名称
+  name: 'CustomButtonWrapper',
   props: {
     is: {
       type: [String, Object],
@@ -21,22 +21,14 @@ const CustomButtonWrapper = defineComponent({
   },
   setup(props, { slots, attrs }) {
     return () => {
-      // 确保默认组件存在
-      const defaultComponent = BKbutton.BtnIconLeft
-      if (!defaultComponent) {
-        console.error('Default component BtnIconLeft is not found')
-        return null
-      }
-
-      // 使用 props.is 指定的组件或默认组件 BKbutton.BtnIconLeft
-      const componentToRender = props.is || defaultComponent
+      const componentToRender = props.is ? BKbutton[props.is] : BKbutton.BtnIconLeft
       return h(componentToRender, attrs, slots.default ? { default: () => slots.default() } : {})
     }
   }
 })
 
-// 导出 CustomButtonWrapper 和 BKbutton 对象
-// export { CustomButtonWrapper, BKbutton }
+// 将 CustomButtonWrapper 重命名为 default 并加入 BKbutton
+BKbutton.default = CustomButtonWrapper
 
-export default CustomButtonWrapper
 export { BKbutton }
+export default CustomButtonWrapper

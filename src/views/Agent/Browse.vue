@@ -1,7 +1,7 @@
 <script setup>
 // import * as BKbutton from '@/components/buttons'
-import { BKbutton } from '@/components/buttons'
-// import BKbutton from '@/components/buttons'
+// import { BKbutton } from '@/components/buttons'
+import BKbutton from '@/components/buttons'
 import { useRouter } from 'vue-router'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 // import { reactive, ref } from 'vue'
@@ -67,7 +67,9 @@ const tableRowClicked = (row, event, column) => {
       新增學程1
     </BKbutton>
 
-    <BKbutton.BtnIconLeft
+    <!-- 使用 BKbutton.BtnIconLeft BtnIconLeft -->
+    <BKbutton
+      is="BtnIconRight"
       type="success"
       icon="fa-plus"
       iconClass="mr-4 mb-2 fontsize-16"
@@ -75,18 +77,18 @@ const tableRowClicked = (row, event, column) => {
       :style="{ marginBottom: '10px', padding: '0 10px' }"
     >
       新增學程2
-    </BKbutton.BtnIconLeft>
+    </BKbutton>
 
     <!-- 使用 BKbutton.BtnIconRight，引用 BtnIconRight -->
-    <BKbutton.BtnIconRight
+    <BKbutton
       type="success"
       icon="fa-plus"
       iconClass="mr-4 mb-2 fontsize-16"
       @click="go_createStructure"
       :style="{ marginBottom: '10px', padding: '0 10px' }"
     >
-      新增學程3
-    </BKbutton.BtnIconRight>
+      新增學程2
+    </BKbutton>
     <!-- <el-button class="btn_create" type="success" @click="go_createStructure">
       <el-icon :size="15" class="mr-2"> <Plus /> </el-icon>新增學程
     </el-button> -->
