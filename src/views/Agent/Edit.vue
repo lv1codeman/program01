@@ -3,20 +3,18 @@ import BKbtn from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import regex from '@/assets/regex/regex.js'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
-import { ElMessage, checkboxGroupEmits } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
-import { deleteProgram, getUnitPGById, createProgram, updateProgram } from '@/apis/programAPI'
-import transformServerJSON from '@/utils/transformServerJSON.js'
+import { createProgram, updateProgram } from '@/apis/programAPI'
 const store = useProgramStore()
 const programstruct = ref()
 const router = useRouter()
-const route = useRoute()
 
 // const data = transToTree(programstruct.value)
 
@@ -70,9 +68,6 @@ onMounted(() => {
 const dynamicValidateForm = ref({})
 const labelPosition = ref('right')
 
-const gocheck = () => {
-  router.push({ path: '/agent/create' })
-}
 const loading = ref(true)
 
 const backToManagePrograms = () => {
@@ -157,10 +152,6 @@ const submit = async (formEl) => {
       console.log(resultMsg)
       // 如果學程架構有誤，resultMsg會有訊息，否則為空白
       if (!resultMsg) {
-        // 發出修改學程請求
-        console.log('store.currentPGId = ', store.currentPGId)
-        console.log('學程資料: ', store.programData)
-
         if (!store.currentPGId) {
           // 沒有program_id，代表是新增
           let res = await createProgram(JSON.stringify(store.programData))
@@ -175,7 +166,6 @@ const submit = async (formEl) => {
           })
           router.push({ path: '/agent' })
         } else {
-          // console.log('store.currentPGId = ', store.currentPGId)
           // 有program_id，代表是修改
           store.programData['program_id'] = store.currentPGId
 
@@ -190,23 +180,6 @@ const submit = async (formEl) => {
           })
           router.push({ path: '/agent' })
         }
-
-        // console.log('學程資料: ', JSON.stringify(store.programData))
-        // // 刪除DB中原本的program，將目前修改好的新增到DB
-        // console.log('store.currentPGId = ', store.currentPGId)
-        // const resD = await deleteProgram({ program_id: store.currentPGId })
-        // console.log('delete res = ', resD)
-        // let res = await createProgram(JSON.stringify(store.programData))
-        // console.log('submit response=', res)
-
-        // ElMessage({
-        //   type: 'success',
-        //   message: '學程修改成功',
-        //   showClose: true,
-        //   duration: 3000,
-        //   offset: window.screen.height / 15
-        // })
-        // router.push({ path: '/agent' })
       } else {
         ElMessageBox.alert(resultMsg, '學程架構錯誤', {
           confirmButtonText: '確認',
@@ -280,16 +253,6 @@ const checkPencilD = (d) => {
       >
         送出
       </BKbtn>
-      <!-- <component
-        :is="BKbuttons.BtnIconLeft"
-        type="success"
-        icon="fa-cloud-arrow-up"
-        iconClass="mr-4 mb-2 fontsize-16"
-        @click="submit(formRef)"
-        :style="{ marginLeft: '10px', padding: '0 10px' }"
-      >
-        送出
-      </component> -->
       <BKbtn
         type="warning"
         icon="fa-circle-left"
@@ -424,10 +387,6 @@ const checkPencilD = (d) => {
   </div>
 </template>
 <style lang="scss" scoped>
-// element-plus預設在兩個按鈕之間有間隔12px
-// .el-button + .el-button {
-//   margin-left: 0px !important;
-// }
 :deep(.el-loading-mask) {
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -502,13 +461,6 @@ const checkPencilD = (d) => {
   background-color: #ccc;
   border: none;
 }
-.domain {
-  // margin-left: 50px;
-}
-// .nonlink {
-//   background-color: #ccc;
-//   border: none;
-// }
 .islink {
   display: block;
   background-color: $primaryColor;

@@ -34,7 +34,6 @@ const dynamicValidateForm = reactive({
     // }
   ]
 })
-// console.log('dynamicValidateForm = ', JSON.stringify(dynamicValidateForm))
 const addCategory = () => {
   dynamicValidateForm.category.push({
     // key: Date.now(),
@@ -175,6 +174,7 @@ const typeChange = () => {
       label-width="auto"
       class="demo-dynamic"
       :hide-required-asterisk="true"
+      :rules="rules"
     >
       <!-- el-form加入這行以套用驗證 :rules="rules" -->
       <div class="program-setting">
@@ -418,11 +418,6 @@ hr {
   font-size: 22px;
   font-weight: bold;
 }
-.dynamicFormArea2 {
-  // background-color: #f9f3e3;
-  // padding: 10px;
-  // border-radius: 10px;
-}
 .program-setting {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -486,12 +481,6 @@ hr {
     gap: 30px;
   }
 }
-.outer-box {
-  // width: 70%;
-  // display: grid;
-  // grid-template-columns: 0.3fr minmax(100px, 1fr) minmax(100px, 1fr) 0.3fr;
-}
-
 .commandarea {
   display: flex;
   gap: 10px;
