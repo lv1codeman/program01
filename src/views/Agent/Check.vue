@@ -5,7 +5,7 @@ import { ref, onUnmounted, computed } from 'vue'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import transToTree from '@/utils/tree/objToTree.js'
-import { submitProgram } from '@/apis/programAPI'
+import { createProgram } from '@/apis/programAPI'
 import { ElMessage } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -74,7 +74,7 @@ const submit = async () => {
   if (!resultMsg) {
     // 回傳到server端
     console.log('學程資料: ', JSON.stringify(store.programData))
-    let res = await submitProgram(JSON.stringify(store.programData))
+    let res = await createProgram(JSON.stringify(store.programData))
     console.log('submit response=', res)
 
     ElMessage({

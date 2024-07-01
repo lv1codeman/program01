@@ -13,7 +13,8 @@ const store = useProgramStore()
 const go_createStructure = () => {
   router.push({ path: '/agent/create' })
 }
-
+store.currentPGId = ''
+// console.log('store.currentPGId=', store.currentPGId)
 const tableData = ref([])
 
 const deleteRow = async (index, row) => {
@@ -30,11 +31,11 @@ const editRow = async (row) => {
   store.setCurrentPGId(row.program_id)
 
   let user_unit = sessionStorage.getItem('user_unit')
-  console.log('user_unit=', user_unit)
-  console.log('store.currentPGId=', store.currentPGId)
+  // console.log('user_unit=', user_unit)
+  // console.log('store.currentPGId=', store.currentPGId)
 
   let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
-  console.log('res= ', res.data)
+  // console.log('res= ', res.data)
   let resJson = transformServerJSON(res.data)
   store.setProgramData(resJson)
 
@@ -44,7 +45,7 @@ const editRow = async (row) => {
 onMounted(async () => {
   let unit = sessionStorage.getItem('user_unit')
   const res = await getUnitPG({ unit: unit })
-  console.log(res)
+  // console.log(res)
   tableData.value = res
 })
 const tableRowClicked = (row, event, column) => {

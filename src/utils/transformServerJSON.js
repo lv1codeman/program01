@@ -1,5 +1,5 @@
 export default function transformServerJSON(input) {
-  console.log('input get', input)
+  // console.log('input get', input)
   // Initialize the output structure with values from the first item in the input array
   const output = {
     program_name: input[0].program_name,

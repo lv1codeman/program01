@@ -85,7 +85,7 @@ const submitForm = (formEl) => {
   formEl.validate((valid) => {
     if (valid) {
       store.setProgramData(dynamicValidateForm)
-      router.push({ path: '/agent/check' })
+      router.push({ path: '/agent/edit' })
     } else {
       console.log('error submit!')
       return false

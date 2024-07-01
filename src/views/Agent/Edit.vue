@@ -3,19 +3,20 @@ import BKbtn from '@/components/buttons'
 import { useProgramStore } from '@/stores/agentData.js'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { ref, onUnmounted, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import regex from '@/assets/regex/regex.js'
 import IconChild_more from '@/components/icons/IconChild_more.vue'
 import IconChild_end from '@/components/icons/IconChild_end.vue'
 import { unitList } from '@/assets/data/unitList.js'
 import transToTree from '@/utils/tree/objToTree.js'
-import { ElMessage } from 'element-plus'
+import { ElMessage, checkboxGroupEmits } from 'element-plus'
 import { ElMessageBox } from 'element-plus'
-import { deleteProgram, getUnitPGById, submitProgram } from '@/apis/programAPI'
+import { deleteProgram, getUnitPGById, createProgram, updateProgram } from '@/apis/programAPI'
 import transformServerJSON from '@/utils/transformServerJSON.js'
 const store = useProgramStore()
 const programstruct = ref()
 const router = useRouter()
+const route = useRoute()
 
 // const data = transToTree(programstruct.value)
 
@@ -56,7 +57,7 @@ const loadFromServer = async () => {
 }
 onMounted(() => {
   loadFromServer()
-  console.log(programstruct.value)
+  // console.log(programstruct.value)
   dynamicValidateForm.value['program_name'] = programstruct.value.program_name
   dynamicValidateForm.value['program_url'] = programstruct.value.program_url
   dynamicValidateForm.value['program_type'] = programstruct.value.program_type
@@ -112,7 +113,7 @@ const rules = ref({
   program_minCredit: { required: true, message: '請輸入最低應修學分數', trigger: 'blur' },
   program_nonSelfCredit: { required: true, message: '請輸入非本系學分數', trigger: 'blur' }
 })
-
+console.log('store.currentPGId=', store.currentPGId)
 const submit = async (formEl) => {
   if (!formEl) {
     return
@@ -156,23 +157,56 @@ const submit = async (formEl) => {
       console.log(resultMsg)
       // 如果學程架構有誤，resultMsg會有訊息，否則為空白
       if (!resultMsg) {
-        // 回傳到server端
-        console.log('學程資料: ', JSON.stringify(store.programData))
-        // 刪除DB中原本的program，將目前修改好的新增到DB
+        // 發出修改學程請求
         console.log('store.currentPGId = ', store.currentPGId)
-        const resD = await deleteProgram({ program_id: store.currentPGId })
-        console.log('delete res = ', resD)
-        let res = await submitProgram(JSON.stringify(store.programData))
-        console.log('submit response=', res)
+        console.log('學程資料: ', store.programData)
 
-        ElMessage({
-          type: 'success',
-          message: '學程修改成功',
-          showClose: true,
-          duration: 3000,
-          offset: window.screen.height / 15
-        })
-        router.push({ path: '/agent' })
+        if (!store.currentPGId) {
+          // 沒有program_id，代表是新增
+          let res = await createProgram(JSON.stringify(store.programData))
+          console.log('create response=', res)
+
+          ElMessage({
+            type: 'success',
+            message: '學程新增成功',
+            showClose: true,
+            duration: 3000,
+            offset: window.screen.height / 15
+          })
+          router.push({ path: '/agent' })
+        } else {
+          // console.log('store.currentPGId = ', store.currentPGId)
+          // 有program_id，代表是修改
+          store.programData['program_id'] = store.currentPGId
+
+          let res = await updateProgram(JSON.stringify(store.programData))
+          console.log('update response=', res)
+          ElMessage({
+            type: 'success',
+            message: '學程修改成功',
+            showClose: true,
+            duration: 3000,
+            offset: window.screen.height / 15
+          })
+          router.push({ path: '/agent' })
+        }
+
+        // console.log('學程資料: ', JSON.stringify(store.programData))
+        // // 刪除DB中原本的program，將目前修改好的新增到DB
+        // console.log('store.currentPGId = ', store.currentPGId)
+        // const resD = await deleteProgram({ program_id: store.currentPGId })
+        // console.log('delete res = ', resD)
+        // let res = await createProgram(JSON.stringify(store.programData))
+        // console.log('submit response=', res)
+
+        // ElMessage({
+        //   type: 'success',
+        //   message: '學程修改成功',
+        //   showClose: true,
+        //   duration: 3000,
+        //   offset: window.screen.height / 15
+        // })
+        // router.push({ path: '/agent' })
       } else {
         ElMessageBox.alert(resultMsg, '學程架構錯誤', {
           confirmButtonText: '確認',

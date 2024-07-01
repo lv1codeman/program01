@@ -155,7 +155,7 @@ onMounted(() => {
 
     <pagetitle>
       學分學程檢查
-      <BKbtn type="primary" icon="fa-circle-info" iconClass="mr-4" @click="open = true" :style="{ padding: '0 8px' }">
+      <BKbtn type="primary" icon="fa-circle-play" iconClass="mr-4" @click="open = true" :style="{ padding: '0 8px' }">
         使用教學
       </BKbtn>
     </pagetitle>

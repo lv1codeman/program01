@@ -32,10 +32,20 @@ export async function getProgramById(programId) {
   }
 }
 
-export async function submitProgram(programJSON) {
+export async function createProgram(programJSON) {
   try {
     console.log('programJSON=', programJSON)
-    const response = await axiosInstance.post(`/program/submit`, programJSON)
+    const response = await axiosInstance.post(`/program/create`, programJSON)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function updateProgram(programJSON) {
+  try {
+    console.log('programJSON=', programJSON)
+    const response = await axiosInstance.post(`/program/update`, programJSON)
     return response
   } catch (error) {
     console.error(error)
