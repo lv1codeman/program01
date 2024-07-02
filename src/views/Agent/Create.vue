@@ -15,6 +15,9 @@ const formRef = ref()
 var categoryCount = 0
 var domainCount = 1
 
+store.programData = null
+store.currentPGId = null
+
 //與下面的變數名稱互換來切換是否要有預設值，fot testing
 const dynamicValidateForm = reactive({
   program_name: '',
@@ -29,7 +32,7 @@ const dynamicValidateForm = reactive({
     //   category_id: categoryCount++,
     //   category_Name: '類別1',
     //   category_MinCredit: 0,
-    //   category_RequireNum: 0,
+    //   category_req: 0,
     //   domain: []
     // }
   ]
@@ -40,7 +43,7 @@ const addCategory = () => {
     category_id: categoryCount++,
     category_name: '',
     category_minCredit: 1,
-    category_requireNum: 1,
+    category_req: 1,
     domain: []
   })
 }
@@ -68,7 +71,7 @@ const addDomain = (item) => {
     domain_id: domainCount++,
     domain_name: '',
     domain_minCredit: 1,
-    domain_requireNum: 1
+    domain_req: 1
   })
 }
 const removeDomain = (categoryIndex, domain) => {
@@ -258,15 +261,15 @@ const typeChange = () => {
                 </el-form-item>
                 <!-- 類別需求數 -->
                 <el-form-item
-                  :label="'類別需求數'"
-                  :prop="'category.' + categoryIndex + '.category_requireNum'"
+                  :label="'須修畢全部科目'"
+                  :prop="'category.' + categoryIndex + '.category_req'"
                   :rules="{
                     required: true,
-                    message: '類別最低學分數不可為空',
+                    message: '須修畢全部科目欄位不可為空',
                     trigger: 'blur'
                   }"
                 >
-                  <el-input-number v-model="category.category_requireNum" :min="1" :max="10" />
+                  <el-input-number v-model="category.category_req" :min="1" :max="10" />
                 </el-form-item>
               </div>
             </div>
@@ -319,15 +322,15 @@ const typeChange = () => {
                       </el-form-item>
                       <!-- 領域需求數 -->
                       <el-form-item
-                        :label="'領域需求數'"
-                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_requireNum'"
+                        :label="'須修畢全部科目'"
+                        :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_req'"
                         :rules="{
                           required: true,
-                          message: '領域最低學分數不可為空',
+                          message: '須修畢全部科目欄位不可為空',
                           trigger: 'blur'
                         }"
                       >
-                        <el-input-number v-model="domain.domain_requireNum" :min="1" :max="10" />
+                        <el-input-number v-model="domain.domain_req" :min="1" :max="10" />
                       </el-form-item>
                     </div>
                   </div>

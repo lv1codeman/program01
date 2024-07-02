@@ -1,4 +1,4 @@
-export const studentScore = [
+export const fakeScore = [
   {
     subject_id: 174,
     subject_sub_id: '1SPPC0000420',

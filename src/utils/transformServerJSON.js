@@ -1,5 +1,5 @@
 export default function transformServerJSON(input) {
-  // console.log('input get', input)
+  console.log('input get', input)
   // Initialize the output structure with values from the first item in the input array
   const output = {
     program_name: input[0].program_name,
@@ -22,7 +22,7 @@ export default function transformServerJSON(input) {
         category_id: item.category_id,
         category_name: item.category_name,
         category_minCredit: 1,
-        category_requireNum: 1,
+        category_req: 1,
         domain: [],
         course: []
       }
@@ -48,7 +48,7 @@ export default function transformServerJSON(input) {
           domain_id: item.domain_id,
           domain_name: item.domain_name,
           domain_minCredit: 1,
-          domain_requireNum: 1,
+          domain_req: 1,
           course: []
         }
         category.domain.push(domain)

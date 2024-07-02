@@ -14,16 +14,13 @@ const go_createStructure = () => {
   router.push({ path: '/agent/create' })
 }
 store.currentPGId = ''
-// console.log('store.currentPGId=', store.currentPGId)
 const tableData = ref([])
 
 const deleteRow = async (index, row) => {
-  console.log('deleteRow start...')
-
+  // 刪除學程
   const res = await deleteProgram({ program_id: row.program_id })
   console.log('delete result = ', res)
   tableData.value.splice(index, 1)
-  // 刪除學程
 }
 const editRow = async (row) => {
   // 編輯學程
@@ -31,11 +28,9 @@ const editRow = async (row) => {
   store.setCurrentPGId(row.program_id)
 
   let user_unit = sessionStorage.getItem('user_unit')
-  // console.log('user_unit=', user_unit)
-  // console.log('store.currentPGId=', store.currentPGId)
 
   let res = await getUnitPGById({ unit: user_unit, program_id: store.currentPGId })
-  // console.log('res= ', res.data)
+  console.log(res)
   let resJson = transformServerJSON(res.data)
   store.setProgramData(resJson)
 
