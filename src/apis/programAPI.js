@@ -88,3 +88,48 @@ export async function getUnitPG(unit) {
     console.error(error)
   }
 }
+
+export async function getStuPCnum(pid) {
+  try {
+    const response = await axiosInstance.get(`/program/program_structure/${pid}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getCinfo(pid) {
+  try {
+    const response = await axiosInstance.get(`/program/categories/${pid}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getDinfo(did) {
+  try {
+    const response = await axiosInstance.get(`/program/domains/${did}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getCATEpass(sid, pid, cid) {
+  try {
+    const response = await axiosInstance.get(`/program/categories/${sid}/${pid}/${cid}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getDOMpass(sid, pid, cid) {
+  try {
+    const response = await axiosInstance.get(`/program/domains/${sid}/${pid}/${cid}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}

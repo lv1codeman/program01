@@ -5,25 +5,49 @@ const router = useRouter()
 import { ref, computed, watch, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { useStudentStore } from '@/stores/studentData.js'
+import sqlresToObj from '@/utils/sqlresToObj.js'
+
 const store = useStudentStore()
 const programList = ref([])
 
-import { getAllPrograms, getProgramById } from '@/apis/programAPI'
+import { getAllPrograms, getStuPCnum, getCinfo, getDinfo, getCATEpass, getDOMpass } from '@/apis/programAPI'
 
-import { fakeScore } from '@/assets/data/fakeScore.js'
+// import { fakeScore } from '@/assets/data/fakeScore.js'
 
-console.log(fakeScore)
+// // console.log(fakeScore)
+
+// TODO
+const calprogress = async () => {
+  let cdlist = await getStuPCnum(1)
+  console.log('cdlist = ', cdlist)
+
+  let cInfo = await getCinfo(1)
+  console.log('cInfo=', cInfo)
+
+  let CATE1 = await getCATEpass('S0000001', 1, 1)
+  console.log('CATE1=', CATE1)
+
+  let DOM2 = await getDOMpass('S0000001', 1, 2)
+  console.log('DOM2=', DOM2)
+
+  // cdlist.forEach(async (item) => {
+
+  // });
+}
+calprogress()
 
 const fetchAllPrograms = async () => {
   try {
     programList.value = await getAllPrograms()
-    console.log(programList.value)
+    // console.log(programList.value)
+    programList.value[0].percent = 30
   } catch (error) {
     console.error('Error fetching programs:', error)
     router.push({ path: '/login' })
   }
 }
 fetchAllPrograms()
+
 // const temp = ref()
 // const fetchSingleProgram = async () => {
 //   try {
@@ -158,7 +182,7 @@ onMounted(() => {
         <div
           class="outer-box"
           v-for="(item, index) in programList"
-          :key="item.id"
+          :key="item.program_id"
           :style="
             item.percent == 100
               ? { border: '2px solid var(--el-color-success)' }
@@ -181,11 +205,11 @@ onMounted(() => {
                 >即將完成</el-tag
               >
               <div class="subjectName">
-                <a :href="item.url" target="_blank" :ref="(el) => (ref2[index] = el)"
-                  >{{ item.name }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
+                <a :href="item.program_url" target="_blank" :ref="(el) => (ref2[index] = el)"
+                  >{{ item.program_name }}<font-awesome-icon icon="fa-link" style="font-size: 14px; margin-left: 2px"
                 /></a>
               </div>
-              <div class="subjectUnit">{{ item.unit }}</div>
+              <div class="subjectUnit">{{ item.program_unit }}</div>
               <div :ref="(el) => (ref3[index] = el)">
                 <el-progress
                   class="progressbar"
@@ -220,6 +244,7 @@ onMounted(() => {
     .outer-box {
       padding: 0 20px;
       width: 380px;
+      height: 100px;
       // border: 2px solid rgb(137, 137, 137);
       border: 2px solid $primaryColor;
       background-color: white;
