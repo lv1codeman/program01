@@ -10,7 +10,7 @@ import sqlresToObj from '@/utils/sqlresToObj.js'
 const store = useStudentStore()
 const programList = ref([])
 
-import { getAllPrograms, getStuPCnum, getCinfo, getDinfo, getCATEpass, getDOMpass } from '@/apis/programAPI'
+import { getAllPrograms, getStuPCnum, getCinfo, getDinfo, getCATEpass, getDOMpass, getPS } from '@/apis/programAPI'
 
 // import { fakeScore } from '@/assets/data/fakeScore.js'
 
@@ -18,21 +18,59 @@ import { getAllPrograms, getStuPCnum, getCinfo, getDinfo, getCATEpass, getDOMpas
 
 // TODO
 const calprogress = async () => {
-  let cdlist = await getStuPCnum(1)
-  console.log('cdlist = ', cdlist)
+  let denominator = 0
+  let pid = 1
+  let ps = await getPS(1)
+  console.log('program structure = ', ps)
 
   let cInfo = await getCinfo(1)
   console.log('cInfo=', cInfo)
 
-  let CATE1 = await getCATEpass('S0000001', 1, 1)
-  console.log('CATE1=', CATE1)
+  console.log('denominator=', denominator)
 
-  let DOM2 = await getDOMpass('S0000001', 1, 2)
-  console.log('DOM2=', DOM2)
+  const cates = [...new Set(ps.map((item) => item.category_name))]
+  console.log('cates = ', cates)
+  // 計算分母
+  ps.forEach(async (item) => {
+    console.log(item.category_id)
+    // 檢查有沒有domain
+    if (item.domain_id == 0) {
+      // 沒有
+    } else {
+      // 有
+    }
+  })
 
-  // cdlist.forEach(async (item) => {
+  // 計算分子
+  let checkDone = {}
+  ps.forEach(async (item) => {
+    let creditsum = 0
+    // 檢查有沒有domain
+    if (item.domain_id == 0) {
+      // 沒有
+      let CATE1 = await getCATEpass('S0000001', pid, item.category_id)
+      console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
+      CATE1.forEach((item) => {
+        creditsum += item.subject_credit
+      })
+      console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
+      // 如果達到類別的最低學分數，註記完成
+      checkDone[item.domain_id] = creditsum >= item.category_minCredit ? 'done' : 'not yet'
+    } else {
+      // 有，檢查domainID
+      let d = await getDOMpass('S0000001', pid, item.domain_id)
+      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的完成科目\n`, d)
+      d.forEach((item) => {
+        creditsum += item.subject_credit
+      })
+      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
 
-  // });
+      // 如果達到領域的最低學分數，註記完成
+      checkDone[item.domain_id] = creditsum >= item.domain_minCredit ? 'done' : 'not yet'
+    }
+
+    console.log('checkDone=', checkDone)
+  })
 }
 calprogress()
 

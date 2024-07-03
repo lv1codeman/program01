@@ -133,3 +133,12 @@ export async function getDOMpass(sid, pid, cid) {
     console.error(error)
   }
 }
+
+export async function getPS(pid) {
+  try {
+    const response = await axiosInstance.get(`/program/getPS/${pid}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
