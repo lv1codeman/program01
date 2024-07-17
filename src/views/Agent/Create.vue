@@ -52,12 +52,11 @@ const addCategory = () => {
   })
 }
 addCategory()
-// 藏一個小BUG在這，如果類別有兩個，刪除第一個的時候也會跳出警告，因為判斷是用index而不是看數量
-// 但因為希望資料庫中的類別id的生成順序相同，所以就不改了
-// 其實這邊的id也不影響資料庫，這邊的id只是用來編輯這個學程用的參考值，實際寫入的類別id會根據資料庫中的最大值+1
+
+// 這邊的cate_id不影響資料庫，這邊的cate_id只是用來編輯這個學程用的參考值，實際寫入的類別id會根據資料庫中的最大值+1
 const removeCategory = (item) => {
   const index = dynamicValidateForm.category.indexOf(item)
-  if (index > 0) {
+  if (dynamicValidateForm.category.length > 1) {
     dynamicValidateForm.category.splice(index, 1)
     categoryCount--
   } else {
@@ -89,8 +88,9 @@ const removeDomain = (categoryIndex, domain) => {
     dynamicValidateForm.category[categoryIndex].domain.splice(index, 1)
     domainCount--
   }
-  console.log('now categoryIndex is: ', categoryIndex)
-  if (index == 0) {
+
+  // 不要用index去判斷，要判斷這個類別中還有沒有領域
+  if (dynamicValidateForm.category[categoryIndex].domain.length == 0) {
     hasDomain.value[categoryIndex] = false
   }
 
@@ -104,7 +104,6 @@ const submitForm = (formEl) => {
       dynamicValidateForm.category.forEach((item) => {
         if (item.domain.length == 0) {
           item.category_hasDomain = 0
-        } else {
         }
       })
 
@@ -263,11 +262,15 @@ hasDomain.value[0] = false
                 <el-form-item
                   :label="'類別名稱'"
                   :prop="'category.' + categoryIndex + '.category_name'"
-                  :rules="{
-                    required: true,
-                    message: '類別名稱不可為空',
-                    trigger: 'blur'
-                  }"
+                  :rules="
+                    validon
+                      ? {
+                          required: true,
+                          message: '類別名稱不可為空',
+                          trigger: 'blur'
+                        }
+                      : null
+                  "
                 >
                   <el-input v-model="category.category_name" placeholder="請輸入類別名稱" />
                 </el-form-item>
@@ -278,16 +281,20 @@ hasDomain.value[0] = false
                   content="類別中的領域要完成幾項才算完成"
                   placement="top"
                   :auto-close="2000"
+                  v-if="hasDomain[categoryIndex]"
                 >
                   <el-form-item
                     label="領域完成數"
                     :prop="'category.' + categoryIndex + '.category_hasDomain'"
-                    :rules="{
-                      required: true,
-                      message: '類別最低學分數不可為空',
-                      trigger: 'blur'
-                    }"
-                    v-if="hasDomain[categoryIndex]"
+                    :rules="
+                      validon
+                        ? {
+                            required: true,
+                            message: '類別最低學分數不可為空',
+                            trigger: 'blur'
+                          }
+                        : null
+                    "
                   >
                     <!-- <template #label><span class="lineHeight1">最低課程數</span></template> -->
                     <el-input-number v-model="category.category_hasDomain" :min="1" :max="30" />
@@ -295,27 +302,36 @@ hasDomain.value[0] = false
                 </el-tooltip>
                 <!-- [無領域]最低課程數 -->
                 <el-form-item
-                  label="最低課程數"
+                  label="類別修畢條件"
                   :prop="'category.' + categoryIndex + '.category_goal'"
-                  :rules="{
-                    required: true,
-                    message: '最低課程數不可為空',
-                    trigger: 'blur'
-                  }"
+                  :rules="
+                    validon
+                      ? {
+                          required: true,
+                          message: '修畢條件不可為空',
+                          trigger: 'blur'
+                        }
+                      : null
+                  "
                   v-if="!hasDomain[categoryIndex]"
                 >
                   <!-- <template #label><span class="lineHeight1">最低課程數</span></template> -->
-                  <el-input-number v-model="category.category_goal" :min="1" :max="30" />
+                  <!-- <el-input-number v-model="category.category_goal" :min="1" :max="30" /> -->
+                  <el-segmented v-model="category.category_goal" :options="criteriaOptions" />
                 </el-form-item>
                 <!-- [無領域]最低學分數 -->
                 <el-form-item
-                  :label="'最低學分數'"
+                  :label="'最低課程/學分數'"
                   :prop="'category.' + categoryIndex + '.category_goalCredit'"
-                  :rules="{
-                    required: true,
-                    message: '最低學分數欄位不可為空',
-                    trigger: 'blur'
-                  }"
+                  :rules="
+                    validon
+                      ? {
+                          required: true,
+                          message: '最低學分數欄位不可為空',
+                          trigger: 'blur'
+                        }
+                      : null
+                  "
                   v-if="!hasDomain[categoryIndex]"
                 >
                   <el-input-number v-model="category.category_goalCredit" :min="1" :max="10" />
@@ -346,40 +362,43 @@ hasDomain.value[0] = false
                       <el-form-item
                         :label="'類別' + (categoryIndex + 1) + '>領域' + (index + 1)"
                         :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_name'"
-                        :rules="{
-                          required: true,
-                          message: '領域名稱不可為空',
-                          trigger: 'blur'
-                        }"
+                        :rules="
+                          validon
+                            ? {
+                                required: true,
+                                message: '領域名稱不可為空',
+                                trigger: 'blur'
+                              }
+                            : null
+                        "
                       >
                         <el-input v-model="domain.domain_name" placeholder="請輸入領域名稱" />
                       </el-form-item>
                       <!-- 領域修畢課程數 -->
                       <el-tooltip
-                        class="box-item"
                         effect="dark"
                         content="領域中的科目要完成幾項才算完成"
                         placement="top"
                         :auto-close="2000"
                       >
                         <el-form-item
-                          label="領域修畢課程數"
+                          label="領域修畢條件"
                           :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_goal'"
-                          :rules="{
-                            required: true,
-                            message: '領域最低學分數不可為空',
-                            trigger: 'blur'
-                          }"
+                          :rules="
+                            validon
+                              ? {
+                                  required: true,
+                                  message: '領域最低學分數不可為空',
+                                  trigger: 'blur'
+                                }
+                              : null
+                          "
                         >
-                          <!-- <template #label
-                          ><span class="lineHeight1">最低學分數<br />/課程數</span></template
-                        > -->
-                          <el-input-number v-model="domain.domain_goal" :min="1" :max="30" />
+                          <el-segmented v-model="domain.domain_goal" :options="criteriaOptions" />
                         </el-form-item>
                       </el-tooltip>
                       <!-- 領域修畢學分數 -->
                       <el-tooltip
-                        class="box-item"
                         effect="dark"
                         content="領域中的科目累積多少學分才算完成"
                         placement="top"
@@ -388,13 +407,17 @@ hasDomain.value[0] = false
                         <el-form-item
                           :label="''"
                           :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_goalCredit'"
-                          :rules="{
-                            required: true,
-                            message: '須修畢全部科目欄位不可為空',
-                            trigger: 'blur'
-                          }"
+                          :rules="
+                            validon
+                              ? {
+                                  required: true,
+                                  message: '須修畢全部科目欄位不可為空',
+                                  trigger: 'blur'
+                                }
+                              : null
+                          "
                         >
-                          <template #label><span>領域修畢學分數</span></template>
+                          <template #label><span>最低課程/學分數</span></template>
                           <el-input-number v-model="domain.domain_goalCredit" :min="1" :max="10" />
                         </el-form-item>
                       </el-tooltip>
