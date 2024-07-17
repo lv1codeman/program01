@@ -126,7 +126,7 @@ const submit = async (formEl) => {
       store.programData.program_criteria = dynamicValidateForm.value.program_criteria
 
       // 檢查學程架構
-      console.log(store.programData)
+      console.log('即將送出的架構：', store.programData)
       let resultMsg = ''
       let p = store.programData
 

@@ -21,8 +21,9 @@ export default function transformServerJSON(input) {
       category = {
         category_id: item.category_id,
         category_name: item.category_name,
-        category_minCredit: 1,
-        category_req: 1,
+        category_hasDomain: 1,
+        category_goal: 1,
+        category_goalCredit: 1,
         domain: [],
         course: []
       }
@@ -47,8 +48,8 @@ export default function transformServerJSON(input) {
         domain = {
           domain_id: item.domain_id,
           domain_name: item.domain_name,
-          domain_minCredit: 1,
-          domain_req: 1,
+          domain_goal: 1,
+          domain_goalCredit: 1,
           course: []
         }
         category.domain.push(domain)
