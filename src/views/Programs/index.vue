@@ -10,7 +10,16 @@ import sqlresToObj from '@/utils/sqlresToObj.js'
 const store = useStudentStore()
 const programList = ref([])
 
-import { getAllPrograms, getStuPCnum, getCinfo, getDinfo, getCATEpass, getDOMpass, getPS } from '@/apis/programAPI'
+import {
+  getAllPrograms,
+  getStuPCnum,
+  getCinfo,
+  getDinfo,
+  getCATEpass,
+  getDOMpass,
+  getPS,
+  getTargetStruct
+} from '@/apis/programAPI'
 
 // import { fakeScore } from '@/assets/data/fakeScore.js'
 
@@ -30,6 +39,10 @@ const calprogress = async () => {
 
   const cates = [...new Set(ps.map((item) => item.category_name))]
   console.log('cates = ', cates)
+
+  let res1 = await getTargetStruct(1, 1, 0)
+  console.log('res1= ', res1)
+
   // 計算分母
   ps.forEach(async (item) => {
     console.log(item.category_id)

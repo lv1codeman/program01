@@ -142,3 +142,12 @@ export async function getPS(pid) {
     console.error(error)
   }
 }
+
+export async function getTargetStruct(pid, cid, did) {
+  try {
+    const response = await axiosInstance.get(`/program/getTargetStruct/${pid}/${cid}/${did}`)
+    return response
+  } catch (error) {
+    console.error(error)
+  }
+}
