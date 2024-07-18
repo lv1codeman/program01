@@ -91,8 +91,16 @@ const calprogress = async () => {
 
   // 計算分子
   const checkDonePercent = {}
-  ps.forEach(async (item) => {
+  ps.forEach(async (item, index) => {
+    console.log('index= ', index)
     console.log('item=', item)
+
+    if (index > 0) {
+      console.log('This: ' + ps[index].category_id)
+      console.log('Previous: ' + ps[index - 1].category_id)
+    }
+
+    // 計算分子
     let creditsum = 0
     // 檢查有沒有domain
     if (item.category_hasDomain == 0 && item.domain_id == 0) {
@@ -165,7 +173,13 @@ const calprogress = async () => {
     }
 
     console.log('checkDone=', checkDonePercent)
-    programList.value[0].percent = checkDonePercent['1-2-2']
+
+    // 設定每個學程的進度百分比
+    programList.value.forEach((item) => {
+      if (item.program_id == 1) {
+        item.percent = checkDonePercent['1-2-2']
+      }
+    })
   })
 }
 calprogress()
@@ -173,7 +187,7 @@ calprogress()
 const fetchAllPrograms = async () => {
   try {
     programList.value = await getAllPrograms()
-    // console.log(programList.value)
+    console.log(programList.value)
     // programList.value[0].percent = 30
   } catch (error) {
     console.error('Error fetching programs:', error)
