@@ -38,10 +38,43 @@ const getTargetdeno = async (a, b, c) => {
   return { crsnum: res1.length, creditsum: creditsum }
 }
 
+function calculateDenominator(ps) {
+  // 分組
+  const grouped = ps.reduce((acc, item) => {
+    if (!acc[item.category_id]) {
+      acc[item.category_id] = []
+    }
+    acc[item.category_id].push(item)
+    return acc
+  }, {})
+
+  // 計算分母
+  let denominator = 0
+
+  for (const [categoryId, items] of Object.entries(grouped)) {
+    // 檢查 category_hasDomain 的值
+    const categoryHasDomain = items[0].category_hasDomain
+
+    if (categoryHasDomain === 0) {
+      // 累計所有 category_goalCredit
+      denominator += items.reduce((sum, item) => sum + item.category_goalCredit, 0)
+    } else {
+      // 只取 domain_goalCredit 最小的 category_hasDomain 筆
+      const sortedCredits = items.map((item) => item.domain_goalCredit).sort((a, b) => a - b)
+      const numToTake = Math.min(categoryHasDomain, sortedCredits.length)
+      for (let i = 0; i < numToTake; i++) {
+        denominator += sortedCredits[i]
+      }
+    }
+  }
+
+  return denominator
+}
+
 const calprogress = async () => {
   let denominator = 0
   let pid = 1
-  let ps = await getPS(1)
+  let ps = await getPS(pid)
   console.log('program structure = ', ps)
 
   let cInfo = await getCinfo(1)
@@ -53,49 +86,46 @@ const calprogress = async () => {
   console.log('category = ', cates)
 
   // 計算分母
-  ps.forEach(async (item) => {
-    console.log(item.category_id)
-    // 檢查有沒有domain
-    if (item.domain_id == 0) {
-      // 沒有
-    } else {
-      // 有
-    }
-  })
+  denominator = calculateDenominator(ps)
+  console.log('分母計算結果:', denominator)
 
   // 計算分子
-  let checkDonePercent = []
+  const checkDonePercent = {}
   ps.forEach(async (item) => {
     console.log('item=', item)
     let creditsum = 0
     // 檢查有沒有domain
-    if (item.domain_id == 0) {
+    if (item.category_hasDomain == 0 && item.domain_id == 0) {
       // 無領域
       let CATE1 = await getCATEpass('S0000001', pid, item.category_id)
-      console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
+      // console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
       CATE1.forEach((item) => {
         creditsum += item.subject_credit
       })
-      console.log(`類別 ${item.category_name} 已完成 ${CATE1.length} 個科目`)
-      console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
+      // console.log(`類別 ${item.category_name} 已完成 ${CATE1.length} 個科目`)
+      // console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
 
-      let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
-      console.log('此目標的課程數總和：', resDeno.crsnum)
-      console.log('此目標的學分數總和：', resDeno.creditsum)
+      // let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
+      // console.log('此目標的課程數總和：', resDeno.crsnum)
+      // console.log('此目標的學分數總和：', resDeno.creditsum)
 
       // 檢查是否完成
-      // 修畢條件
-      // 如果達到類別的最低學分數/課程數，註記完成
       if (item.category_goal == '以學分數') {
         // checkDone[item.domain_id] = creditsum >= item.category_goalCredit ? 'done' : 'not yet'
-        checkDonePercent.push(toPercent(creditsum, item.category_goalCredit))
-        console.log('以學分數時，分子= ', creditsum)
-        console.log('以學分數時，分母= ', item.category_goalCredit)
+        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
+          creditsum,
+          item.category_goalCredit
+        )
+        // console.log('以學分數時，分子= ', creditsum)
+        // console.log('以學分數時，分母= ', item.category_goalCredit)
       } else if (item.category_goal == '以課程數') {
         // checkDone[item.domain_id] = CATE1.length >= item.category_goalCredit ? 'done' : 'not yet'
-        console.log('以課程數時，分子= ', CATE1.length)
-        console.log('以課程數時，分母= ', item.category_goalCredit)
-        checkDonePercent.push(toPercent(CATE1.length, item.category_goalCredit))
+        // console.log('以課程數時，分子= ', CATE1.length)
+        // console.log('以課程數時，分母= ', item.category_goalCredit)
+        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
+          CATE1.length,
+          item.category_goalCredit
+        )
       } else {
         console.log('此類別有領域，不該在此檢查')
       }
@@ -106,20 +136,28 @@ const calprogress = async () => {
       d.forEach((item) => {
         creditsum += item.subject_credit
       })
-      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${d.length} 個科目`)
-      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
+      // console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${d.length} 個科目`)
+      // console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
 
-      let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
-      console.log('此目標的課程數總和：', resDeno.crsnum)
-      console.log('此目標的學分數總和：', resDeno.creditsum)
+      // let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
+      // console.log('此目標的課程數總和：', resDeno.crsnum)
+      // console.log('此目標的學分數總和：', resDeno.creditsum)
 
       // 檢查是否完成
-      // 修畢條件
-      // 如果達到領域的最低學分數/課程數，註記完成
       if (item.domain_goal == '以學分數') {
-        checkDonePercent.push(creditsum >= item.domain_goalCredit ? 'done' : 'not yet')
+        // checkDonePercent[item.category_id + '-' + item.domain_id] =
+        //   creditsum >= item.domain_goalCredit ? 'done' : 'not yet'
+        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
+          creditsum,
+          item.domain_goalCredit
+        )
       } else if (item.domain_goal == '以課程數') {
-        checkDonePercent.push(d.length >= item.domain_goalCredit ? 'done' : 'not yet')
+        // checkDonePercent[item.category_id + '-' + item.domain_id] =
+        //   d.length >= item.domain_goalCredit ? 'done' : 'not yet'
+        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
+          d.length,
+          item.domain_goalCredit
+        )
       } else {
         console.log('此類別有領域，不該在此檢查')
       }
@@ -127,6 +165,7 @@ const calprogress = async () => {
     }
 
     console.log('checkDone=', checkDonePercent)
+    programList.value[0].percent = checkDonePercent['1-2-2']
   })
 }
 calprogress()
@@ -135,7 +174,7 @@ const fetchAllPrograms = async () => {
   try {
     programList.value = await getAllPrograms()
     // console.log(programList.value)
-    programList.value[0].percent = 30
+    // programList.value[0].percent = 30
   } catch (error) {
     console.error('Error fetching programs:', error)
     router.push({ path: '/login' })
