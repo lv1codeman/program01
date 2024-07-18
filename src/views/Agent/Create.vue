@@ -76,7 +76,7 @@ const addDomain = (item) => {
     // key: Date.now(),
     domain_id: domainCount++,
     domain_name: '',
-    domain_goal: 1,
+    domain_goal: '',
     domain_goalCredit: 1
   })
 
