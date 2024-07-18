@@ -46,7 +46,7 @@ const addCategory = () => {
     category_id: categoryCount++,
     category_name: '',
     category_hasDomain: 0,
-    category_goal: 1,
+    category_goal: '',
     category_goalCredit: 1,
     domain: []
   })
@@ -104,6 +104,9 @@ const submitForm = (formEl) => {
       dynamicValidateForm.category.forEach((item) => {
         if (item.domain.length == 0) {
           item.category_hasDomain = 0
+        } else {
+          item.category_goal = '有領域'
+          item.category_goalCredit = 0
         }
       })
 
