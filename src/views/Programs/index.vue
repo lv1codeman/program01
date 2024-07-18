@@ -6,7 +6,7 @@ import { ref, computed, watch, onMounted } from 'vue'
 import pagetitle from '@/views/Layout/components/LayoutPageTitle.vue'
 import { useStudentStore } from '@/stores/studentData.js'
 import sqlresToObj from '@/utils/sqlresToObj.js'
-
+import toPercent from '@/utils/toPercent.js'
 const store = useStudentStore()
 const programList = ref([])
 
@@ -26,6 +26,18 @@ import {
 // // console.log(fakeScore)
 
 // TODO
+const getTargetdeno = async (a, b, c) => {
+  let res1 = await getTargetStruct(a, b, c)
+  // console.log('此目標的課程數總和：', res1.length)
+
+  let creditsum = 0
+  res1.forEach((item) => {
+    creditsum += item.subject_credit
+  })
+  // console.log('此目標的學分數總和：', creditsum)
+  return { crsnum: res1.length, creditsum: creditsum }
+}
+
 const calprogress = async () => {
   let denominator = 0
   let pid = 1
@@ -38,10 +50,7 @@ const calprogress = async () => {
   console.log('denominator=', denominator)
 
   const cates = [...new Set(ps.map((item) => item.category_name))]
-  console.log('cates = ', cates)
-
-  let res1 = await getTargetStruct(1, 1, 0)
-  console.log('res1= ', res1)
+  console.log('category = ', cates)
 
   // 計算分母
   ps.forEach(async (item) => {
@@ -55,34 +64,69 @@ const calprogress = async () => {
   })
 
   // 計算分子
-  let checkDone = {}
+  let checkDonePercent = []
   ps.forEach(async (item) => {
+    console.log('item=', item)
     let creditsum = 0
     // 檢查有沒有domain
     if (item.domain_id == 0) {
-      // 沒有
+      // 無領域
       let CATE1 = await getCATEpass('S0000001', pid, item.category_id)
       console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
       CATE1.forEach((item) => {
         creditsum += item.subject_credit
       })
+      console.log(`類別 ${item.category_name} 已完成 ${CATE1.length} 個科目`)
       console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
-      // 如果達到類別的最低學分數，註記完成
-      checkDone[item.domain_id] = creditsum >= item.category_minCredit ? 'done' : 'not yet'
+
+      let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
+      console.log('此目標的課程數總和：', resDeno.crsnum)
+      console.log('此目標的學分數總和：', resDeno.creditsum)
+
+      // 檢查是否完成
+      // 修畢條件
+      // 如果達到類別的最低學分數/課程數，註記完成
+      if (item.category_goal == '以學分數') {
+        // checkDone[item.domain_id] = creditsum >= item.category_goalCredit ? 'done' : 'not yet'
+        checkDonePercent.push(toPercent(creditsum, item.category_goalCredit))
+        console.log('以學分數時，分子= ', creditsum)
+        console.log('以學分數時，分母= ', item.category_goalCredit)
+      } else if (item.category_goal == '以課程數') {
+        // checkDone[item.domain_id] = CATE1.length >= item.category_goalCredit ? 'done' : 'not yet'
+        console.log('以課程數時，分子= ', CATE1.length)
+        console.log('以課程數時，分母= ', item.category_goalCredit)
+        checkDonePercent.push(toPercent(CATE1.length, item.category_goalCredit))
+      } else {
+        console.log('此類別有領域，不該在此檢查')
+      }
     } else {
-      // 有，檢查domainID
+      // 有領域，檢查domainID
       let d = await getDOMpass('S0000001', pid, item.domain_id)
       console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的完成科目\n`, d)
       d.forEach((item) => {
         creditsum += item.subject_credit
       })
+      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${d.length} 個科目`)
       console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
 
-      // 如果達到領域的最低學分數，註記完成
-      checkDone[item.domain_id] = creditsum >= item.domain_minCredit ? 'done' : 'not yet'
+      let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
+      console.log('此目標的課程數總和：', resDeno.crsnum)
+      console.log('此目標的學分數總和：', resDeno.creditsum)
+
+      // 檢查是否完成
+      // 修畢條件
+      // 如果達到領域的最低學分數/課程數，註記完成
+      if (item.domain_goal == '以學分數') {
+        checkDonePercent.push(creditsum >= item.domain_goalCredit ? 'done' : 'not yet')
+      } else if (item.domain_goal == '以課程數') {
+        checkDonePercent.push(d.length >= item.domain_goalCredit ? 'done' : 'not yet')
+      } else {
+        console.log('此類別有領域，不該在此檢查')
+      }
+      // checkDone[item.domain_id] = creditsum >= item.domain_goalCredit ? 'done' : 'not yet'
     }
 
-    console.log('checkDone=', checkDone)
+    console.log('checkDone=', checkDonePercent)
   })
 }
 calprogress()
