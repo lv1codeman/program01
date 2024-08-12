@@ -26,50 +26,50 @@ import {
 // // console.log(fakeScore)
 
 // TODO
-const getTargetdeno = async (a, b, c) => {
-  let res1 = await getTargetStruct(a, b, c)
-  // console.log('此目標的課程數總和：', res1.length)
+// const getTargetdeno = async (a, b, c) => {
+//   let res1 = await getTargetStruct(a, b, c)
+//   // console.log('此目標的課程數總和：', res1.length)
 
-  let creditsum = 0
-  res1.forEach((item) => {
-    creditsum += item.subject_credit
-  })
-  // console.log('此目標的學分數總和：', creditsum)
-  return { crsnum: res1.length, creditsum: creditsum }
-}
+//   let creditsum = 0
+//   res1.forEach((item) => {
+//     creditsum += item.subject_credit
+//   })
+//   // console.log('此目標的學分數總和：', creditsum)
+//   return { crsnum: res1.length, creditsum: creditsum }
+// }
 
-function calculateDenominator(ps) {
-  // 分組
-  const grouped = ps.reduce((acc, item) => {
-    if (!acc[item.category_id]) {
-      acc[item.category_id] = []
-    }
-    acc[item.category_id].push(item)
-    return acc
-  }, {})
+// function calculateDenominator(ps) {
+//   // 分組
+//   const grouped = ps.reduce((acc, item) => {
+//     if (!acc[item.category_id]) {
+//       acc[item.category_id] = []
+//     }
+//     acc[item.category_id].push(item)
+//     return acc
+//   }, {})
 
-  // 計算分母
-  let denominator = 0
+//   // 計算分母
+//   let denominator = 0
 
-  for (const [categoryId, items] of Object.entries(grouped)) {
-    // 檢查 category_hasDomain 的值
-    const categoryHasDomain = items[0].category_hasDomain
+//   for (const [categoryId, items] of Object.entries(grouped)) {
+//     // 檢查 category_hasDomain 的值
+//     const categoryHasDomain = items[0].category_hasDomain
 
-    if (categoryHasDomain === 0) {
-      // 累計所有 category_goalCredit
-      denominator += items.reduce((sum, item) => sum + item.category_goalCredit, 0)
-    } else {
-      // 只取 domain_goalCredit 最小的 category_hasDomain 筆
-      const sortedCredits = items.map((item) => item.domain_goalCredit).sort((a, b) => a - b)
-      const numToTake = Math.min(categoryHasDomain, sortedCredits.length)
-      for (let i = 0; i < numToTake; i++) {
-        denominator += sortedCredits[i]
-      }
-    }
-  }
+//     if (categoryHasDomain === 0) {
+//       // 累計所有 category_goalCredit
+//       denominator += items.reduce((sum, item) => sum + item.category_goalCredit, 0)
+//     } else {
+//       // 只取 domain_goalCredit 最小的 category_hasDomain 筆
+//       const sortedCredits = items.map((item) => item.domain_goalCredit).sort((a, b) => a - b)
+//       const numToTake = Math.min(categoryHasDomain, sortedCredits.length)
+//       for (let i = 0; i < numToTake; i++) {
+//         denominator += sortedCredits[i]
+//       }
+//     }
+//   }
 
-  return denominator
-}
+//   return denominator
+// }
 
 const calprogress = async () => {
   let denominator = 0
@@ -86,100 +86,70 @@ const calprogress = async () => {
   console.log('category = ', cates)
 
   // 計算分母
-  denominator = calculateDenominator(ps)
-  console.log('分母計算結果:', denominator)
+  // denominator = calculateDenominator(ps)
+  // console.log('分母計算結果:', denominator)
 
   // 計算分子
   const checkDonePercent = {}
-  ps.forEach(async (item, index) => {
-    console.log('index= ', index)
-    console.log('item=', item)
+  let deno_credit = 0
 
-    if (index > 0) {
-      console.log('This: ' + ps[index].category_id)
-      console.log('Previous: ' + ps[index - 1].category_id)
+  let aaa = 0
+  ps.forEach((item) => {
+    if (item.category_domain_reqnum == 0) {
+      aaa += item.category_goal
+    } else {
+      aaa += item.domain_goal
     }
+  })
+  console.log(`aaa =  ${aaa}`)
 
-    // 計算分子
+  ps.forEach(async (item, index) => {
+    console.log(`開始檢查...類別: ${item.category_name}, 領域: ${item.domain_name}`)
+
     let creditsum = 0
-    // 檢查有沒有domain
-    if (item.category_hasDomain == 0 && item.domain_id == 0) {
-      // 無領域
+    // 根據學程中的每個PS(Program Structure)檢查
+    if (item.category_domain_reqnum == 0) {
+      // 沒領域
       let CATE1 = await getCATEpass('S0000001', pid, item.category_id)
-      // console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
+      console.log(`類別 ${item.category_name} 的完成科目\n`, CATE1)
       CATE1.forEach((item) => {
         creditsum += item.subject_credit
       })
-      // console.log(`類別 ${item.category_name} 已完成 ${CATE1.length} 個科目`)
-      // console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
-
-      // let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
-      // console.log('此目標的課程數總和：', resDeno.crsnum)
-      // console.log('此目標的學分數總和：', resDeno.creditsum)
-
-      // 檢查是否完成
-      if (item.category_goal == '以學分數') {
-        // checkDone[item.domain_id] = creditsum >= item.category_goalCredit ? 'done' : 'not yet'
-        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
-          creditsum,
-          item.category_goalCredit
-        )
-        // console.log('以學分數時，分子= ', creditsum)
-        // console.log('以學分數時，分母= ', item.category_goalCredit)
-      } else if (item.category_goal == '以課程數') {
-        // checkDone[item.domain_id] = CATE1.length >= item.category_goalCredit ? 'done' : 'not yet'
-        // console.log('以課程數時，分子= ', CATE1.length)
-        // console.log('以課程數時，分母= ', item.category_goalCredit)
-        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
-          CATE1.length,
-          item.category_goalCredit
-        )
+      console.log(`類別 ${item.category_name} 已完成 ${CATE1.length} 個科目`)
+      console.log(`類別 ${item.category_name} 已完成 ${creditsum} 學分`)
+      if (item.program_criteria == '以學分數') {
+        console.log(`類別 ${item.category_name} 的目標是要完成 ${item.category_goal} 學分`)
+        let ans = toPercent(creditsum, item.category_goal)
+        console.log(`已經完成 ${ans} %`)
       } else {
-        console.log('此類別有領域，不該在此檢查')
+        console.log(`類別 ${item.category_name} 的目標是要完成 ${item.category_goal} 個科目`)
       }
     } else {
-      // 有領域，檢查domainID
+      // 有領域
+      // 看category_domain_reqnum得知要完成幾個領域
+
       let d = await getDOMpass('S0000001', pid, item.domain_id)
-      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的完成科目\n`, d)
+      // console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的完成科目\n`, d)
       d.forEach((item) => {
         creditsum += item.subject_credit
       })
-      // console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${d.length} 個科目`)
-      // console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
-
-      // let resDeno = await getTargetdeno(pid, item.category_id, item.domain_id)
-      // console.log('此目標的課程數總和：', resDeno.crsnum)
-      // console.log('此目標的學分數總和：', resDeno.creditsum)
-
-      // 檢查是否完成
-      if (item.domain_goal == '以學分數') {
-        // checkDonePercent[item.category_id + '-' + item.domain_id] =
-        //   creditsum >= item.domain_goalCredit ? 'done' : 'not yet'
-        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
-          creditsum,
-          item.domain_goalCredit
-        )
-      } else if (item.domain_goal == '以課程數') {
-        // checkDonePercent[item.category_id + '-' + item.domain_id] =
-        //   d.length >= item.domain_goalCredit ? 'done' : 'not yet'
-        checkDonePercent[pid + '-' + item.category_id + '-' + item.domain_id] = toPercent(
-          d.length,
-          item.domain_goalCredit
-        )
+      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${d.length} 個科目`)
+      console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 已完成 ${creditsum} 學分`)
+      if (item.program_criteria == '以學分數') {
+        console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的目標是要完成 ${item.domain_goal} 學分`)
+        let ans = toPercent(creditsum, item.domain_goal)
+        console.log(`已經完成 ${ans} %`)
       } else {
-        console.log('此類別有領域，不該在此檢查')
+        console.log(`類別 ${item.category_name} - 領域 ${item.domain_name} 的目標是要完成 ${item.domain_goal} 個科目`)
       }
-      // checkDone[item.domain_id] = creditsum >= item.domain_goalCredit ? 'done' : 'not yet'
     }
+  })
 
-    console.log('checkDone=', checkDonePercent)
-
-    // 設定每個學程的進度百分比
-    programList.value.forEach((item) => {
-      if (item.program_id == 1) {
-        item.percent = checkDonePercent['1-2-2']
-      }
-    })
+  // 設定每個學程的進度百分比
+  programList.value.forEach((item) => {
+    if (item.program_id == 1) {
+      item.percent = 80
+    }
   })
 }
 calprogress()
