@@ -35,7 +35,6 @@ const dynamicValidateForm = reactive({
     //   category_id: categoryCount++,
     //   category_Name: '類別1',
     //   category_goal: 0,
-    //   category_goalCredit: 0,
     //   domain: []
     // }
   ]
@@ -45,9 +44,8 @@ const addCategory = () => {
     // key: Date.now(),
     category_id: categoryCount++,
     category_name: '',
-    category_hasDomain: 0,
-    category_goal: '',
-    category_goalCredit: 1,
+    category_domain_reqnum: 0,
+    category_goal: 0,
     domain: []
   })
 }
@@ -76,8 +74,7 @@ const addDomain = (item) => {
     // key: Date.now(),
     domain_id: domainCount++,
     domain_name: '',
-    domain_goal: '',
-    domain_goalCredit: 1
+    domain_goal: 1
   })
 
   hasDomain.value[item] = true
@@ -100,13 +97,14 @@ const submitForm = (formEl) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
-      // 對每個類別檢查是否有領域，無領域則該類別的category_hasDomain為0
+      // 對每個類別檢查是否有領域，無領域則該類別的category_domain_reqnum為0
       dynamicValidateForm.category.forEach((item) => {
         if (item.domain.length == 0) {
-          item.category_hasDomain = 0
+          // 有領域，最低課程/學分數=0，須設定領域完成數
+          item.category_goal = 0
         } else {
-          item.category_goal = '有領域'
-          item.category_goalCredit = 0
+          // 無領域，領域完成數=0，須設定最低課程/學分數
+          item.category_domain_reqnum = 0
         }
       })
 
@@ -288,7 +286,7 @@ hasDomain.value[0] = false
                 >
                   <el-form-item
                     label="領域完成數"
-                    :prop="'category.' + categoryIndex + '.category_hasDomain'"
+                    :prop="'category.' + categoryIndex + '.category_domain_reqnum'"
                     :rules="
                       validon
                         ? {
@@ -300,11 +298,11 @@ hasDomain.value[0] = false
                     "
                   >
                     <!-- <template #label><span class="lineHeight1">最低課程數</span></template> -->
-                    <el-input-number v-model="category.category_hasDomain" :min="1" :max="30" />
+                    <el-input-number v-model="category.category_domain_reqnum" :min="1" :max="30" />
                   </el-form-item>
                 </el-tooltip>
                 <!-- [無領域]最低課程數 -->
-                <el-form-item
+                <!-- <el-form-item
                   label="類別修畢條件"
                   :prop="'category.' + categoryIndex + '.category_goal'"
                   :rules="
@@ -318,14 +316,12 @@ hasDomain.value[0] = false
                   "
                   v-if="!hasDomain[categoryIndex]"
                 >
-                  <!-- <template #label><span class="lineHeight1">最低課程數</span></template> -->
-                  <!-- <el-input-number v-model="category.category_goal" :min="1" :max="30" /> -->
                   <el-segmented v-model="category.category_goal" :options="criteriaOptions" />
-                </el-form-item>
+                </el-form-item> -->
                 <!-- [無領域]最低學分數 -->
                 <el-form-item
                   :label="'最低課程/學分數'"
-                  :prop="'category.' + categoryIndex + '.category_goalCredit'"
+                  :prop="'category.' + categoryIndex + '.category_goal'"
                   :rules="
                     validon
                       ? {
@@ -337,7 +333,7 @@ hasDomain.value[0] = false
                   "
                   v-if="!hasDomain[categoryIndex]"
                 >
-                  <el-input-number v-model="category.category_goalCredit" :min="1" :max="10" />
+                  <el-input-number v-model="category.category_goal" :min="1" :max="10" />
                 </el-form-item>
               </div>
             </div>
@@ -378,7 +374,7 @@ hasDomain.value[0] = false
                         <el-input v-model="domain.domain_name" placeholder="請輸入領域名稱" />
                       </el-form-item>
                       <!-- 領域修畢課程數 -->
-                      <el-tooltip
+                      <!-- <el-tooltip
                         effect="dark"
                         content="領域中的科目要完成幾項才算完成"
                         placement="top"
@@ -399,7 +395,7 @@ hasDomain.value[0] = false
                         >
                           <el-segmented v-model="domain.domain_goal" :options="criteriaOptions" />
                         </el-form-item>
-                      </el-tooltip>
+                      </el-tooltip> -->
                       <!-- 領域修畢學分數 -->
                       <el-tooltip
                         effect="dark"
@@ -409,7 +405,7 @@ hasDomain.value[0] = false
                       >
                         <el-form-item
                           :label="''"
-                          :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_goalCredit'"
+                          :prop="'category.' + categoryIndex + '.domain.' + index + '.domain_goal'"
                           :rules="
                             validon
                               ? {
@@ -421,24 +417,16 @@ hasDomain.value[0] = false
                           "
                         >
                           <template #label><span>最低課程/學分數</span></template>
-                          <el-input-number v-model="domain.domain_goalCredit" :min="1" :max="10" />
+                          <el-input-number v-model="domain.domain_goal" :min="1" :max="10" />
                         </el-form-item>
                       </el-tooltip>
                     </div>
                   </div>
-                  <!-- <div class="commandarea">
-                    <div class="delDomain" @click="removeDomain(categoryIndex, domain)">
-                      <font-awesome-icon icon="circle-xmark" /> 刪除
-                    </div>
-                  </div> -->
                 </div>
               </template>
               <div class="addDomain" @click="addDomain(categoryIndex)">
                 <font-awesome-icon icon="circle-plus" /> 新增領域
               </div>
-              <!-- <el-form-item style="margin-top: 10px">
-                <el-button type="success" @click="addDomain(categoryIndex)">新增領域</el-button>
-              </el-form-item> -->
             </div>
           </div>
         </template>
