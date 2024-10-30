@@ -6,10 +6,13 @@
 2. 開啟ngrok端口對應
    - 開啟cmd
    - 輸入指令ngrok http 1202
-3. 執行
+3. 更新 program01\src\utils\http.js 的 BASE_URL 為以下的網址
+   Forwarding https://3cd2-202-39-151-187.ngrok-free.app
+4. 執行
    ```
    npm run dev
    ```
+5. 右上角可登入帳號即代表Server啟動成功
 
 ## Recommended IDE Setup
 
