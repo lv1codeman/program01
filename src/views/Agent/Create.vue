@@ -13,7 +13,7 @@ const store = useProgramStore()
 const formRef = ref()
 
 // true: 開啟資料驗證, false: 關閉資料驗證
-const validon = false
+const validon = true
 
 var categoryCount = 0
 var domainCount = 1
@@ -187,6 +187,15 @@ hasDomain.value[0] = false
       <!-- <el-button type="warning" @click="cancel" style="margin-left: 10px"
         ><font-awesome-icon icon="fa-circle-left" class="mr-2 fontsize-16" />返回</el-button
       > -->
+      <BKbtn
+        type="success"
+        icon="fa-cloud-arrow-up"
+        iconClass="mr-4 mb-2 fontsize-16"
+        @click="submitForm(formRef)"
+        :style="{ padding: '0 12px' }"
+      >
+        送出
+      </BKbtn>
       <BKbtn
         type="warning"
         icon="fa-circle-left"
@@ -433,10 +442,27 @@ hasDomain.value[0] = false
         <div class="addCategory" @click="addCategory"><font-awesome-icon icon="circle-plus" /> 新增類別</div>
       </div>
     </el-form>
-    <el-button type="primary" @click="submitForm(formRef)"> 送出表單</el-button>
+    <BKbtn
+      type="success"
+      icon="fa-cloud-arrow-up"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="submitForm(formRef)"
+      :style="{ padding: '0 12px' }"
+    >
+      送出
+    </BKbtn>
+    <BKbtn
+      type="warning"
+      icon="fa-circle-left"
+      iconClass="mr-4 mb-2 fontsize-16"
+      @click="cancel"
+      :style="{ marginLeft: '10px', padding: '0 12px' }"
+      >返回</BKbtn
+    >
+    <!-- <el-button type="primary" @click="submitForm(formRef)"> 送出表單</el-button> -->
     <el-button @click="resetForm(formRef)">重設表單</el-button>
-    <el-button @click="checkDynamicValidateForm">check result</el-button>
-    <el-button @click="go_setSubject">go setSubject</el-button>
+    <!-- <el-button @click="checkDynamicValidateForm">check result</el-button> -->
+    <!-- <el-button @click="go_setSubject">go setSubject</el-button> -->
   </div>
   <el-backtop :right="30" :bottom="70" />
 </template>
