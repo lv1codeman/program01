@@ -1,6 +1,6 @@
 # program01
 
-This template should help get you started developing with Vue 3 in Vite.
+學程檢核平台 - 客戶端
 
 ## Recommended IDE Setup
 
